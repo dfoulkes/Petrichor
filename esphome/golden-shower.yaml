@@ -1,0 +1,175 @@
+# =============================================================================
+#  Golden Shower — irrigation controller firmware (ESPHome)
+#  Board:  ELEGOO ESP32-WROOM-32 (30-pin DevKit V1)  ·  board: esp32dev
+#  Relay:  ELEGOO 8-channel opto-isolated (active-LOW)
+#
+#  Zone → GPIO → relay input map (matches docs/wiring-diagram.html):
+#    Zone 1 → GPIO13 → IN1      Zone 5 → GPIO19 → IN5
+#    Zone 2 → GPIO16 → IN2      Zone 6 → GPIO21 → IN6
+#    Zone 3 → GPIO17 → IN3      Zone 7 → GPIO22 → IN7
+#    Zone 4 → GPIO18 → IN4      Zone 8 → GPIO23 → IN8
+#  (All 8 pins verified broken-out on the 30-pin board; all avoid the
+#   strapping pins 0/2/5/12/15, flash 6-11, and input-only 34-39.)
+#
+#  Flash:  cd esphome && esphome run golden-shower.yaml
+#  Secrets: copy secrets.yaml.example → secrets.yaml and fill it in.
+# =============================================================================
+
+substitutions:
+  name: golden-shower
+  friendly_name: "Golden Shower Irrigation"
+  max_run: "20min"          # per-valve max-run flooding backstop (see on_turn_on)
+
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+# --- Networking -------------------------------------------------------------
+wifi:
+  ssid: !secret wifi_base_station_name    # matches the Infisical key name (homelab/prod/Petrichor)
+  password: !secret wifi_password
+  # Static IP so Home Assistant / Prometheus always find it. Mirrors the UniFi
+  # reservation in dfoulkes/unfi-config (iot_clients.tf) — keep the two in sync.
+  # .5 is below the IoT DHCP pool start (.6), so it's never leased away.
+  manual_ip:
+    static_ip: 192.168.51.5
+    gateway: 192.168.51.1
+    subnet: 255.255.255.0
+  ap:                        # fallback hotspot if Wi-Fi is unreachable
+    ssid: "Golden-Shower Fallback"
+    password: !secret ap_password
+
+captive_portal:
+
+logger:
+
+api:
+  encryption:
+    key: !secret api_encryption_key
+  # SAFETY: if Home Assistant is unreachable for >5 min, reboot. On reboot every
+  # valve lands OFF (restore_mode below) — i.e. lose the network, fail dry.
+  reboot_timeout: 5min
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+# --- Diagnostics (surface in HA → scraped into Prometheus/Thanos) -----------
+sensor:
+  - platform: wifi_signal
+    name: "WiFi Signal"
+    update_interval: 60s
+  - platform: uptime
+    name: "Uptime"
+  - platform: internal_temperature
+    name: "ESP32 Temperature"
+
+text_sensor:
+  - platform: version
+    name: "ESPHome Version"
+  - platform: wifi_info
+    ip_address:
+      name: "IP Address"
+
+# --- Valves: 8 relay channels -----------------------------------------------
+# The ELEGOO opto relay is ACTIVE-LOW, so `inverted: true` makes ESPHome
+#   "on" == valve OPEN, "off" == valve SHUT.
+# restore_mode ALWAYS_OFF  => every boot lands with all valves shut (fail dry).
+# interlock (shared group) => only ONE zone open at a time (single-tap budget).
+# interlock_wait_time      => let one shut ~500ms before the next opens (water hammer).
+# on_turn_on delay->off    => coarse max-run backstop against a stuck-open valve.
+#   (With the interlock only one valve is ever live, so a stale timer just
+#    re-shuts an already-shut valve — harmless, and always fails dry.)
+switch:
+  - platform: gpio
+    name: "Zone 1"
+    id: valve_1
+    pin: { number: GPIO13, inverted: true }
+    restore_mode: ALWAYS_OFF
+    interlock: &all_valves [valve_1, valve_2, valve_3, valve_4, valve_5, valve_6, valve_7, valve_8]
+    interlock_wait_time: 500ms
+    on_turn_on:
+      - delay: ${max_run}
+      - switch.turn_off: valve_1
+
+  - platform: gpio
+    name: "Zone 2"
+    id: valve_2
+    pin: { number: GPIO16, inverted: true }
+    restore_mode: ALWAYS_OFF
+    interlock: *all_valves
+    interlock_wait_time: 500ms
+    on_turn_on:
+      - delay: ${max_run}
+      - switch.turn_off: valve_2
+
+  - platform: gpio
+    name: "Zone 3"
+    id: valve_3
+    pin: { number: GPIO17, inverted: true }
+    restore_mode: ALWAYS_OFF
+    interlock: *all_valves
+    interlock_wait_time: 500ms
+    on_turn_on:
+      - delay: ${max_run}
+      - switch.turn_off: valve_3
+
+  - platform: gpio
+    name: "Zone 4"
+    id: valve_4
+    pin: { number: GPIO18, inverted: true }
+    restore_mode: ALWAYS_OFF
+    interlock: *all_valves
+    interlock_wait_time: 500ms
+    on_turn_on:
+      - delay: ${max_run}
+      - switch.turn_off: valve_4
+
+  - platform: gpio
+    name: "Zone 5"
+    id: valve_5
+    pin: { number: GPIO19, inverted: true }
+    restore_mode: ALWAYS_OFF
+    interlock: *all_valves
+    interlock_wait_time: 500ms
+    on_turn_on:
+      - delay: ${max_run}
+      - switch.turn_off: valve_5
+
+  - platform: gpio
+    name: "Zone 6"
+    id: valve_6
+    pin: { number: GPIO21, inverted: true }
+    restore_mode: ALWAYS_OFF
+    interlock: *all_valves
+    interlock_wait_time: 500ms
+    on_turn_on:
+      - delay: ${max_run}
+      - switch.turn_off: valve_6
+
+  - platform: gpio
+    name: "Zone 7"
+    id: valve_7
+    pin: { number: GPIO22, inverted: true }
+    restore_mode: ALWAYS_OFF
+    interlock: *all_valves
+    interlock_wait_time: 500ms
+    on_turn_on:
+      - delay: ${max_run}
+      - switch.turn_off: valve_7
+
+  - platform: gpio
+    name: "Zone 8"
+    id: valve_8
+    pin: { number: GPIO23, inverted: true }
+    restore_mode: ALWAYS_OFF
+    interlock: *all_valves
+    interlock_wait_time: 500ms
+    on_turn_on:
+      - delay: ${max_run}
+      - switch.turn_off: valve_8

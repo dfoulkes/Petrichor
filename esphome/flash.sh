@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# Flash the Petrichor firmware, pulling secrets from Infisical at run time.
+#
+# Renders a TEMPORARY secrets.yaml from Infisical (homelab / prod / /Petrichor),
+# flashes, then shreds it on exit — plaintext never persists in the repo.
+# Auth mirrors ../../mysql-to-postgres-migration/scripts/infisical-get.sh:
+# a token at ~/.config/infisical/token (override with $INFISICAL_TOKEN_FILE).
+#
+# Usage:  ./flash.sh            # build + upload (esphome run)
+#         ./flash.sh --render   # just render secrets.yaml and stop (for testing)
+set -euo pipefail
+cd "$(dirname "$0")"
+
+TOKEN_FILE="${INFISICAL_TOKEN_FILE:-$HOME/.config/infisical/token}"
+PROJECT_ID="5c533f1a-81e8-41a2-b6f1-395887dfc391"
+ENVIRONMENT="prod"
+SECRET_PATH="%2FPetrichor"        # url-encoded /Petrichor
+SECRETS_FILE="secrets.yaml"
+
+[ -f "$TOKEN_FILE" ] || { echo "No Infisical token at $TOKEN_FILE" >&2; exit 1; }
+TOKEN="$(cat "$TOKEN_FILE")"
+
+# Always shred the rendered secrets on exit (success, failure, or Ctrl-C).
+cleanup() { [ -f "$SECRETS_FILE" ] && { shred -u "$SECRETS_FILE" 2>/dev/null || rm -f "$SECRETS_FILE"; }; }
+trap cleanup EXIT
+
+echo "Pulling secrets from Infisical (${ENVIRONMENT} /Petrichor)…"
+umask 077
+curl -sk --fail \
+  "https://infisical.foulkes.cloud/api/v3/secrets/raw?workspaceId=${PROJECT_ID}&environment=${ENVIRONMENT}&secretPath=${SECRET_PATH}" \
+  -H "Authorization: Bearer ${TOKEN}" \
+  | jq -er '.secrets[] | "\(.secretKey): \(.secretValue | @json)"' > "$SECRETS_FILE"
+
+# Sanity: confirm the five keys the config needs actually rendered.
+for k in wifi_base_station_name wifi_password ap_password ota_password api_encryption_key; do
+  grep -q "^${k}:" "$SECRETS_FILE" || { echo "missing secret '${k}' — aborting" >&2; exit 1; }
+done
+echo "secrets.yaml rendered ($(grep -c ':' "$SECRETS_FILE") keys)."
+
+if [ "${1:-}" = "--render" ]; then
+  echo "--render: leaving secrets.yaml in place is NOT done (shredded on exit). Rendering verified OK."
+  exit 0
+fi
+
+echo "Flashing golden-shower.yaml…"
+esphome run golden-shower.yaml "${@}"
+# trap shreds secrets.yaml on the way out
