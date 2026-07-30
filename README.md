@@ -42,3 +42,20 @@ It automates the watering of a back garden.
 - the is a suttle decline in the gardens level (the side closest to the house is slightly higher then the bottom of the garden.)
 - It's south west facing.
 
+## License
+
+The firmware, scripts and documentation in this repo are released under the
+[MIT License](LICENSE).
+
+**Except `datasheets/`.** Those PDFs are third-party manufacturer documents (ELEGOO, Mean Well,
+ABB, Rain Bird, Songle, Wago, CE-TEK), included for reference. They remain the copyright of
+their respective owners and are **not** covered by the MIT grant above.
+
+## ⚠️ Safety
+
+This project involves **230 V mains wiring**. The documentation here is a personal build log,
+not a certified electrical drawing, and it carries no warranty of any kind — see the MIT
+disclaimer. If you are not confident working with mains, have a competent person check your
+work. Anything downstream of the transformer (24 V SELV) is safe to handle; the 230 V input is
+not.
+
