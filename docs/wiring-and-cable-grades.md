@@ -11,6 +11,39 @@ Every conductor in the prototype, both ends, with the grade of cable each one mu
 
 ---
 
+## Regional assumptions
+
+🌍 **Read this before adapting the mains side.**
+
+**This whole document assumes a UK domestic supply.** Specifically: **230 V nominal
+(+10 %/−6 %, so 216–253 V) at 50 Hz**, wired to **BS 7671** — the IET Wiring Regulations,
+18th Edition, which is the UK implementation of the **IEC 60364 / CENELEC HD 60364** series.
+
+The low-voltage side (5 V DC, 24 V AC SELV, the relay logic, the GPIO map) is universal. **The
+230 V side is not**, and two of the assumptions below will actively mislead you if you're
+elsewhere:
+
+| Assumption | Where it breaks |
+|---|---|
+| ⚠️ **The plug contains a 5 A BS 1362 fuse** | Almost no other country fuses at the plug. The "22 AWG can't be protected by a 5 A fuse" argument depends on it. With only a 15–20 A branch breaker upstream (typical North American practice) there is **no** local overcurrent protection, so the wire-as-fuse-element failure mode gets **worse** — and 0.75 mm² stops being adequately protected either. Size your conductors to the *actual* upstream protective device. |
+| ⚠️ **Brown = Line, Blue = Neutral, Green/Yellow = Earth** | IEC 60445 harmonised colours. North America uses black/white/green. Following the colour references here with non-harmonised cable will have you misidentify the line conductor. **Verify with a meter, never by colour** — the continuity test in [Before you touch the 230 V side](#before-you-touch-the-230-v-side) is the method, but its pin geometry is BS 1363-specific. |
+| **RCD-protected socket** | UK/EU term. The North American equivalent is a **GFCI**; requirements and trip characteristics differ. |
+| **SELV** (Safety Extra-Low Voltage) | An IEC/BS concept. The nearest US equivalent is an **NEC Class 2** circuit — similar intent, different rules. |
+| **Cable standards `3183Y`, `H05VV-F`, `BS 6231` tri-rated** | BS/EN part numbers with no direct US equivalent. You'd be looking at SJT/SOOW for flex and THHN/MTW for singles, chosen against **NEC (NFPA 70)** ampacity tables, not the figures here. |
+| **50 Hz** | The Rain Bird coil figures are quoted at 60 Hz in its datasheet and derived to 50 Hz in [section D](#getting-24-v-out-of-the-transformer). On a 60 Hz supply, use the datasheet values directly. |
+| **UK plug pin geometry** | The lead-verification continuity test assumes a BS 1363 moulded plug. Meaningless on NEMA. |
+
+Both DIN supplies (HDR-15-5, TM15/24) are **Class II**, which is a universal IEC concept — but
+the HDR is universal-input (85–264 VAC) while the **ABB TM15/24 transformer is 230 V primary
+only**. On a 120 V supply it would produce roughly half its rated secondary and the valves
+would not pull in.
+
+**None of this is a certified design in any jurisdiction.** It's a personal build log. If you
+are adapting it, work to your own local wiring regulations and have a competent person check
+the mains side.
+
+---
+
 ## The one-glance answer
 
 If you read nothing else on this page, read these four lines.

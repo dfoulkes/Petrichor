@@ -142,6 +142,12 @@ Now connect the ESP32 to the relay board with **dupont leads**:
 > ⚠️ **Mains safety.** 230V can genuinely hurt you. Everything downstream of the transformer
 > (24V) is safe to handle; the 230V input is not. If you're not confident wiring a plug and
 > mains terminals, get a competent person to check this stage before you power it.
+>
+> 🌍 **UK supply assumed** — 230V/50Hz to BS 7671 (IEC 60364 family). This stage relies on the
+> **5A BS 1362 fuse in the plug** for conductor protection, and on **harmonised cable colours**
+> (brown/blue/green-yellow). Neither holds in North America. If you're not on a UK supply, read
+> [Regional assumptions](../docs/wiring-and-cable-grades.md#regional-assumptions)
+> before this stage — the low-voltage stages are fine anywhere.
 
 ---
 

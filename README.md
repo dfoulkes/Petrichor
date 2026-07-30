@@ -51,11 +51,26 @@ The firmware, scripts and documentation in this repo are released under the
 ABB, Rain Bird, Songle, Wago, CE-TEK), included for reference. They remain the copyright of
 their respective owners and are **not** covered by the MIT grant above.
 
-## ⚠️ Safety
+## ⚠️ Safety & regional scope
 
 This project involves **230 V mains wiring**. The documentation here is a personal build log,
 not a certified electrical drawing, and it carries no warranty of any kind — see the MIT
 disclaimer. If you are not confident working with mains, have a competent person check your
 work. Anything downstream of the transformer (24 V SELV) is safe to handle; the 230 V input is
 not.
+
+**Built for a UK domestic supply** — 230 V nominal at 50 Hz, wired to **BS 7671** (IET Wiring
+Regulations 18th Edition, the UK implementation of **IEC 60364 / HD 60364**).
+
+The low-voltage side is universal. The mains side is **not**, and two assumptions will mislead
+you elsewhere:
+
+- **The plug carries a 5 A BS 1362 fuse.** Most countries don't fuse at the plug. The conductor
+  sizing here is justified by that fuse; with only a 15–20 A branch breaker upstream, it isn't.
+- **Brown = Line, Blue = Neutral** (IEC 60445 harmonised). North America uses black/white/green.
+  **Verify with a meter, never by colour.**
+
+Full breakdown — including RCD vs GFCI, SELV vs NEC Class 2, and cable-standard equivalents —
+in [`docs/wiring-and-cable-grades.md`](docs/wiring-and-cable-grades.md#regional-assumptions).
+Adapting this elsewhere means working to your own local wiring regulations.
 
