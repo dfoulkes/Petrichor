@@ -17,8 +17,3 @@ ticket, tracked outside this repo — not in the filename.
 | `221-413_Wago_lever-connector.pdf` | 221-413 | Wago | CPC CN20136 | 3-way lever splicing connector |
 | `ESP32-WROOM-32_Espressif_MCU-module.pdf` | ESP32-WROOM-32 | Espressif | Amazon (ELEGOO board) | ESP32 module — GPIO/pinout reference |
 | `GR17016_CE-TEK_IP65-enclosure.pdf` | GR17016 | CE-TEK | CPC EN84548 | IP65 ABS enclosure, 310×240×100mm |
-
-## Missing
-
-- **8-channel relay module** (ELEGOO, Amazon) — no official ELEGOO datasheet. The board uses
-  **SONGLE SRD-05VDC-SL-C** relays; grab that component datasheet for the real contact ratings.
