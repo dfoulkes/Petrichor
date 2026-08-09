@@ -181,7 +181,7 @@ Now connect the ESP32 to the relay board with **dupont leads**:
 
 **Cable: 22 AWG hook-up kit** for everything in this stage. (18 AWG / 0.75 mm² is the *mains*
 side only — see `../docs/wiring-and-cable-grades.md`. Field runs out to the valves need
-outdoor-rated cable, which is a Stage 6+ problem — 22 AWG is bench only.)
+outdoor-rated cable — that's **Stage 7**; 22 AWG is bench only.)
 
 **Find the screws first.** The terminal blocks are completely unlabelled — 24 identical
 screws, no silkscreen. See **Relay output terminal map** in the Reference section below.
@@ -349,20 +349,35 @@ and swarf inside a box full of electronics is a problem you only make once.
 
 1. [ ] **Decide the mounting orientation first.** The condensation drain must sit at the box's
    *true lowest point as mounted* — get this wrong and it's a water trap instead of a drain.
+   Pick the **shadiest viable spot** while you're at it — see the UV note (step 4).
 2. [ ] **Drill the 230V cable entry — fit a gland, not a bare hole.** A plain hole voids IP65 and
-   gives the mains lead no strain relief. Size the gland to the lead's outer diameter. Enter
-   through a **bottom or lower-side face** so water runs off rather than tracking in along the
-   cable sheath.
+   gives the mains lead no strain relief. Size the gland to the lead's outer diameter — **measure
+   it**: the WEMNO **M16** glands already on hand seal 3–8 mm, which covers a typical 3-core flex;
+   step up to **M20** only if the lead measures over 8 mm. Enter through a **bottom or lower-side
+   face** so water runs off rather than tracking in along the cable sheath.
 3. [ ] **Fit a vented drain in the base.** ⚠️ Also *not* a drilled hole — use an **IP-rated
    vented drain plug / pressure-equalisation breather** (M12–M16 type). It does two jobs: lets
    liquid water out, and equalises pressure so the box doesn't inhale moist air every time it
    heats and cools. An unvented sealed box in a garden is a condensation generator.
-4. [ ] Mount the **ESP32 and relay** — ESP32 on its DIN carrier, relay on a DIN mount. The
+4. [ ] **UV & heat — treat the box while it's empty.** This one lives in **full sun**, and the
+   GR17016 is grey **ABS**, which chalks and goes brittle under years of UK UV. Do this before the
+   electronics go in (mess, fumes). Order of preference:
+   - **Shade first, it's free.** A small hood/sunshade or mounting under an overhang cuts UV *and*
+     the internal heat that eats cable-insulation margin (see cable grades). Do this regardless.
+   - **If painting:** scuff + degrease, a **plastic-adhesion primer** (bare ABS sheds ordinary
+     paint), then a UV-stable exterior topcoat in a **light colour** — white/light grey. **Never
+     dark:** dark paint bakes the box and makes the 50–60 °C internal problem worse.
+   - **Paint is UV/appearance only — it is not the waterproofing.** IP65 comes from the lid gasket,
+     the gland and the breather. So **keep paint off the lid sealing faces and off the breather/drain.**
+   - This is a prototype box; the long-term fix is a UV-stable polycarbonate/GRP enclosure. Reassess
+     after a season in the sun.
+5. [ ] Mount the **ESP32 and relay** — ESP32 on its DIN carrier, relay on a DIN mount. The
    GR17016 has **no back-plate**, so anything not on the rail is drilled directly into the base.
-5. [ ] **DIN gear on the rail**, spacers between the transformers.
-6. [ ] **Tidy the 5V wiring** — ferrules on stranded tails, routed and secured.
-7. [ ] Keep **230V wiring physically separated** from the low-voltage side.
-8. [ ] Close the lid. Done — it's a finished thing.
+6. [ ] **DIN gear on the rail**, spacers between the transformers.
+7. [ ] **Tidy the 5V wiring** — ferrules on stranded tails, routed and secured.
+8. [ ] Keep **230V wiring physically separated** from the low-voltage side.
+9. [ ] Close the lid. Done — the box is finished, but the system isn't: power, field cable and the
+   valves are **Stage 7**, water is **Stage 8**.
 
 > **Why the vent matters more than it sounds.** IP65 keeps water *out*, but it also keeps water
 > *in*. A sealed box that warms in the sun and cools overnight pumps humid air in through any
@@ -371,11 +386,99 @@ and swarf inside a box full of electronics is a problem you only make once.
 
 ---
 
+## Stage 7 — Out to the garden (power in, signal out)
+
+The box is proven and sealed; now connect it to the world. Both runs here are **short (<10 m)**,
+which makes the electrical side easy — the work is all about **weather**, not distance.
+
+### 7A — A weatherproof outdoor supply
+
+1. [ ] Feed the box from an **RCD-protected outdoor socket**. MVP: plug the existing UK
+   plug→bare-end lead into an **IP66 weatherproof socket enclosure** on an existing RCD circuit —
+   the lead enters the box through its Stage 6 gland.
+   > ⚠️ A *permanent* outdoor spur is **BS 7671 work for a competent person**. The plug-in
+   > weatherproof-socket route keeps the prototype on the right side of that line. UK supply
+   > assumed throughout — see [Regional assumptions](../docs/wiring-and-cable-grades.md#regional-assumptions).
+
+### 7B — The field cable (box → manifold)
+
+2. [ ] Run **one outdoor/UV-rated multicore** from the box out to the manifold. **Cores = zones + 1**
+   (one per valve + one shared common) — *not* zones × 2. At <10 m and ~0.3 A per valve,
+   **0.5–0.75 mm² is ample**; volt-drop is negligible, especially at the ~29 V this transformer
+   delivers. This is the cable the old Stage 5 note left "not specified" — it is now specified.
+3. [ ] If buried, use **direct-burial-rated cable or run it in a duct**, and leave a **drip loop**
+   at both ends. The 24 V loop is **SELV — safe to handle** — so the rating here is about water, UV
+   and abrasion, not shock.
+
+### 7C — The valve box (in-ground manifold chamber)
+
+4. [ ] Set an **in-ground valve box** on a **gravel base** (drainage), sized for the manifold plus
+   **hand access and cable slack**. It houses: the **double-check valve** (backflow prevention to
+   the tap — a must-have *and* a UK water-regs requirement), the manifold, and the 24 V solenoid(s).
+5. [ ] ⚠️ **Waterproof every connection — this is the bit that bites.** Valve boxes flood. The
+   solenoid coils don't care; **bare joints do.** Use **gel-filled / IP68 connectors** (gel
+   Scotchloks, resin, or waterproof crimp + adhesive heatshrink) at every solenoid. **Never a dry
+   Wago in the ground.** This is the single most failure-prone spot in the whole build.
+6. [ ] Wire the return as **one common daisy-chained across the solenoids** at the manifold
+   (terminal 7 out, hopping valve to valve), with **one individual conductor per valve** back to its
+   `NO`. That's the "zones + 1" core count in the flesh.
+
+> Plumbing order at the manifold: **tap → double-check valve → (low-flow filter) → manifold →
+> solenoids → zones.** The filter is cheap insurance for the drip line and rotary nozzles.
+
+---
+
+## Stage 8 — Water & commissioning (⚠️ WATER — last of all)
+
+This is where "water last of all" finally lands. **Do one zone end to end before building the rest.**
+
+**The numbers that drive this** (flow/pressure test, 2026-07-20): **~3.8 bar static, ~19 L/min.**
+Pressure is comfortably in band; **flow is the constraint** — a classic single-domestic-tap throttle.
+
+### 8A — Nozzles: low-flow rotaries, not fixed sprays
+
+1. [ ] Fit **low-flow rotaries** (Hunter MP Rotator / Rain Bird R-VAN), ~1.5–3 L/min each. Within
+   the ~15 L/min working budget (~80 % of measured flow) that's **~5–8 heads per zone**; fixed
+   sprays are thirsty and you'd fit only 2–3. Rotaries also give better uniformity and matched
+   precipitation. Corner-mounted, **facing inward** (as decided), they cover the 11 × 14 m plot.
+
+> This **revises two earlier decisions** — "fixed spray nozzles" → rotaries, and "one nozzle at a
+> time" → **one *zone* at a time**. The flow numbers made the call; see README **Decisions**.
+
+### 8B — Zones: fewer than you think
+
+2. [ ] The interlock already runs **one zone at a time**, and low-flow rotaries mean the **four
+   corners (~4 × 2.5 ≈ 10 L/min) fit in a single zone.** So the MVP is **~2 zones**, not 8:
+   - **HP:** the corner rotary ring (README's self-back-feeding **circular loop** equalises pressure across the heads).
+   - **LP:** a **drip line** for the 4 hanging baskets — needs a **pressure reducer (~1–1.5 bar) + filter**.
+   The 8-channel relay is then **expansion headroom**, not a target to fill.
+3. [ ] ⚠️ **Verify dynamic sag before trusting a grouped zone.** Running 4 heads together depends on
+   pressure holding *under flow*, which is **not yet measured** (the gauge that arrived is dead-end).
+   **Tee an inline gauge** (~£5–10) and confirm the zone holds **≥ ~2.75 bar under ~10 L/min**.
+   **Fallback:** split HP into **two zones of two corners** — the interlock and the spare relay
+   channels make that free.
+
+### 8C — Commission one zone, end to end
+
+4. [ ] **Wet-test one valve** — the actuation deferred from Stage 5D. With water on, energise the
+   zone: the pilot-operated diaphragm should **open and flow**. The manual **bleed lever** proves the
+   valve body independently of the electrics.
+5. [ ] Re-check the **supply-to-coil volt-drop in tenths** (Stage 5C method) with the field run in
+   circuit — that proves the cable and every gel connector under real load.
+6. [ ] Confirm the **dynamic pressure** read (8B), then **add the drip/LP zone**. Subdivide the HP
+   ring into more zones **only if** the sag test demands it.
+
+---
+
 ## In parallel (any time from the 20th, needs no electronics)
 
-- [ ] **Flow + pressure test.** Screw the gauge on the tap: read **static** pressure (bar),
-  then run the tap wide open into a known-volume bucket and time it (**L/min**). Those two
-  numbers unlock the nozzle and zone-count decisions.
+- [x] **Flow + pressure test** *(done 2026-07-20)*. Static **~3.8 bar / 55 psi** (dead-end gauge,
+  tap fully open); flow **~19 L/min** (14 L in 44.17 s, wide open). Pressure is not the
+  constraint — **flow is**. Those numbers drove the Stage 8 nozzle/zone decisions (low-flow
+  rotaries, ~2 grouped zones run sequentially).
+  - [ ] **Dynamic pressure (sag under flow)** — *still outstanding*. The gauge that arrived is
+    single-ended and reads only with no flow. Tee it inline (~£5–10) to get working pressure; needed
+    before committing to a grouped multi-head zone (Stage 8B).
 
 ---
 
