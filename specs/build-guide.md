@@ -344,11 +344,30 @@ the field cable core count: **zones + 1**.
 
 ## Stage 6 — Box it up (only after it all works loose)
 
-1. [ ] Mount the ESP32 + relay on standoffs inside the enclosure (drill the base — the
-   GR17016 has no back-plate).
-2. [ ] DIN gear on the rail; cables in through glands.
-3. [ ] Keep **230V wiring physically separated** from the low-voltage side.
-4. [ ] Close the lid. Done — it's a finished thing.
+**Plan the base layout and drill the box empty.** Both penetrations below want the bottom face,
+and swarf inside a box full of electronics is a problem you only make once.
+
+1. [ ] **Decide the mounting orientation first.** The condensation drain must sit at the box's
+   *true lowest point as mounted* — get this wrong and it's a water trap instead of a drain.
+2. [ ] **Drill the 230V cable entry — fit a gland, not a bare hole.** A plain hole voids IP65 and
+   gives the mains lead no strain relief. Size the gland to the lead's outer diameter. Enter
+   through a **bottom or lower-side face** so water runs off rather than tracking in along the
+   cable sheath.
+3. [ ] **Fit a vented drain in the base.** ⚠️ Also *not* a drilled hole — use an **IP-rated
+   vented drain plug / pressure-equalisation breather** (M12–M16 type). It does two jobs: lets
+   liquid water out, and equalises pressure so the box doesn't inhale moist air every time it
+   heats and cools. An unvented sealed box in a garden is a condensation generator.
+4. [ ] Mount the **ESP32 and relay** — ESP32 on its DIN carrier, relay on a DIN mount. The
+   GR17016 has **no back-plate**, so anything not on the rail is drilled directly into the base.
+5. [ ] **DIN gear on the rail**, spacers between the transformers.
+6. [ ] **Tidy the 5V wiring** — ferrules on stranded tails, routed and secured.
+7. [ ] Keep **230V wiring physically separated** from the low-voltage side.
+8. [ ] Close the lid. Done — it's a finished thing.
+
+> **Why the vent matters more than it sounds.** IP65 keeps water *out*, but it also keeps water
+> *in*. A sealed box that warms in the sun and cools overnight pumps humid air in through any
+> imperfect seal and then condenses it on the coldest surface — usually your electronics. The
+> breather is what stops that cycle. It is not optional kit on an outdoor enclosure.
 
 ---
 
