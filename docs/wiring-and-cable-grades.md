@@ -296,8 +296,17 @@ regardless of zone count.
 
 That sets the field cable core count: **zones + 1**, not zones × 2.
 
-⚠ **22 AWG is bench only.** Field runs out to the valves need outdoor-rated cable — not yet
-specified, and a prerequisite before anything leaves the enclosure.
+⚠ **22 AWG is bench only.** The field run needs **outdoor/UV-rated multicore**, zones + 1 cores.
+At the actual geometry — **<10 m box→manifold**, ~0.3 A per valve — **0.5–0.75 mm² is ample**;
+volt-drop is negligible, and more so at the ~29 V the secondary actually sits at. Buried runs want
+**direct-burial-rated cable or a duct**, with a drip loop at each end. It's SELV, so the rating is
+about **water, UV and abrasion, not shock**.
+
+⚠ **The connections in the valve box are the weak point, not the cable.** An in-ground valve box
+floods; the solenoid coils tolerate it, bare joints don't. Every solenoid joint must be a
+**gel-filled / IP68 connector** (gel Scotchlok, resin, or waterproof crimp + adhesive heatshrink) —
+**never a dry Wago in the ground.** Wagos are a *dry-box* connector; they belong in the enclosure,
+not the earth.
 
 ### Getting 24 V out of the transformer
 
@@ -341,7 +350,10 @@ What's in hand and what still needs sourcing.
 | Wago 221-413 | 450 V · 32 A | 7 | `50-PACK` |
 | Ferrules | 0.75 mm² · 6 mm bootlace | 6 | `SOURCE` |
 | Earth bond | DIN earth block, or M4 + ring crimp | 1 | `SOURCE` |
-| Field cable to manifold | outdoor-rated, zones + 1 cores | — | **NOT SPECIFIED** |
+| Field cable to manifold | outdoor/UV-rated multicore, 0.5–0.75 mm², **zones + 1** cores (<10 m; direct-burial or duct if buried) | — | `SOURCE` |
+| Mains cable gland | WEMNO **M16** nylon IP68, 3–8 mm range (step to M20 if lead >8 mm) | 1 | `IN HAND` *(pack of 10)* |
+| Vented drain / breather | IP-rated M12–M16 breather plug | 1 | `SOURCE` |
+| Valve-box connectors | gel-filled / IP68, one per solenoid joint | zones + common | `SOURCE` |
 
 > **Cheapest route to the five mains wires.** Cut **400 mm off the lead's bare-end tail** and
 > split the sheath — that's 0.75 mm² flex in exactly the three colours you need, free, tonight.
