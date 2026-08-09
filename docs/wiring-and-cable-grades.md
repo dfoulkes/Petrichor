@@ -304,6 +304,21 @@ specified, and a prerequisite before anything leaves the enclosure.
 Take **5 ↔ 7**. Terminal **6** is a **centre tap** — measure 5–6 or 6–7 and you'll read 12 V
 and think it's broken. There is nothing to join in series. No polarity on an AC secondary.
 
+⚠ **Expect ~29 V, not 24 V.** The TM15/24 is a **bell transformer** — ABB's datasheet describes it
+as a *"fail safe bell transformer"* suitable for *"loads that call for a discontinuous supply"*.
+That class is deliberately wound with high leakage inductance and poor regulation, which is what
+makes it inherently short-circuit-safe; the **24 V nameplate is the full-load figure**. Measured
+**29.4 V off-load / 29.2 V at the coil** on 2026-08-09. The datasheet quotes no regulation figure
+or off-load voltage, so there is nothing to check this against — it is simply how the part behaves.
+
+Because the interlock only ever allows **one** valve, the load never rises above ~43 % of 15 VA, so
+the secondary sits at ~29 V **permanently** — it does not settle toward 24 V in normal operation.
+That is ~22 % above the valve's nominal 24 V and outside Rain Bird's ±10 % window. Accepted for
+this build: irrigation duty is short bursts, and the alternatives are all poor value (the 12 V tap
+won't pull the valve in, a dropper resistor just moves the heat, and a better-regulated transformer
+is real money against a failure that hasn't happened). Recorded so an early coil failure isn't a
+mystery.
+
 **Valve load (Rain Bird 100-DVF):** datasheet gives **0.30 A inrush (7.2 VA)** and
 **0.19 A holding (4.6 VA)** — but those are the **60 Hz** figures. On UK **50 Hz** the coil's
 reactance is lower and current runs roughly **0.34 A inrush / 0.22 A holding** (~8 VA / ~5 VA).
@@ -366,7 +381,13 @@ to open it, never ring-cut and drag, or you'll nick a core.
 - **All eight `NC` screws stay empty.** A valve on `NC` waters the garden whenever the
   controller is off or crashed.
 - **Measure before trusting:** L–N open-circuit before power-up (a short means stop), then
-  ~5 V DC and ~24 V AC before anything downstream is connected.
+  ~5 V DC and **~29 V AC off-load** (not 24 — see [Getting 24 V out of the transformer](#getting-24-v-out-of-the-transformer))
+  before anything downstream is connected.
+- **Off-load readings on the 24 V side are not measurements.** An unloaded floating SELV winding
+  seen through a 10 MΩ meter input reads capacitive coupling, not voltage — it will drift and
+  respond to your hand. Both probes stay on the same low-voltage loop, and judge only readings
+  taken with a real load in circuit. This project has been caught by it twice: a 33 V phantom on
+  an open `NO` contact and a spurious 22 V on an unloaded one.
 - If you're not confident on the mains side, have a competent person check it. This is a build
   guide, not a certified electrical drawing.
 
@@ -384,6 +405,8 @@ was written away from the source files; these are the numbers that were re-confi
 | HDR `Vo ADJ` range 4.5–5.5 V | same, p.2 | ✅ exact |
 | Valve 24 VAC, inrush 0.30 A (7.2 VA), hold 0.19 A (4.6 VA), coil 42–55 Ω | `100-DVF_RainBird_solenoid-valve.pdf` p.1 | ✅ exact — **but stated at 60 Hz**; 50 Hz figures derived above |
 | TM15/24 secondary 12–24 V AC, 15 VA, terminal 6 = centre tap | `TM15-24_ABB_transformer.pdf` p.3–4 + product label | ✅ confirmed |
+| TM15/24 is a *"fail safe bell transformer"* for *"loads that call for a discontinuous supply"*; 230 V primary, max power loss 4 W, ta 40 °C class B, Iout max 1.25 A (the 12 V figure — 15 VA ÷ 12 V) | `TM15-24_ABB_transformer.pdf` p.3–4 | ✅ exact |
+| TM15/24 **regulation / off-load secondary voltage** | — | ❌ **not specified anywhere in the datasheet.** Measured 29.4 V off-load, 29.2 V at the coil (2026-08-09). Treated as characteristic of the bell-transformer class, not a fault |
 | Relay contacts 10 A 250 VAC / 10 A 30 VDC | Songle relay body marking, ELEGOO datasheet p.1 | ✅ confirmed |
 | Relay screw order `NC · COM · NO`, channels 1→8 in sequence | ELEGOO schematic (`J3` = pins 1–6) + module dimension drawing | ✅ confirmed |
 | Wago 221-413 rated 450 V / 32 A / 0.14–4 mm² | — | ⚠ not re-checked |
