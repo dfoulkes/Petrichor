@@ -426,6 +426,26 @@ which makes the electrical side easy — the work is all about **weather**, not 
 > Plumbing order at the manifold: **tap → double-check valve → (low-flow filter) → manifold →
 > solenoids → zones.** The filter is cheap insurance for the drip line and rotary nozzles.
 
+### 7D — Pipe size & the NPT/BSP thread trap
+
+7. [ ] **Feed pipe: 3/4" / 20 mm.** At the measured **19 L/min** that's ~**1.5 m/s** — under Rain
+   Bird's **2.3 m/s** water-hammer cap. 1/2" runs ~2.2 m/s (too fast); 1" is needless — the **tap
+   and supply are the throttle, not the pipe**. The 1" valve is oversized for ~5 gpm (loss ~0.17 bar),
+   which is fine — oversized means low loss and less hammer.
+8. [ ] ⚠️ **Mind the thread standard — the valve is NPT, your tap is BSP.** The 100-DVF's standard
+   threaded ports are **1" female NPT** (FNPT), and the unit on hand is US-market ("Assembled in
+   Mexico"), so it is **NPT, not** the BSP special-order variant. UK taps and pipe are **BSP**.
+   **NPT and BSP do not seal** (NPT 11.5 TPI / 60° taper vs BSP 11 TPI / 55°) — a BSP male bites two
+   turns into the NPT female, then weeps or cracks the plastic body.
+9. [ ] **Bridge with transition adapters:** a **1" MNPT × 3/4" BSP** adapter into **each** valve port
+   (inlet + outlet), PTFE tape or anaerobic sealant. Everything downstream is then plain BSP.
+   *Confirm before buying:* NPT female is visibly **tapered** (thread shallows toward the mouth); a
+   thread gauge settles any doubt.
+
+> Full plumbing chain: **tap (3/4" BSP M) → 3/4" DCV → 3/4"/20 mm pipe → [1" MNPT×3/4" BSP adapter]
+> → valve (1" FNPT) → [adapter] → 3/4" to the zone.** *(Values from
+> `../datasheets/100-DVF_RainBird_solenoid-valve.pdf`.)*
+
 ---
 
 ## Stage 8 — Water & commissioning (⚠️ WATER — last of all)
