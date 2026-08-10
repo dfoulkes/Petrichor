@@ -478,15 +478,38 @@ Pressure is comfortably in band; **flow is the constraint** — a classic single
    **Fallback:** split HP into **two zones of two corners** — the interlock and the spare relay
    channels make that free.
 
-### 8C — Commission one zone, end to end
+> **How many valves? Valves = zones.** The full system is **2** (the HP rotary ring + the LP drip
+> line), or **3** only if the sag test forces the ring to split. **Not 8** — the relay is headroom.
+> You already have one valve; **buy no more until 8C has proven the first head.**
 
-4. [ ] **Wet-test one valve** — the actuation deferred from Stage 5D. With water on, energise the
-   zone: the pilot-operated diaphragm should **open and flow**. The manual **bleed lever** proves the
-   valve body independently of the electrics.
-5. [ ] Re-check the **supply-to-coil volt-drop in tenths** (Stage 5C method) with the field run in
+### 8C — Prove one head first (buy this, do this before anything else)
+
+The first wet test needs **no trenching and no second valve** — a temporary surface rig on the valve
+you already have. **Buy:**
+- **One rotary head** — an MP Rotator / R-VAN **nozzle + a ½" pop-up body or riser** (the nozzle
+  alone isn't a head).
+- **2 × 1" MNPT × 3/4" BSP** adapters for the valve's ports (the NPT/BSP trap — see 7D).
+- **3/4" pipe/hose + BSP fittings + a 3/4"→½" reducer** at the head; a **3/4" tap connector** + PTFE.
+- **An inline pressure gauge / tee (~£5–10)** — ⚠️ **not optional.** Reading **dynamic pressure under
+  flow** is the entire point of this test, and the gauge on hand is dead-end.
+- Confirm your outside tap's **double-check valve** (many UK taps already have one).
+
+4. [ ] Rig it **tap → DCV → 3/4" hose → adapter → valve → adapter → head**, all above ground.
+5. [ ] **Wet-test:** energise the zone — the pilot-operated diaphragm should open and the head should
+   spray. The manual **bleed lever** proves the valve body independently of the electrics.
+6. [ ] **Read dynamic pressure at the head, under flow.** This is the **gate**: it decides whether one
+   zone carries all four corner rotaries (**2 valves total**) or must split (**3**). *Only now* buy
+   valve #2 — same **NPT** model, adaptered the same way, for a uniform manifold.
+
+### 8D — Commission the zone in situ (the permanent build)
+
+Once the head test passes, build it for real — valve(s) in the buried box, field cable run, heads plumbed.
+
+7. [ ] Repeat the **wet actuation** check on each installed valve.
+8. [ ] Re-check the **supply-to-coil volt-drop in tenths** (Stage 5C method) with the **field run** in
    circuit — that proves the cable and every gel connector under real load.
-6. [ ] Confirm the **dynamic pressure** read (8B), then **add the drip/LP zone**. Subdivide the HP
-   ring into more zones **only if** the sag test demands it.
+9. [ ] **Add the drip/LP zone** (pressure reducer + filter). Subdivide the HP ring **only if** the sag
+   test demanded it.
 
 ---
 
