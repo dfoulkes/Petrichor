@@ -426,24 +426,36 @@ which makes the electrical side easy — the work is all about **weather**, not 
 > Plumbing order at the manifold: **tap → double-check valve → (low-flow filter) → manifold →
 > solenoids → zones.** The filter is cheap insurance for the drip line and rotary nozzles.
 
-### 7D — Pipe size & the NPT/BSP thread trap
+### 7D — Pipe size & the thread standard (BSP — check yours)
 
 7. [ ] **Feed pipe: 3/4" / 20 mm.** At the measured **19 L/min** that's ~**1.5 m/s** — under Rain
    Bird's **2.3 m/s** water-hammer cap. 1/2" runs ~2.2 m/s (too fast); 1" is needless — the **tap
    and supply are the throttle, not the pipe**. The 1" valve is oversized for ~5 gpm (loss ~0.17 bar),
    which is fine — oversized means low loss and less hammer.
-8. [ ] ⚠️ **Mind the thread standard — the valve is NPT, your tap is BSP.** The 100-DVF's standard
-   threaded ports are **1" female NPT** (FNPT), and the unit on hand is US-market ("Assembled in
-   Mexico"), so it is **NPT, not** the BSP special-order variant. UK taps and pipe are **BSP**.
-   **NPT and BSP do not seal** (NPT 11.5 TPI / 60° taper vs BSP 11 TPI / 55°) — a BSP male bites two
-   turns into the NPT female, then weeps or cracks the plastic body.
-9. [ ] **Bridge with transition adapters:** a **1" MNPT × 3/4" BSP** adapter into **each** valve port
-   (inlet + outlet), PTFE tape or anaerobic sealant. Everything downstream is then plain BSP.
-   *Confirm before buying:* NPT female is visibly **tapered** (thread shallows toward the mouth); a
-   thread gauge settles any doubt.
+8. [ ] ⚠️ **Check which thread standard your valve is — the 100-DVF ships in both.** The datasheet
+   makes it a specify-on-order option ("*Available with BSP threads*"; "*necessary to specify NPT or
+   BSP thread type*"). **This build's valve is BSP** — the Amazon order confirmation of 2026-07-19
+   reads verbatim *"Rain Bird 100-DVF, **1 inch BSPF** 24vac Solenoid Valve"* — so its ports are
+   **1" BSP female** and mate straight into UK pipe.
+   **Do not infer the standard from where it was assembled.** An earlier revision of this guide
+   concluded "NPT" from an "Assembled in Mexico" moulding and specified £7.49 hydraulic transition
+   adapters. That was **wrong** — Rain Bird build both variants there. Country of origin carries no
+   thread information. **Trust the order confirmation or a test fit; nothing else.**
+9. [ ] **Fit a plain reducing bush per port:** **1" BSP male × 3/4" BSP female** into **each** valve
+   port (inlet + outlet), PTFE tape. ~£2 each (Screwfix Flomasta 28333, Toolstation, HydroSure).
+   Everything downstream is then plain 3/4" BSP.
+10. [ ] **Verify on assembly.** A BSP bush should thread **smoothly and keep going**. If it **binds
+    hard after ~2 turns**, you have the NPT variant after all — fall back to a **1" NPTF male × 3/4"
+    BSP female bush** (e.g. Hydraulic Megastore 16360, £7.49).
 
-> Full plumbing chain: **tap (3/4" BSP M) → 3/4" DCV → 3/4"/20 mm pipe → [1" MNPT×3/4" BSP adapter]
-> → valve (1" FNPT) → [adapter] → 3/4" to the zone.** *(Values from
+> ⚠️ **Why this is worth two minutes:** at 1" the two standards are within **0.05 mm** on major
+> diameter (33.2 vs 33.25 mm) and differ only in pitch and flank angle (**NPT** 11.5 TPI / 60°
+> tapered · **BSP** 11 TPI / 55°). A mismatch therefore *feels correct* for about two turns, then
+> weeps or **cracks the plastic body**. **No rule-and-eye measurement can separate them** — only the
+> paperwork or a test fit.
+
+> Full plumbing chain: **tap (3/4" BSP M) → 3/4" DCV → 3/4"/20 mm pipe → [1" BSP M × 3/4" BSP F
+> bush] → valve (1" BSP F) → [bush] → 3/4" to the zone.** *(Values from
 > `../datasheets/100-DVF_RainBird_solenoid-valve.pdf`.)*
 
 ---
@@ -460,21 +472,36 @@ Pressure is comfortably in band; **flow is the constraint** — a classic single
 1. [ ] Fit **low-flow rotaries** (Hunter MP Rotator / Rain Bird R-VAN), ~1.5–3 L/min each. Within
    the ~15 L/min working budget (~80 % of measured flow) that's **~5–8 heads per zone**; fixed
    sprays are thirsty and you'd fit only 2–3. Rotaries also give better uniformity and matched
-   precipitation. Corner-mounted, **facing inward** (as decided), they cover the 11 × 14 m plot.
+   precipitation.
+2. [ ] ⚠️ **Sizing: only the MP3000 reaches.** The plot is **11 × 14 m**, so the centre is
+   **~8.9 m** from the nearest corner (half-diagonal). MP1000 throws 2.5–4.5 m and **MP2000** 4–6.7 m
+   — both water the corners and leave the middle dry, the exact failure that ruled out fixed sprays.
+   **MP3000 is 6.7–9.0 m**, so 8.9 m is at the very top of its range with nothing spare for wind,
+   pressure sag or a partly-blocked nozzle.
+
+> ⚠️ **Open design question — do not treat "four corners facing inward" as settled.** Standard
+> practice is **head-to-head** spacing: every head's spray reaches its neighbours, because a rotary's
+> precipitation rate is **lowest at the end of its throw**. Four corner heads on 11 × 14 m gives
+> soaked corners, a weak middle and dry mid-edges *whatever* nozzle is fitted. Done properly this
+> plot likely wants heads at the corners **and mid-sides** — roughly **8 heads at ~7 m spacing** —
+> which changes head count, total flow, zone count and pipe run. **8C's measurement is the input to
+> that decision**; resolve it before buying heads 2–8.
 
 > This **revises two earlier decisions** — "fixed spray nozzles" → rotaries, and "one nozzle at a
 > time" → **one *zone* at a time**. The flow numbers made the call; see README **Decisions**.
 
 ### 8B — Zones: fewer than you think
 
-2. [ ] The interlock already runs **one zone at a time**, and low-flow rotaries mean the **four
+3. [ ] The interlock already runs **one zone at a time**, and low-flow rotaries mean the **four
    corners (~4 × 2.5 ≈ 10 L/min) fit in a single zone.** So the MVP is **~2 zones**, not 8:
    - **HP:** the corner rotary ring (README's self-back-feeding **circular loop** equalises pressure across the heads).
-   - **LP:** a **drip line** for the 4 hanging baskets — needs a **pressure reducer (~1–1.5 bar) + filter**.
+   - **LP:** a **drip line** for the **5** hanging baskets — needs a **pressure reducer (~1–1.5 bar) + filter**.
    The 8-channel relay is then **expansion headroom**, not a target to fill.
-3. [ ] ⚠️ **Verify dynamic sag before trusting a grouped zone.** Running 4 heads together depends on
-   pressure holding *under flow*, which is **not yet measured** (the gauge that arrived is dead-end).
-   **Tee an inline gauge** (~£5–10) and confirm the zone holds **≥ ~2.75 bar under ~10 L/min**.
+4. [ ] ⚠️ **Verify dynamic sag before trusting a grouped zone.** Running 4 heads together depends on
+   pressure holding *under flow*, which is **not yet measured**. The rig and instrumentation for that
+   measurement are specified in **8C** (two gauges — tap and head). Confirm the zone holds
+   **≥ ~2.75 bar under ~10 L/min** — that is the PRS40's regulation point, below which the head can
+   no longer hold 2.8 bar and performance falls away.
    **Fallback:** split HP into **two zones of two corners** — the interlock and the spare relay
    channels make that free.
 
@@ -485,30 +512,55 @@ Pressure is comfortably in band; **flow is the constraint** — a classic single
 ### 8C — Prove one head first (buy this, do this before anything else)
 
 The first wet test needs **no trenching and no second valve** — a temporary surface rig on the valve
-you already have. **Buy:**
-- **One rotary head** — an MP Rotator / R-VAN **nozzle + a ½" pop-up body or riser** (the nozzle
-  alone isn't a head).
-- **2 × 1" MNPT × 3/4" BSP** adapters for the valve's ports (the NPT/BSP trap — see 7D).
-- **3/4" pipe/hose + BSP fittings + a 3/4"→½" reducer** at the head; a **3/4" tap connector** + PTFE.
-- **An inline pressure gauge / tee (~£5–10)** — ⚠️ **not optional.** Reading **dynamic pressure under
-  flow** is the entire point of this test, and the gauge on hand is dead-end.
-- Confirm your outside tap's **double-check valve** (many UK taps already have one).
+you already have. **Test through the pipe you will actually install**: hose has different bore and
+friction to 20 mm MDPE, so a reading taken through a garden hose does not transfer to the built
+system, and the transferability *is* the point.
 
-4. [ ] Rig it **tap → DCV → 3/4" hose → adapter → valve → adapter → head**, all above ground.
-5. [ ] **Wet-test:** energise the zone — the pilot-operated diaphragm should open and the head should
+**Bill of materials (as bought, 2026-08-10 — ~£163):**
+
+| Part | Why | £ |
+|---|---|---|
+| **20 mm black MDPE**, 50 m coil | ~16 m needed for the rig; the rest goes into the permanent run. **Black** = irrigation / non-potable, downstream of the DCV. Blue is the potable code — wrong here, and it misleads whoever digs later | 74.95 |
+| **Brass 2-way tap splitter, threaded 3/4" BSP outlets**, lever shut-offs | Feeds the rig *and* keeps the manual hose. **Threaded, not push-fit** — a push-fit O-ring under constant mains pressure is a wear item whose failure mode is an unattended flood | 29.00 |
+| **Hunter Pro-Spray PRS40 4" body** (`PROS-04-PRS40-CV`) | Regulates to 2.8 bar, so head performance is independent of supply variation | 15.90 |
+| **Hunter MP Rotator MP-3000, 90°–210°** | See 8A — **only** the MP3000 (6.7–9.0 m) reaches the 8.9 m corner-to-centre. Also the thirstiest of the family, so it is the honest **worst case** for sag | 10.25 |
+| **2 × brass bush 1" BSP M × 3/4" BSP F** | Valve ports (see 7D) | 4.18 |
+| **4 × Plasson compression connectors** — 20 mm × 3/4" BSPM ×2, × 3/4" BSPF ×1, × 1/2" BSPM ×1 | MDPE to splitter, valve, head. Plastic compression underground is correct, not a compromise: water-industry standard, no UV, no dezincification | 10.20 |
+| **MDPE tee 20 mm × 1/2" BSPF** + bush 1/2" M × 1/4" F + **10 bar gauge, 1/4" M bottom entry** | The head-end gauge — see below | 10.11 |
+| PTFE tape | Every threaded joint | 0.80 |
+
+⚠️ **Instrument BOTH ends.** A dead-end gauge screwed to a tap reads **static** pressure and tells
+you almost nothing. Fit **two**:
+
+| | Where | How | Reads |
+|---|---|---|---|
+| **#1** | at the tap | existing dead-end gauge on the splitter's spare **threaded** outlet | supply pressure while water flows |
+| **#2** | at the head | **MDPE tee** — sprinkler on the run, gauge on the branch, so flow passes both | what the sprinkler actually sees |
+
+**#1 − #2 is the number that matters**: total loss across the pipe run, the valve and every fitting.
+That figure **scales** — it is how you predict the system with a longer run and four heads pulling at
+once, which *is* the 2-vs-3-valve question. One gauge gives a reading; two give a model.
+
+5. [ ] Confirm the outside tap's **double-check valve** before any water. Many UK taps have an
+   integral DCV; on a new build it may sit **inline behind the wall** and be invisible. If absent,
+   fit a hose-union DCV **at the tap, upstream of the splitter**, so it covers the manual-hose leg
+   too. ⚠️ The PRS40's `-CV` check valve is an **anti-drainage** device, **not** backflow protection.
+6. [ ] Rig it **tap → DCV → splitter → MDPE → bush → valve → bush → MDPE → tee → head**, all above
+   ground.
+7. [ ] **Wet-test:** energise the zone — the pilot-operated diaphragm should open and the head should
    spray. The manual **bleed lever** proves the valve body independently of the electrics.
-6. [ ] **Read dynamic pressure at the head, under flow.** This is the **gate**: it decides whether one
-   zone carries all four corner rotaries (**2 valves total**) or must split (**3**). *Only now* buy
-   valve #2 — same **NPT** model, adaptered the same way, for a uniform manifold.
+8. [ ] **Read both gauges under flow.** This is the **gate**: it decides whether one zone carries all
+   four corner rotaries (**2 valves total**) or must split (**3**). *Only now* buy valve #2 — same
+   model and thread standard, bushed identically, for a uniform manifold.
 
 ### 8D — Commission the zone in situ (the permanent build)
 
 Once the head test passes, build it for real — valve(s) in the buried box, field cable run, heads plumbed.
 
-7. [ ] Repeat the **wet actuation** check on each installed valve.
-8. [ ] Re-check the **supply-to-coil volt-drop in tenths** (Stage 5C method) with the **field run** in
+9. [ ] Repeat the **wet actuation** check on each installed valve.
+10. [ ] Re-check the **supply-to-coil volt-drop in tenths** (Stage 5C method) with the **field run** in
    circuit — that proves the cable and every gel connector under real load.
-9. [ ] **Add the drip/LP zone** (pressure reducer + filter). Subdivide the HP ring **only if** the sag
+11. [ ] **Add the drip/LP zone** (pressure reducer + filter). Subdivide the HP ring **only if** the sag
    test demanded it.
 
 ---
