@@ -472,11 +472,15 @@ Pressure is comfortably in band; **flow is the constraint** — a classic single
    - **HP:** the corner rotary ring (README's self-back-feeding **circular loop** equalises pressure across the heads).
    - **LP:** a **drip line** for the 4 hanging baskets — needs a **pressure reducer (~1–1.5 bar) + filter**.
    The 8-channel relay is then **expansion headroom**, not a target to fill.
-3. [ ] ⚠️ **Verify dynamic sag before trusting a grouped zone.** Running 4 heads together depends on
-   pressure holding *under flow*, which is **not yet measured** (the gauge that arrived is dead-end).
-   **Tee an inline gauge** (~£5–10) and confirm the zone holds **≥ ~2.75 bar under ~10 L/min**.
-   **Fallback:** split HP into **two zones of two corners** — the interlock and the spare relay
-   channels make that free.
+3. [ ] ⚠️ **Dynamic sag is the gate for a *grouped* zone — deferred, not skipped.** Running several
+   rotaries together depends on pressure holding *under flow*. This was **deliberately deferred** in
+   the measurement notes (the gauge on hand is dead-end and static + flow was enough to pick the
+   nozzle type) — fine **while zones stay tiny**, but the ~5–8-head zones above are exactly the
+   "multi-head" case that makes it load-bearing. It's a **standalone test, independent of the heads:**
+   tee a cheap inline gauge at the tap (~£5–10), run **wide open (~19 L/min), flow out the end**, and
+   read the working pressure. Do it **before** committing to a multi-head zone and confirm it holds
+   **≥ ~2.75 bar** at the zone's design flow. **Fallback:** split HP into **two zones of two corners**
+   — the interlock and spare relay channels make that free.
 
 > **How many valves? Valves = zones.** The full system is **2** (the HP rotary ring + the LP drip
 > line), or **3** only if the sag test forces the ring to split. **Not 8** — the relay is headroom.
@@ -484,22 +488,25 @@ Pressure is comfortably in band; **flow is the constraint** — a classic single
 
 ### 8C — Prove one head first (buy this, do this before anything else)
 
-The first wet test needs **no trenching and no second valve** — a temporary surface rig on the valve
-you already have. **Buy:**
+This is a **functional** test — prove the valve actuates wet and a head sprays. It needs **no
+trenching, no second valve, and no pressure gauge** — a temporary surface rig on the valve you
+already have. **Buy:**
 - **One rotary head** — an MP Rotator / R-VAN **nozzle + a ½" pop-up body or riser** (the nozzle
   alone isn't a head).
 - **2 × 1" MNPT × 3/4" BSP** adapters for the valve's ports (the NPT/BSP trap — see 7D).
 - **3/4" pipe/hose + BSP fittings + a 3/4"→½" reducer** at the head; a **3/4" tap connector** + PTFE.
-- **An inline pressure gauge / tee (~£5–10)** — ⚠️ **not optional.** Reading **dynamic pressure under
-  flow** is the entire point of this test, and the gauge on hand is dead-end.
 - Confirm your outside tap's **double-check valve** (many UK taps already have one).
+
+> *No inline gauge here.* Dynamic pressure is a **separate** test (8B), deliberately deferred — and a
+> single head at ~2.5 L/min barely loads the supply, so it couldn't tell you anything about sag anyway.
 
 4. [ ] Rig it **tap → DCV → 3/4" hose → adapter → valve → adapter → head**, all above ground.
 5. [ ] **Wet-test:** energise the zone — the pilot-operated diaphragm should open and the head should
    spray. The manual **bleed lever** proves the valve body independently of the electrics.
-6. [ ] **Read dynamic pressure at the head, under flow.** This is the **gate**: it decides whether one
-   zone carries all four corner rotaries (**2 valves total**) or must split (**3**). *Only now* buy
-   valve #2 — same **NPT** model, adaptered the same way, for a uniform manifold.
+6. [ ] **Confirm the head throws cleanly** and the valve opens/closes on command — the chain is proven
+   end to end. This does **not** answer the multi-head flow question: the **zone-count gate (2 vs 3
+   valves)** is the separate **dynamic-pressure test (8B)**, run before you gang heads. Buy valve #2
+   only after that — same **NPT** model, adaptered the same way, for a uniform manifold.
 
 ### 8D — Commission the zone in situ (the permanent build)
 
@@ -519,9 +526,10 @@ Once the head test passes, build it for real — valve(s) in the buried box, fie
   tap fully open); flow **~19 L/min** (14 L in 44.17 s, wide open). Pressure is not the
   constraint — **flow is**. Those numbers drove the Stage 8 nozzle/zone decisions (low-flow
   rotaries, ~2 grouped zones run sequentially).
-  - [ ] **Dynamic pressure (sag under flow)** — *still outstanding*. The gauge that arrived is
-    single-ended and reads only with no flow. Tee it inline (~£5–10) to get working pressure; needed
-    before committing to a grouped multi-head zone (Stage 8B).
+  - [ ] **Dynamic pressure (sag under flow)** — *deferred by decision (2026-07-20)*, not needed to
+    pick the nozzle type. The gauge that arrived is single-ended (reads only with no flow); tee a
+    cheap inline gauge (~£5–10) to get working pressure. **Becomes a prerequisite before committing
+    to a grouped multi-head zone** (Stage 8B).
 
 ---
 
