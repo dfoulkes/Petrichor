@@ -8,6 +8,39 @@
 completion is deliberately deferred to winter. Commissioning this year is on the
 **manual bleed levers** — no controller, no field cable connected, no sparky.
 
+## Risk structure — where the real commitment sits
+
+Dan's framing, refined: the **valve box does not commit you to the electrics**.
+Set it, plumb it, wet-test, backfill and drain down and you have a **complete,
+hand-operable system** — every valve opens on its bleed lever. The control cable
+sits coiled in the box, splices unmade, and the whole thing overwinters safely.
+The sparky arrives in February to a finished water system.
+
+**What commits you is siting the relay box**, because the buried cable must aim
+at a decided destination, and that partly depends on where an electrician can
+reasonably bring mains. **That is the dependency to clear early.**
+
+| Tier | Phase | Commitment |
+|---|---|---|
+| **None** | A — prove it | Fully reversible. Returns still open. No ground touched. |
+| **Low** | B — set out, box pit | A hole in a lawn. Fill it back in an hour. |
+| **⛔ TIME-BOXED** | **C — turf-up → backfill** | **The only phase where stopping halfway does real damage** |
+| Low | D — drain down | A checklist |
+| Deferred | E — electrics | Slips to spring at zero cost |
+
+**The irreversible window is turf-up to backfill, not the valve box.** Before it,
+everything can be abandoned. After it, everything can be paused indefinitely.
+
+### ⚠️ Clear this before Phase C
+
+**Get an electrician out for a quote before trenching.** Twenty minutes, costs
+nothing. It settles where the IP66 outlet goes and therefore where the control
+cable must surface — and books them for winter, which is when they are wanted.
+
+**Partial insurance already bought:** 15 m of control cable against a ~6 m run
+leaves ~9 m of slack, so the relay box position can move several metres without
+re-trenching.
+
 ## Governing rule
 
 **Spread the prep. Concentrate the dig.**
