@@ -31,15 +31,22 @@ reasonably bring mains. **That is the dependency to clear early.**
 **The irreversible window is turf-up to backfill, not the valve box.** Before it,
 everything can be abandoned. After it, everything can be paused indefinitely.
 
-### ⚠️ Clear this before Phase C
+### Siting — CLOSED 2026-08-25
 
-**Get an electrician out for a quote before trenching.** Twenty minutes, costs
-nothing. It settles where the IP66 outlet goes and therefore where the control
-cable must surface — and books them for winter, which is when they are wanted.
+Outlet position and ESP32/relay box location are **decided**. Dan: *"There closed
+in my mind."* **Do not re-raise.** The 15 m of control cable against a ~6 m run
+leaves ~9 m of slack anyway.
 
-**Partial insurance already bought:** 15 m of control cable against a ~6 m run
-leaves ~9 m of slack, so the relay box position can move several metres without
-re-trenching.
+### The remaining risk is schedule, not commitment
+
+~8 weekends from late August to end of October; **one dry one is needed** after
+the box arrives. Not tight — it only feels tight because nothing has started.
+
+**Highest-value action: run Phase A immediately.** It is the only remaining work
+that can *discover a problem*. A failed thread dry-fit means returns and a
+re-order — a fortnight. Absorbed in early September that is nothing; discovered
+in late October it kills the year. **The cost of that check rises every day it
+is deferred.**
 
 ## Governing rule
 
@@ -92,7 +99,30 @@ wants to be one concentrated push in a dry spell.**
       **~375 mm deep** (300 mm box + 75 mm gravel bed).
 - [ ] **Lay membrane, then the gravel bed** in the pit.
 
-## Phase C — The dig (ONE concentrated push, dry spell, box in hand)
+## Phase C — The dig
+
+### ✅ Split it by zone — halves the uninterruptible window
+
+Line 1 (S11, S12) and Line 2 (S21, S22) are independent runs off a shared
+manifold, so the dig does **not** have to be one block:
+
+- **First push:** box, manifold, both valves, **Line 1 only** — Line 2's manifold
+  outlet stays **capped** (3 caps bought). Trench, lay, test, backfill, turf.
+  Complete and safe on its own.
+- **Second push, whenever:** trench Line 2, lift the box lid, uncap the outlet,
+  connect, test, backfill.
+
+**Two shots at the weather instead of one**, and if winter wins before Line 2 you
+overwinter with one working zone rather than nothing. The box being
+lid-accessible is what makes connecting zone 2 later a five-minute job.
+
+### ⚠️ Decide before this phase — swing joints
+
+Phase C installs the heads, so the rigid-elbow vs articulated-riser question must
+be **settled and bought** before the weekend, not during it. Hunter's own CAD
+details assume swing joints. Currently backlogged — un-backlog it before digging.
+
+### The push itself (one concentrated go per zone, dry spell, box in hand)
 
 - [ ] **Cut and roll the turf** — spade-width strips, keep damp, relay same day.
 - [ ] **Trench the laterals to 200–250 mm.** Depth is set by the spray body, not
@@ -144,3 +174,13 @@ digging, 4–7 hours) into a couple of hours. Worth pricing.
 **Leave the pipe ends long at the box.** The box's side knock-outs set the entry
 height and that cannot be known until it is in front of you. Cutting short is
 unrecoverable; leaving long costs nothing.
+
+## On not cutting corners under time pressure
+
+The defence is structural, not willpower: **do the precision work while there is
+no time pressure, and let the pressure fall on the shovel.**
+
+Digging fast costs a sore back. **Assembling fast costs the system** — an
+unchamfered pipe end, an overtightened taper, a joint buried untested. Phase A is
+where quality gets banked: indoors, dry, unhurried. Get it done and the worst a
+rushed dig can produce is an untidy lawn.
