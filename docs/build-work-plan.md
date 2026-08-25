@@ -48,16 +48,38 @@ re-order — a fortnight. Absorbed in early September that is nothing; discovere
 in late October it kills the year. **The cost of that check rises every day it
 is deferred.**
 
-## Governing rule
+## Governing rule — REVISED 2026-08-25: no turf is being relaid
 
-**Spread the prep. Concentrate the dig.**
+**The heads and runs are in the edging, not the lawn.** The border is being
+**widened by 10 cm+ all round** to take the pipework, so that turf is removed
+**permanently** and becomes border. Nothing gets lifted and relaid.
 
-An open trench does not keep — it fills with rain, the sides slump, and **lifted
-turf dies in a few days**. The wet test also needs everything open at once. So
-everything up to turf-lifting can be done in odd evenings; **turf-up to backfill
-wants to be one concentrated push in a dry spell.**
+**This removes the uninterruptible window entirely.** The original rule
+("concentrate the dig") existed because lifted turf dies within days. That no
+longer applies:
 
-**Do not lift a single roll of turf until the day you are digging.**
+- An open trench in a border harms nothing and can sit for a fortnight.
+- Cultivated border soil digs far easier than compacted lawn.
+- **The work can be spread across evenings and half-days.** No dry weekend needed.
+
+**The only remaining date in the project is draining down before the first hard
+frost.**
+
+At the valve box position: one sacrificial plant, plus annuals that are going
+over anyway. Dan's call, no loss.
+
+### Two things that follow
+
+**Widen more than 10 cm if you can — 150–200 mm is more comfortable.** The strip
+has to take the head body (~80 mm across), the elbow behind it, the lateral
+running past, *and* spade room.
+
+**The head-height question resolves itself, but becomes a planting constraint.**
+The heads sit in the *newly created* strip, which is currently turf and therefore
+empty — so nothing blocks a `PROS-04`'s 10 cm pop-up and the four bodies already
+bought are correct. **But whatever is eventually planted in front of those heads
+must stay under ~10 cm**, or the spray is blocked. Record this before something
+gets established there.
 
 ---
 
@@ -122,9 +144,10 @@ Phase C installs the heads, so the rigid-elbow vs articulated-riser question mus
 be **settled and bought** before the weekend, not during it. Hunter's own CAD
 details assume swing joints. Currently backlogged — un-backlog it before digging.
 
-### The push itself (one concentrated go per zone, dry spell, box in hand)
+### The dig itself (box in hand; no longer weather-critical — see revised rule)
 
-- [ ] **Cut and roll the turf** — spade-width strips, keep damp, relay same day.
+- [ ] **Strip the turf from the widened edging strip** — it is being removed
+      permanently, not relaid. 150–200 mm wider than the current edge.
 - [ ] **Trench the laterals to 200–250 mm.** Depth is set by the spray body, not
       by frost: **PROS-04-PRS40 retracted height is 155 mm**, so the inlet sits
       155 mm below turf and the lateral centreline lands ~200 mm.
