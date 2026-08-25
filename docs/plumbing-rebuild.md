@@ -591,3 +591,40 @@ the (currently backlogged) filter **mandatory for the whole system** and forces
 the basket line to run at lawn pressure. A separate small box near the baskets,
 on its own line, is frequently the better build. **Decide this before sizing for
 four**, not after.
+
+## Capping unused manifold outlets — decided 2026-08-25
+
+With a 4-way manifold and only 2 valves fitted, **2 outlets need blanking**. The
+outlets are **1" BSP male**, so the part class is a **female cap** — a *cap* goes
+over a male thread; a *plug* is male and goes into a female. EGI stock both, so
+the distinction matters when ordering.
+
+**Chosen:** `Threaded Cap 1" BSP`, EGI, **£1.45 each, in stock**. Buy 2.
+
+⚠️ **Bought as a cheap bet, not a verified part.** The listing says the caps are
+*"used to cover up and protect threaded fittings"*, describes the material only
+as *"UV stable"*, and gives **no pressure rating**. That is dust-cap language,
+and these outlets see full supply pressure (3.8 bar static) whenever a zone runs.
+Dan's call, and a sound one: *"its a 1.45 bet. Better to try and fail then be
+blocked from day 1."* Fallback if they prove to be dust caps is a properly
+pressure-rated 1" BSP female blanking cap — discoverable with the manifold in
+hand, before anything is buried.
+
+**Fit the valves adjacent and cap the two OUTER outlets.** Keeps the wetted run
+short, keeps both solenoids together for the daisy-chained common return, and
+leaves the dead legs at the ends where they are shortest. Stagnant water in a
+capped stub is harmless here — downstream of the DCV, non-potable black MDPE.
+
+### Pending EGI order (manifold group — NOT yet placed)
+
+| Part | SKU | Qty | Sale price |
+|---|---|---|---|
+| Rain Bird 4-Way Manifold | — | 1 | £31.96 |
+| Threaded Cap 1" BSP | — | 2 | £2.32 |
+| Hansen nylon bush 1" M × 3/4" F (manifold inlet) | `HANSEN/RB2520` | 1 | £1.88 |
+| | | **Total** | **~£36.16** |
+
+Under £200, so £5.95 postage applies — **unless added to EGI144331 before its
+Wednesday dispatch** (call +44 (0)1646 402050; the confirmation email invites
+changes). That would get sale price *and* the free shipping already earned.
+**20% ends 31 August 2026.**
