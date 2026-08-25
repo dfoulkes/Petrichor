@@ -515,9 +515,79 @@ plus a gravel base. Leaves room for a third valve if a zone ever splits.
 
 Rain Bird's own Jumbo is the same class for £82.95 at EGI — and out of stock.
 
-### ⚠️ Also missing — gravel for the box base
+### ⚠️ Also missing — gravel base and membrane
 
-The build guide specifies the box sits **"on a gravel base (drainage)"**. Gravel
-appears in **no** parts list. A bag of 20 mm shingle from a builders' merchant or
-B&Q — not an irrigation purchase, but valve boxes flood and drainage is the
-entire point of the base.
+The build guide (Stage 8D step 4) specifies the box sits **"on a gravel base
+(drainage)"**. Neither gravel nor membrane appears in any parts list.
+
+**Spec — this matters more than the quantity:**
+
+- **20 mm clean *washed* shingle** (pea shingle / 20 mm gravel).
+- ❌ **Not MOT Type 1** — a compacting sub-base *with fines*, engineered to bind
+  and shed water. Exactly backwards under a drainage box.
+- ❌ Not sharp/building sand.
+- **Washed** is the operative word: unwashed aggregate carries fines that silt
+  the voids and the bed stops draining within a season.
+
+**Quantity** for the HydroSure Jumbo (base 640 × 507 mm = 0.324 m²) at a 75 mm
+bed: 0.324 × 0.075 = **0.024 m³ ≈ 37 kg** → **2 × 20 kg bags**, a third if
+haunching around the sides. ~£12–18 at B&Q / Wickes. A bulk bag is overkill.
+
+**Geotextile membrane under the gravel** (~£10/roll). Without it soil migrates
+up from below and blinds the voids — drainage for one season, then a sump. This
+is what makes the bed last rather than merely exist.
+
+## Still unsourced for the buried install (not new, but open)
+
+`docs/wiring-and-cable-grades.md:356` already carries this and it is still
+marked `SOURCE`, i.e. not owned:
+
+> Valve-box connectors | gel-filled / IP68, one per solenoid joint | zones + common | `SOURCE`
+
+The build guide is blunter about this than anything else in it: *"Never a dry
+Wago in the ground. This is the single most failure-prone spot in the whole
+build."* The Wago 221s on hand are enclosure parts, not chamber parts. **2 valves
+= 3 joints; 4 valves = 5.**
+
+## Valve manifold — plan-ahead decision (raised 2026-08-25, not yet bought)
+
+Dan is committed to **2 valves now**, with a possible **3rd** if low pressure
+forces a zone split, and a **4th** for basket watering deferred to next year. The
+box must therefore be sized for **4** even though only 2 are being installed.
+
+**Recommendation: buy the Rain Bird 4-Way Manifold now** (EGI, £39.95, in stock;
+£31.96 at the 20% sale). It fixes the footprint on day one — populate 2, add the
+3rd and 4th later without re-plumbing or re-excavating.
+
+It also removes the failure mode that destroyed the first valve: *"4 × 1" Swivel
+nuts with male thread… produce a tight assembly by the aid of a sealing washer
+**without the need to use PTFE sealing tape**."* A union nut with a face seal,
+not a taper biting into plastic. Rated 10 bar against a 3.8 bar supply.
+
+**Reconciles against parts already bought:**
+
+| Need for 4 valves | Owned |
+|---|---|
+| 4 × Hansen bush — one per valve **outlet** | 4 ✓ |
+| 4 × Plasson 20 mm × 3/4" BSPM — outlets | 5 ✓ |
+| 1 × Hansen bush for the manifold **inlet** | ✗ one short |
+
+The manifold inlet is 1" swivel-female → Hansen bush 1" M × 3/4" F → Plasson
+20 mm × 3/4" BSPM → MDPE. (It cannot take MDPE directly: no 20 mm × 1" fitting
+exists in the Plasson range — same constraint as the valve ports.)
+
+**Fit against the HydroSure Jumbo — estimated, not confirmed.** Valve body is
+111 × 84 × 114 mm (Rain Bird datasheet). Four at ~100–115 mm outlet pitch spans
+~400–460 mm, comfortable inside the 500 mm lid aperture. Stack height (manifold +
+valve ≈ 200 mm, plus 50 mm gravel) ≈ 250 mm in a 300 mm box — ~50 mm of finger
+room above the valves. **Depth is the binding constraint, not width.** The
+manifold's actual pitch and height are being retrieved; confirm before buying.
+
+### ⚠️ Open design question — do baskets belong in this box at all?
+
+Drip/micro irrigation is a different regime: a few L/min, emitters that clog
+below ~120 micron, often lower regulated pressure. Sharing this manifold makes
+the (currently backlogged) filter **mandatory for the whole system** and forces
+the basket line to run at lawn pressure. A separate small box near the baskets,
+on its own line, is frequently the better build. **Decide this before sizing for
+four**, not after.
