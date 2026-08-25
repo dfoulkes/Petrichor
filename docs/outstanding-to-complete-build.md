@@ -8,10 +8,61 @@
 > [`plumbing-rebuild.md`](plumbing-rebuild.md). This file is the *what's left*
 > list, not the *why*.
 
-## ⛔ The one that actually blocks installation
+## Plan — settled 2026-08-25
 
-**Field cable to the manifold has never been bought.** Without it the controller
-cannot physically reach the valves.
+**Target: sprinklers in, working and not leaking, before winter 2026.**
+Electrical completion is deliberately deferred to winter, when electricians are
+short of work. Dan: *"if we can end the year with the groundwork done then we can
+get the last of it done through the winter when sparkies are short of work."*
+
+Enclosure ("the spicy side box") is **built**. Outstanding on that side: minor
+cable changes for IP66 to a new outlet, and a new IP66 outlet run back to the
+breaker box in the house — **that run needs an electrician**, and is a winter job.
+
+### What this sequencing means
+
+| | |
+|---|---|
+| **Acceptance criterion this year** | Leak-free, wet-tested, backfilled. **Not** automated. |
+| **Commissioning method** | Manual **bleed levers** — the build guide already notes they *"prove the valve body independently of the electrics"*. No controller, no field cable, no sparky needed to wet-test. |
+| **Before burying** | Bench-energise each solenoid off the proven controller. The bleed lever proves the **body**, not the **coil**. (Low risk — the box is lid-accessible, so a spring swap is easy.) |
+
+### ⛔ The thing that must not slip — duct in the trench
+
+**Anything going under ground must go in during the groundwork.** The trench
+cannot be reopened in March without undoing the autumn's work.
+
+**Lay duct, not cable.** The electrician then specs and pulls the right cable in
+winter, and no cable decision has to be made now.
+
+**Use spare 20 mm MDPE as the duct for the 24 V run.** ~100 m owned against a
+~33 m pipe run, so there is plenty spare. 20 mm MDPE has ~16 mm bore; a 3-core
+0.75 mm² outdoor cable is 8–9 mm OD and pulls through easily. MDPE is rated for
+burial. For an **ELV** run enclosure→manifold this is entirely legitimate and
+already paid for.
+
+- Leave a **draw string** in it.
+- **Marker tape** above it.
+- ⚠️ The **mains** run to the breaker box is a different matter — proper duct,
+  marker tape, and it is the **electrician's spec, not ours**. Do not pre-empt
+  it; just avoid trenching the same route twice if they share it.
+
+### ❄️ Winterisation is now part of THIS year's job
+
+Previously filed as "document before October". The deferred-electrical plan
+promotes it: if groundwork finishes in November and nothing is energised until
+spring, **the system sits full of water, unpowered, all winter** — and the spray
+bodies bought are the `-CV` variant that deliberately holds water in the head.
+
+**Drain-down is the final step of the 2026 groundwork**, not a spring problem:
+isolate at the tap, open every valve bleed lever, drain the low points, leave it
+empty. No procedure for this exists in the repo yet.
+
+## Field cable — deferred, but the DUCT is not
+
+**Field cable to the manifold has never been bought.** It blocks *automation*,
+not this year's goal — see the plan above. The **duct must still go in during the
+groundwork**, and spare 20 mm MDPE serves.
 
 `docs/wiring-and-cable-grades.md:353` —
 > Field cable to manifold | outdoor/UV-rated multicore, 0.5–0.75 mm², **zones + 1**
@@ -19,10 +70,10 @@ cannot physically reach the valves.
 
 2 zones → **3 cores**. Not owned.
 
-⚠️ **`CLAUDE.md` states the electrical side is "built and proven".** That is true
-of the **bench**. It is **not** true of an installation — six line items in the
+⚠️ **"Electrical: built and proven" means the bench.** Six line items in the
 wiring BOM are still marked `SOURCE`. Do not read "electrical: done" as
-"electrical: installable".
+"electrical: installable" — but note this is a **known, accepted deferral**, not
+an oversight. Dan: *"Im aware of the spicy side."*
 
 ## Marked `SOURCE` in the wiring BOM — never purchased
 
