@@ -143,7 +143,7 @@ test day — a two-gauge method with one gauge produces a reading, not a model.
 | **Thread dry-fit** — owned PRS40 vs owned 1/2" BSPM connector | Whether the head fittings are BSP as EGI's spec field claims. Binds at ~2 turns = NPT, £12.80 of tees/elbows go back inside 30 days |
 | **Which end drips** on the splitter joint | Brass end = worn thread (replacement bought). Nut end = missing liner |
 | **Throw test** — MP3500 off the splitter vs 8.9 m | Confirms the nozzle choice before trenching |
-| **Tap's double-check valve** | Never verified in either direction. Water-regs requirement; may be inline behind the wall |
+| ~~Tap's double-check valve~~ | **CLOSED — non-issue.** DCVs mandatory on outside taps since the Water Supply (Water Fittings) Regulations 1999. Do not re-raise. |
 
 ## Purchase groups
 
