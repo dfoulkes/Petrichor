@@ -485,3 +485,39 @@ Hunter's own CAD installation details are titled *"PROS-00-PRS30 PRS40 with
 Hunter Swing Joint"*, *"with Flex Swing Arm"*, *"with Field-Built Swing Arm"*,
 *"with Rigid Riser"*. The manufacturer assumes an articulated riser between
 lateral and body. Still Stage 8D, but better evidenced than when first parked.
+
+## Valve box — identified 2026-08-25, NOT yet bought
+
+The last outstanding item. **Not urgent:** this is a Stage 8D (permanent buried
+install) part. The above-ground test rig needs no box.
+
+**EGI cannot supply it.** Every rectangular box there is out of stock — Rain Bird
+Standard (£53.95), Rain Bird Jumbo (£82.95), Irritec Standard 12" (£29.99),
+Irritec Jumbo 12" (£45.99). Only round boxes remain (7" £22.95, 10" £31.95), and
+a 10" round is a *single-valve* box — two 1" DV bodies with bushes and connectors
+either side span ~350–400 mm and need hand access to the flow control and bleed
+lever. A round box will not house this manifold.
+
+**Recommended:** HydroSure Jumbo Rectangular Valve Box — **Water Irrigation
+(waterirrigation.co.uk), product code `32120014`, £47.74 inc VAT, 17 in stock.**
+Next-day if ordered by 9pm; click & collect available; 28-day returns.
+
+| | Lid | Base | Height |
+|---|---|---|---|
+| HydroSure Jumbo `32120014` | 500 × 365 mm | 640 × 507 mm | 300 mm |
+| Rain Bird VB-STD (ref) | — | 590 × 491 mm | 318 mm |
+| Rain Bird VB-JMB (ref) | — | 700 × 532 mm | 316 mm |
+
+**Fit check:** the *lid aperture* is the working constraint. Two 1" DV assemblies
+(~300 mm each end-to-end with bush + connector) fit the 500 mm length; at ~130 mm
+spacing they use ~260 mm of the 365 mm width. 300 mm depth covers valve height
+plus a gravel base. Leaves room for a third valve if a zone ever splits.
+
+Rain Bird's own Jumbo is the same class for £82.95 at EGI — and out of stock.
+
+### ⚠️ Also missing — gravel for the box base
+
+The build guide specifies the box sits **"on a gravel base (drainage)"**. Gravel
+appears in **no** parts list. A bag of 20 mm shingle from a builders' merchant or
+B&Q — not an irrigation purchase, but valve boxes flood and drainage is the
+entire point of the base.
