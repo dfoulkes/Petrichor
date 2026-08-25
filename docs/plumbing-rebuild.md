@@ -308,7 +308,9 @@ positions are pegged out.
 
 ## Layout — settled 2026-08-25 (supersedes earlier 5-head sketch)
 
-Source: `Garden_Sprinker_layout-Page-1.drawio.png`. Dan's initial underground
+Source: the layout drawing, filed in Obsidian at
+`Projects/golden-shower/garden-layout-2026-08-25.png` (embedded in the project README and
+in the `plan-water-distribution` ticket). Dan's underground
 pipe plan, revised down from an earlier 5-head version.
 
 ```
