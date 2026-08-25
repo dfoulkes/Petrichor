@@ -615,16 +615,16 @@ short, keeps both solenoids together for the daisy-chained common return, and
 leaves the dead legs at the ends where they are shortest. Stagnant water in a
 capped stub is harmless here — downstream of the DCV, non-potable black MDPE.
 
-### Pending EGI order (manifold group — NOT yet placed)
+### ORDER PLACED — EGI144332, 2026-08-25 20:35 (manifold group)
 
 | Part | SKU | Qty | Sale price |
 |---|---|---|---|
-| Rain Bird 4-Way Manifold | — | 1 | £31.96 |
-| Threaded Cap 1" BSP | — | 2 | £2.32 |
+| Rain Bird 4-Way Manifold | `RB/1301-410` | 1 | £31.96 |
+| Threaded Cap 1" BSP | `A44515` | 3 | £3.48 |
 | Hansen nylon bush 1" M × 3/4" F (manifold inlet) | `HANSEN/RB2520` | 1 | £1.88 |
-| | | **Total** | **~£36.16** |
+| | | **Subtotal** | **£37.32** |
 
-Under £200, so £5.95 postage applies — **unless added to EGI144331 before its
-Wednesday dispatch** (call +44 (0)1646 402050; the confirmation email invites
-changes). That would get sale price *and* the free shipping already earned.
-**20% ends 31 August 2026.**
+**Placed as its own order at £43.27** (£46.65 gross − £9.33 sale + £5.95
+postage). Caps went in at **3**, not 2 — the manifold has connections at *both*
+ends and the feed lands on the swivel-female one, leaving the male end to blank.
+Postage accepted rather than phoning to amend EGI144331, on stock risk.

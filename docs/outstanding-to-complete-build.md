@@ -100,27 +100,39 @@ test day — a two-gauge method with one gauge produces a reading, not a model.
 - **EGI144331** — 2026-08-25, **£218.96**, free shipping. Valves, bodies,
   nozzles, bushes, connectors, tees, elbows, MDPE, adjustment tool.
 
-### Basket built, ready to place (EGI)
-| Part | SKU | Qty | Sale price |
-|---|---|---|---|
-| Rain Bird 4-Way Manifold | `RB/1301-410` | 1 | £31.96 |
-| Threaded Cap 1" BSP | `A44515` | 3 | £3.48 |
-| Hansen nylon bush 1" M × 3/4" F | `HANSEN/RB2520` | 1 | £1.88 |
-| | | Subtotal | **£37.32** |
-| | | + postage | £5.95 |
-| | | **Total** | **£43.27** |
+### Placed — EGI144332, 2026-08-25 20:35, **£43.27**
 
-Postage accepted deliberately rather than phoning to amend EGI144331 — Dan:
-*"For the sake of few pounds vs having to call and risk out of stock (considering
-it's end of season). I don't like to procrastinate."* Sound: every rectangular
-valve box at EGI is already gone, the tees were down to the last 2, and the
-PRS40s to 5. **20% ends 31 August 2026.**
+| Part | SKU | Qty | Line |
+|---|---|---|---|
+| Rain Bird 4 Way Manifold | `RB/1301-410` | 1 | £39.95 |
+| Threaded Cap 1" BSP | `A44515` | 3 | £4.35 |
+| Hansen nylon reducing bush 1" M × 3/4" F | `HANSEN/RB2520` | 1 | £2.35 |
+| | | Gross | £46.65 |
+| | | 20% sale | −£9.33 |
+| | | Postage | £5.95 |
+| | | **Paid** | **£43.27** |
+
+Matched the verified basket exactly — no variance. Postage accepted deliberately
+rather than phoning to amend EGI144331 — Dan: *"For the sake of few pounds vs
+having to call and risk out of stock (considering it's end of season). I don't
+like to procrastinate."* Sound: every rectangular valve box at EGI was already
+gone, the tees down to the last 2, the PRS40s to 5.
 
 Cap count reasoning: 2 unused valve outlets + 1 unused manifold end. The manifold
 has connections at **both** ends (*"1 × 1" male thread and 1 × 1" swivel nut with
 female thread"*) — the feed lands on the swivel-female end via the Hansen bush,
 leaving the male end to blank. *Inferred from the product description, not the
-datasheet.*
+datasheet; confirm on arrival.*
+
+### Running spend
+
+| Order | Date | Total |
+|---|---|---|
+| BOM as bought | 2026-08-10 | ~£163.00 |
+| EGI144055 | 2026-08-22 | £44.12 |
+| EGI144331 | 2026-08-25 | £218.96 |
+| EGI144332 | 2026-08-25 | £43.27 |
+| | **Total** | **~£469.35** |
 
 ### Not yet basketed — valve box (Water Irrigation)
 `32120014` HydroSure Jumbo Rectangular, **£47.74**, 17 in stock. Hold until the

@@ -1,7 +1,9 @@
 # Petrichor — project notes for Claude Code
 
 ESP32 + ESPHome irrigation controller. Electrical/firmware side is built and
-proven; see `specs/build-guide.md` and `docs/wiring-and-cable-grades.md`.
+proven **on the bench** — but see the hand-off below: six items needed to
+install it outdoors were never bought. `specs/build-guide.md` and
+`docs/wiring-and-cable-grades.md`.
 
 ## Active hand-off
 
@@ -14,7 +16,8 @@ Status as of 2026-08-25:
 
 - **Water side is ordered.** EGI144331 (£218.96) placed — 2 valves, 3 spray
   bodies, 4 MP3500 nozzles, all fittings, a second MDPE coil. Arrives Wed 26th.
-  A second basket (manifold, caps, bush — £43.27) is built and ready to place.
+  A second order EGI144332 (manifold, 3 caps, bush — £43.27) also placed.
+  Running spend ~£469.35.
 - **⛔ The electrical side is NOT installable.** `CLAUDE.md` previously said it
   was "built and proven" — true of the bench, but **six items in the wiring BOM
   are still marked `SOURCE`**, including the **field cable to the manifold**.
