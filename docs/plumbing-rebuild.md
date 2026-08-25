@@ -628,3 +628,115 @@ capped stub is harmless here — downstream of the DCV, non-potable black MDPE.
 postage). Caps went in at **3**, not 2 — the manifold has connections at *both*
 ends and the feed lands on the swivel-female one, leaving the male end to blank.
 Postage accepted rather than phoning to amend EGI144331, on stock risk.
+
+---
+
+# ⚠️ CORRECTIONS — datasheet audit, 2026-08-25
+
+A datasheet-refresh agent pulled manufacturer sources for every part and audited
+this repo against them. **The findings below supersede anything above that
+contradicts them.**
+
+## 1. The liner question is CLOSED — no liner is used
+
+**Plasson's 2026 technical catalogue lists Silver Line as four parts:** PP body,
+PP nut, **polyacetal split ring**, nitrile seal. There is **no liner**, and the
+16–63 mm assembly instructions contain **no insert step**.
+
+- The white part in hand is the **split ring**. Nothing was missing.
+- The Pipe Liner is a separate *Tooling* item, code `07950`.
+- The grip ring (`07970`) is specified for UPVC/PP, **not PE**.
+- **The "missing liners caused the leaks" hypothesis is dead.** Screwfix `33270`
+  was correctly cancelled.
+
+### ✅ But Plasson specify two assembly steps this repo never had
+
+1. **Chamfer the pipe end.**
+2. **Silicone-lubricate it** before insertion.
+
+An unchamfered end can roll or nick the O-ring going in — **this fits the
+observed leak far better than the liner theory did.** Add both to the assembly
+method.
+
+## 2. `20 mm × 1"` Plasson fittings DO exist
+
+`140200020010` (male) and `140300020010` (female) are in Plasson's catalogue.
+**The earlier claim that "no 20 mm × 1" fitting exists" was wrong** — what is
+true is that *EGI does not stock one*. A shop's dropdown was mistaken for a
+range limitation.
+
+Two "rejected options" above rest on that false claim. Practical impact is now
+small because the manifold changed the topology, but the male fitting would take
+MDPE straight into a 1" port, deleting a bush and a threaded joint. **Catalogue
+listing ≠ availability — check before re-planning.**
+
+## 3. Hunter never states the PRS40 thread standard — anywhere
+
+The claim above that "Hunter's US datasheet says ½" NPT" **could not be
+reproduced** in the US cutsheet, the metric cutsheet, the specifier brochure or
+the product page. Hunter state `½" inlet` and never the standard, in any edition.
+
+There is therefore **no NPT claim to weigh** — only EGI's spec field saying BSPF,
+and the dry-fit. (Hunter *does* confirm **grey cap**, so EGI's "Brown Cap" copy
+is confirmed PRS30 paste.)
+
+## 4. Thread standard IS part-number-encoded — on both sides
+
+- Rain Bird catalogue the **BSP** valve as **`I100-DV`**, with the footnote
+  inverted ("*available with NPT*"). **Check the box/body for the `I` prefix.**
+- Plasson state **ISO 7-1 / ISO 228**, and the Silver Line size column is headed
+  `R`.
+
+## 5. Solenoid current is higher than documented
+
+`wiring-and-cable-grades.md` *derives* 0.34 A inrush / 0.22 A holding for 50 Hz
+from the US 60 Hz sheet. Rain Bird's international catalogue publishes 50/60 Hz
+directly:
+
+| | Documented | **Actual** |
+|---|---|---|
+| Inrush | 0.34 A | **0.450 A (10.8 VA)** |
+| Holding | 0.22 A | **0.250 A (6.0 VA)** |
+| Coil | 42–55 Ω | **38 Ω** |
+
+Conclusion holds (one zone at a time on a 15 VA transformer) but **the margin is
+thinner than believed**. The cable note's "~0.3 A per valve" is wrong. Two valves
+energised together would be 21.6 VA against 15 VA — **the one-zone-at-a-time
+interlock is load-bearing, not a nicety.**
+
+## 6. MP3500 has no 360° model
+
+`MP350090` (90°–210°) is the only MP3500. **The `12.45 L/min @ 360°` in the flow
+table above is actually the 210° figure.** MP1000/2000/3000 360° figures are
+correct. No impact on this build — all four heads are 90°.
+
+## 7. Valve box comparison was apples-to-oranges
+
+The table above compares the **HydroSure lid** against the **Rain Bird base**.
+Rain Bird VB-JMB's *top opening* is only **474 × 309 mm** — so the HydroSure
+Jumbo's 500 × 365 mm aperture is the **roomier** box, not the tighter one.
+
+## 8. Manifold dimensions — Rain Bird publish none
+
+This was the priority ask and **it does not exist** in any Rain Bird document.
+Nearest datum: their **MTT-100 gives 120 mm pitch per valve** → four valves span
+**480 mm** against the HydroSure's 500 mm aperture. **Fits, tightly.** Put a tape
+on the actual part when it arrives.
+
+## 9. Smaller corrections
+
+- DV pressure loss at 19 L/min is **0.26 bar, not 0.17** (the build guide quotes
+  the Angle/MxB chart, not the inline one).
+- MP3000 max radius is **9.1 m**, not 9.0.
+- Songle relay coil is **69.4 Ω → 72.0 mA**, and its DC rating is **28 VDC**
+  (30 VDC is max *switching* voltage, not a rating).
+
+## Datasheets
+
+**Added 11** (metric/BSP `I100-DV`, `1301-410` manifold, three valve-box sheets,
+Hunter metric PRS40 + MP Rotator cutsheets + design guide Rev J, two Hansen
+sheets, Plasson Silver Line chapter). **Refreshed 3** (ESP32 v3.6→v3.7, Mean Well
+HDR-15 2024→2026, Songle to the manufacturer's own 2025 sheet). **Could not
+obtain 3** — manifold dimensions (do not exist), Wago 221-413 (generator timed
+out, retryable), ABB TM15/24 (no PDF exists; the repo's HTML-table capture *is*
+the datasheet).

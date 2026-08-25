@@ -151,39 +151,52 @@ test day — a two-gauge method with one gauge produces a reading, not a model.
 - **EGI144331** — 2026-08-25, **£218.96**, free shipping. Valves, bodies,
   nozzles, bushes, connectors, tees, elbows, MDPE, adjustment tool.
 
-### Placed — EGI144332, 2026-08-25 20:35, **£43.27**
+### All orders placed — reconciled from confirmation emails
 
-| Part | SKU | Qty | Line |
-|---|---|---|---|
-| Rain Bird 4 Way Manifold | `RB/1301-410` | 1 | £39.95 |
-| Threaded Cap 1" BSP | `A44515` | 3 | £4.35 |
-| Hansen nylon reducing bush 1" M × 3/4" F | `HANSEN/RB2520` | 1 | £2.35 |
-| | | Gross | £46.65 |
-| | | 20% sale | −£9.33 |
-| | | Postage | £5.95 |
-| | | **Paid** | **£43.27** |
+| Order | Date | Vendor | Contents | Total |
+|---|---|---|---|---|
+| BOM as bought | 2026-08-10 | mixed (incl. Screwfix A27347852422) | pipe, splitter, first body + nozzle, brass bushes, Plasson set, gauge, PTFE | ~£163.00 |
+| **EGI144055** | 2026-08-22 | Easy Garden Irrigation | 1st valve, 2 elbows | £44.12 |
+| **EGI144331** | 2026-08-25 | Easy Garden Irrigation | 2 valves, 3 PRS40 bodies, 4 MP3500, 4 bushes, connectors, 2 tees, 3 elbows, 50 m MDPE, MP tool | £218.96 |
+| **EGI144332** | 2026-08-25 | Easy Garden Irrigation | 4-way manifold, 3 caps, 1 bush | £43.27 |
+| **EGI144337** | 2026-08-25 | Easy Garden Irrigation | 15 m 5-core control cable, 4 DBR/Y splices | £40.23 |
+| **Wickes 702854640** | 2026-08-25 | Wickes (Click & Collect, Leeds Moor Allerton) | 3 × 20 mm washed gravel, 1 × weed membrane | £20.30 |
+| | | | **PROJECT TOTAL** | **~£529.88** |
 
-Matched the verified basket exactly — no variance. Postage accepted deliberately
-rather than phoning to amend EGI144331 — Dan: *"For the sake of few pounds vs
-having to call and risk out of stock (considering it's end of season). I don't
-like to procrastinate."* Sound: every rectangular valve box at EGI was already
-gone, the tees down to the last 2, the PRS40s to 5.
+**Spent on 2026-08-25 alone: £322.76.**
 
-Cap count reasoning: 2 unused valve outlets + 1 unused manifold end. The manifold
-has connections at **both** ends (*"1 × 1" male thread and 1 × 1" swivel nut with
-female thread"*) — the feed lands on the swivel-female end via the Hansen bush,
-leaving the male end to blank. *Inferred from the product description, not the
-datasheet; confirm on arrival.*
+**EGI144337 detail** — `RB/IRRICAB5-15M` ×1 £27.75 · `RB/DBRY.P2` ×2 £15.10 ·
+gross £42.85 − £8.57 sale + £5.95 postage = **£40.23** (PayPal). Matched the
+verified basket exactly.
 
-### Running spend
+**Wickes 702854640 detail** — `133795` Suburban Build 20 mm Gravel ×3 £12.30 ·
+`346755` 50 gsm weed membrane ×1 £8.00 · Click & Collect **free** = **£20.30**.
 
-| Order | Date | Total |
-|---|---|---|
-| BOM as bought | 2026-08-10 | ~£163.00 |
-| EGI144055 | 2026-08-22 | £44.12 |
-| EGI144331 | 2026-08-25 | £218.96 |
-| EGI144332 | 2026-08-25 | £43.27 |
-| | **Total** | **~£469.35** |
+### What the sale and sourcing decisions saved
+
+| | |
+|---|---|
+| 20% End of Season across three EGI orders | £72.64 |
+| Free shipping earned by clearing £200 on EGI144331 | £5.95 |
+| Gravel + membrane from Wickes rather than Amazon | ~£14 |
+| | **~£92.59** |
+
+Cost of the split-order approach: **£11.90 postage** across EGI144332 and
+EGI144337 where one order would have been £5.95. Deliberate, on stock risk —
+justified given the tees were down to the last 2 and every rectangular valve box
+at EGI had already sold out.
+
+### ⚠️ EGI's cart is unreliable — verify before every checkout
+
+Quantity clicks repeatedly appeared not to register and then applied late. This
+bit twice:
+
+- **EGI144331 shipped `PL/14020C10` ×4** when it had been reduced to ×1 (£4.56 over).
+- Before EGI144337, the basket was found showing **cable ×2 / connectors ×1**
+  instead of ×1 / ×2 — caught only because the cart was re-read immediately
+  before checkout.
+
+**Always reload the cart page and re-read it immediately before paying.**
 
 ### Not yet basketed — valve box (Water Irrigation)
 `32120014` HydroSure Jumbo Rectangular, **£47.74**, 17 in stock. Hold until the
