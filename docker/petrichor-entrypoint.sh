@@ -25,9 +25,16 @@
 set -euo pipefail
 umask 077
 
-: "${INFISICAL_UNIVERSAL_AUTH_CLIENT_ID:?INFISICAL_UNIVERSAL_AUTH_CLIENT_ID is not set}"
-: "${INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET:?INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET is not set}"
 : "${INFISICAL_PROJECT_ID:?INFISICAL_PROJECT_ID is not set}"
+
+# Two ways in. Universal Auth (a machine identity's client id + secret) is the
+# normal path: the CLI mints its own short-lived token every run, so nothing
+# needs rotating. A pre-minted INFISICAL_TOKEN is honoured too — handy for a
+# one-off debug run — but those expire, so it is not the CI path.
+if [ -z "${INFISICAL_TOKEN:-}" ]; then
+  : "${INFISICAL_UNIVERSAL_AUTH_CLIENT_ID:?set INFISICAL_UNIVERSAL_AUTH_CLIENT_ID, or supply INFISICAL_TOKEN}"
+  : "${INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET:?set INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET, or supply INFISICAL_TOKEN}"
+fi
 
 INFISICAL_DOMAIN="${INFISICAL_DOMAIN:-https://infisical.foulkes.cloud/api}"
 INFISICAL_ENV="${INFISICAL_ENV:-prod}"
@@ -52,15 +59,19 @@ cleanup() {
 }
 trap cleanup EXIT INT TERM
 
-echo "==> Authenticating to Infisical (${INFISICAL_DOMAIN}) as a machine identity"
-# --plain puts only the token on stdout; --silent suppresses the tip banner.
-# Captured into a variable and exported: never echoed, never passed as a flag.
-INFISICAL_TOKEN="$(
-  infisical login \
-    --method=universal-auth \
-    --domain="${INFISICAL_DOMAIN}" \
-    --plain --silent
-)"
+if [ -n "${INFISICAL_TOKEN:-}" ]; then
+  echo "==> Using a pre-supplied INFISICAL_TOKEN (no login)"
+else
+  echo "==> Authenticating to Infisical (${INFISICAL_DOMAIN}) as a machine identity"
+  # --plain puts only the token on stdout; --silent suppresses the tip banner.
+  # Captured into a variable and exported: never echoed, never passed as a flag.
+  INFISICAL_TOKEN="$(
+    infisical login \
+      --method=universal-auth \
+      --domain="${INFISICAL_DOMAIN}" \
+      --plain --silent
+  )"
+fi
 export INFISICAL_TOKEN
 
 echo "==> Rendering secrets.yaml from ${INFISICAL_ENV}:${INFISICAL_PATH}"
