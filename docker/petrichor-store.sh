@@ -75,7 +75,9 @@ case "$cmd" in
     dest="${2:?pull needs a destination directory}"
     mkdir -p "$dest"
     # Fail loudly rather than silently producing an empty directory.
-    if ! mc ls "${BASE}/${version}/firmware.ota.bin" >/dev/null 2>&1; then
+    # NOTE: `mc ls` exits 0 for a missing object — verified — so it is useless
+    # as an existence check. `mc stat` exits non-zero, so use that.
+    if ! mc stat "${BASE}/${version}/firmware.ota.bin" >/dev/null 2>&1; then
       echo "::error::no firmware stored for ${version} at s3://${MINIO_BUCKET}/firmware/${version}/" >&2
       exit 1
     fi
