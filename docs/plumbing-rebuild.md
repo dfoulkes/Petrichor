@@ -504,18 +504,139 @@ lever. A round box will not house this manifold.
 (waterirrigation.co.uk), product code `32120014`, £47.74 inc VAT, 17 in stock.**
 Next-day if ordered by 9pm; click & collect available; 28-day returns.
 
-| | Lid | Base | Height |
+| | Top opening / lid | Base (outer) | Height |
 |---|---|---|---|
-| HydroSure Jumbo `32120014` | 500 × 365 mm | 640 × 507 mm | 300 mm |
-| Rain Bird VB-STD (ref) | — | 590 × 491 mm | 318 mm |
-| Rain Bird VB-JMB (ref) | — | 700 × 532 mm | 316 mm |
+| HydroSure Jumbo `32120014` | lid **outer** 500 × 365 mm | 640 × 507 mm | 300 mm |
+| Irritec Economy Jumbo 12" (same mould class) | body top 520 × 370 mm | 640 × 500 mm | — |
+| Rain Bird VB-STD (ref) | opening **368 × 239 mm** | 590 × 491 mm | 318 mm |
+| Rain Bird VB-JMB (ref) | opening **474 × 309 mm** | 700 × 532 mm | 316 mm |
+| Rain Bird VB-SPR Super Jumbo (ref) | opening **571 × 330 mm** | 841 × 606 mm | 381 mm |
 
-**Fit check:** the *lid aperture* is the working constraint. Two 1" DV assemblies
-(~300 mm each end-to-end with bush + connector) fit the 500 mm length; at ~130 mm
-spacing they use ~260 mm of the 365 mm width. 300 mm depth covers valve height
-plus a gravel base. Leaves room for a third valve if a zone ever splits.
+### Fit check — revised 2026-08-27 against a *measured* manifold
 
-Rain Bird's own Jumbo is the same class for £82.95 at EGI — and out of stock.
+Dan taped the assembled manifold: **500 × 260 mm** with both valves fitted and
+pipe allowance — **not** the 480 mm calculated from Rain Bird's MTT-100 pitch.
+That calculation is now superseded (see correction 8).
+
+**The binding dimension is not the lid.** A valve box is an open-bottomed tapered
+tub, lowered *over* the manifold — the manifold never passes through the throat,
+it has to fit the internal cross-section at valve height. `I100-DV` is **114 mm
+tall** (Rain Bird metric datasheet, verified). On the HydroSure's taper
+(640 → 500 over 300 mm = 70 mm per side) the internal length ~150 mm above the
+floor is **≈ 560 mm** — the 500 mm manifold clears by ~30 mm each end, against
+~430 mm of width for a 260 mm need. 300 mm depth covers manifold + valve + gravel.
+
+**What you give up (inferred, not vendor-stated):** the clear lid aperture is
+**≈ 475 × 345 mm**. The quoted "lid 500 × 365" is the lid's *outer* size — the
+Irritec sheet for the same mould class quotes a **520 × 370 body top**, which the
+lid drops inside. So the manifold **cannot be lifted out through the lid**;
+servicing means lifting the box off. Solenoids and flow controls sit inboard and
+stay reachable — it is the end fittings that tuck under the lip.
+
+**Nothing in the UK sits between this and a Super Jumbo.** Rain Bird's own VB-JMB
+has a *smaller* aperture (474 mm) at £79–£82.95. The next size up is the VB-SPR
+Super Jumbo — 571 × 330 mm verified aperture, but £282.29 (sprinkler-irrigation)
+to £322.27 (Rigby Taylor) and 381 mm deep, forcing a ~455 mm pit instead of
+375 mm. Not proportionate for two valves.
+
+**Verdict — REVISED 2026-08-27 (second pass): Irritec Jumbo 12" `POZ-JMBREC`,
+Easy Garden Irrigation, £45.99, only 3 left.** It is the same box class as the
+HydroSure for £1.75 less, **from the vendor with four orders of history** —
+Water Irrigation has none. Dry-fit the manifold before digging.
+
+| | Base | Lid / body top | Source |
+|---|---|---|---|
+| Irritec Jumbo 12" (EGI `POZ-JMBREC`) | 500 × 640 mm | "Lid" 370 × 520 mm | EGI product page |
+| Irritec Economy Jumbo 12" (sprinkler-irrigation) | "Lower base" 500 × 640 mm | "Upper base" 370 × 520 mm | second, independent vendor |
+| HydroSure Jumbo `32120014` | 507 × 640 mm | lid 365 × 500 mm | waterirrigation.co.uk |
+
+**Two independent vendors agree on 500 × 640 / 370 × 520** — that is a genuine
+second source, not one listing re-read. They disagree only on the *label* for
+520 × 370 ("Lid" vs "Upper base"), which confirms it is the body top with the
+lid dropping inside it. All three are the same generic Italian PP jumbo mould.
+
+**⚠️ Unverified on the Irritec: knock-outs.** Neither vendor states any. The
+HydroSure explicitly claims 13 pre-engraved holes up to 63 mm. Since the plan is
+to cut generous holes anyway (below), this is a small loss — but it is a real
+difference and it is not confirmed either way.
+
+### ⛔ Irritec **Standard** 12" (`POZ-STDREC`, £29.99) — FAILS, do not buy
+
+Base **380 × 500 mm**, lid 270 × 405 mm. Taper puts the internal length at
+fitting height at **≈ 468 mm** — **less than the 470 mm bare manifold**, before a
+single fitting is added. It fails by ~90 mm once the bush and adaptor are on.
+
+Its listing claims *"Holds up to 4 solenoid valves"*. Four `I100-DV` at Rain
+Bird's own 120 mm pitch span **480 mm** in a 500 mm base. **The claim is a vendor
+overclaim, not a spec** — the same trap as the thread-standard episode.
+
+### Pipe entry — yes, you cut your own holes
+
+**Every valve box is designed to be cut.** This is not a workaround.
+
+- **HydroSure Jumbo:** 13 moulded "closed engraved" knock-outs, rated for pipe up
+  to **63 mm** (vendor-stated).
+- **Rain Bird VB-JMB:** *"Two large center knock-outs accommodate up to 3.5"
+  diameter pipe"* + knock-out retainers that hold the removed disc above the pipe
+  to keep soil out during backfill (Rain Bird tech spec — verified).
+
+Punch the moulded ones out with a screwdriver, or cut fresh where you actually
+need them — the wall is corrugated PP/HDPE ~4–5 mm, a hole saw or jigsaw goes
+through it. Deburr the edge so it cannot chafe the MDPE.
+
+**Sizing the hole.** With 56 mm of clearance per end, the whole assembly —
+adaptors included — sits **inside** the box and only MDPE crosses the wall. A
+knock-out sized for 20 mm pipe is enough. The trick of cutting the hole oversize
+so the adaptor's **42 mm hex (E)** nests in the aperture (the adaptor is 71 mm
+long overall, `140200020007`, Plasson Silver Line 2026 catalogue — verified) is
+now a *fallback*, not the plan. It recovers ~40–50 mm per end if the dry-fit
+disagrees with the arithmetic.
+
+### The rule for what stays inside
+
+**Every joint you might ever undo lives inside the box. Only pipe leaves.**
+
+Hansen's own sheet: *"All pipe work must be adequately supported."* A threaded
+fitting cantilevered half in soil and half in an air void is precisely the
+unsupported case they warn against — and it is a joint you then cannot inspect,
+against decision #15's 10-year design life. Support the pipe where it exits.
+
+### Length budget (2026-08-27, corrected)
+
+**Requirement: 500 mm** — Dan's measured 470 mm assembly *with every fitting
+attached*, plus his stated pipe allowance. Nothing is added to this.
+
+Internal length available **at fitting height (~70 mm above the floor)**, from the
+published taper:
+
+| Box | At floor | At ~70 mm | Margin on 500 mm |
+|---|---|---|---|
+| **Irritec Jumbo 12" (EGI)** | ~630 mm | **~612 mm** | **+112 mm (~56 mm/end)** ✅ |
+| HydroSure Jumbo | ~630 mm | ~607 mm | +107 mm ✅ |
+| Rain Bird VB-JMB | 611 mm | ~581 mm | +81 mm ✅ |
+| Irritec **Standard** 12" | ~490 mm | **~468 mm** | **−32 mm** ⛔ |
+| Rain Bird VB-SPR | 731 mm | ~706 mm | +206 mm |
+
+Width at the same height is ~470 mm against 260 mm needed; height is 140 mm in a
+300 mm box. **Length is still the binding dimension, and the Jumbo clears it by
+56 mm per end.**
+
+**No outstanding measurements.** The Hansen `SRB2520` protrusion — flagged in an
+earlier revision as the one unverified number — was already inside Dan's 470 mm.
+Its published dimensions remain unavailable (Hansen ship the chart as an image),
+but the figure is no longer needed.
+
+**Recovering length if it is tight:** put a **union elbow at the manifold inlet**
+so the supply turns down instead of extending the run. Rain Bird's own 1300
+family has `RB1306-010` (Union Elbow 1" M × 1" M Swivel) and `RB1312-010` (1" F ×
+1" M Swivel) — same hand-tight, no-PTFE, face-sealing union system already owned.
+Worth ~65 mm. **Confirm the genders against the parts in hand** — the `RB1301-410`
+is 1" F at the inlet end and 1" M at the far end.
+
+**Ruled out: rotating the manifold diagonally.** For a 660 × 260 mm assembly in a
+607 × 480 mm internal, the bounding box at the diagonal angle (38°) is
+660·cos38 + 260·sin38 = **680 mm > 607 mm**. Rotation makes it worse at every
+angle, because the assembly is not narrow enough to exploit the diagonal.
 
 ### ⚠️ Also missing — gravel base and membrane
 
@@ -578,12 +699,25 @@ The manifold inlet is 1" swivel-female → Hansen bush 1" M × 3/4" F → Plasso
 20 mm × 3/4" BSPM → MDPE. (It cannot take MDPE directly: no 20 mm × 1" fitting
 exists in the Plasson range — same constraint as the valve ports.)
 
-**Fit against the HydroSure Jumbo — estimated, not confirmed.** Valve body is
-111 × 84 × 114 mm (Rain Bird datasheet). Four at ~100–115 mm outlet pitch spans
-~400–460 mm, comfortable inside the 500 mm lid aperture. Stack height (manifold +
-valve ≈ 200 mm, plus 50 mm gravel) ≈ 250 mm in a 300 mm box — ~50 mm of finger
-room above the valves. **Depth is the binding constraint, not width.** The
-manifold's actual pitch and height are being retrieved; confirm before buying.
+**Fit against the HydroSure Jumbo — MEASURED 2026-08-27, no longer estimated.**
+Valve body is 111 × 84 × 114 mm (Rain Bird datasheet). Dan's tape:
+
+| | Measured | Source |
+|---|---|---|
+| **Whole assembly — manifold, 2 valves, Hansen bushes, Plasson adaptors, cap** | **470 mm** long | Dan, 2026-08-27 |
+| Same, plus room for the pipe | **500 × 260 mm** | Dan, 2026-08-27 |
+| Stack height, floor to top of valve | **140 mm** | Dan, 2026-08-27 |
+
+**⚠️ Read that first row carefully.** The 470 mm is **everything attached** —
+bush and compression adaptor included. An earlier revision of this file treated
+it as the bare manifold and then re-added the fittings, producing a phantom
+560 mm budget. **There is no fitting length to add. The number is 500 mm.**
+
+**❌ "Depth is the binding constraint" is WRONG and is retracted.** It appears
+twice in earlier revisions of this file and once in decision #19. The stack is
+**140 mm** in a 300 mm box — depth has ~160 mm of slack. **Length is the binding
+constraint, and it always was.** Consequence: the box may be *cut down* if the
+375 mm excavation is unwelcome, and box height is no longer a selection criterion.
 
 ### ⚠️ Open design question — do baskets belong in this box at all?
 
@@ -715,15 +849,22 @@ correct. No impact on this build — all four heads are 90°.
 ## 7. Valve box comparison was apples-to-oranges
 
 The table above compares the **HydroSure lid** against the **Rain Bird base**.
-Rain Bird VB-JMB's *top opening* is only **474 × 309 mm** — so the HydroSure
-Jumbo's 500 × 365 mm aperture is the **roomier** box, not the tighter one.
+Rain Bird VB-JMB's *top opening* is only **474 × 309 mm**. The HydroSure's
+500 × 365 mm is the **lid's outer size**, not an aperture — so the two are closer
+than the table implied. The HydroSure is still the roomier box (its inferred
+~475 × 345 clear opening beats the VB-JMB's 474 × 309, and its base is comparable),
+but the margin is nothing like 500 vs 474. **Corrected again 2026-08-27.**
 
 ## 8. Manifold dimensions — Rain Bird publish none
 
 This was the priority ask and **it does not exist** in any Rain Bird document.
 Nearest datum: their **MTT-100 gives 120 mm pitch per valve** → four valves span
-**480 mm** against the HydroSure's 500 mm aperture. **Fits, tightly.** Put a tape
-on the actual part when it arrives.
+**480 mm**.
+
+**✅ CLOSED 2026-08-27 — measured, not calculated.** The assembled manifold with
+**two** valves and pipe allowance tapes at **500 × 260 mm**. The 480 mm figure
+was for four valves and is superseded; do not use it. Fit verdict moved to the
+valve-box section above.
 
 ## 9. Smaller corrections
 

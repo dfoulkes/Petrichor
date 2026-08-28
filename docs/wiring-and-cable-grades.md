@@ -350,10 +350,10 @@ What's in hand and what still needs sourcing.
 | Wago 221-413 | 450 V · 32 A | 7 | `50-PACK` |
 | Ferrules | 0.75 mm² · 6 mm bootlace | 6 | `SOURCE` |
 | Earth bond | DIN earth block, or M4 + ring crimp | 1 | `SOURCE` |
-| Field cable to manifold | outdoor/UV-rated multicore, 0.5–0.75 mm², **zones + 1** cores (<10 m; direct-burial or duct if buried) | — | `SOURCE` |
+| Field cable to manifold | ✅ **Rain Bird `RB/IRRICAB5-15M` — 5-core, 15 m** (EGI144337, delivered 2026-08-27). Spec was "zones + 1 cores, <10 m"; **5 cores = 4 zones + common**, matching the 4-way manifold of decision #19, and 15 m gives headroom over the <10 m estimate. | 1 × 15 m | `IN HAND` |
 | Mains cable gland | WEMNO **M16** nylon IP68, 3–8 mm range (step to M20 if lead >8 mm) | 1 | `IN HAND` *(pack of 10)* |
 | Vented drain / breather | IP-rated M12–M16 breather plug | 1 | `SOURCE` |
-| Valve-box connectors | gel-filled / IP68, one per solenoid joint | zones + common | `SOURCE` |
+| Valve-box connectors | ✅ **Rain Bird `RB/DBRY.P2` ×2 = 4 DBR/Y gel-filled direct-burial splices** (EGI144337, delivered 2026-08-27). 2 zones + common = 3 joints needed, 4 owned. | 4 | `IN HAND` |
 
 > **Cheapest route to the five mains wires.** Cut **400 mm off the lead's bare-end tail** and
 > split the sheath — that's 0.75 mm² flex in exactly the three colours you need, free, tonight.
