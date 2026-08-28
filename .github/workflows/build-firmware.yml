@@ -39,23 +39,44 @@ concurrency:
   cancel-in-progress: false
 
 env:
+  # Values that describe internal network topology or identifiers live in repo
+  # secrets, not here — this repository is public. Only the version pins and
+  # non-sensitive paths are in the clear.
   # Pinned deliberately, in the manner of PROMTOOL_VERSION in prometheus-setup:
   # an upstream release must never silently change what gets flashed.
   ESPHOME_VERSION: "2026.7.0"
   INFISICAL_CLI_VERSION: "0.43.125"
   INFISICAL_DOMAIN: "https://infisical.foulkes.cloud/api"
-  INFISICAL_PROJECT_ID: "5c533f1a-81e8-41a2-b6f1-395887dfc391"
   INFISICAL_ENV: "prod"
   INFISICAL_PATH: "/Petrichor"
   CI_ROOT: /opt/petrichor-ci
-  CONFIG: golden-shower.yaml
-  DEVICE: golden-shower
+  CONFIG: petrichor.yaml
+  DEVICE: petrichor
 
 jobs:
   build:
     runs-on: self-hosted
 
     steps:
+      - name: Assert required secrets are present
+        env:
+          INFISICAL_TOKEN:      ${{ secrets.INFISICAL_TOKEN }}
+          INFISICAL_PROJECT_ID: ${{ secrets.INFISICAL_PROJECT_ID }}
+        run: |
+          set -uo pipefail
+          # A secret that does not exist renders as an EMPTY STRING, not an
+          # error. Name the missing one here rather than letting it surface as
+          # an opaque Infisical 401 several steps later.
+          missing=()
+          for v in INFISICAL_TOKEN INFISICAL_PROJECT_ID; do
+            [ -n "${!v:-}" ] || missing+=("$v")
+          done
+          if [ ${#missing[@]} -gt 0 ]; then
+            echo "::error::Missing repo secret(s): ${missing[*]}"
+            exit 1
+          fi
+          echo "All required secrets are set."
+
       - name: Checkout (full history — the version bump reads every tag)
         uses: actions/checkout@v4
         with:
@@ -102,8 +123,8 @@ jobs:
           # defined in the YAML — verified; the in-file value wins and every
           # build would ship stamped "dev". Rewrite the line instead. The
           # workspace is re-checked-out each run, so this is not persisted.
-          sed -i -E 's/^(  fw_version: )".*"/\1"${{ steps.ver.outputs.version }}"/' esphome/golden-shower.yaml
-          grep -E '^  fw_version:' esphome/golden-shower.yaml
+          sed -i -E 's/^(  fw_version: )".*"/\1"${{ steps.ver.outputs.version }}"/' esphome/petrichor.yaml
+          grep -E '^  fw_version:' esphome/petrichor.yaml
 
       - name: Prepare host cache dir
         run: install -d -m 700 "${CI_ROOT}/esphome-cache"
@@ -111,6 +132,7 @@ jobs:
       - name: Lint (esphome config)
         env:
           INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
+          INFISICAL_PROJECT_ID: ${{ secrets.INFISICAL_PROJECT_ID }}
         run: |
           set -euo pipefail
           # Verified safe for a public log: `esphome config` renders
@@ -128,6 +150,7 @@ jobs:
       - name: Compile
         env:
           INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
+          INFISICAL_PROJECT_ID: ${{ secrets.INFISICAL_PROJECT_ID }}
         run: |
           set -euo pipefail
           # -u $(id -u) keeps the build tree owned by the runner user; otherwise
@@ -147,6 +170,7 @@ jobs:
         id: store
         env:
           INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
+          INFISICAL_PROJECT_ID: ${{ secrets.INFISICAL_PROJECT_ID }}
         run: |
           set -euo pipefail
           SRC="${CI_ROOT}/esphome-cache/build/${DEVICE}/build/firmware.ota.bin"

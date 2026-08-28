@@ -12,12 +12,13 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 TOKEN_FILE="${INFISICAL_TOKEN_FILE:-$HOME/.config/infisical/token}"
-PROJECT_ID="5c533f1a-81e8-41a2-b6f1-395887dfc391"
+PROJECT_ID="${INFISICAL_PROJECT_ID:-$(cat "${INFISICAL_PROJECT_ID_FILE:-$HOME/.config/infisical/project-id}" 2>/dev/null || true)}"
 ENVIRONMENT="prod"
 SECRET_PATH="%2FPetrichor"        # url-encoded /Petrichor
 SECRETS_FILE="secrets.yaml"
 
 [ -f "$TOKEN_FILE" ] || { echo "No Infisical token at $TOKEN_FILE" >&2; exit 1; }
+[ -n "$PROJECT_ID" ]  || { echo "No Infisical project id. Set \$INFISICAL_PROJECT_ID or write it to ~/.config/infisical/project-id" >&2; exit 1; }
 TOKEN="$(cat "$TOKEN_FILE")"
 
 # Always shred the rendered secrets on exit (success, failure, or Ctrl-C).
@@ -42,6 +43,6 @@ if [ "${1:-}" = "--render" ]; then
   exit 0
 fi
 
-echo "Flashing golden-shower.yaml…"
-esphome run golden-shower.yaml "${@}"
+echo "Flashing petrichor.yaml…"
+esphome run petrichor.yaml "${@}"
 # trap shreds secrets.yaml on the way out

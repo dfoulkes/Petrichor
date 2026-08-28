@@ -24,24 +24,46 @@ concurrency:
   cancel-in-progress: false      # never interrupt a flash mid-write
 
 env:
+  # The controller's address and ports, and the Infisical project id, are repo
+  # secrets rather than literals — this repository is public and those describe
+  # internal network topology. Note GitHub renders a MISSING secret as an empty
+  # string, so the preflight step below asserts each one is actually set.
   ESPHOME_VERSION: "2026.7.0"
   INFISICAL_CLI_VERSION: "0.43.125"
   INFISICAL_DOMAIN: "https://infisical.foulkes.cloud/api"
-  INFISICAL_PROJECT_ID: "5c533f1a-81e8-41a2-b6f1-395887dfc391"
   INFISICAL_ENV: "prod"
   INFISICAL_PATH: "/Petrichor"
   CI_ROOT: /opt/petrichor-ci
-  CONFIG: golden-shower.yaml
-  DEVICE: golden-shower
-  TARGET_IP: "192.168.51.5"
-  OTA_PORT: "3232"
-  API_PORT: "6053"
+  CONFIG: petrichor.yaml
+  DEVICE: petrichor
 
 jobs:
   deploy:
     runs-on: self-hosted
 
     steps:
+      - name: Assert required secrets are present
+        env:
+          INFISICAL_TOKEN:      ${{ secrets.INFISICAL_TOKEN }}
+          INFISICAL_PROJECT_ID: ${{ secrets.INFISICAL_PROJECT_ID }}
+          TARGET_IP:            ${{ secrets.OTA_TARGET_IP }}
+          OTA_PORT:             ${{ secrets.OTA_PORT }}
+          API_PORT:             ${{ secrets.API_PORT }}
+        run: |
+          set -uo pipefail
+          # A secret that does not exist renders as an EMPTY STRING, not an
+          # error, so a typo'd or missing secret would surface much later as a
+          # baffling connection failure. Name it here instead.
+          missing=()
+          for v in INFISICAL_TOKEN INFISICAL_PROJECT_ID TARGET_IP OTA_PORT API_PORT; do
+            [ -n "${!v:-}" ] || missing+=("$v")
+          done
+          if [ ${#missing[@]} -gt 0 ]; then
+            echo "::error::Missing repo secret(s): ${missing[*]}"
+            exit 1
+          fi
+          echo "All required secrets are set."
+
       - name: Checkout main (to read tags)
         uses: actions/checkout@v4
         with:
@@ -82,13 +104,14 @@ jobs:
           # defined in the YAML — verified; the in-file value wins and every
           # build would ship stamped "dev". Rewrite the line instead. The
           # workspace is re-checked-out each run, so this is not persisted.
-          sed -i -E 's/^(  fw_version: )".*"/\1"${{ inputs.tag }}"/' esphome/golden-shower.yaml
-          grep -E '^  fw_version:' esphome/golden-shower.yaml
+          sed -i -E 's/^(  fw_version: )".*"/\1"${{ inputs.tag }}"/' esphome/petrichor.yaml
+          grep -E '^  fw_version:' esphome/petrichor.yaml
 
       - name: Fetch the firmware from MinIO
         id: fw
         env:
           INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
+          INFISICAL_PROJECT_ID: ${{ secrets.INFISICAL_PROJECT_ID }}
         run: |
           set -euo pipefail
           DEST="$RUNNER_TEMP/fw"; rm -rf "$DEST"; mkdir -p "$DEST"
@@ -112,6 +135,9 @@ jobs:
           echo "dir=${DEST}" >> "$GITHUB_OUTPUT"
 
       - name: Pre-flight — is the controller reachable?
+        env:
+          TARGET_IP: ${{ secrets.OTA_TARGET_IP }}
+          OTA_PORT:  ${{ secrets.OTA_PORT }}
         run: |
           set -euo pipefail
           if timeout 3 bash -c "echo > /dev/tcp/${TARGET_IP}/${OTA_PORT}" 2>/dev/null; then
@@ -119,7 +145,8 @@ jobs:
           else
             echo "::error::Cannot reach ${TARGET_IP}:${OTA_PORT} (ESPHome OTA)."
             echo "Check: (1) the controller is powered and associated;"
-            echo "       (2) the UniFi rule 'Allow golden-shower to Petrichor CI'"
+            echo "       (2) the UniFi rule 'Allow golden-shower to Petrichor CI' (named"
+            echo "           before the rename; the rule itself is still correct)"
             echo "           is enabled and sits below 'Block IOT to All'."
             exit 1
           fi
@@ -127,6 +154,8 @@ jobs:
       - name: Upload over the air
         env:
           INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
+          INFISICAL_PROJECT_ID: ${{ secrets.INFISICAL_PROJECT_ID }}
+          TARGET_IP: ${{ secrets.OTA_TARGET_IP }}
         run: |
           set -euo pipefail
           # --network host: a bridged container cannot reach the IoT VLAN.
@@ -144,12 +173,35 @@ jobs:
             upload "${CONFIG}" --device "${TARGET_IP}" --file /firmware/firmware.ota.bin
 
       - name: Verify the controller came back
+        env:
+          TARGET_IP: ${{ secrets.OTA_TARGET_IP }}
+          API_PORT:  ${{ secrets.API_PORT }}
         run: |
           set -euo pipefail
-          echo "Waiting for ${TARGET_IP}:${API_PORT} (native API) to answer…"
+          # Polling only for "does it answer" can pass WITHOUT the device ever
+          # rebooting — an OTA that silently did nothing leaves the API port up
+          # throughout, and the very first poll succeeds. So watch for the port
+          # to drop first; that is the reboot. Then wait for it to return.
+          echo "Waiting for ${TARGET_IP}:${API_PORT} to drop (the reboot)…"
+          dropped=0
+          for i in $(seq 1 30); do
+            if ! timeout 2 bash -c "echo > /dev/tcp/${TARGET_IP}/${API_PORT}" 2>/dev/null; then
+              dropped=1
+              echo "  port dropped after ~$((i * 2))s — the device is rebooting"
+              break
+            fi
+            sleep 2
+          done
+          if [ "$dropped" -eq 0 ]; then
+            # Not fatal: a fast reboot can slip between two polls. But say so,
+            # rather than reporting a confident success we have not earned.
+            echo "::warning::API port never observed down — cannot confirm the device actually rebooted. Check the ESPHome version in Home Assistant."
+          fi
+
+          echo "Waiting for ${TARGET_IP}:${API_PORT} to answer again…"
           for i in $(seq 1 60); do
             if timeout 2 bash -c "echo > /dev/tcp/${TARGET_IP}/${API_PORT}" 2>/dev/null; then
-              echo "Controller is back after ~${i}s."
+              echo "Controller is back after ~$((i * 2))s."
               exit 0
             fi
             sleep 2
@@ -167,6 +219,6 @@ jobs:
             echo "| | |"
             echo "|---|---|"
             echo "| Tag | \`${{ inputs.tag }}\` |"
-            echo "| Target | \`${TARGET_IP}\` |"
+            echo "| Target | (secret) |"
             echo "| Source | \`s3://petrichor/firmware/${{ inputs.tag }}/\` |"
           } >> "$GITHUB_STEP_SUMMARY"

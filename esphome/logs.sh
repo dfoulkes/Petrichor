@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Stream the Petrichor logs, pulling secrets from Infisical at run time.
 #
-# Companion to flash.sh: golden-shower.yaml uses !secret, and flash.sh shreds
+# Companion to flash.sh: petrichor.yaml uses !secret, and flash.sh shreds
 # secrets.yaml on exit, so plain `esphome logs` fails with "secret not defined".
 # This renders a TEMPORARY secrets.yaml, attaches to the logs, then shreds it
 # on exit — plaintext never persists in the repo.
@@ -12,17 +12,18 @@
 #
 # Usage:  ./logs.sh                     # serial logs over the default adapter
 #         ./logs.sh --device /dev/ttyUSB0
-#         ./logs.sh --device 192.168.51.5   # over the network (OTA/API) if reachable
+#         ./logs.sh --device <ip>            # over the network (OTA/API) if reachable
 set -euo pipefail
 cd "$(dirname "$0")"
 
 TOKEN_FILE="${INFISICAL_TOKEN_FILE:-$HOME/.config/infisical/token}"
-PROJECT_ID="5c533f1a-81e8-41a2-b6f1-395887dfc391"
+PROJECT_ID="${INFISICAL_PROJECT_ID:-$(cat "${INFISICAL_PROJECT_ID_FILE:-$HOME/.config/infisical/project-id}" 2>/dev/null || true)}"
 ENVIRONMENT="prod"
 SECRET_PATH="%2FPetrichor"        # url-encoded /Petrichor
 SECRETS_FILE="secrets.yaml"
 
 [ -f "$TOKEN_FILE" ] || { echo "No Infisical token at $TOKEN_FILE" >&2; exit 1; }
+[ -n "$PROJECT_ID" ]  || { echo "No Infisical project id. Set \$INFISICAL_PROJECT_ID or write it to ~/.config/infisical/project-id" >&2; exit 1; }
 TOKEN="$(cat "$TOKEN_FILE")"
 
 # Always shred the rendered secrets on exit (success, failure, or Ctrl-C).
@@ -42,6 +43,6 @@ for k in wifi_base_station_name wifi_password ap_password ota_password api_encry
 done
 echo "secrets.yaml rendered ($(grep -c ':' "$SECRETS_FILE") keys)."
 
-echo "Attaching to golden-shower.yaml logs (Ctrl-C to exit)…"
-esphome logs golden-shower.yaml "${@}"
+echo "Attaching to petrichor.yaml logs (Ctrl-C to exit)…"
+esphome logs petrichor.yaml "${@}"
 # trap shreds secrets.yaml on the way out
