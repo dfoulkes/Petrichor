@@ -26,7 +26,7 @@ trap cleanup EXIT
 
 echo "Pulling secrets from Infisical (${ENVIRONMENT} /Petrichor)…"
 umask 077
-curl -sk --fail \
+curl -s --fail \
   "https://infisical.foulkes.cloud/api/v3/secrets/raw?workspaceId=${PROJECT_ID}&environment=${ENVIRONMENT}&secretPath=${SECRET_PATH}" \
   -H "Authorization: Bearer ${TOKEN}" \
   | jq -er '.secrets[] | "\(.secretKey): \(.secretValue | @json)"' > "$SECRETS_FILE"
