@@ -58,41 +58,47 @@ bodies bought are the `-CV` variant that deliberately holds water in the head.
 isolate at the tap, open every valve bleed lever, drain the low points, leave it
 empty. No procedure for this exists in the repo yet.
 
-## Field cable — deferred, but the DUCT is not
+## ✅ Field cable — BOUGHT. This section is superseded.
 
-**Field cable to the manifold has never been bought.** It blocks *automation*,
-not this year's goal — see the plan above. The **duct must still go in during the
-groundwork**, and spare 20 mm MDPE serves.
+**Corrected 2026-08-27.** Earlier revisions of this file (and `CLAUDE.md`) said
+the field cable "has never been bought" and that it was the item without which
+"the controller cannot reach the valves". **Both were wrong from the moment
+EGI144337 was placed on 2026-08-25.** It was delivered 2026-08-27.
 
-`docs/wiring-and-cable-grades.md:353` —
-> Field cable to manifold | outdoor/UV-rated multicore, 0.5–0.75 mm², **zones + 1**
-> cores (<10 m; direct-burial or duct if buried) | `SOURCE`
+| Bought | Part | Covers |
+|---|---|---|
+| `RB/IRRICAB5-15M` ×1, £27.75 | Rain Bird 5-core irrigation control cable, 15 m | Spec asked for **zones + 1 cores, <10 m**. 5 cores = **4 zones + common**, matching the 4-way manifold of decision #19; 15 m against a <10 m estimate. |
+| `RB/DBRY.P2` ×2, £15.10 | 4 × DBR/Y gel-filled direct-burial splices | 2 zones + common = **3 joints** needed. 4 owned. |
 
-2 zones → **3 cores**. Not owned.
+The **duct still goes in during the groundwork** regardless, and spare 20 mm MDPE
+serves — that has not changed.
 
-⚠️ **"Electrical: built and proven" means the bench.** Six line items in the
-wiring BOM are still marked `SOURCE`. Do not read "electrical: done" as
-"electrical: installable" — but note this is a **known, accepted deferral**, not
-an oversight. Dan: *"Im aware of the spicy side."*
+⚠️ **Verify the run before trenching.** The controller sits at the **SW patio
+corner** ([[install-power-socket]]); the valve box is bottom-left of the garden.
+15 m has not been walked with a tape. Do it when the routes are marked — a short
+cable is the one mistake this order cannot absorb.
 
-## Marked `SOURCE` in the wiring BOM — never purchased
+## Still marked `SOURCE` — four items, not six
 
 | Line | Item | Qty |
 |---|---|---|
-| 353 | **Field cable to manifold** — outdoor/UV multicore, 0.5–0.75 mm² | 3 core |
-| 356 | **Gel-filled / IP68 valve-box connectors** — one per solenoid joint | 3 (5 at four valves) |
 | 345 | 230 V mains — 0.75 mm² flex cores, tri-rated outdoors | 5 |
 | 351 | Ferrules — 0.75 mm² · 6 mm bootlace | 6 |
 | 352 | Earth bond — DIN earth block, or M4 + ring crimp | 1 |
 | 355 | Vented drain / breather — IP-rated M12–M16 breather plug | 1 |
 
+**None of these four is a field part.** They are all enclosure-side, so none of
+them blocks groundwork.
+
 On the gel connectors, the build guide is blunter than about anything else in it:
 *"Never a dry Wago in the ground. This is the single most failure-prone spot in
-the whole build."* The Wago 221s on hand are **enclosure** parts, not chamber
-parts.
+the whole build."* **That risk is now closed** — 4 × DBR/Y are in hand. The Wago
+221s remain **enclosure** parts, not chamber parts.
 
-**Sourcing:** this is a Screwfix / CEF order, not an irrigation vendor. Not yet
-priced.
+**Sourcing the remaining four:** a Screwfix / CEF order, not an irrigation
+vendor. Not yet priced. **No rush** — see the postage note below: the electrical
+side is still design-mobile (trench route and depth unpegged), and these four are
+the cheapest items in the build to buy late.
 
 ## Undocumented gaps found 2026-08-25
 
@@ -161,7 +167,17 @@ test day — a two-gauge method with one gauge produces a reading, not a model.
 | **EGI144332** | 2026-08-25 | Easy Garden Irrigation | 4-way manifold, 3 caps, 1 bush | £43.27 |
 | **EGI144337** | 2026-08-25 | Easy Garden Irrigation | 15 m 5-core control cable, 4 DBR/Y splices | £40.23 |
 | **Wickes 702854640** | 2026-08-25 | Wickes (Click & Collect, Leeds Moor Allerton) | 3 × 20 mm washed gravel, 1 × weed membrane | £20.30 |
-| | | | **PROJECT TOTAL** | **~£529.88** |
+| **EGI144461** | 2026-08-27 | Easy Garden Irrigation | Irritec Jumbo 12" valve box `IG/POZ-JMBREC` ×1 | £42.75 |
+| | | | **PROJECT TOTAL** | **~£572.63** |
+
+**Spent on 2026-08-27: £42.75.**
+
+**EGI144461 detail** — `IG/POZ-JMBREC` ×1 £45.99 − £9.19 (End of Season 20%) =
+£36.80 subtotal · Standard UK 1–2 days £5.95 · **total £42.75** (Mastercard
+••9915, VAT £7.12 included). Reconciled from the confirmation email 2026-08-27.
+The 20% **did** stack on the listed price, which was already showing an 18% cut
+from £55.99. Single line item, correct SKU, correct quantity — **no repeat of the
+cart quantity bug.**
 
 **Spent on 2026-08-25 alone: £322.76.**
 
@@ -176,15 +192,29 @@ verified basket exactly.
 
 | | |
 |---|---|
-| 20% End of Season across three EGI orders | £72.64 |
+| 20% End of Season across four EGI orders | £81.83 |
 | Free shipping earned by clearing £200 on EGI144331 | £5.95 |
 | Gravel + membrane from Wickes rather than Amazon | ~£14 |
-| | **~£92.59** |
+| | **~£101.78** |
 
-Cost of the split-order approach: **£11.90 postage** across EGI144332 and
-EGI144337 where one order would have been £5.95. Deliberate, on stock risk —
-justified given the tees were down to the last 2 and every rectangular valve box
-at EGI had already sold out.
+### Postage: £17.85 is the price of iterating, and it bought something
+
+**£17.85 across EGI144332, EGI144337 and EGI144461** where a single order would
+have been £5.95. Dan's framing, and it is the right one: *"the price of iterating
+on the design, costly yes but minimised exposure."* Not waste — **£11.90 spent to
+avoid committing to parts before the design was known.** Two different bets,
+though, and they should not be conflated:
+
+| Split | £ | What it bought |
+|---|---|---|
+| EGI144332 (25th) | £5.95 | **Stock risk.** The tees were down to the last 2. Same-day as EGI144337, so this £5.95 bought availability, not information. |
+| EGI144337 (25th) | £5.95 | *(the same-day pair — one of these two is genuinely avoidable in hindsight)* |
+| **EGI144461 (27th)** | **£5.95** | **Information, and it paid for itself.** On the 25th the design said the manifold spanned **480 mm** and the box had a **"500 × 365 mm aperture"**. Both were wrong. Buying the box that night meant buying against a calculation instead of a tape — and the box was out of stock anyway. |
+
+**The exposure it minimised is real:** the whole box decision changed between the
+25th and the 27th — span 480 → 500 mm, "aperture" revealed as a lid, depth
+retracted as the binding constraint, and the vendor moved from Water Irrigation
+to EGI. £5.95 to make that correction *before* the money, not after it.
 
 ### ⚠️ EGI's cart is unreliable — verify before every checkout
 
@@ -198,18 +228,35 @@ bit twice:
 
 **Always reload the cart page and re-read it immediately before paying.**
 
-### Not yet basketed — valve box (Water Irrigation)
-`32120014` HydroSure Jumbo Rectangular, **£47.74**, 17 in stock. Hold until the
-manifold's real pitch and height are known — **depth is the binding dimension**
-and the box cannot be upsized without re-excavating.
+### ✅ Ordered 2026-08-27 — valve box (Easy Garden Irrigation)
+✅ **ORDERED 2026-08-27 — EGI144461, £42.75.** **Irritec Jumbo 12"
+`IG/POZ-JMBREC` from EGI** — same box class, £1.75 less, and EGI is the vendor with
+four orders of history. (Superseded: HydroSure `32120014`, £47.74, Water
+Irrigation — no prior history there.) ⛔ **Not** the Irritec *Standard* 12"
+(£29.99): its ~468 mm internal at fitting height is shorter than the 470 mm bare
+manifold. ✅ **Hold released
+2026-08-27** — the manifold has been taped at **500 × 260 mm** (two valves, pipe
+with every fitting attached, plus pipe allowance). It fits comfortably: ~612 mm
+internal length at fitting height against 500 mm — **56 mm clear per end**. The trade-off is
+that it will not lift out through the lid (~475 × 345 mm inferred clear opening);
+servicing means lifting the box off. The only bigger UK option is a Rain Bird
+VB-SPR Super Jumbo — £282–£322 and 381 mm deep, forcing a ~455 mm pit. **✅ CLEARED TO
+ORDER — no outstanding measurements.** (An earlier revision asked for the Hansen
+bush to be taped; that length was already inside Dan's 470 mm.) EGI's own KwikCut
+cutters are **sold out**, so the pipe cutter stays a
+separate Screwfix line as originally planned — no bundling gain from EGI.
 
 ### Not yet basketed — builders' merchant
 - 2–3 × 20 kg **washed 20 mm shingle** (❌ not MOT Type 1 — it binds and holds water)
 - **Geotextile membrane** (~£10) — without it soil blinds the gravel in a season
-- **MDPE pipe cutter** (£10–15)
+- **MDPE pipe cutter** (£10–15) — stays a Screwfix line. EGI's KwikCut cutters
+  are sold out; Water Irrigation have the KwikCut MDPE/HDPE 25 mm at £13.99 if a
+  Screwfix trip is unwelcome.
 
 ### Not yet basketed — Screwfix / CEF
-The six `SOURCE` electrical items above. Not priced.
+The **four** remaining `SOURCE` electrical items above (was six; the field cable
+and the gel splices arrived in EGI144337). Not priced. All enclosure-side —
+**none blocks groundwork.**
 
 ## Backlog — deliberately deferred
 

@@ -106,10 +106,19 @@ gets established there.
       spraying water anyway. **Prove it holds before anything goes in a hole.**
 - [ ] **Throw test** — MP3500 at 90° against the 8.9 m corner-to-centre. Pick a
       still day; wind skews it.
-- [ ] **Tape the manifold** (Rain Bird publish no dimensions) and confirm it fits
-      the HydroSure Jumbo's 500 × 365 mm lid aperture. Calculated span is 480 mm.
-- [ ] **Order the valve box** — HydroSure Jumbo `32120014`, £47.74,
-      waterirrigation.co.uk. 9 pm cutoff for next-day.
+- [x] **Tape the manifold** — ✅ done 2026-08-27. **500 × 260 mm** with both
+      valves fitted and pipe allowance. Supersedes the 480 mm calculation. The
+      "500 × 365 lid aperture" it was to be checked against was the lid's *outer*
+      size, not an aperture — see `plumbing-rebuild.md`, valve-box section.
+- [x] **Order the valve box** — ✅ **DONE 2026-08-27: EGI144461, £42.75.**
+      Irritec Jumbo 12" `IG/POZ-JMBREC` ×1, Easy Garden Irrigation
+      (£45.99 − £9.19 End of Season 20% + £5.95 postage). Chosen over the
+      HydroSure Jumbo on vendor history, not price. ⛔ The Irritec *Standard* 12"
+      was rejected: ~468 mm internal at fitting height, shorter than the 470 mm
+      assembly. **Fit confirmed against the measured manifold** — ~612 mm
+      internal against 500 mm needed, 56 mm clear per end; 140 mm stack in a
+      300 mm box. The manifold will not lift out through the lid, so servicing
+      means lifting the box off. **Dry-fit before digging.**
 - [ ] Screwfix: **MDPE pipe cutter**, black **cable clips**. M20 gland if needed.
 
 ## Phase B — Set out (outdoors, wet-tolerant, no box needed)

@@ -18,10 +18,15 @@ Status as of 2026-08-25:
   bodies, 4 MP3500 nozzles, all fittings, a second MDPE coil. Arrives Wed 26th.
   A second order EGI144332 (manifold, 3 caps, bush — £43.27) also placed.
   Running spend ~£469.35.
-- **⛔ The electrical side is NOT installable.** `CLAUDE.md` previously said it
-  was "built and proven" — true of the bench, but **six items in the wiring BOM
-  are still marked `SOURCE`**, including the **field cable to the manifold**.
-  Without that the controller cannot reach the valves.
+- **The electrical side is closer than this file used to claim.** It previously
+  said **six** wiring-BOM items were `SOURCE` "including the field cable to the
+  manifold — without that the controller cannot reach the valves". **Wrong since
+  2026-08-25:** the field cable (`RB/IRRICAB5-15M`, 5-core, 15 m) and the
+  gel-filled splices (`RB/DBRY.P2` ×2 = 4 × DBR/Y) were bought in EGI144337 and
+  delivered 2026-08-27. **Four items remain `SOURCE`** — mains flex cores,
+  ferrules, earth bond, breather plug — and **all four are enclosure-side, so
+  none blocks groundwork.** ⚠️ Still unverified: the 15 m has not been walked
+  with a tape against the SW-patio-corner-to-valve-box run.
 - **Nothing in this repo mentions winterisation**, and the spray bodies bought
   are the `-CV` variant that deliberately holds water in the head.
 - Several **free physical checks** must happen before anything is buried —
