@@ -14,9 +14,14 @@ on:
   push:
     branches: [main]
     paths:
+      # Only things that change the compiled binary cut a version.
+      #   esphome/** — the firmware config itself
+      #   docker/**  — pins ESPHOME_VERSION, so a bump there produces different
+      #                firmware without esphome/ being touched at all
+      # Editing this workflow does NOT change the firmware, so it is not listed:
+      # a pipeline edit must not mint a version.
       - 'esphome/**'
       - 'docker/**'
-      - '.github/workflows/build-firmware.yml'
       - '!esphome/README.md'
       - '!esphome/*.sh'
   workflow_dispatch:
