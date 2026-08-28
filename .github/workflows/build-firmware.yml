@@ -45,7 +45,6 @@ env:
   CI_ROOT: /opt/petrichor-ci
   CONFIG: golden-shower.yaml
   DEVICE: golden-shower
-  KEEP_VERSIONS: "10"
 
 jobs:
   build:
@@ -102,7 +101,7 @@ jobs:
           grep -E '^  fw_version:' esphome/golden-shower.yaml
 
       - name: Prepare host cache dir
-        run: install -d -m 700 "${CI_ROOT}/esphome-cache" "${CI_ROOT}/firmware"
+        run: install -d -m 700 "${CI_ROOT}/esphome-cache"
 
       - name: Lint (esphome config)
         env:
@@ -139,19 +138,19 @@ jobs:
             "${{ steps.img.outputs.tag }}" \
             compile "${CONFIG}"
 
-      - name: Store firmware on the runner
+      - name: Publish firmware to MinIO
         id: store
+        env:
+          INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
         run: |
           set -euo pipefail
           SRC="${CI_ROOT}/esphome-cache/build/${DEVICE}/build/firmware.ota.bin"
           [ -f "$SRC" ] || { echo "::error::No OTA binary at $SRC"; exit 1; }
+          SIZE=$(stat -c%s "$SRC")
 
-          DEST="${CI_ROOT}/firmware/${{ steps.ver.outputs.version }}"
-          install -d -m 700 "$DEST"
-          install -m 600 "$SRC" "$DEST/firmware.ota.bin"
-
-          SIZE=$(stat -c%s "$DEST/firmware.ota.bin")
-          cat > "$DEST/build.json" <<EOF
+          STAGE="$RUNNER_TEMP/fw"; rm -rf "$STAGE"; mkdir -p "$STAGE"
+          cp "$SRC" "$STAGE/firmware.ota.bin"
+          cat > "$STAGE/build.json" <<EOF
           {
             "version": "${{ steps.ver.outputs.version }}",
             "commit": "${GITHUB_SHA}",
@@ -160,8 +159,21 @@ jobs:
             "run_id": "${GITHUB_RUN_ID}"
           }
           EOF
+
+          # Binaries go to the petrichor bucket on delphi, NOT the runner's disk.
+          # github_runner is a 4 GB VM at ~86% full that also hosts the OpenClaw
+          # gateway and 16 other repos' runners.
+          docker run --rm -u "$(id -u):$(id -g)" \
+            --entrypoint petrichor-store \
+            -e INFISICAL_TOKEN \
+            -e INFISICAL_DOMAIN -e INFISICAL_PROJECT_ID \
+            -e INFISICAL_ENV -e INFISICAL_PATH \
+            -v "$STAGE:/stage:ro" \
+            "${{ steps.img.outputs.tag }}" \
+            push "${{ steps.ver.outputs.version }}" /stage/firmware.ota.bin /stage/build.json
+
+          rm -rf "$STAGE"
           echo "bytes=${SIZE}" >> "$GITHUB_OUTPUT"
-          echo "Stored ${SIZE} bytes at ${DEST}"
 
       - name: Tag and release
         if: ${{ github.event_name == 'push' || inputs.dry_run == false }}
@@ -177,17 +189,6 @@ jobs:
           # No assets: the binary carries Wi-Fi and API credentials.
           gh release create "$VERSION" --title "$VERSION" --generate-notes
 
-      - name: Prune old firmware
-        run: |
-          set -euo pipefail
-          cd "${CI_ROOT}/firmware"
-          # The runner is disk-constrained; unbounded growth here is a classic
-          # silent failure. Keep the newest N versions only.
-          ls -1 | sort -V | head -n "-${KEEP_VERSIONS}" | while read -r old; do
-            echo "Pruning $old"
-            rm -rf -- "$old"
-          done || true
-
       - name: Summary
         run: |
           {
@@ -199,5 +200,6 @@ jobs:
             echo "| Commit | \`${GITHUB_SHA:0:7}\` |"
             echo "| ESPHome | \`${ESPHOME_VERSION}\` |"
             echo "| OTA image | ${{ steps.store.outputs.bytes }} bytes |"
+            echo "| Stored | \`s3://petrichor/firmware/${{ steps.ver.outputs.version }}/\` |"
             echo "| Tagged | ${{ (github.event_name == 'push' || inputs.dry_run == false) && 'yes' || 'no (dry run)' }} |"
           } >> "$GITHUB_STEP_SUMMARY"

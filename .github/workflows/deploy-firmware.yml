@@ -85,23 +85,31 @@ jobs:
           sed -i -E 's/^(  fw_version: )".*"/\1"${{ inputs.tag }}"/' esphome/golden-shower.yaml
           grep -E '^  fw_version:' esphome/golden-shower.yaml
 
-      - name: Resolve the firmware binary
+      - name: Fetch the firmware from MinIO
         id: fw
+        env:
+          INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
         run: |
           set -euo pipefail
-          DIR="${CI_ROOT}/firmware/${{ inputs.tag }}"
-          if [ -f "${DIR}/firmware.ota.bin" ]; then
-            echo "Using the stored build for ${{ inputs.tag }}:"
-            cat "${DIR}/build.json" 2>/dev/null || true
-            echo "dir=${DIR}"   >> "$GITHUB_OUTPUT"
-            echo "rebuilt=false" >> "$GITHUB_OUTPUT"
-          else
-            # Say this loudly. A silent recompile would deploy different bits
-            # from the ones that were built and tested for this tag.
-            echo "::warning::No stored build for ${{ inputs.tag }} — recompiling from source."
-            echo "dir="        >> "$GITHUB_OUTPUT"
-            echo "rebuilt=true" >> "$GITHUB_OUTPUT"
-          fi
+          DEST="$RUNNER_TEMP/fw"; rm -rf "$DEST"; mkdir -p "$DEST"
+
+          # Deploy the exact bits that were built and tagged. If the object is
+          # missing, petrichor-store fails loudly rather than leaving an empty
+          # directory — a silent recompile here would flash different firmware
+          # from the one this tag was tested with.
+          docker run --rm -u "$(id -u):$(id -g)" \
+            --entrypoint petrichor-store \
+            -e INFISICAL_TOKEN \
+            -e INFISICAL_DOMAIN -e INFISICAL_PROJECT_ID \
+            -e INFISICAL_ENV -e INFISICAL_PATH \
+            -v "$DEST:/out" \
+            "${{ steps.img.outputs.tag }}" \
+            pull "${{ inputs.tag }}" /out
+
+          [ -s "$DEST/firmware.ota.bin" ] || { echo "::error::firmware.ota.bin is missing or empty"; exit 1; }
+          echo "Build metadata for ${{ inputs.tag }}:"
+          cat "$DEST/build.json" 2>/dev/null || echo "  (none stored)"
+          echo "dir=${DEST}" >> "$GITHUB_OUTPUT"
 
       - name: Pre-flight — is the controller reachable?
         run: |
@@ -116,35 +124,11 @@ jobs:
             exit 1
           fi
 
-      - name: Recompile from tag (only when no stored build exists)
-        if: steps.fw.outputs.rebuilt == 'true'
-        env:
-          INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
-        run: |
-          set -euo pipefail
-          install -d -m 700 "${CI_ROOT}/esphome-cache"
-          docker run --rm \
-            -u "$(id -u):$(id -g)" \
-            -e INFISICAL_TOKEN \
-            -e INFISICAL_DOMAIN -e INFISICAL_PROJECT_ID \
-            -e INFISICAL_ENV -e INFISICAL_PATH \
-            -e PLATFORMIO_CORE_DIR=/config/.esphome/platformio \
-            -v "$PWD/esphome:/config" \
-            -v "${CI_ROOT}/esphome-cache:/config/.esphome" \
-            "${{ steps.img.outputs.tag }}" \
-            compile "${CONFIG}"
-
-          DEST="${CI_ROOT}/firmware/${{ inputs.tag }}"
-          install -d -m 700 "$DEST"
-          install -m 600 "${CI_ROOT}/esphome-cache/build/${DEVICE}/build/firmware.ota.bin" \
-                         "$DEST/firmware.ota.bin"
-
       - name: Upload over the air
         env:
           INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
         run: |
           set -euo pipefail
-          FW="${CI_ROOT}/firmware/${{ inputs.tag }}"
           # --network host: a bridged container cannot reach the IoT VLAN.
           # The entrypoint renders secrets.yaml because `esphome upload` parses
           # the whole config (for the OTA platform and password), not just the
@@ -155,7 +139,7 @@ jobs:
             -e INFISICAL_DOMAIN -e INFISICAL_PROJECT_ID \
             -e INFISICAL_ENV -e INFISICAL_PATH \
             -v "$PWD/esphome:/config" \
-            -v "${FW}:/firmware:ro" \
+            -v "${{ steps.fw.outputs.dir }}:/firmware:ro" \
             "${{ steps.img.outputs.tag }}" \
             upload "${CONFIG}" --device "${TARGET_IP}" --file /firmware/firmware.ota.bin
 
@@ -184,5 +168,5 @@ jobs:
             echo "|---|---|"
             echo "| Tag | \`${{ inputs.tag }}\` |"
             echo "| Target | \`${TARGET_IP}\` |"
-            echo "| Source | ${{ steps.fw.outputs.rebuilt == 'true' && '⚠️ recompiled (no stored build)' || 'stored build' }} |"
+            echo "| Source | \`s3://petrichor/firmware/${{ inputs.tag }}/\` |"
           } >> "$GITHUB_STEP_SUMMARY"
