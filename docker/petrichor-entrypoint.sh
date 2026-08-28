@@ -9,9 +9,13 @@
 #      docker run ... petrichor-esphome:TAG compile golden-shower.yaml -s fw_version v0.1.2
 #      docker run ... petrichor-esphome:TAG upload golden-shower.yaml --device IP --file BIN
 #
-#  Required environment (supplied by the workflow, never baked into the image):
-#    INFISICAL_UNIVERSAL_AUTH_CLIENT_ID      machine identity client id
-#    INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET  machine identity client secret
+#  Required environment (supplied by the workflow, never baked into the image).
+#  Either an Infisical service token:
+#    INFISICAL_TOKEN                         st.… read-only, scoped prod:/Petrichor
+#  or a machine identity's Universal Auth pair:
+#    INFISICAL_UNIVERSAL_AUTH_CLIENT_ID
+#    INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET
+#  Always:
 #    INFISICAL_PROJECT_ID                    Infisical project (workspace) id
 #  Optional:
 #    INFISICAL_DOMAIN   default https://infisical.foulkes.cloud/api
@@ -27,10 +31,11 @@ umask 077
 
 : "${INFISICAL_PROJECT_ID:?INFISICAL_PROJECT_ID is not set}"
 
-# Two ways in. Universal Auth (a machine identity's client id + secret) is the
-# normal path: the CLI mints its own short-lived token every run, so nothing
-# needs rotating. A pre-minted INFISICAL_TOKEN is honoured too — handy for a
-# one-off debug run — but those expire, so it is not the CI path.
+# Two ways in. INFISICAL_TOKEN is the CI path: a read-only service token
+# scoped to prod:/Petrichor that never expires, so there is nothing to rotate.
+# Universal Auth (a machine identity's client id + secret) is supported too —
+# the CLI then mints its own short-lived token per run. Either works; the token
+# is read from the environment, never passed as a flag, so it stays out of ps.
 if [ -z "${INFISICAL_TOKEN:-}" ]; then
   : "${INFISICAL_UNIVERSAL_AUTH_CLIENT_ID:?set INFISICAL_UNIVERSAL_AUTH_CLIENT_ID, or supply INFISICAL_TOKEN}"
   : "${INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET:?set INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET, or supply INFISICAL_TOKEN}"

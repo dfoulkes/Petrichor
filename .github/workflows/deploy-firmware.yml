@@ -119,15 +119,13 @@ jobs:
       - name: Recompile from tag (only when no stored build exists)
         if: steps.fw.outputs.rebuilt == 'true'
         env:
-          INFISICAL_UNIVERSAL_AUTH_CLIENT_ID: ${{ secrets.INFISICAL_CLIENT_ID }}
-          INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET: ${{ secrets.INFISICAL_CLIENT_SECRET }}
+          INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
         run: |
           set -euo pipefail
           install -d -m 700 "${CI_ROOT}/esphome-cache"
           docker run --rm \
             -u "$(id -u):$(id -g)" \
-            -e INFISICAL_UNIVERSAL_AUTH_CLIENT_ID \
-            -e INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET \
+            -e INFISICAL_TOKEN \
             -e INFISICAL_DOMAIN -e INFISICAL_PROJECT_ID \
             -e INFISICAL_ENV -e INFISICAL_PATH \
             -e PLATFORMIO_CORE_DIR=/config/.esphome/platformio \
@@ -143,8 +141,7 @@ jobs:
 
       - name: Upload over the air
         env:
-          INFISICAL_UNIVERSAL_AUTH_CLIENT_ID: ${{ secrets.INFISICAL_CLIENT_ID }}
-          INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET: ${{ secrets.INFISICAL_CLIENT_SECRET }}
+          INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
         run: |
           set -euo pipefail
           FW="${CI_ROOT}/firmware/${{ inputs.tag }}"
@@ -154,8 +151,7 @@ jobs:
           # one secret it needs.
           docker run --rm --network host \
             -u "$(id -u):$(id -g)" \
-            -e INFISICAL_UNIVERSAL_AUTH_CLIENT_ID \
-            -e INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET \
+            -e INFISICAL_TOKEN \
             -e INFISICAL_DOMAIN -e INFISICAL_PROJECT_ID \
             -e INFISICAL_ENV -e INFISICAL_PATH \
             -v "$PWD/esphome:/config" \
