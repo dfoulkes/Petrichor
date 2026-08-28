@@ -11,6 +11,13 @@
 #  (All 8 pins verified broken-out on the 30-pin board; all avoid the
 #   strapping pins 0/2/5/12/15, flash 6-11, and input-only 34-39.)
 #
+#  WIRED ZONES: only relays 1 and 2 are connected to valves (decision #13 —
+#  valves = zones = 2: the HP rotary ring and the LP drip line). Zones 3-8 are
+#  kept in the config because the 8-channel relay is deliberate headroom
+#  (decision #7), but are marked `disabled_by_default` so Home Assistant hides
+#  them rather than offering controls for hardware that does not exist.
+#  Wiring a third valve later is a UI toggle in HA, not a reflash.
+#
 #  Flash:  cd esphome && esphome run petrichor.yaml
 #  Secrets: copy secrets.yaml.example → secrets.yaml and fill it in.
 # =============================================================================
@@ -128,6 +135,7 @@ switch:
     id: valve_3
     pin: { number: GPIO17, inverted: true }
     restore_mode: ALWAYS_OFF
+    disabled_by_default: true   # relay not wired — see header note
     interlock: *all_valves
     interlock_wait_time: 500ms
     on_turn_on:
@@ -139,6 +147,7 @@ switch:
     id: valve_4
     pin: { number: GPIO18, inverted: true }
     restore_mode: ALWAYS_OFF
+    disabled_by_default: true   # relay not wired — see header note
     interlock: *all_valves
     interlock_wait_time: 500ms
     on_turn_on:
@@ -150,6 +159,7 @@ switch:
     id: valve_5
     pin: { number: GPIO19, inverted: true }
     restore_mode: ALWAYS_OFF
+    disabled_by_default: true   # relay not wired — see header note
     interlock: *all_valves
     interlock_wait_time: 500ms
     on_turn_on:
@@ -161,6 +171,7 @@ switch:
     id: valve_6
     pin: { number: GPIO21, inverted: true }
     restore_mode: ALWAYS_OFF
+    disabled_by_default: true   # relay not wired — see header note
     interlock: *all_valves
     interlock_wait_time: 500ms
     on_turn_on:
@@ -172,6 +183,7 @@ switch:
     id: valve_7
     pin: { number: GPIO22, inverted: true }
     restore_mode: ALWAYS_OFF
+    disabled_by_default: true   # relay not wired — see header note
     interlock: *all_valves
     interlock_wait_time: 500ms
     on_turn_on:
@@ -183,6 +195,7 @@ switch:
     id: valve_8
     pin: { number: GPIO23, inverted: true }
     restore_mode: ALWAYS_OFF
+    disabled_by_default: true   # relay not wired — see header note
     interlock: *all_valves
     interlock_wait_time: 500ms
     on_turn_on:
