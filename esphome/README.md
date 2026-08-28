@@ -46,7 +46,7 @@ CI or the network isn't an option.
 Validate the config itself (no board, no secrets):
 
 ```bash
-esphome config golden-shower.yaml     # needs a secrets.yaml present; ./flash.sh --render covers the real check
+esphome config petrichor.yaml     # needs a secrets.yaml present; ./flash.sh --render covers the real check
 ```
 
 ## After that, CI delivers

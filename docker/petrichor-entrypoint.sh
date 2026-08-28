@@ -5,9 +5,9 @@
 #  All credential handling lives here so the workflow YAML has none. Arguments
 #  are passed straight through to esphome, e.g.
 #
-#      docker run ... petrichor-esphome:TAG config golden-shower.yaml
-#      docker run ... petrichor-esphome:TAG compile golden-shower.yaml -s fw_version v0.1.2
-#      docker run ... petrichor-esphome:TAG upload golden-shower.yaml --device IP --file BIN
+#      docker run ... petrichor-esphome:TAG config petrichor.yaml
+#      docker run ... petrichor-esphome:TAG compile petrichor.yaml -s fw_version v0.1.2
+#      docker run ... petrichor-esphome:TAG upload petrichor.yaml --device IP --file BIN
 #
 #  Required environment (supplied by the workflow, never baked into the image).
 #  Either an Infisical service token:
@@ -95,11 +95,14 @@ infisical export \
   --silent \
   --output-file="${SECRETS}"
 
-# Assert the five keys golden-shower.yaml actually needs. Without this a partial
-# export fails much later as an opaque ESPHome schema error; flash.sh makes the
-# same assertion for the same reason.
+# Assert the keys petrichor.yaml actually needs. Without this a partial export
+# fails much later as an opaque ESPHome schema error; flash.sh makes the same
+# assertion for the same reason. Note an Infisical token scoped to the wrong
+# environment returns HTTP 200 with an EMPTY list, not an error — this is what
+# turns that into a named failure.
 missing=()
-for key in wifi_base_station_name wifi_password ap_password ota_password api_encryption_key; do
+for key in wifi_base_station_name wifi_password ap_password ota_password api_encryption_key \
+           device_static_ip device_gateway device_subnet; do
   grep -q "^${key}:" "${SECRETS}" || missing+=("${key}")
 done
 if [ ${#missing[@]} -gt 0 ]; then
@@ -107,7 +110,7 @@ if [ ${#missing[@]} -gt 0 ]; then
   echo "         Check the machine identity can read ${INFISICAL_ENV}:${INFISICAL_PATH}" >&2
   exit 1
 fi
-echo "==> All five secrets present"
+echo "==> All required secrets present"
 
 # NOT `exec` — exec replaces this shell and would destroy the cleanup trap,
 # leaving plaintext secrets.yaml behind. Run as a child and forward signals so

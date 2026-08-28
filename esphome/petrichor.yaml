@@ -1,5 +1,5 @@
 # =============================================================================
-#  Golden Shower — irrigation controller firmware (ESPHome)
+#  Petrichor — irrigation controller firmware (ESPHome)
 #  Board:  ELEGOO ESP32-WROOM-32 (30-pin DevKit V1)  ·  board: esp32dev
 #  Relay:  ELEGOO 8-channel opto-isolated (active-LOW)
 #
@@ -11,13 +11,13 @@
 #  (All 8 pins verified broken-out on the 30-pin board; all avoid the
 #   strapping pins 0/2/5/12/15, flash 6-11, and input-only 34-39.)
 #
-#  Flash:  cd esphome && esphome run golden-shower.yaml
+#  Flash:  cd esphome && esphome run petrichor.yaml
 #  Secrets: copy secrets.yaml.example → secrets.yaml and fill it in.
 # =============================================================================
 
 substitutions:
-  name: golden-shower
-  friendly_name: "Golden Shower Irrigation"
+  name: petrichor
+  friendly_name: "Petrichor Irrigation"
   max_run: "20min"          # per-valve max-run flooding backstop (see on_turn_on)
   fw_version: "dev"         # CI rewrites this line with the git tag before compiling.
                             # NOTE: `esphome -s fw_version X` does NOT override a value
@@ -43,13 +43,20 @@ wifi:
   password: !secret wifi_password
   # Static IP so Home Assistant / Prometheus always find it. Mirrors the UniFi
   # reservation in dfoulkes/unfi-config (iot_clients.tf) — keep the two in sync.
-  # .5 is below the IoT DHCP pool start (.6), so it's never leased away.
+  # The address sits below the IoT DHCP pool start, so it is never leased away.
+  # Held in Infisical rather than here: this repo is public, and the addresses
+  # are internal network topology. `esphome config` renders these as !secret
+  # placeholders, so they stay out of the build logs too.
   manual_ip:
-    static_ip: 192.168.51.5
-    gateway: 192.168.51.1
-    subnet: 255.255.255.0
+    static_ip: !secret device_static_ip
+    gateway: !secret device_gateway
+    subnet: !secret device_subnet
+  # ESPHome otherwise DERIVES use_address from static_ip and prints it as a
+  # plain value — which would put the address straight into the public CI log
+  # despite the !secret above. Set it explicitly so it stays a placeholder.
+  use_address: !secret device_static_ip
   ap:                        # fallback hotspot if Wi-Fi is unreachable
-    ssid: "Golden-Shower Fallback"
+    ssid: "Petrichor Fallback"
     password: !secret ap_password
 
 captive_portal:
