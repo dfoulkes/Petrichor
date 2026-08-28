@@ -45,12 +45,16 @@ INFISICAL_DOMAIN="${INFISICAL_DOMAIN:-https://infisical.foulkes.cloud/api}"
 INFISICAL_ENV="${INFISICAL_ENV:-prod}"
 INFISICAL_PATH="${INFISICAL_PATH:-/Petrichor}"
 
-# The container may run as an arbitrary uid (-u $(id -u) in the workflow, so the
+# The container runs as an arbitrary uid (-u $(id -u) in the workflow, so the
 # build tree is not left root-owned in the runner workspace). That uid has no
-# passwd entry and therefore no usable HOME, which both the Infisical CLI and
-# PlatformIO need. Point it somewhere writable.
-export HOME="${HOME:-/tmp/petrichor}"
-mkdir -p "$HOME"
+# passwd entry, so Docker sets HOME=/ — which is NOT writable, and a plain
+# ${HOME:-default} will not save you because HOME is set, just useless. ESPHome
+# unpacks the ESP-IDF toolchain via XDG_CACHE_HOME and dies on /.cache without
+# this. Point both at the persisted build cache so the multi-GB toolchain
+# download survives between runs instead of being refetched every time.
+export HOME="/config/.esphome/home"
+export XDG_CACHE_HOME="/config/.esphome/cache"
+mkdir -p "$HOME" "$XDG_CACHE_HOME"
 
 # ESPHome resolves !secret relative to the config directory.
 SECRETS="/config/secrets.yaml"
