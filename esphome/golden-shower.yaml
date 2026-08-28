@@ -19,10 +19,18 @@ substitutions:
   name: golden-shower
   friendly_name: "Golden Shower Irrigation"
   max_run: "20min"          # per-valve max-run flooding backstop (see on_turn_on)
+  fw_version: "dev"         # CI rewrites this line with the git tag before compiling.
+                            # NOTE: `esphome -s fw_version X` does NOT override a value
+                            # defined here — the in-file substitution wins. Verified.
 
 esphome:
   name: ${name}
   friendly_name: ${friendly_name}
+  # Surfaces the deployed firmware version in Home Assistant's device
+  # info panel, so "which build is on the board?" is answerable.
+  project:
+    name: "dfoulkes.petrichor"
+    version: ${fw_version}
 
 esp32:
   board: esp32dev

@@ -1,0 +1,205 @@
+name: Build firmware
+
+# Builds, lints and version-tags the Petrichor irrigation firmware.
+#
+# Runs ONLY on main, and only when something that actually affects the binary
+# changes — a README or shell-script edit should not mint a new firmware
+# version. Deployment is a separate, manual workflow: see deploy-firmware.yml.
+#
+# The firmware binary is deliberately NOT published as an artifact or release
+# asset. Petrichor is a public repo and an ESPHome image has the Wi-Fi PSK and
+# API encryption key compiled into it. Builds stay on the runner.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'esphome/**'
+      - 'docker/**'
+      - '.github/workflows/build-firmware.yml'
+      - '!esphome/README.md'
+      - '!esphome/*.sh'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Lint and compile without tagging or releasing'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write          # push the tag, create the release
+
+concurrency:
+  group: petrichor-build
+  cancel-in-progress: false
+
+env:
+  # Pinned deliberately, in the manner of PROMTOOL_VERSION in prometheus-setup:
+  # an upstream release must never silently change what gets flashed.
+  ESPHOME_VERSION: "2026.7.0"
+  INFISICAL_CLI_VERSION: "0.43.125"
+  INFISICAL_DOMAIN: "https://infisical.foulkes.cloud/api"
+  INFISICAL_PROJECT_ID: "5c533f1a-81e8-41a2-b6f1-395887dfc391"
+  INFISICAL_ENV: "prod"
+  INFISICAL_PATH: "/Petrichor"
+  CI_ROOT: /opt/petrichor-ci
+  CONFIG: golden-shower.yaml
+  DEVICE: golden-shower
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout (full history — the version bump reads every tag)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Resolve image tag
+        id: img
+        run: echo "tag=petrichor-esphome:${ESPHOME_VERSION}-${INFISICAL_CLI_VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Build CI image if absent
+        run: |
+          set -euo pipefail
+          if docker image inspect "${{ steps.img.outputs.tag }}" >/dev/null 2>&1; then
+            echo "Image ${{ steps.img.outputs.tag }} already present."
+          else
+            echo "Building ${{ steps.img.outputs.tag }}…"
+            docker build \
+              -f docker/esphome-ci.Dockerfile \
+              --build-arg "ESPHOME_VERSION=${ESPHOME_VERSION}" \
+              --build-arg "INFISICAL_CLI_VERSION=${INFISICAL_CLI_VERSION}" \
+              -t "${{ steps.img.outputs.tag }}" .
+          fi
+
+      - name: Compute next version
+        id: ver
+        run: |
+          set -euo pipefail
+          LATEST=$(git tag -l 'v[0-9]*.[0-9]*.[0-9]*' --sort=-v:refname | head -1)
+          if [ -z "$LATEST" ]; then
+            # Bootstrap. Pre-production, so the series starts at 0.1.1.
+            NEXT="v0.1.1"
+          else
+            IFS=. read -r MAJOR MINOR PATCH <<<"${LATEST#v}"
+            NEXT="v${MAJOR}.${MINOR}.$((PATCH + 1))"
+          fi
+          echo "Latest tag: ${LATEST:-<none>}  ->  next: ${NEXT}"
+          echo "version=${NEXT}" >> "$GITHUB_OUTPUT"
+
+      - name: Stamp the firmware version
+        run: |
+          set -euo pipefail
+          # `esphome -s fw_version X` does NOT override a substitution already
+          # defined in the YAML — verified; the in-file value wins and every
+          # build would ship stamped "dev". Rewrite the line instead. The
+          # workspace is re-checked-out each run, so this is not persisted.
+          sed -i -E 's/^(  fw_version: )".*"/\1"${{ steps.ver.outputs.version }}"/' esphome/golden-shower.yaml
+          grep -E '^  fw_version:' esphome/golden-shower.yaml
+
+      - name: Prepare host cache dir
+        run: install -d -m 700 "${CI_ROOT}/esphome-cache"
+
+      - name: Lint (esphome config)
+        env:
+          INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
+        run: |
+          set -euo pipefail
+          # Verified safe for a public log: `esphome config` renders
+          # `!secret <name>` placeholders, never the resolved values.
+          docker run --rm \
+            -u "$(id -u):$(id -g)" \
+            -e INFISICAL_TOKEN \
+            -e INFISICAL_DOMAIN -e INFISICAL_PROJECT_ID \
+            -e INFISICAL_ENV -e INFISICAL_PATH \
+            -v "$PWD/esphome:/config" \
+            -v "${CI_ROOT}/esphome-cache:/config/.esphome" \
+            "${{ steps.img.outputs.tag }}" \
+            config "${CONFIG}"
+
+      - name: Compile
+        env:
+          INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
+        run: |
+          set -euo pipefail
+          # -u $(id -u) keeps the build tree owned by the runner user; otherwise
+          # root-owned files land in _work and the NEXT checkout cannot clean up.
+          docker run --rm \
+            -u "$(id -u):$(id -g)" \
+            -e INFISICAL_TOKEN \
+            -e INFISICAL_DOMAIN -e INFISICAL_PROJECT_ID \
+            -e INFISICAL_ENV -e INFISICAL_PATH \
+            -e PLATFORMIO_CORE_DIR=/config/.esphome/platformio \
+            -v "$PWD/esphome:/config" \
+            -v "${CI_ROOT}/esphome-cache:/config/.esphome" \
+            "${{ steps.img.outputs.tag }}" \
+            compile "${CONFIG}"
+
+      - name: Publish firmware to MinIO
+        id: store
+        env:
+          INFISICAL_TOKEN: ${{ secrets.INFISICAL_TOKEN }}
+        run: |
+          set -euo pipefail
+          SRC="${CI_ROOT}/esphome-cache/build/${DEVICE}/build/firmware.ota.bin"
+          [ -f "$SRC" ] || { echo "::error::No OTA binary at $SRC"; exit 1; }
+          SIZE=$(stat -c%s "$SRC")
+
+          STAGE="$RUNNER_TEMP/fw"; rm -rf "$STAGE"; mkdir -p "$STAGE"
+          cp "$SRC" "$STAGE/firmware.ota.bin"
+          cat > "$STAGE/build.json" <<EOF
+          {
+            "version": "${{ steps.ver.outputs.version }}",
+            "commit": "${GITHUB_SHA}",
+            "esphome_version": "${ESPHOME_VERSION}",
+            "bytes": ${SIZE},
+            "run_id": "${GITHUB_RUN_ID}"
+          }
+          EOF
+
+          # Binaries go to the petrichor bucket on delphi, NOT the runner's disk.
+          # github_runner is a 4 GB VM at ~86% full that also hosts the OpenClaw
+          # gateway and 16 other repos' runners.
+          docker run --rm -u "$(id -u):$(id -g)" \
+            --entrypoint petrichor-store \
+            -e INFISICAL_TOKEN \
+            -e INFISICAL_DOMAIN -e INFISICAL_PROJECT_ID \
+            -e INFISICAL_ENV -e INFISICAL_PATH \
+            -v "$STAGE:/stage:ro" \
+            "${{ steps.img.outputs.tag }}" \
+            push "${{ steps.ver.outputs.version }}" /stage/firmware.ota.bin /stage/build.json
+
+          rm -rf "$STAGE"
+          echo "bytes=${SIZE}" >> "$GITHUB_OUTPUT"
+
+      - name: Tag and release
+        if: ${{ github.event_name == 'push' || inputs.dry_run == false }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          VERSION="${{ steps.ver.outputs.version }}"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "$VERSION" -m "Firmware $VERSION (${GITHUB_SHA:0:7})"
+          git push origin "$VERSION"
+          # No assets: the binary carries Wi-Fi and API credentials.
+          gh release create "$VERSION" --title "$VERSION" --generate-notes
+
+      - name: Summary
+        run: |
+          {
+            echo "### Firmware build"
+            echo
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Version | \`${{ steps.ver.outputs.version }}\` |"
+            echo "| Commit | \`${GITHUB_SHA:0:7}\` |"
+            echo "| ESPHome | \`${ESPHOME_VERSION}\` |"
+            echo "| OTA image | ${{ steps.store.outputs.bytes }} bytes |"
+            echo "| Stored | \`s3://petrichor/firmware/${{ steps.ver.outputs.version }}/\` |"
+            echo "| Tagged | ${{ (github.event_name == 'push' || inputs.dry_run == false) && 'yes' || 'no (dry run)' }} |"
+          } >> "$GITHUB_STEP_SUMMARY"
