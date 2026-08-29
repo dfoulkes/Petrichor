@@ -126,9 +126,72 @@ gets established there.
 - [ ] **Peg out the four head positions** — S11, S12 (Line 1) and S21, S22
       (Line 2), one per corner. Needed before swing joints can be sized.
 - [ ] **Mark both trench routes.**
-- [ ] **Dig the valve box pit** — to the HydroSure footprint **640 × 507 mm**,
-      **~375 mm deep** (300 mm box + 75 mm gravel bed).
-- [ ] **Lay membrane, then the gravel bed** in the pit.
+- [x] **Dig the valve box pit** — ✅ **DONE 2026-08-29** by Dan and Alysha:
+      **700 × 500 × 410 mm deep**, membrane laid, 1 of 3 gravel bags in.
+      *(An initial "roughly 610" on the long axis was Dan's mis-measure,
+      corrected same day to 700. No re-cut needed — 700 is bang on target.)*
+      **Depth:** 410 mm − 300 mm box = **110 mm bed**, lid flush. More drainage
+      than the 75 mm originally specced, and the number that is painful to fix
+      once membrane is down — so this is the good half.
+      **Long axis:** 700 vs the Irritec Jumbo 12" **640 mm** base = **30 mm
+      clearance per end.** ✅
+      ✅ **Short axis: 500 vs a 500 mm base — SETTLED BY DAN 2026-08-29,
+      do not re-raise.** *"I can slightly edge any space needed when it arrives.
+      To me that is a non issue."* The taper backs him: the box goes
+      **500 → 370 over 300 mm (43 mm per 100 mm)**, so only the bottom ~50 mm is
+      ever tight — 21 mm a side at 100 mm up, 65 mm at the lid — and it
+      backfills freely above the rim. Any tolerance shortfall (the same-mould
+      HydroSure is quoted at 507) gets edged out with a spade on the day.
+      **Dan's stated acceptance criterion is not clearance, it is access:**
+      *"so long as we can get into the box as needed."* See the access rule below.
+      ❌ **The old target line here was defective and is retired:** it read
+      *"to the HydroSure footprint 640 × 507 mm"* — the bare footprint of the
+      *wrong variant*, with **no working clearance at all**. A pit dug exactly
+      to it could never have been levelled or backfilled.
+      ✅ **Settled pit spec: 700 mm long × 400–410 mm deep**, short axis ≥ the
+      box's *measured* base. Measure **at gravel-bed level, not the top rim** —
+      hand-dug sides taper inward.
+- [ ] **⚠️ CUT THE PIPE ENTRIES AS BOTTOM-OPEN NOTCHES, NOT CLOSED HOLES.**
+      **This is a one-way decision and it is what "can we get into the box"
+      actually turns on.** Two tiers of access:
+      **(a) Through the lid — routine, fine.** Clear aperture **≈475 × 345 mm**
+      (*inferred* from the 520 × 370 body top, not vendor-stated). Solenoid
+      coils, flow-control stems, bleed levers and all **3 DBR/Y splices** sit
+      inboard and stay reachable. This covers everything done in normal life.
+      **(b) Full manifold removal — only by lifting the box off.** The taped
+      assembly is **500 × 260 mm** and will not pass up through a ~475 mm
+      throat. Already recorded in `plumbing-rebuild.md`.
+      **Whether (b) is ever possible is decided at cut time.** The MDPE crosses
+      the wall horizontally. With a **closed hole**, lifting the box drives the
+      hole's *lower* edge into the pipe and jams after ~15 mm — **the box is
+      trapped for the life of the install** and the manifold only comes out by
+      cutting pipe. With a **U-notch open to the bottom rim**, the box lifts
+      vertically clean off over the pipework, pipes undisturbed.
+      **The notch costs nothing: the box has no floor.** It is an open-bottomed
+      tapered tub on gravel — a slot up from the bottom edge opens nothing that
+      is not already open to the ground. Size it ~**120 mm tall × 30 mm wide**
+      (lateral centreline lands ~100 mm up the wall). Deburr; the wall is
+      corrugated PP ~4–5 mm and a jigsaw goes through it.
+      ⚠️ **Evidence class: the geometry is derived here, not vendor-stated** —
+      trivially provable on a scrap of the box. Whether it is standard *trade*
+      practice is **unverified**; worth a sanity-check against r/Irrigation,
+      who outrank the manufacturer on practice.
+- [ ] **Dry-fit the box before the bed is finished** — still never done, and it
+      is now the **only** thing standing between the pit and the box going in.
+      Tape the **real base** on the short axis: **≤500 mm → set it as dug**;
+      **>500 mm → scrape ~15 mm off each side while the hole is still open**
+      (two minutes now, versus lifting membrane and gravel a second time).
+      Then cut the pipe entries **oversize** so the 42 mm Plasson adaptor hex
+      sits *in* the wall aperture rather than fighting it.
+- [x] **Lay membrane, then the gravel bed** — membrane down 2026-08-29, 1 of 3
+      bags tipped (≈50 mm). ✅ **Three bags is enough — no second Wickes trip.**
+      Wickes `133795` is **22.5 kg** at **£4.10** (verified on the Wickes
+      product page 2026-08-29; reconciles with £12.30 × 3 on order 702854640),
+      so 3 bags = **67.5 kg**. The bed at 700 × 500 × 110 mm needs
+      **0.0385 m³ ≈ 58–62 kg** (bag weight verified; density 1.5–1.6 t/m³
+      *inferred*) — covered, with ~a third of a bag spare. Haunch the sides
+      with the spoil. *(A "buy 2 more bags" flag raised earlier was priced off
+      a 570 mm width that the corrected measurement removed.)*
 
 ## Phase C — The dig
 
@@ -157,6 +220,28 @@ details assume swing joints. Currently backlogged — un-backlog it before diggi
 
 - [ ] **Strip the turf from the widened edging strip** — it is being removed
       permanently, not relaid. 150–200 mm wider than the current edge.
+- [ ] **⚠️ EXPECT BURIED ROOT AT TRENCH DEPTH — it is already proven present.**
+      Digging the valve box pit on **2026-08-29** turned up a substantial root
+      from a long-gone tree at **~200 mm down, right at the topsoil/clay
+      boundary**. Still solid — **it took a jigsaw to cut out**, in parts, not
+      a spade. **200 mm is exactly the lateral trench depth**, so this is on the
+      critical path, not a curiosity.
+      **Implications for Phase C:**
+      - Roots radiate, so budget for **more of the same along both trench
+        routes**, not a one-off. **Probe the pegged routes before committing a
+        weekend** — a jigsaw job discovered mid-trench blows the schedule.
+      - **The jigsaw is trenching kit now**, alongside the spade. Add a spare
+        blade; buried grit blunts them fast.
+      - It does **not** threaten the install once cut — sound dead wood beside
+        a pipe is inert. The cost is time, not risk.
+      **Species — not identified, and it does not need to be.** Best call from
+      a photo is **Prunus, plum/damson ahead of cherry**, on the streaky
+      two-tone heartwood (plum runs multi-coloured; cherry is uniform and
+      darkens evenly). *Moderate confidence, from photograph only — a wetted
+      end-grain macro would settle it.* ⚠️ Ruled out on sight but worth stating:
+      **not yew** (bark is wrong) — yew is toxic and must not be burnt.
+      **If Prunus is confirmed, the arisings are prime BBQ smoking wood** —
+      cherry and plum both. Don't skip it into the green bin.
 - [ ] **Trench the laterals to 200–250 mm.** Depth is set by the spray body, not
       by frost: **PROS-04-PRS40 retracted height is 155 mm**, so the inlet sits
       155 mm below turf and the lateral centreline lands ~200 mm.
