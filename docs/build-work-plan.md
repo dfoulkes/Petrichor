@@ -126,9 +126,36 @@ gets established there.
 - [ ] **Peg out the four head positions** — S11, S12 (Line 1) and S21, S22
       (Line 2), one per corner. Needed before swing joints can be sized.
 - [ ] **Mark both trench routes.**
-- [ ] **Dig the valve box pit** — to the HydroSure footprint **640 × 507 mm**,
-      **~375 mm deep** (300 mm box + 75 mm gravel bed).
-- [ ] **Lay membrane, then the gravel bed** in the pit.
+- [~] **Dig the valve box pit** — ⚠️ **IN PROGRESS, UNDERSIZED. 2026-08-29:**
+      Dan and Alysha dug **610 × 500 × 410 mm deep** ("roughly"). Membrane laid
+      and **1 of 3 gravel bags** tipped in.
+      **Depth is right** — 410 mm − 300 mm box = **110 mm bed**, lid flush.
+      **Both horizontal axes are short and the box will not seat:**
+      the box bought is the **Irritec Jumbo 12"** with a **640 × 500 mm base**
+      (EGI + sprinkler-irrigation both quote 500 × 640; HydroSure same mould
+      640 × 507) — so 610 is **30 mm short** on length and 500 is **zero
+      clearance** on width. The tub is tapered 640 → 520 over 300 mm
+      (**40 mm/100 mm**), so at 610 mm it **wedges 75 mm off the floor**.
+      ❌ **This target line was itself wrong** — it quoted the bare box
+      footprint with **no working clearance**, and the *HydroSure* variant at
+      that. A pit dug exactly to it could never have been levelled or backfilled.
+      ✅ **Corrected target: 700 × 570 mm, 400–410 mm deep** — ~30–35 mm
+      clearance per side. **Measure at gravel-bed level, not the top rim**;
+      hand-dug sides taper inward.
+- [ ] **Re-cut the pit to 700 × 570 mm** — lift the membrane, cut the sides
+      back, relay membrane (floor **plus a turn-up the sides**), re-level gravel.
+- [ ] **⚠️ Buy 2 more gravel bags before re-setting the bed.** Wickes `133795`
+      is a **22.5 kg** major bag at **£4.10** (verified on the Wickes product
+      page 2026-08-29 — reconciles with the £12.30 × 3 on order 702854640).
+      Three bags = 67.5 kg ≈ **0.042–0.045 m³** (bag weight verified; density
+      1.5–1.6 t/m³ *inferred*). At 700 × 570 × 110 mm the bed needs
+      **≈0.044 m³ ≈ 66–70 kg** — i.e. **exactly all three bags with nothing
+      left to haunch the sides.** 2 spare bags = £8.20, Click & Collect.
+- [ ] **Dry-fit the box and manifold before cutting any knock-out.** Still never
+      done — Phase A flagged it and the pit was dug ahead of it. Tape the *real*
+      base and the *real* assembly; the tape beats every spec sheet above.
+      Cut the pipe entries **oversize** so the 42 mm Plasson adaptor hex sits
+      *in* the wall aperture rather than fighting it.
 
 ## Phase C — The dig
 
