@@ -126,36 +126,46 @@ gets established there.
 - [ ] **Peg out the four head positions** — S11, S12 (Line 1) and S21, S22
       (Line 2), one per corner. Needed before swing joints can be sized.
 - [ ] **Mark both trench routes.**
-- [~] **Dig the valve box pit** — ⚠️ **IN PROGRESS, UNDERSIZED. 2026-08-29:**
-      Dan and Alysha dug **610 × 500 × 410 mm deep** ("roughly"). Membrane laid
-      and **1 of 3 gravel bags** tipped in.
-      **Depth is right** — 410 mm − 300 mm box = **110 mm bed**, lid flush.
-      **Both horizontal axes are short and the box will not seat:**
-      the box bought is the **Irritec Jumbo 12"** with a **640 × 500 mm base**
-      (EGI + sprinkler-irrigation both quote 500 × 640; HydroSure same mould
-      640 × 507) — so 610 is **30 mm short** on length and 500 is **zero
-      clearance** on width. The tub is tapered 640 → 520 over 300 mm
-      (**40 mm/100 mm**), so at 610 mm it **wedges 75 mm off the floor**.
-      ❌ **This target line was itself wrong** — it quoted the bare box
-      footprint with **no working clearance**, and the *HydroSure* variant at
-      that. A pit dug exactly to it could never have been levelled or backfilled.
-      ✅ **Corrected target: 700 × 570 mm, 400–410 mm deep** — ~30–35 mm
-      clearance per side. **Measure at gravel-bed level, not the top rim**;
+- [x] **Dig the valve box pit** — ✅ **DONE 2026-08-29** by Dan and Alysha:
+      **700 × 500 × 410 mm deep**, membrane laid, 1 of 3 gravel bags in.
+      *(An initial "roughly 610" on the long axis was Dan's mis-measure,
+      corrected same day to 700. No re-cut needed — 700 is bang on target.)*
+      **Depth:** 410 mm − 300 mm box = **110 mm bed**, lid flush. More drainage
+      than the 75 mm originally specced, and the number that is painful to fix
+      once membrane is down — so this is the good half.
+      **Long axis:** 700 vs the Irritec Jumbo 12" **640 mm** base = **30 mm
+      clearance per end.** ✅
+      ⚠️ **Short axis: 500 vs a 500 mm base = zero nominal clearance.**
+      Dan's call is that this is fine, and the taper supports him — the box
+      goes **500 → 370 over 300 mm (43 mm per 100 mm)**, so only the bottom
+      ~50 mm is tight; at 100 mm up there is 21 mm a side and at the lid 65 mm.
+      It self-centres and backfills freely above the rim. **The residual risk is
+      tolerance, not design:** 500 is a vendor spec-table figure for a large
+      moulded PP tub (±5 mm is ordinary) and the same-mould HydroSure is quoted
+      at **507**. **Settled by the tape, not by this doc** — see next item.
+      ❌ **The old target line here was defective and is retired:** it read
+      *"to the HydroSure footprint 640 × 507 mm"* — the bare footprint of the
+      *wrong variant*, with **no working clearance at all**. A pit dug exactly
+      to it could never have been levelled or backfilled.
+      ✅ **Settled pit spec: 700 mm long × 400–410 mm deep**, short axis ≥ the
+      box's *measured* base. Measure **at gravel-bed level, not the top rim** —
       hand-dug sides taper inward.
-- [ ] **Re-cut the pit to 700 × 570 mm** — lift the membrane, cut the sides
-      back, relay membrane (floor **plus a turn-up the sides**), re-level gravel.
-- [ ] **⚠️ Buy 2 more gravel bags before re-setting the bed.** Wickes `133795`
-      is a **22.5 kg** major bag at **£4.10** (verified on the Wickes product
-      page 2026-08-29 — reconciles with the £12.30 × 3 on order 702854640).
-      Three bags = 67.5 kg ≈ **0.042–0.045 m³** (bag weight verified; density
-      1.5–1.6 t/m³ *inferred*). At 700 × 570 × 110 mm the bed needs
-      **≈0.044 m³ ≈ 66–70 kg** — i.e. **exactly all three bags with nothing
-      left to haunch the sides.** 2 spare bags = £8.20, Click & Collect.
-- [ ] **Dry-fit the box and manifold before cutting any knock-out.** Still never
-      done — Phase A flagged it and the pit was dug ahead of it. Tape the *real*
-      base and the *real* assembly; the tape beats every spec sheet above.
-      Cut the pipe entries **oversize** so the 42 mm Plasson adaptor hex sits
-      *in* the wall aperture rather than fighting it.
+- [ ] **Dry-fit the box before the bed is finished** — still never done, and it
+      is now the **only** thing standing between the pit and the box going in.
+      Tape the **real base** on the short axis: **≤500 mm → set it as dug**;
+      **>500 mm → scrape ~15 mm off each side while the hole is still open**
+      (two minutes now, versus lifting membrane and gravel a second time).
+      Then cut the pipe entries **oversize** so the 42 mm Plasson adaptor hex
+      sits *in* the wall aperture rather than fighting it.
+- [x] **Lay membrane, then the gravel bed** — membrane down 2026-08-29, 1 of 3
+      bags tipped (≈50 mm). ✅ **Three bags is enough — no second Wickes trip.**
+      Wickes `133795` is **22.5 kg** at **£4.10** (verified on the Wickes
+      product page 2026-08-29; reconciles with £12.30 × 3 on order 702854640),
+      so 3 bags = **67.5 kg**. The bed at 700 × 500 × 110 mm needs
+      **0.0385 m³ ≈ 58–62 kg** (bag weight verified; density 1.5–1.6 t/m³
+      *inferred*) — covered, with ~a third of a bag spare. Haunch the sides
+      with the spoil. *(A "buy 2 more bags" flag raised earlier was priced off
+      a 570 mm width that the corrected measurement removed.)*
 
 ## Phase C — The dig
 
