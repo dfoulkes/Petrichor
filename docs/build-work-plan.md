@@ -135,14 +135,15 @@ gets established there.
       once membrane is down — so this is the good half.
       **Long axis:** 700 vs the Irritec Jumbo 12" **640 mm** base = **30 mm
       clearance per end.** ✅
-      ⚠️ **Short axis: 500 vs a 500 mm base = zero nominal clearance.**
-      Dan's call is that this is fine, and the taper supports him — the box
-      goes **500 → 370 over 300 mm (43 mm per 100 mm)**, so only the bottom
-      ~50 mm is tight; at 100 mm up there is 21 mm a side and at the lid 65 mm.
-      It self-centres and backfills freely above the rim. **The residual risk is
-      tolerance, not design:** 500 is a vendor spec-table figure for a large
-      moulded PP tub (±5 mm is ordinary) and the same-mould HydroSure is quoted
-      at **507**. **Settled by the tape, not by this doc** — see next item.
+      ✅ **Short axis: 500 vs a 500 mm base — SETTLED BY DAN 2026-08-29,
+      do not re-raise.** *"I can slightly edge any space needed when it arrives.
+      To me that is a non issue."* The taper backs him: the box goes
+      **500 → 370 over 300 mm (43 mm per 100 mm)**, so only the bottom ~50 mm is
+      ever tight — 21 mm a side at 100 mm up, 65 mm at the lid — and it
+      backfills freely above the rim. Any tolerance shortfall (the same-mould
+      HydroSure is quoted at 507) gets edged out with a spade on the day.
+      **Dan's stated acceptance criterion is not clearance, it is access:**
+      *"so long as we can get into the box as needed."* See the access rule below.
       ❌ **The old target line here was defective and is retired:** it read
       *"to the HydroSure footprint 640 × 507 mm"* — the bare footprint of the
       *wrong variant*, with **no working clearance at all**. A pit dug exactly
@@ -150,6 +151,31 @@ gets established there.
       ✅ **Settled pit spec: 700 mm long × 400–410 mm deep**, short axis ≥ the
       box's *measured* base. Measure **at gravel-bed level, not the top rim** —
       hand-dug sides taper inward.
+- [ ] **⚠️ CUT THE PIPE ENTRIES AS BOTTOM-OPEN NOTCHES, NOT CLOSED HOLES.**
+      **This is a one-way decision and it is what "can we get into the box"
+      actually turns on.** Two tiers of access:
+      **(a) Through the lid — routine, fine.** Clear aperture **≈475 × 345 mm**
+      (*inferred* from the 520 × 370 body top, not vendor-stated). Solenoid
+      coils, flow-control stems, bleed levers and all **3 DBR/Y splices** sit
+      inboard and stay reachable. This covers everything done in normal life.
+      **(b) Full manifold removal — only by lifting the box off.** The taped
+      assembly is **500 × 260 mm** and will not pass up through a ~475 mm
+      throat. Already recorded in `plumbing-rebuild.md`.
+      **Whether (b) is ever possible is decided at cut time.** The MDPE crosses
+      the wall horizontally. With a **closed hole**, lifting the box drives the
+      hole's *lower* edge into the pipe and jams after ~15 mm — **the box is
+      trapped for the life of the install** and the manifold only comes out by
+      cutting pipe. With a **U-notch open to the bottom rim**, the box lifts
+      vertically clean off over the pipework, pipes undisturbed.
+      **The notch costs nothing: the box has no floor.** It is an open-bottomed
+      tapered tub on gravel — a slot up from the bottom edge opens nothing that
+      is not already open to the ground. Size it ~**120 mm tall × 30 mm wide**
+      (lateral centreline lands ~100 mm up the wall). Deburr; the wall is
+      corrugated PP ~4–5 mm and a jigsaw goes through it.
+      ⚠️ **Evidence class: the geometry is derived here, not vendor-stated** —
+      trivially provable on a scrap of the box. Whether it is standard *trade*
+      practice is **unverified**; worth a sanity-check against r/Irrigation,
+      who outrank the manufacturer on practice.
 - [ ] **Dry-fit the box before the bed is finished** — still never done, and it
       is now the **only** thing standing between the pit and the box going in.
       Tape the **real base** on the short axis: **≤500 mm → set it as dug**;
