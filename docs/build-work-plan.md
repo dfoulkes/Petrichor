@@ -220,6 +220,28 @@ details assume swing joints. Currently backlogged — un-backlog it before diggi
 
 - [ ] **Strip the turf from the widened edging strip** — it is being removed
       permanently, not relaid. 150–200 mm wider than the current edge.
+- [ ] **⚠️ EXPECT BURIED ROOT AT TRENCH DEPTH — it is already proven present.**
+      Digging the valve box pit on **2026-08-29** turned up a substantial root
+      from a long-gone tree at **~200 mm down, right at the topsoil/clay
+      boundary**. Still solid — **it took a jigsaw to cut out**, in parts, not
+      a spade. **200 mm is exactly the lateral trench depth**, so this is on the
+      critical path, not a curiosity.
+      **Implications for Phase C:**
+      - Roots radiate, so budget for **more of the same along both trench
+        routes**, not a one-off. **Probe the pegged routes before committing a
+        weekend** — a jigsaw job discovered mid-trench blows the schedule.
+      - **The jigsaw is trenching kit now**, alongside the spade. Add a spare
+        blade; buried grit blunts them fast.
+      - It does **not** threaten the install once cut — sound dead wood beside
+        a pipe is inert. The cost is time, not risk.
+      **Species — not identified, and it does not need to be.** Best call from
+      a photo is **Prunus, plum/damson ahead of cherry**, on the streaky
+      two-tone heartwood (plum runs multi-coloured; cherry is uniform and
+      darkens evenly). *Moderate confidence, from photograph only — a wetted
+      end-grain macro would settle it.* ⚠️ Ruled out on sight but worth stating:
+      **not yew** (bark is wrong) — yew is toxic and must not be burnt.
+      **If Prunus is confirmed, the arisings are prime BBQ smoking wood** —
+      cherry and plum both. Don't skip it into the green bin.
 - [ ] **Trench the laterals to 200–250 mm.** Depth is set by the spray body, not
       by frost: **PROS-04-PRS40 retracted height is 155 mm**, so the inlet sits
       155 mm below turf and the lateral centreline lands ~200 mm.
