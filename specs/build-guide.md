@@ -424,7 +424,8 @@ which makes the electrical side easy — the work is all about **weather**, not 
    `NO`. That's the "zones + 1" core count in the flesh.
 
 > Plumbing order at the manifold: **tap → double-check valve → (low-flow filter) → manifold →
-> solenoids → zones.** The filter is cheap insurance for the drip line and rotary nozzles.
+> solenoids → zones.** ⚠️ The filter is **mandatory** now the beds are drip-irrigated — emitter
+> clogging is the main failure mode of any drip system. See 8D for mesh size and ordering.
 
 ### 7D — Pipe size & the thread standard (BSP — check yours)
 
@@ -467,52 +468,68 @@ This is where "water last of all" finally lands. **Do one zone end to end before
 **The numbers that drive this** (flow/pressure test, 2026-07-20): **~3.8 bar static, ~19 L/min.**
 Pressure is comfortably in band; **flow is the constraint** — a classic single-domestic-tap throttle.
 
-### 8A — Nozzles: low-flow rotaries, not fixed sprays
+### 8A — Beds first: drip, not rotaries
 
-1. [ ] Fit **low-flow rotaries** (Hunter MP Rotator / Rain Bird R-VAN), ~1.5–3 L/min each. Within
-   the ~15 L/min working budget (~80 % of measured flow) that's **~5–8 heads per zone**; fixed
-   sprays are thirsty and you'd fit only 2–3. Rotaries also give better uniformity and matched
-   precipitation.
-2. [ ] ⚠️ **Sizing: only the MP3000 reaches.** The plot is **11 × 14 m**, so the centre is
-   **~8.9 m** from the nearest corner (half-diagonal). MP1000 throws 2.5–4.5 m and **MP2000** 4–6.7 m
-   — both water the corners and leave the middle dry, the exact failure that ruled out fixed sprays.
-   **MP3000 is 6.7–9.0 m**, so 8.9 m is at the very top of its range with nothing spare for wind,
-   pressure sag or a partly-blocked nozzle.
+**The three flower beds are the priority.** They sit **north, east and west** looking out from the
+house; the lawn is the leftover middle. An earlier revision of this guide had this backwards — it
+sized the whole hydraulic design around throwing water *across the lawn*, and left the beds with no
+zone at all. The beds appeared in the design only as the place the sprinklers were mounted.
 
-> ⚠️ **Open design question — do not treat "four corners facing inward" as settled.** Standard
-> practice is **head-to-head** spacing: every head's spray reaches its neighbours, because a rotary's
-> precipitation rate is **lowest at the end of its throw**. Four corner heads on 11 × 14 m gives
-> soaked corners, a weak middle and dry mid-edges *whatever* nozzle is fitted. Done properly this
-> plot likely wants heads at the corners **and mid-sides** — roughly **8 heads at ~7 m spacing** —
-> which changes head count, total flow, zone count and pipe run. **8C's measurement is the input to
-> that decision**; resolve it before buying heads 2–8.
+1. [ ] **Use pressure-compensating (PC) inline dripline in the beds** — 16 mm, ~2.3 L/hr emitters at
+   ~30–33 cm spacing ⚠. Rotaries are the wrong tool for a bed: overhead spray wets foliage (fungal
+   risk in a UK summer), gets shadowed by the planting itself, and lands most of its water where the
+   roots are not.
+2. [ ] ⚠️ **PC specifically, not plain dripline.** Pressure-compensating emitters hold output
+   constant across roughly 1–4 bar ⚠, which buys two things this plot needs: it absorbs the **subtle
+   decline** in the garden's level (~0.1 bar per metre of fall — see README *Garden Facts*), and it
+   makes emitter output independent of position along the run.
 
-> This **revises two earlier decisions** — "fixed spray nozzles" → rotaries, and "one nozzle at a
-> time" → **one *zone* at a time**. The flow numbers made the call; see README **Decisions**.
+> **Why this supersedes the rotary sizing.** 8A previously argued that *"only the MP3000 reaches"* —
+> the 11 × 14 m plot puts the centre 8.9 m from the nearest corner, against the MP3000's 9.0 m
+> ceiling. That argument was about **watering the lawn**, which is no longer the MVP target. It
+> carries forward to **Stage 9**, where it is comfortable rather than marginal: the three beds shrink
+> the lawn to roughly **8 × 12.5 m**, so corner-to-centre falls from 8.9 m to **~7.4 m** — mid-range
+> for an MP3000 instead of at its ceiling.
 
-### 8B — Zones: fewer than you think
+> This also **closes the "open design question"** about four-corners-inward versus head-to-head
+> spacing. That question was only ever about lawn coverage. It moves to Stage 9 with the rotary
+> hardware and gates nothing in the MVP.
 
-3. [ ] The interlock already runs **one zone at a time**, and low-flow rotaries mean the **four
-   corners (~4 × 2.5 ≈ 10 L/min) fit in a single zone.** So the MVP is **~2 zones**, not 8:
-   - **HP:** the corner rotary ring (README's self-back-feeding **circular loop** equalises pressure across the heads).
-   - **LP:** a **drip line** for the **5** hanging baskets — needs a **pressure reducer (~1–1.5 bar) + filter**.
-   The 8-channel relay is then **expansion headroom**, not a target to fill.
-4. [ ] ⚠️ **Verify dynamic sag before trusting a grouped zone.** Running 4 heads together depends on
-   pressure holding *under flow*, which is **not yet measured**. The rig and instrumentation for that
-   measurement are specified in **8C** (two gauges — tap and head). Confirm the zone holds
-   **≥ ~2.75 bar under ~10 L/min** — that is the PRS40's regulation point, below which the head can
-   no longer hold 2.8 bar and performance falls away.
-   **Fallback:** split HP into **two zones of two corners** — the interlock and the spare relay
-   channels make that free.
+### 8B — Zones: three targets, one valve in hand
 
-> **How many valves? Valves = zones.** The full system is **2** (the HP rotary ring + the LP drip
-> line), or **3** only if the sag test forces the ring to split. **Not 8** — the relay is headroom.
-> You already have one valve; **buy no more until 8C has proven the first head.**
+3. [ ] **Three zones, built in priority order.** The firmware interlock runs one at a time.
 
-### 8C — Prove one head first (buy this, do this before anything else)
+| Zone | Target | Method | Flow ⚠ | When |
+|---|---|---|---|---|
+| **1** | **The three beds** — N (~11 m) + E (~12.5 m) + W (~12.5 m) ≈ **36–39 m** of bed; ~**80 m** of dripline at two laterals per bed | PC inline dripline | ~**9 L/min** | **MVP** |
+| **2** | **Hanging baskets** | drip | small | after zone 1 |
+| **3** | **The lawn** — ~8 × 12.5 m, 4–6 rotaries | MP3000 on PRS40 | 12–18 L/min | **deferred — Stage 9** |
 
-The first wet test needs **no trenching and no second valve** — a temporary surface rig on the valve
-you already have. **Test through the pipe you will actually install**: hose has different bore and
+4. [ ] **Zones 1 and 2 share one reducer + filter**, splitting to separate valves downstream. Both
+   are low-pressure drip, but baskets dry out far faster than beds and want their own run time.
+
+> **How many valves? Valves = zones — so 3 eventually, 1 needed now.** You already have one, and
+> **zone 1 is the entire MVP.** Buy valve #2 with the basket zone; #3 only if the lawn gets built.
+> The 8-channel relay stays headroom — though see Stage 9 for the first concrete use of it.
+
+> ⚠️ **Two earlier constraints are now obsolete for the MVP.**
+> - **The circular self-back-feeding loop** (README *Decisions*) exists to equalise pressure across
+>   rotary heads. **PC dripline equalises itself**, so the loop buys nothing in a drip zone. It
+>   carries forward to Stage 9 if the lawn ring is built.
+> - **The sag-under-flow gate** — *"confirm the zone holds ≥ ~2.75 bar under ~10 L/min"* — was the
+>   PRS40's regulation point. Zone 1 runs ~9 L/min through a reducer set to ~1.5 bar from 3.8 bar
+>   static; the headroom is large and PC emitters are flat across it. **The MVP is no longer gated on
+>   that measurement.** It still gates Stage 9.
+
+### 8C — Prove the supply and the valve (the rig you already own)
+
+This rig was bought to prove a **rotary head**. It is **still worth building** — it proves the DCV,
+the solenoid valve, the MDPE run and every compression joint, and it produces the supply-loss model.
+Only the *gate* changed: with the beds as the priority, the head is now a convenient **load** rather
+than the thing under test.
+
+The wet test needs **no trenching and no second valve** — a temporary surface rig on the valve you
+already have. **Test through the pipe you will actually install**: hose has different bore and
 friction to 20 mm MDPE, so a reading taken through a garden hose does not transfer to the built
 system, and the transferability *is* the point.
 
@@ -529,6 +546,18 @@ system, and the transferability *is* the point.
 | **MDPE tee 20 mm × 1/2" BSPF** + bush 1/2" M × 1/4" F + **10 bar gauge, 1/4" M bottom entry** | The head-end gauge — see below | 10.11 |
 | PTFE tape | Every threaded joint | 0.80 |
 
+> **Order provenance** (so "do we already have this?" is answerable from the repo, not the inbox).
+> The BOM above spans **three orders placed within 20 minutes on 2026-08-10**, totalling **£163.39**:
+>
+> | Order | Contents | £ | Received |
+> |---|---|---|---|
+> | **EGI143157** — Easy Garden Irrigation | MDPE coil, tee, 4 × connectors, tap splitter, PRS40 body | 137.60 | delivered 2026-08-12 |
+> | **EGI143158** — Easy Garden Irrigation | MP-3000 nozzle (`HI/MP3000-90`) | 14.20 | delivered 2026-08-13 |
+> | **A27347852422** — Screwfix | 2 × bush 1"×3/4", PTFE tape, 2 × bush 1/2"×1/4", 10 bar gauge | 11.59 | Click & Collect, picked up |
+>
+> The MP3000 shipped **separately** from everything else — a single small packet, easily mistaken for
+> a missing item when reconciling against EGI143157 alone.
+
 ⚠️ **Instrument BOTH ends.** A dead-end gauge screwed to a tap reads **static** pressure and tells
 you almost nothing. Fit **two**:
 
@@ -538,8 +567,9 @@ you almost nothing. Fit **two**:
 | **#2** | at the head | **MDPE tee** — sprinkler on the run, gauge on the branch, so flow passes both | what the sprinkler actually sees |
 
 **#1 − #2 is the number that matters**: total loss across the pipe run, the valve and every fitting.
-That figure **scales** — it is how you predict the system with a longer run and four heads pulling at
-once, which *is* the 2-vs-3-valve question. One gauge gives a reading; two give a model.
+That figure **scales** — it is how you predict the system with a longer run and more load pulling at
+once. One gauge gives a reading; two give a model. It no longer gates the MVP (see 8B), but it is
+the input to **Stage 9** and it is far cheaper to measure now, on a surface rig, than after trenching.
 
 5. [ ] Confirm the outside tap's **double-check valve** before any water. Many UK taps have an
    integral DCV; on a new build it may sit **inline behind the wall** and be invisible. If absent,
@@ -549,19 +579,67 @@ once, which *is* the 2-vs-3-valve question. One gauge gives a reading; two give 
    ground.
 7. [ ] **Wet-test:** energise the zone — the pilot-operated diaphragm should open and the head should
    spray. The manual **bleed lever** proves the valve body independently of the electrics.
-8. [ ] **Read both gauges under flow.** This is the **gate**: it decides whether one zone carries all
-   four corner rotaries (**2 valves total**) or must split (**3**). *Only now* buy valve #2 — same
-   model and thread standard, bushed identically, for a uniform manifold.
+8. [ ] **Read both gauges under flow** and record `#1 − #2`. This proves the supply chain end to end
+   and banks the loss figure for Stage 9. Do **not** buy valve #2 off the back of it — zone 1 needs
+   only the valve you already have.
 
-### 8D — Commission the zone in situ (the permanent build)
+### 8D — Build the bed drip zone (the MVP)
 
-Once the head test passes, build it for real — valve(s) in the buried box, field cable run, heads plumbed.
+The three beds, on the valve you already own. This is the zone the whole project exists for.
 
-9. [ ] Repeat the **wet actuation** check on each installed valve.
-10. [ ] Re-check the **supply-to-coil volt-drop in tenths** (Stage 5C method) with the **field run** in
-   circuit — that proves the cable and every gel connector under real load.
-11. [ ] **Add the drip/LP zone** (pressure reducer + filter). Subdivide the HP ring **only if** the sag
-   test demanded it.
+**Still to buy** ⚠ *(indicative — no dripline datasheet is in `datasheets/` yet; confirm emitter
+spacing and flow against the product you actually order):*
+
+| Part | Why |
+|---|---|
+| **16 mm PC inline dripline**, ~80 m | Two laterals per bed at ~40–50 cm apart. **Pressure-compensating** — see 8A |
+| **Pressure reducer**, ~1.5 bar, 3/4" BSP | Drip runs at ~1–1.5 bar. Your supply is 3.8 bar static — unreduced it will blow emitters off the line |
+| **Filter**, ~120 mesh / 130 micron, 3/4" BSP | **Not optional.** Emitter clogging is the main failure mode of every drip system |
+| **16 mm fittings** — start connector (3/4" BSP × 16 mm), tees, elbows, end caps or flush valves | Joining laterals to the 20 mm MDPE mainline |
+| **Dripline pegs**, ~1 per 1–1.5 m | Stops the line lifting and wandering as it warms |
+
+9. [ ] Plumb the manifold **tap → DCV → splitter → MDPE → filter → reducer → valve → dripline.**
+   Filter **before** the reducer, so grit never reaches the regulating element.
+10. [ ] Lay **two laterals per bed**, ~40–50 cm apart, snaked through the planting and pegged down.
+    Keep emitters **off the stems** — wetting the crown of a plant is the thing drip is meant to avoid.
+11. [ ] **Flush every lateral before capping it.** Run water through open-ended until it comes out
+    clean. Swarf from cutting the mainline will otherwise end up in the first emitters.
+12. [ ] **Run it and dig.** Thirty minutes in, put a trowel in at three points down each bed. You are
+    looking for wetted cones that have **joined up** — a wet band, not isolated damp spots. Adjust run
+    time, not emitter spacing, until they merge.
+
+> **Mulch after commissioning, not before.** Dripline is laid *on* the soil and covered with mulch —
+> mulch first and you cannot see what you are doing or find a blocked emitter later.
+
+### 8E — Commission in situ (the permanent build)
+
+Once zone 1 waters correctly, build it for real — valve in the buried box, field cable run.
+
+13. [ ] Repeat the **wet actuation** check on each installed valve.
+14. [ ] Re-check the **supply-to-coil volt-drop in tenths** (Stage 5C method) with the **field run** in
+    circuit — that proves the cable and every gel connector under real load.
+
+---
+
+## Stage 9 — Deferred: the basket zone and the lawn ring
+
+Neither is MVP. Both are cheap to add once zone 1 runs, and the parts for the lawn are already bought.
+
+15. [ ] **Zone 2 — hanging baskets.** Drip, off the **same filter and reducer** as zone 1, split to
+    its own valve. Baskets need short, frequent cycles; beds need long, infrequent ones. That
+    difference is the reason they are separate zones rather than one.
+16. [ ] **Zone 3 — the lawn ring.** The beds shrink the lawn to ~**8 × 12.5 m**, so corner-to-centre
+    is **~7.4 m** — comfortably inside the MP3000's 6.7–9.0 m. You already own **one** PRS40 body and
+    **one** MP3000 nozzle (£26.15 of the 8C BOM); a 4-corner ring needs three more of each.
+    - **4 corners ≈ 12 L/min** fits the ~15 L/min working budget in one zone.
+    - **6 heads (corners + mid-sides on the long edges) ≈ 18 L/min** does **not** — that splits into
+      two zones. This is where 8C's `#1 − #2` loss figure finally earns its keep.
+    - ⚠️ **Arc the heads inward, away from the beds.** The beds are already drip-irrigated; rotary
+      overspray onto them is both overwatering and exactly the foliage-wetting that drip avoids.
+17. [ ] **Consider splitting the beds by aspect.** On a SW-facing plot the **west bed takes the hot
+    afternoon sun**, north gets the most overall, east only morning. Three separately scheduled bed
+    zones is the first concrete use anyone has found for the 8-channel relay's spare channels —
+    it stops being abstract "headroom" and starts being differential scheduling.
 
 ---
 
@@ -569,11 +647,14 @@ Once the head test passes, build it for real — valve(s) in the buried box, fie
 
 - [x] **Flow + pressure test** *(done 2026-07-20)*. Static **~3.8 bar / 55 psi** (dead-end gauge,
   tap fully open); flow **~19 L/min** (14 L in 44.17 s, wide open). Pressure is not the
-  constraint — **flow is**. Those numbers drove the Stage 8 nozzle/zone decisions (low-flow
-  rotaries, ~2 grouped zones run sequentially).
-  - [ ] **Dynamic pressure (sag under flow)** — *still outstanding*. The gauge that arrived is
-    single-ended and reads only with no flow. Tee it inline (~£5–10) to get working pressure; needed
-    before committing to a grouped multi-head zone (Stage 8B).
+  constraint — **flow is**. Those numbers still set the **~15 L/min working budget** every zone is
+  sized against, though the design they originally drove (a grouped rotary ring for the lawn) was
+  superseded on 2026-08-31 when the beds became the priority — see 8A.
+  - [ ] **Dynamic pressure (sag under flow)** — *still outstanding, no longer MVP-blocking.* The
+    gauge that arrived is single-ended and reads only with no flow; the **MDPE tee to run it inline
+    is in the 8C BOM** and already in hand. Zone 1 (drip, ~9 L/min behind a reducer) does not depend
+    on this measurement. **Stage 9's lawn ring does** — take the reading during 8C anyway, while the
+    rig is still on the surface.
 
 ---
 
