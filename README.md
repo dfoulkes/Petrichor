@@ -43,6 +43,37 @@ It automates the watering of a back garden.
 > The grouped-zone plan is contingent on a **dynamic-pressure (sag-under-flow)** check still
 > outstanding — if it sags, the HP ring splits into two smaller zones (interlock makes that free).
 
+> **Revised 2026-08-31 — the watering target changed.** Everything above sized the hydraulics around
+> **watering the lawn**. That was wrong: the **three flower beds are the priority, and always were.**
+> The beds appeared in the design only as the place the sprinklers were *mounted* — as specified,
+> the system watered the lawn and the hanging baskets, and gave the beds nothing.
+>
+> **Bed layout:** three beds — **north, east and west** looking out from the house. The lawn is the
+> leftover middle, roughly **8 × 12.5 m** once the beds are taken out of the 11 × 14 m plot.
+>
+> Consequences, in order of how much they change:
+> - *"high pressure at the 90° corners facing inwards"* → **beds get pressure-compensating inline
+>   dripline.** Rotaries are the wrong tool for a bed: overhead spray wets foliage, is shadowed by
+>   the planting, and lands its water off-root. Drip is what beds want.
+> - *"~2 zones"* → **3 zones, built in priority order**: (1) the beds — **the entire MVP**;
+>   (2) the hanging baskets; (3) the lawn ring, **deferred**. Zone 1 draws ~9 L/min against the
+>   ~15 L/min budget and runs on the **one valve already owned** — no further valve needed for MVP.
+> - **The circular self-back-feeding loop is obsolete for the MVP.** It exists to equalise pressure
+>   across rotary heads; PC dripline equalises itself, and also absorbs the garden's decline
+>   (~0.1 bar per metre of fall). It carries forward to zone 3 if the lawn ring is built.
+> - **The sag-under-flow gate is obsolete for the MVP.** It was the PRS40's 2.75 bar regulation
+>   point. Zone 1 runs behind a reducer at ~1.5 bar from 3.8 bar static, on flat PC emitters. Still
+>   gates zone 3.
+> - **Nothing bought is wasted.** The PRS40 body and MP3000 nozzle (£26.15) carry forward to zone 3,
+>   where the shrunken lawn puts corner-to-centre at **~7.4 m** — mid-range for an MP3000 instead of
+>   at its 9.0 m ceiling. The marginal-throw worry that dominated 8A resolves itself.
+>
+> ⚠️ **The lawn cannot be watered as a byproduct of the beds.** Drip has no throw — it delivers into
+> the soil at the emitter and gives the lawn precisely nothing. The lawn is its own zone or it is
+> nothing. That is why it is deferred rather than folded in.
+>
+> **Supersedes the two-zone split in Must Haves above.** Full detail in the build guide, Stage 8–9.
+
 
 ## Project Setup 
 
