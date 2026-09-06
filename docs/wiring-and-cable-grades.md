@@ -81,13 +81,35 @@ permanently in the weather. See [The external lead](#the-external-lead--the-run-
 
 Rubber-insulated, rubber-sheathed, fine-stranded. The standard outdoor / site flex.
 
-| CSA | Volts | Temp | Amps |
-|---|---|---|---|
-| 0.75 mm² | 450/750 | 60 °C ⚠ | ~7 ⚠ |
+| CSA | Volts | Temp | Amps | Nominal OD |
+|---|---|---|---|---|
+| **1.0 mm²** (`3G1.0`) | 450/750 | 60 °C ⚠ | ⚠ not sourced | **8.3–10.7 mm** ✅ |
 
 The correct replacement for the supplied lead once the box is a permanent outdoor fixture: the
 rubber sheath resists **UV, oil and abrasion** where PVC chalks and cracks, and it stays flexible
 in frost where PVC goes brittle. Higher voltage class than H05VV-F for the same CSA.
+
+> ⛔ **Corrected 2026-09-06 — H07RN-F is not made in 3-core 0.75 mm².** Earlier revisions of this
+> document (and of `specs/build-guide.md` 7A) specified *"H07RN-F 3-core 0.75 mm²"* as the
+> like-for-like swap for the supplied lead. **That cable does not exist.** The **smallest 3-core
+> H07RN-F made is 1.0 mm² (`3G1.0`)**. 0.75 mm² rubber flex is **H05RN-F** — 300/500 V, a different
+> and lighter cable, one voltage class *down*, and therefore not the outdoor upgrade this section is
+> arguing for. If the replacement is bought on CSA alone it will come back as the wrong cable.
+> **Evidence class: manufacturer catalogue (Lapp), verified**, corroborated by Eland Cables and
+> FS Cables. Not a seller listing.
+>
+> The current rating is left `⚠ not sourced` rather than carried over: the old `~7 A` figure was
+> attached to a CSA that isn't produced. It is in any case not the binding number here — **the 5 A
+> BS 1362 plug fuse is the governing protection**, and 1.0 mm² is a step *up* from the 0.75 mm²
+> it replaces, so the fuse-versus-conductor argument only gets safer.
+
+> ⚠️ **The gland already owned will not take it.** Lapp gives `3G1.0` a nominal OD of
+> **8.3–10.7 mm** (manufacturer catalogue, verified). The **WEMNO M16** glands in hand are rated
+> **3–8 mm** — so an H07RN-F lead needs an **M20 gland**, not the M16. This is not a
+> measure-it-on-the-day question; the smallest OD in the range is already outside the M16's
+> largest. Buy the M20 **with** the cable or the lead cannot be terminated. Cross-referenced at
+> `build-work-plan.md` Phase A (*"M20 gland if needed"* — it is now *needed*, conditional on the
+> lead swap) and `specs/build-guide.md` Stage 6 step 2 / 7A step 3.
 
 ### Tri-rated BS6231 — `PREFERRED`
 
@@ -171,10 +193,21 @@ on it. Three free mitigations, all of which the guide already applies elsewhere:
 | 2 | **Enter through a bottom or lower-side face**, never the top | Stage 6, step 2 |
 | 3 | **Keep the run off the ground** — not lying where it can sit in standing water or meet a strimmer | — |
 
-**The fix, when it stops being a prototype:** replace the lead with **H07RN-F**, or sleeve the
-exposed section in conduit. The same reasoning this document already applies to the internal
+**The fix, when it stops being a prototype:** replace the lead with **H07RN-F `3G1.0`**, or sleeve
+the exposed section in conduit. The same reasoning this document already applies to the internal
 wiring — *"re-wire in tri-rated before it goes outside"* — applies to the lead. It simply was
 never followed through to the one conductor that is genuinely outdoors.
+
+⛔ **Two things to get right when buying it — added 2026-09-06:**
+
+| | |
+|---|---|
+| **Not 0.75 mm²** | H07RN-F is not made in 3-core 0.75 mm². Smallest 3-core is **1.0 mm² (`3G1.0`)**; 0.75 mm² rubber flex is **H05RN-F**, 300/500 V — a lighter cable and a voltage class down. Ask for `3G1.0`, not "the same as what's on there". |
+| **M20 gland, not the owned M16** | `3G1.0` is **8.3–10.7 mm** OD; the WEMNO M16 in hand seals **3–8 mm**. The whole OD range is outside it. **The gland is part of the lead swap, not a separate maybe.** |
+
+*Evidence class: **manufacturer catalogue (Lapp), verified*** — CSA availability and the OD range
+both come from Lapp's own catalogue, corroborated by Eland Cables and FS Cables. Not a seller
+listing, not a marketplace title.
 
 ---
 
@@ -407,8 +440,9 @@ What's in hand and what still needs sourcing.
 | Ferrules | 0.75 mm² · 6 mm bootlace | 6 | `SOURCE` |
 | Earth bond | DIN earth block, or M4 + ring crimp | 1 | `SOURCE` |
 | Field cable to manifold | ✅ **Rain Bird `RB/IRRICAB5-15M` — 5-core, 15 m** (EGI144337, delivered 2026-08-27). Spec was "zones + 1 cores, <10 m"; **5 cores = 4 zones + common**, matching the 4-way manifold of decision #19, and 15 m gives headroom over the <10 m estimate. | 1 × 15 m | `IN HAND` |
-| External mains lead *(socket → box)* | supplied **H05VV-F** ⚠ is indoor grade — replace with **H07RN-F** 3-core 0.75 mm², or sleeve in conduit, once permanent | 1 | `IN HAND` *(interim)* |
-| Mains cable gland | WEMNO **M16** nylon IP68, 3–8 mm range (step to M20 if lead >8 mm) | 1 | `IN HAND` *(pack of 10)* |
+| External mains lead *(socket → box)* | supplied **H05VV-F** ⚠ is indoor grade — replace with **H07RN-F `3G1.0`** (⛔ **not** 0.75 mm²; that size only exists as **H05RN-F**), or sleeve in conduit, once permanent | 1 | `IN HAND` *(interim)* |
+| Mains cable gland — **as built** | WEMNO **M16** nylon IP68, **3–8 mm** range. Fits the *supplied* H05VV-F lead. | 1 | `IN HAND` *(pack of 10)* |
+| Mains cable gland — **for the H07RN-F swap** | **M20.** `3G1.0` is **8.3–10.7 mm** OD (Lapp catalogue, verified) — the entire range is above the M16's 8 mm ceiling, so this is **not** a "step up if it measures over 8 mm" judgement call. Buy it **with** the cable. | 1 | `SOURCE` *(only when the lead is replaced — see Phase E)* |
 | Vented drain / breather | IP-rated M12–M16 breather plug | 1 | `SOURCE` |
 | Valve-box connectors | ✅ **Rain Bird `RB/DBRY.P2` ×2 = 4 DBR/Y gel-filled direct-burial splices** (EGI144337, delivered 2026-08-27). 2 zones + common = 3 joints needed, 4 owned. | 4 | `IN HAND` |
 
@@ -484,6 +518,8 @@ was written away from the source files; these are the numbers that were re-confi
 | Lead **cable grade** (3183Y / H05VV-F) | — | ⚠ **inferred, not stated.** CPC's listing gives only CSA, length and colour. The H05VV-F identification is from form factor. Material matters — see [The external lead](#the-external-lead--the-run-nobody-specified) |
 | Plug **IP rating** | CPC listing + price | ✅ **none.** A standard moulded BS 1363 plug carries no IP rating and none was intended — weather protection comes from the enclosure it sits in, not the plug |
 | RESTMO plug enclosure **IP54** | Amazon order 206-6337738-2459509, 2026-09-06 | ⚠ vendor title only. **IP54 = splashing water**, below the **IP66** assumed in build guide 7A. Acceptable wall-mounted with entries down; not acceptable ground-sited |
+| **H07RN-F smallest 3-core CSA** | **Lapp manufacturer catalogue**, corroborated by Eland Cables and FS Cables (2026-09-06) | ⛔ **Correction. 3-core 0.75 mm² H07RN-F does not exist** — the smallest 3-core made is **1.0 mm² (`3G1.0`)**. 0.75 mm² rubber flex is **H05RN-F**, 300/500 V. Every *"H07RN-F 3-core 0.75 mm²"* in this repo was wrong. **Evidence class: manufacturer catalogue, verified** — not a seller listing |
+| **H07RN-F `3G1.0` nominal OD** | **Lapp manufacturer catalogue** (2026-09-06) | ✅ **8.3–10.7 mm.** The owned **WEMNO M16** gland seals **3–8 mm**, so the H07RN-F lead needs an **M20** gland. The *whole* OD range sits above the M16 ceiling — this is settled by the catalogue, not by measuring on the day. **Evidence class: manufacturer catalogue, verified** |
 
 ---
 

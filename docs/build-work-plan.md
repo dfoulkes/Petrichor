@@ -96,6 +96,11 @@ gets established there.
       thread, replacement already bought. *Grey nut end* = a compression fault.
 - [ ] **Measure the control cable OD** with calipers. Under 8 mm → the owned
       WEMNO M16 IP68 glands work. Over → M20, ~£3.
+      ⚠️ **Separate question from the *mains* gland — added 2026-09-06.** The
+      M20 below is **not conditional** if the external mains lead is ever
+      swapped for **H07RN-F `3G1.0`**: that cable is **8.3–10.7 mm** OD (Lapp
+      catalogue, verified) against the M16's **3–8 mm**, so the whole range is
+      out. See `wiring-and-cable-grades.md` → *The external lead*.
 - [ ] **Rebuild the valve assembly on a bench** — dry, unhurried, indoors.
       **Chamfer and silicone-lubricate every pipe end** (Plasson's own
       instruction; missing from the original build).
@@ -119,7 +124,10 @@ gets established there.
       internal against 500 mm needed, 56 mm clear per end; 140 mm stack in a
       300 mm box. The manifold will not lift out through the lid, so servicing
       means lifting the box off. **Dry-fit before digging.**
-- [ ] Screwfix: **MDPE pipe cutter**, black **cable clips**. M20 gland if needed.
+- [ ] Screwfix: **MDPE pipe cutter**, black **cable clips**. **M20 gland** —
+      *"if needed"* for the control cable (measure it); **required, not
+      optional**, if the mains lead is replaced with H07RN-F `3G1.0`. That
+      part of it is a **Phase E** buy, not Phase A.
 
 ## Phase B — Set out (outdoors, wet-tolerant, no box needed)
 
@@ -275,6 +283,10 @@ details assume swing joints. Currently backlogged — un-backlog it before diggi
 - [ ] New IP66 outlet + run back to the house breaker box. **Sparky's job.**
 - [ ] Buy the four remaining `SOURCE` items: 230 V flex, ferrules, earth bond,
       breather plug.
+- [ ] **External mains lead** — replace the supplied indoor-grade H05VV-F with
+      **H07RN-F `3G1.0`** (⛔ **not** 0.75 mm² — that size is only made as
+      H05RN-F), **plus an M20 gland**, which the owned M16 cannot substitute
+      for. Buy the two together or the lead cannot be terminated.
 - [ ] Pull the control cable, terminate both ends, commission.
 
 ---

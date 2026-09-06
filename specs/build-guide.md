@@ -355,6 +355,9 @@ and swarf inside a box full of electronics is a problem you only make once.
    it**: the WEMNO **M16** glands already on hand seal 3–8 mm, which covers a typical 3-core flex;
    step up to **M20** only if the lead measures over 8 mm. Enter through a **bottom or lower-side
    face** so water runs off rather than tracking in along the cable sheath.
+   > ⚠️ **The M16 fits the *supplied* lead, not its outdoor replacement.** If/when the lead is swapped
+   > for **H07RN-F `3G1.0`** (7A step 3), that cable is **8.3–10.7 mm** OD — entirely above the M16's
+   > 8 mm ceiling — so the swap **requires an M20**. Not a measure-on-the-day call for that cable.
 3. [ ] **Fit a vented drain in the base.** ⚠️ Also *not* a drilled hole — use an **IP-rated
    vented drain plug / pressure-equalisation breather** (M12–M16 type). It does two jobs: lets
    liquid water out, and equalises pressure so the box doesn't inhale moist air every time it
@@ -410,8 +413,18 @@ which makes the electrical side easy — the work is all about **weather**, not 
    - **Out of direct run-off** — not under a gutter join or a dripping sill.
 3. [ ] ⚠️ **The lead between socket and box is indoor-grade flex.** Supplied H05VV-F ⚠ is PVC —
    fine short-term and not a shock risk, but it chalks and cracks under UV over seasons. Replace
-   with **H07RN-F** or sleeve in conduit once this stops being a prototype. Full reasoning:
+   with **H07RN-F `3G1.0`** or sleeve in conduit once this stops being a prototype. Full reasoning:
    [The external lead](../docs/wiring-and-cable-grades.md#the-external-lead--the-run-nobody-specified).
+   > ⛔ **Corrected 2026-09-06 — ask for `3G1.0`, not 0.75 mm².** This step previously said
+   > *"H07RN-F ... 0.75 mm²"*. **H07RN-F is not made in 3-core 0.75 mm²** — the smallest 3-core is
+   > **1.0 mm²**. 0.75 mm² rubber flex is **H05RN-F** (300/500 V), a lighter cable a voltage class
+   > down, and not the outdoor upgrade intended here.
+   > ⚠️ **And it needs a bigger gland than the one owned.** `3G1.0` is **8.3–10.7 mm** OD; the
+   > **WEMNO M16** fitted at Stage 6 step 2 seals **3–8 mm**. The lead swap therefore carries an
+   > **M20 gland** with it — the whole OD range is above the M16 ceiling, so step 2's *"step up only
+   > if the lead measures over 8 mm"* is already decided for this cable. Buy the two together.
+   > **Evidence class: manufacturer catalogue (Lapp), verified** — corroborated by Eland Cables and
+   > FS Cables. Not a seller listing.
 
 ### 7B — The field cable (box → manifold)
 
