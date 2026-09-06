@@ -349,7 +349,7 @@ and swarf inside a box full of electronics is a problem you only make once.
 
 1. [ ] **Decide the mounting orientation first.** The condensation drain must sit at the box's
    *true lowest point as mounted* — get this wrong and it's a water trap instead of a drain.
-   Pick the **shadiest viable spot** while you're at it — see the UV note (step 4).
+   Pick the **shadiest viable spot** while you're at it — see the UV note (step 5).
 2. [ ] **Drill the 230V cable entry — fit a gland, not a bare hole.** A plain hole voids IP65 and
    gives the mains lead no strain relief. Size the gland to the lead's outer diameter — **measure
    it**: the WEMNO **M16** glands already on hand seal 3–8 mm, which covers a typical 3-core flex;
@@ -358,11 +358,45 @@ and swarf inside a box full of electronics is a problem you only make once.
    > ⚠️ **The M16 fits the *supplied* lead, not its outdoor replacement.** If/when the lead is swapped
    > for **H07RN-F `3G1.0`** (7A step 3), that cable is **8.3–10.7 mm** OD — entirely above the M16's
    > 8 mm ceiling — so the swap **requires an M20**. Not a measure-on-the-day call for that cable.
-3. [ ] **Fit a vented drain in the base.** ⚠️ Also *not* a drilled hole — use an **IP-rated
+   >
+   > ⛔ **SUPERSEDED IN PART, 2026-09-06 — the cable bought is `3183P` 1.5 mm², not H07RN-F.** The
+   > **conclusion is unchanged and now settled**: the bought lead is **~9.75 mm** ⚠ OD, the fitted
+   > **WEMNO M16 seals 3–8 mm**, so **its seal never compresses on the sheath at all.** This is not
+   > a "tight fit" to be got away with — it is *no seal*. The **M20 has been bought** (Vimark
+   > `651VT`). **See step 3: fitting it is now a drilling job on a finished box.**
+   > ⚠️ **`651VT`'s own clamping range is not recorded in this repo** — read the packet against the
+   > calipered cable before you cut anything, or you repeat the M16 mistake one size up.
+3. [ ] ⛔ **Enlarge the mains entry from M16 to M20 — added 2026-09-06. This is a drilling job on
+   an already-built and wired box.** The M20 gland cannot go into the M16 hole; the entry has to be
+   opened out from roughly **16.5 mm to roughly 20.5 mm**.
+
+   > ⚠️ **Those two figures are INFERRED from the metric gland thread designations, not read from a
+   > datasheet.** M16 and M20 are thread sizes, not hole sizes, and manufacturers vary. **Caliper
+   > the existing hole first** and size the cut from what you actually measure.
+
+   - **Tool: a step drill / cone cutter**, not a twist bit. A twist bit in thin ABS grabs, snatches
+     the panel and triangulates the hole — and a triangulated hole does not seal.
+   - ⛔ **Swarf near electronics is the real risk, not the hole.** **Remove the board and both PSUs
+     from the box, or fully shroud them,** before the cutter touches plastic. ABS swarf is light,
+     statically clingy and gets everywhere; a chip bridging relay terminals or PSU pins is a fault
+     you will chase for a evening.
+   - **Support the panel from behind** while cutting, go slow, and **let the step do the work** —
+     each step should cut a clean shoulder, not melt one.
+   - **Clear every last chip before re-sealing** — vacuum, then a wipe. Then refit the gland,
+     check the lid gasket seats, and confirm the entry is still on a **bottom or lower-side face**.
+   - ⚠️ **The redundant M16 hole does not exist** — you are enlarging the same hole, not making a
+     second one. If the M20 is put somewhere new instead, **the old M16 hole must be blanked with
+     an IP-rated blanking plug**, or IP65 is gone.
+
+   > 📌 **Decision, 2026-09-06 — Dan chose the drilling route knowingly.** Step 7A step 3 offers
+   > *"or sleeve in conduit"*, which needs **no drilling at all** and was put to him. He chose the
+   > cable-and-gland swap with his eyes open. **Recorded, not re-argued.**
+
+4. [ ] **Fit a vented drain in the base.** ⚠️ Also *not* a drilled hole — use an **IP-rated
    vented drain plug / pressure-equalisation breather** (M12–M16 type). It does two jobs: lets
    liquid water out, and equalises pressure so the box doesn't inhale moist air every time it
    heats and cools. An unvented sealed box in a garden is a condensation generator.
-4. [ ] **UV & heat — treat the box while it's empty.** This one lives in **full sun**, and the
+5. [ ] **UV & heat — treat the box while it's empty.** This one lives in **full sun**, and the
    GR17016 is grey **ABS**, which chalks and goes brittle under years of UK UV. Do this before the
    electronics go in (mess, fumes). Order of preference:
    - **Shade first, it's free.** A small hood/sunshade or mounting under an overhang cuts UV *and*
@@ -374,12 +408,12 @@ and swarf inside a box full of electronics is a problem you only make once.
      the gland and the breather. So **keep paint off the lid sealing faces and off the breather/drain.**
    - This is a prototype box; the long-term fix is a UV-stable polycarbonate/GRP enclosure. Reassess
      after a season in the sun.
-5. [ ] Mount the **ESP32 and relay** — ESP32 on its DIN carrier, relay on a DIN mount. The
+6. [ ] Mount the **ESP32 and relay** — ESP32 on its DIN carrier, relay on a DIN mount. The
    GR17016 has **no back-plate**, so anything not on the rail is drilled directly into the base.
-6. [ ] **DIN gear on the rail**, spacers between the transformers.
-7. [ ] **Tidy the 5V wiring** — ferrules on stranded tails, routed and secured.
-8. [ ] Keep **230V wiring physically separated** from the low-voltage side.
-9. [ ] Close the lid. Done — the box is finished, but the system isn't: power, field cable and the
+7. [ ] **DIN gear on the rail**, spacers between the transformers.
+8. [ ] **Tidy the 5V wiring** — ferrules on stranded tails, routed and secured.
+9. [ ] Keep **230V wiring physically separated** from the low-voltage side.
+10. [ ] Close the lid. Done — the box is finished, but the system isn't: power, field cable and the
    valves are **Stage 7**, water is **Stage 8**.
 
 > **Why the vent matters more than it sounds.** IP65 keeps water *out*, but it also keeps water
@@ -412,9 +446,12 @@ which makes the electrical side easy — the work is all about **weather**, not 
    - **Cable entries pointing down**, with a **drip loop** in the lead before each entry.
    - **Out of direct run-off** — not under a gutter join or a dripping sill.
 3. [ ] ⚠️ **The lead between socket and box is indoor-grade flex.** Supplied H05VV-F ⚠ is PVC —
-   fine short-term and not a shock risk, but it chalks and cracks under UV over seasons. Replace
-   with **H07RN-F `3G1.0`** or sleeve in conduit once this stops being a prototype. Full reasoning:
-   [The external lead](../docs/wiring-and-cable-grades.md#the-external-lead--the-run-nobody-specified).
+   fine short-term and not a shock risk, but it chalks and cracks under UV over seasons. Replace it
+   with **rubber flex** — ✅ **`3183P` 3-core 1.5 mm² is bought and waiting at Horsforth**
+   *(see the BOUGHT block below)* — or sleeve in conduit once this stops being a prototype. Full
+   reasoning: [The external lead](../docs/wiring-and-cable-grades.md#the-external-lead--the-run-nobody-specified).
+   *(This line previously said* **H07RN-F `3G1.0`** *— superseded 2026-09-06, kept in the
+   correction blocks below.)*
    > ⛔ **Corrected 2026-09-06 — ask for `3G1.0`, not 0.75 mm².** This step previously said
    > *"H07RN-F ... 0.75 mm²"*. **H07RN-F is not made in 3-core 0.75 mm²** — the smallest 3-core is
    > **1.0 mm²**. 0.75 mm² rubber flex is **H05RN-F** (300/500 V), a lighter cable a voltage class
@@ -425,6 +462,35 @@ which makes the electrical side easy — the work is all about **weather**, not 
    > if the lead measures over 8 mm"* is already decided for this cable. Buy the two together.
    > **Evidence class: manufacturer catalogue (Lapp), verified** — corroborated by Eland Cables and
    > FS Cables. Not a seller listing.
+
+   > ✅ **BOUGHT 2026-09-06 — and it is `3183P`, not H07RN-F. This paragraph is now history.**
+   > **Screwfix order `A27859275166`**: `994JY` **Time `3183P` black 3-core 1.5 mm², 10 m coil**
+   > £19.99 · `651VT` **Vimark M20 nylon comp gland** 2-pack £1.35 · `68744` **Essentials 13 A
+   > fused heavy-duty plug** £1.69. **£23.03 inc VAT**, Click & Collect Horsforth.
+   > *Evidence class: Screwfix order confirmation, verified.*
+   >
+   > ⛔ **Do not describe the lead as H07RN-F.** Screwfix state the conductors are **"rated
+   > 300/500 V"** — that is the **H05RN-F class**; the `07` in H07RN-F *means* 450/750 V. The
+   > correct description is **"3183P rubber flex (PCP sheath), 300/500 V class"**.
+   > ✅ **It is the right cable anyway:** the requirement here was always **a rubber sheath instead
+   > of PVC**, not a voltage class. Screwfix's own words — *"the durable rubber sheath resists
+   > weather, UV exposure and moisture degradation"*, sold for *"pond pumps and other outdoor
+   > cabling applications"*, **−35 °C to +60 °C**. On 230 V behind a 5 A fuse, 450/750 V buys
+   > nothing.
+   >
+   > **Three things this changes about the job:**
+   > 1. ⛔ **The box entry must be drilled out M16 → M20** — the bought lead is ~9.75 mm ⚠ and the
+   >    fitted M16 seals 3–8 mm, so it does not seal *at all*. **Stage 6 step 3.**
+   > 2. ⚠️ **The coil is bare-ended, so the plug is a separate part** — that is what `68744` is
+   >    for. **It ships with a 13 A fuse: fit a 5 A.** 5 A is correct for a 15 VA transformer plus
+   >    the 5 V PSU, and it is the fuse the whole cable-protection argument rests on.
+   > 3. ⚠️ **10 m bought against ~2 m needed.** The surplus is not spare tri-rated wire — 3183P
+   >    core temperature class is **not sourced**, so it does **not** substitute for the internal
+   >    wiring this guide asks to be re-done in tri-rated.
+   >
+   > ⚠️ **Before cutting the old lead up for cores, read its sheath printing.** It settles whether
+   > it was ever H05VV-F, which this repo has only ever inferred. **Free, and destroyed by the
+   > cut.** See `wiring-and-cable-grades.md` → *Before you touch the 230 V side*.
 
 ### 7B — The field cable (box → manifold)
 

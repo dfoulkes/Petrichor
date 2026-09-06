@@ -49,7 +49,7 @@ working zone 1, and it is *not* in any of the purchase groups below.
 | **Pressure reducer** | ~**1.5 bar**, **3/4" BSP** | Supply is **3.8 bar static**. Unreduced it blows emitters off the line | ❌ not priced |
 | **Filter** | ~**120 mesh / 130 micron**, **3/4" BSP** | ⛔ **MANDATORY, not optional** — see the backlog correction below. Emitter clogging is the primary failure mode of every drip system | ❌ not priced |
 | **16 mm fittings** | start connector (3/4" BSP × 16 mm), tees, elbows, end caps or flush valves | Joins laterals to the 20 mm MDPE mainline | ❌ not priced |
-| **Dripline pegs** | ~1 per 1–1.5 m | Stops the line lifting and wandering as it warms | ❌ not priced |
+| **Dripline pegs** | ~1 per 1–1.5 m. ✅ **Priced 2026-09-06: Access Irrigation `ESS16-H`, 100-pack, £34.00 ex / £40.80 inc.** Fits **16 mm *and* 20 mm** pipe | Stops the line lifting and wandering as it warms | ✅ **priced, ❌ NOT bought** |
 
 ⚠️ **Evidence class: repo-internal only.** Every figure in that table is carried
 from `specs/build-guide.md` 8D and is marked ⚠ *there* as well. **There is no
@@ -63,6 +63,19 @@ verified until then.
 EGI143158, EGI144055, EGI144331, EGI144332, EGI144337, EGI144461) and is the
 obvious first look, but nothing here has been priced anywhere. **Assume a further delivery
 charge** — that is information, not a reason to hold.
+
+> ⚠️ **Amended 2026-09-06 — EGI cannot be the single vendor for this group.**
+> ⛔ **EGI do not stock any 16 mm hold-down at all** — checked. The pegs were
+> priced instead at **Access Irrigation: `ESS16-H`, 100-pack, £34.00 ex /
+> £40.80 inc** *(vendor page, verified)*. **The 100-pack is the right buy on
+> arithmetic, not on optimism:** the 25-pack `ESS16-Q` is **£9.80 ex**, so
+> 4 × 25 = **£39.20 ex** — *more* than the 100 for the same count.
+>
+> 📌 **Access Irrigation give free delivery only over £150 ex VAT**, so
+> **the pegs should travel with the Stage 8D drip order, not ship alone.** That
+> is a sequencing note, not a blocker — and it is a reason to price the whole
+> drip group at Access before defaulting to EGI, since the pegs are already
+> anchored there.
 
 ### What moved OUT of "outstanding" and into DEFERRED
 
@@ -180,13 +193,38 @@ cable is the one mistake this order cannot absorb.
 **None of these four is a field part.** They are all enclosure-side, so none of
 them blocks groundwork.
 
-> ⚠️ **Amended 2026-09-06 — it is six enclosure-side items now, not four.** The
-> external-lead work added **H07RN-F `3G1.0`** and an **M20 gland** to the
-> `SOURCE` list (see *Not yet basketed — Screwfix / CEF*). The **"four" heading
-> above is kept because it is the count against the original wiring BOM lines**;
-> the two new ones are additions to that BOM, not items it ever listed.
-> **The conclusion is unchanged: all six are enclosure-side and none blocks
-> groundwork.**
+> ⚠️ **Amended 2026-09-06 (morning) — it is six enclosure-side items now, not
+> four.** The external-lead work added **H07RN-F `3G1.0`** and an **M20 gland**
+> to the `SOURCE` list. The **"four" heading above is kept because it is the
+> count against the original wiring BOM lines**; the two new ones are additions
+> to that BOM, not items it ever listed. **The conclusion is unchanged: all six
+> are enclosure-side and none blocks groundwork.**
+
+> ✅ **Amended again 2026-09-06 (afternoon) — back to FOUR, and it is the same
+> four the heading always meant.** Screwfix `A27859275166` bought **the cable,
+> the M20 gland and a plug**, so both items the morning amendment added are
+> **`IN HAND`**. Recounted line by line, not carried over:
+>
+> | | Item | Status |
+> |---|---|---|
+> | 1 | 230 V mains — 0.75 mm² flex cores, tri-rated outdoors ×5 | `SOURCE` |
+> | 2 | Ferrules — 0.75 mm² · 6 mm bootlace ×6 | `SOURCE` |
+> | 3 | Earth bond — DIN earth block, or M4 + ring crimp ×1 | `SOURCE` |
+> | 4 | Vented drain / breather — IP-rated M12–M16 breather plug ×1 | `SOURCE` |
+> | ~~5~~ | ~~External mains lead~~ | ✅ **`IN HAND`** — 3183P 1.5 mm² 10 m, `994JY` |
+> | ~~6~~ | ~~M20 gland~~ | ✅ **`IN HAND`** — Vimark `651VT`, 2 pack |
+> | *(new)* | *Fused plug for the bare-ended coil* | ✅ **`IN HAND`** — `68744`. **Never on the SOURCE list**: the old lead came with its plug moulded on, so buying a bare coil created this requirement. It is bought, so it costs nothing — but it is the kind of item a swap silently invents |
+>
+> ⚠️ **The 10 m of 3183P does NOT clear line 1.** Line 1 wants **0.75 mm²
+> cores, tri-rated (105 °C)** for the inside of a box that reaches 50–60 °C.
+> 3183P is **1.5 mm²** and its **core temperature class is not sourced** —
+> so the offcut is not a substitute. ⚠️ **And line 2 may now be wrong:** the
+> ferrules are specced **0.75 mm² / 6 mm bootlace**; if any 1.5 mm² 3183P core
+> is terminated with a ferrule, that needs a **1.5 mm² ferrule**. **Unverified —
+> settle it when the internal re-wire is specced, not now.**
+>
+> **The conclusion is unchanged and now stronger: four items, all
+> enclosure-side, none blocks groundwork.**
 
 On the gel connectors, the build guide is blunter than about anything else in it:
 *"Never a dry Wago in the ground. This is the single most failure-prone spot in
@@ -247,6 +285,10 @@ test day — a two-gauge method with one gauge produces a reading, not a model.
 | **Thread dry-fit** — owned PRS40 vs owned 1/2" BSPM connector | Whether the head fittings are BSP as EGI's spec field claims. Binds at ~2 turns = NPT, £12.80 of tees/elbows go back inside 30 days |
 | **Which end drips** on the splitter joint | Brass end = worn thread (replacement bought). Nut end = missing liner |
 | ~~**Throw test** — MP3500 off the splitter vs 8.9 m~~ | ✅ **NO LONGER ON THE MVP CRITICAL PATH — re-filed 2026-09-06, not deleted.** It tested *lawn* coverage, and the lawn is deferred to Stage 9. It still gates Stage 9, and the 8.9 m figure it was fighting is itself superseded (~7.4 m on the shrunken lawn). **Do it opportunistically while the 8C rig is on the surface — never as a blocker on the beds.** |
+| **Read the old lead's sheath printing** *(new, 2026-09-06)* ⛔ | Whether the supplied lead was **ever `3183Y` / H05VV-F** — a grade this repo has only ever **inferred**, never read. ⛔ **Do it BEFORE the lead is cut up for cores — the cut destroys the evidence.** ⚠️ **Still not done.** Newly *possible*: its plug is reportedly **rewireable, not moulded**, so it opens |
+| **Does 1.5 mm² seat in the old plug?** *(new, 2026-09-06)* ⚠ | Whether the new 3183P can reuse the **existing rewireable plug's cord grip and terminals**, or whether the bought `68744` is doing that job. ⚠️ **Unverified.** Free — check it **with the plug open**, which is happening anyway for the sheath printing above |
+| **Caliper the existing M16 box hole** *(new, 2026-09-06)* ⛔ | The actual diameter to drill from. The ~16.5 → ~20.5 mm figures are **inferred from the thread designation, not a datasheet**. ⛔ **Measure before the cutter touches the box** |
+| **Read the `651VT` M20's clamping range off the packet** *(new, 2026-09-06)* ⚠ | Whether the M20 actually seals **~9.75 mm**. Not recorded anywhere in this repo. The M16 failed by being picked on **thread size** without checking **seal range** — do not repeat it one size up |
 | **Dripline dry-run** *(new, 2026-09-06)* ⚠ | The MVP's equivalent free check, and it **cannot be done yet — nothing is bought.** Once the dripline arrives: flush every lateral before capping, then run 30 min and trowel three points per bed looking for wetted cones that have **joined into a band**. Build guide 8D steps 11–12 |
 | ~~Tap's double-check valve~~ | **CLOSED — non-issue.** DCVs mandatory on outside taps since the Water Supply (Water Fittings) Regulations 1999. Do not re-raise. |
 
@@ -267,9 +309,115 @@ test day — a two-gauge method with one gauge produces a reading, not a model.
 | **EGI144337** | 2026-08-25 | Easy Garden Irrigation | 15 m 5-core control cable, 4 DBR/Y splices | £40.23 |
 | **Wickes 702854640** | 2026-08-25 | Wickes (Click & Collect, Leeds Moor Allerton) | 3 × 20 mm washed gravel, 1 × weed membrane | £20.30 |
 | **EGI144461** | 2026-08-27 | Easy Garden Irrigation | Irritec Jumbo 12" valve box `IG/POZ-JMBREC` ×1 | £42.75 |
-| | | | **PROJECT TOTAL** | **~£572.63** |
+| | | | **Subtotal — water side + groundwork** | **£572.63** |
+| **Screwfix `A27859275166`** | 2026-09-06 | Screwfix (Click & Collect, **Horsforth**) | 10 m 3183P 1.5 mm² rubber flex, M20 gland 2-pack, 13 A fused plug *(first **electrical** line in this table)* | £23.03 |
+| | | | **Total of the orders in THIS table** | **~£595.66** |
+
+> ⛔ **RELABELLED 2026-09-06 — £572.63 is NOT the project total, and this file
+> used to call it one.** It is the **water side and groundwork only** — the seven
+> orders above it, and nothing else. It reconciles exactly:
+>
+> `163.00 + 44.12 + 218.96 + 43.27 + 40.23 + 20.30 + 42.75 = 572.63`
+>
+> **It excludes ~£272.69 of control-plane, electronics and tooling spend** made
+> since July — the ESP32, relay, PSU, transformer, enclosure, meter, Wagos and so
+> on, none of which appears in this table. Anyone reading £572.63 as *"what
+> Petrichor has cost"* is reading it ~£273 light. The £23.03 Screwfix line is
+> **electrical**, so **£595.66 is not a water-side figure either** — it is simply
+> the sum of what this table happens to list.
+>
+> **Project-wide, as at 2026-09-06:**
+>
+> | | |
+> |---|---|
+> | Project-wide spend | **~£868.74** *(£845.71 before this order + £23.03)* |
+> | Net of the outstanding **£33.48 Amazon refund** on the NPT valve | **~£835.26** |
+>
+> 📌 **Provenance: reconciled in the Obsidian vault**
+> (`Projects/golden-shower/tasks/prototype-shopping-list.md`), **2026-09-06.**
+> **Obsidian is the source of truth for spend; this repo is downstream.** The
+> vault's order-by-order register is deliberately **not** duplicated here —
+> go there for the breakdown, and do not maintain a second copy of it.
+>
+> ⚠️ **Known gap in the project-wide figure — it is light by an unknown amount.**
+> The **ESP32 DIN rail mount (AliExpress, 2026-08-06)** and the generic DIN
+> mounts have **no price recorded anywhere**, vault or repo. ⚠ **Unverified.**
+
+**Spent on 2026-09-06: £23.03.**
 
 **Spent on 2026-08-27: £42.75.**
+
+### ✅ Ordered 2026-09-06 — the external mains lead (Screwfix `A27859275166`)
+
+**Placed 11:18 GMT, 2026-09-06. Click & Collect, Horsforth — Unit 9 Lister Hill,
+LS18 5AZ. Held 21 days. ⚠️ Await the SMS before travelling.**
+
+| Code | Item | Qty | £ inc VAT |
+|---|---|---|---|
+| `68744` | Essentials 13 A Fused Heavy Duty Plug, black | 1 | £1.69 |
+| `994JY` | Time **`3183P`** black 3-core **1.5 mm²** flexible cable, **10 m coil** | 1 | £19.99 |
+| `651VT` | Vimark nylon male comp glands **20 mm (M20)** black, 2 pack | 1 | £1.35 |
+| | | **Total** | **£23.03 inc / £19.19 ex VAT** |
+
+*Evidence class: **Screwfix order confirmation email — verified**.*
+
+**This clears three enclosure-side items in one £23 order** — the external mains
+lead, the M20 gland and (a requirement the coil itself created) the plug. See the
+`SOURCE` recount below.
+
+> ⛔ **The cable is `3183P`, NOT H07RN-F — this repo said H07RN-F earlier today
+> and was wrong.** Screwfix's own product description states the conductors are
+> **"rated 300/500 V"**. That is the **H05RN-F voltage class**; the `07` in
+> H07RN-F **means 450/750 V by definition**. A cable cannot be both.
+> **The correct description everywhere is: "3183P rubber flex (PCP sheath),
+> 300/500 V class."**
+>
+> ✅ **And it is the correct cable for this build.** The requirement was always
+> **a rubber sheath instead of PVC** — the failure mode is UV chalking and frost
+> embrittlement over seasons, not insulation breakdown. **On 230 V behind a 5 A
+> fuse, 450/750 V buys nothing.** What was bought is polychloroprene-sheathed,
+> **−35 °C to +60 °C**, sold by Screwfix for *"pond pumps and other outdoor
+> cabling applications"*, and described verbatim as: *"The durable rubber sheath
+> resists weather, UV exposure and moisture degradation."* Full detail and the
+> cable-code reference table: `wiring-and-cable-grades.md` →
+> *3183P rubber flex*.
+
+⚠️ **What this order did NOT settle — all four still open:**
+
+| | |
+|---|---|
+| **⛔ The box entry must be drilled out, M16 → M20** | New physical work — see the section below. The M20 does not fit the existing hole |
+| **⚠️ The M20's own clamping range is unverified** | `651VT`'s seal range is recorded nowhere in this repo. The M16 failed by being chosen on **thread size** without checking **seal range** — do not repeat it one size up. **Read the packet against the calipered cable** |
+| **⚠️ Fit a 5 A fuse** | `68744` ships with **13 A**. **5 A stays correct** for a 15 VA transformer + 5 V PSU. ⚠️ Where the 5 A fuse comes from is unrecorded — probably the old lead's plug |
+| **⛔ Cable clips are still not bought and still misspecced** | Screwfix's suggested *Vimark Black Round Coaxial Clips 5–7 mm* are **too small** for a ~9.75 mm cable. **Needs 9–11 mm round clips.** Not priced, not ordered |
+
+### ⛔ NEW WORK, 2026-09-06 — enlarge the enclosure entry M16 → M20
+
+**This is load-bearing and it is not a purchase, it is a job.** The gland already
+fitted to the enclosure is the **WEMNO M16, 3–8 mm range**. The lead bought is
+**~9.75 mm** ⚠. That is **outside the range, so it will not seal** — the gland's
+seal **never compresses on the sheath at all**. This is **not** a "tight fit"
+that can be got away with.
+
+Fitting the M20 therefore means **opening the cable entry from roughly
+**16.5 mm** to roughly **20.5 mm**.
+
+> ⚠️ **Those two hole figures are INFERRED from the metric gland thread
+> designation — NOT from a datasheet.** M16/M20 are thread sizes, not hole sizes.
+> ⛔ **Caliper the actual existing hole before drilling.**
+
+- **Step drill / cone cutter**, not a twist bit — a twist bit snatches in thin
+  ABS and triangulates the hole, and a triangulated hole does not seal.
+- ⛔ **This is a drilling job on an already-built and wired enclosure. Swarf near
+  electronics is the risk, not the hole.** **Remove or fully shroud the board and
+  both PSUs first**, and **clear every chip before re-sealing.**
+- Full procedure: `specs/build-guide.md` **Stage 6 step 3**. Tracked in
+  `build-work-plan.md` **Phase E**.
+
+> 📌 **Decision, 2026-09-06 — Dan chose this route knowingly.** Build guide 7A
+> step 3 offers the alternative *"or sleeve in conduit"*, which requires **no
+> drilling at all**. It was put to him and he took the cable-and-gland swap.
+> **Recorded as a decision, not to be re-argued.**
 
 **EGI144461 detail** — `IG/POZ-JMBREC` ×1 £45.99 − £9.19 (End of Season 20%) =
 £36.80 subtotal · Standard UK 1–2 days £5.95 · **total £42.75** (Mastercard
@@ -357,25 +505,47 @@ The **four** remaining `SOURCE` electrical items above (was six; the field cable
 and the gel splices arrived in EGI144337). Not priced. All enclosure-side —
 **none blocks groundwork.**
 
-**Added 2026-09-06 — two more enclosure-side items, both Phase E, neither
-blocking:**
+**Added 2026-09-06 (morning) — two more enclosure-side items, both Phase E,
+neither blocking. ✅ BOTH BOUGHT the same afternoon on `A27859275166`:**
 
-| Item | Spec | Status |
+| Item | Spec as written that morning | Outcome |
 |---|---|---|
-| **External mains lead replacement** | **H07RN-F `3G1.0`**, ~2 m | `SOURCE` — the supplied lead is indoor-grade **H05VV-F**. Interim, works, degrades over seasons |
-| **M20 cable gland** | for the above | `SOURCE` — ⛔ **the owned WEMNO M16 (3–8 mm) cannot be used.** `3G1.0` is **8.3–10.7 mm** OD, so the whole range is above the M16 ceiling |
+| ~~**External mains lead replacement**~~ | ~~**H07RN-F `3G1.0`**, ~2 m~~ | ✅ **BOUGHT — but as `3183P` 1.5 mm², 10 m coil (`994JY`).** ⛔ **Not H07RN-F.** 300/500 V PCP rubber. See the order section above |
+| ~~**M20 cable gland**~~ | ~~for the above~~ | ✅ **BOUGHT — Vimark `651VT`, 2 pack.** The reasoning held: the bought cable is ~9.75 mm ⚠, still above the M16's 8 mm ceiling |
 
-⛔ **Do not order "H07RN-F 0.75 mm²" — it does not exist.** The smallest 3-core
-H07RN-F made is **1.0 mm² (`3G1.0`)**; 0.75 mm² rubber flex is **H05RN-F**
-(300/500 V), a lighter cable a voltage class down. Earlier revisions of
-`wiring-and-cable-grades.md` and `specs/build-guide.md` 7A specified the
-non-existent size; both are corrected as of 2026-09-06.
-**Evidence class: manufacturer catalogue (Lapp), verified** — CSA availability
-and the OD range both from Lapp's own catalogue, corroborated by Eland Cables and
-FS Cables. **Not a seller listing.**
+⚠️ **Still to buy at Screwfix / CEF:** the **four** remaining `SOURCE` items
+(flex cores, ferrules, earth bond, breather plug) — **plus 9–11 mm round cable
+clips**, which are *not* on the wiring BOM and are not bought. The 5–7 mm coaxial
+clips Screwfix suggested alongside the cable are **too small** for a ~9.75 mm
+lead.
 
-⚠️ **Buy the cable and the M20 gland together.** They are one job; a lead with no
-gland that fits cannot be terminated.
+> ⛔ **Preserved as history — the morning's H07RN-F reasoning.** It is *true about
+> H07RN-F* and it is *not what was bought*, so it is kept and demoted rather than
+> deleted:
+>
+> *"Do not order H07RN-F 0.75 mm² — it does not exist. The smallest 3-core
+> H07RN-F made is 1.0 mm² (`3G1.0`); 0.75 mm² rubber flex is H05RN-F (300/500 V),
+> a lighter cable a voltage class down. **Evidence class: manufacturer catalogue
+> (Lapp), verified** — corroborated by Eland Cables and FS Cables. Not a seller
+> listing."*
+>
+> ✅ **That statement still stands** — Lapp's catalogue is unaffected by what Dan
+> bought. ⚠️ **But it turned out to be moot as a buying rule:** **Screwfix's own
+> 3183P range starts at 1.5 mm²** — a 0.75 mm² filter returns **zero products**.
+> **There was no thin rubber option to get wrong in the first place.**
+
+> ⚠️ **TRAP worth carrying forward — retailer listings on 3183P contradict
+> themselves.** MP Moran's 3183P listing claims **"H07RN-F"** *and*
+> **"300V/500V"** in the same description. **Both cannot be true.** On a 3183P
+> listing, the **sheath material is the reliable part; the harmonised designation
+> is not.** The clean discriminator is the **BS EN number**: **`-2-11` = PVC
+> (`3183Y` / H05VV-F), `-2-21` = rubber (`3183P`)**. Full reference table in
+> `wiring-and-cable-grades.md`. *(Evidence: Farnell datasheet* **"3183Y (Har.
+> code HO5VV-F3) Three-Core Round 300/500 V"** *— manufacturer datasheet — plus
+> 3183P products consistently citing BS EN 50525-2-21.)*
+
+✅ **The "buy the cable and the M20 gland together" rule was followed** — they
+were on the same order, which is why the lead can actually be terminated.
 
 ### ⚠️ The plug enclosure is IP54, not IP66 — found 2026-09-06
 

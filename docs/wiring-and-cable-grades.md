@@ -29,9 +29,9 @@ elsewhere:
 | ⚠️ **Brown = Line, Blue = Neutral, Green/Yellow = Earth** | IEC 60445 harmonised colours. North America uses black/white/green. Following the colour references here with non-harmonised cable will have you misidentify the line conductor. **Verify with a meter, never by colour** — the continuity test in [Before you touch the 230 V side](#before-you-touch-the-230-v-side) is the method, but its pin geometry is BS 1363-specific. |
 | **RCD-protected socket** | UK/EU term. The North American equivalent is a **GFCI**; requirements and trip characteristics differ. |
 | **SELV** (Safety Extra-Low Voltage) | An IEC/BS concept. The nearest US equivalent is an **NEC Class 2** circuit — similar intent, different rules. |
-| **Cable standards `3183Y`, `H05VV-F`, `BS 6231` tri-rated** | BS/EN part numbers with no direct US equivalent. You'd be looking at SJT/SOOW for flex and THHN/MTW for singles, chosen against **NEC (NFPA 70)** ampacity tables, not the figures here. |
+| **Cable standards `3183Y`, `3183P`, `H05VV-F`, `BS 6231` tri-rated** | BS/EN part numbers with no direct US equivalent. You'd be looking at SJT/SOOW for flex and THHN/MTW for singles, chosen against **NEC (NFPA 70)** ampacity tables, not the figures here. |
 | **50 Hz** | The Rain Bird coil figures are quoted at 60 Hz in its datasheet and derived to 50 Hz in [section D](#getting-24-v-out-of-the-transformer). On a 60 Hz supply, use the datasheet values directly. |
-| **UK plug pin geometry** | The lead-verification continuity test assumes a BS 1363 moulded plug. Meaningless on NEMA. |
+| **UK plug pin geometry** | The lead-verification continuity test assumes a BS 1363 plug — ⚠️ *and a moulded one; the lead in hand is reportedly rewireable, so open it instead (2026-09-06)*. Meaningless on NEMA. |
 
 Both DIN supplies (HDR-15-5, TM15/24) are **Class II**, which is a universal IEC concept — but
 the HDR is universal-input (85–264 VAC) while the **ABB TM15/24 transformer is 230 V primary
@@ -54,7 +54,8 @@ If you read nothing else on this page, read these five lines.
 | ✓ | **22 AWG is correct for everything else** | 5 V DC, 24 V AC and signals. That's what the kit was bought for. |
 | ≡ | **Mains side is 0.75 mm², five wires to make** | Flex cores off the lead tail for the bench; tri-rated before the box goes outdoors. |
 | E | **Earth terminates in its own Wago** | Both supplies are Class II — neither has an earth terminal. Never cut it off, never leave it floating. |
-| ☂ | **The supplied lead is indoor flex** | H05VV-F is PVC-sheathed general-purpose cable. It is the one conductor that actually lives in the rain, and it is the least suited to it — see [The external lead](#the-external-lead--the-run-nobody-specified). |
+| ☂ | **The supplied lead is indoor flex** | H05VV-F ⚠ is PVC-sheathed general-purpose cable. It is the one conductor that actually lives in the rain, and it is the least suited to it — see [The external lead](#the-external-lead--the-run-nobody-specified). |
+| ✅ | **Its rubber replacement is bought** *(2026-09-06)* | **`3183P` 3-core 1.5 mm² PCP rubber flex + an M20 gland + a fused plug** — Screwfix `A27859275166`. ⛔ **It is 300/500 V, NOT H07RN-F.** Fitting it means **drilling the box entry out to M20**. |
 
 ---
 
@@ -77,7 +78,14 @@ smallest size the HDR manual permits.
 cores for internal wiring, and fine as a lead in the short term, but it is not the grade to leave
 permanently in the weather. See [The external lead](#the-external-lead--the-run-nobody-specified).
 
-### H07RN-F rubber flex — `OUTDOOR FLEX`
+### H07RN-F rubber flex — `OUTDOOR FLEX · REFERENCE ONLY, NOT THE PART BOUGHT`
+
+> ⛔ **Amended 2026-09-06 (second correction of the day).** This section is kept because
+> **H07RN-F is still the correct name for the 450/750 V rubber grade** and the CSA/OD facts
+> below are right. **It is no longer what this build uses.** The cable actually bought is
+> **Screwfix `994JY` — Time `3183P`, 3-core 1.5 mm², 300/500 V rubber flex** (order
+> `A27859275166`). See [3183P rubber flex](#3183p-rubber-flex--outdoor-flex--the-part-actually-bought).
+> **Nothing below should be read as a description of the part in hand.**
 
 Rubber-insulated, rubber-sheathed, fine-stranded. The standard outdoor / site flex.
 
@@ -110,6 +118,70 @@ in frost where PVC goes brittle. Higher voltage class than H05VV-F for the same 
 > largest. Buy the M20 **with** the cable or the lead cannot be terminated. Cross-referenced at
 > `build-work-plan.md` Phase A (*"M20 gland if needed"* — it is now *needed*, conditional on the
 > lead swap) and `specs/build-guide.md` Stage 6 step 2 / 7A step 3.
+>
+> ✅ **The gland conclusion survived the cable change.** The lead bought was **3183P 1.5 mm²**,
+> not H07RN-F, but at **~9.75 mm** OD it is *also* above the M16's 8 mm ceiling. The **M20 was
+> bought** (Screwfix `651VT`) on 2026-09-06. The reasoning above was right about the gland even
+> though it was wrong about the cable.
+
+### 3183P rubber flex — `OUTDOOR FLEX` — **the part actually bought**
+
+**Screwfix `994JY` — Time `3183P` black 3-core 1.5 mm², 10 m coil, £19.99.** Ordered
+2026-09-06 on `A27859275166`. This is the external mains lead.
+
+| CSA | Volts | Temp | Sheath | Nominal OD |
+|---|---|---|---|---|
+| 1.5 mm² (`3183P`) | **300/500** | **−35 °C to +60 °C** | **Polychloroprene (PCP) rubber** | **~9.75 mm** ⚠ |
+
+Screwfix's own product description, verbatim: *"The durable rubber sheath resists weather, UV
+exposure and moisture degradation."* Sold by them for *"pond pumps and other outdoor cabling
+applications"*.
+
+> ⛔ **It is NOT H07RN-F, and this document must not say it is.** Screwfix state the conductors
+> are **"rated 300/500 V"**. That is the **H05RN-F voltage class**. The `07` in H07RN-F *means*
+> **450/750 V** by definition — a cable cannot be H07RN-F and 300/500 V at the same time.
+> **Correct description: "3183P rubber flex (PCP sheath), 300/500 V class".**
+
+✅ **It is the right cable for this build anyway, and this is not a climb-down.** The requirement
+was always **a rubber sheath instead of PVC** — the failure mode being designed against is UV
+chalking and frost-embrittlement of PVC over seasons, not insulation breakdown. On **230 V behind
+a 5 A BS 1362 fuse, a 450/750 V rating buys nothing**; a PCP sheath rated to **−35 °C** buys
+everything the section above was actually arguing for. Getting 1.5 mm² instead of 1.0 mm² is a
+step *up* in conductor, so the fuse-versus-conductor argument only gets safer again.
+
+⚠️ **Unverified on this cable:** the **~9.75 mm OD is reported, not read off a datasheet** —
+there is no 3183P datasheet in `datasheets/`. **Caliper it before drilling anything.** The
+conductor **temperature class of the cores** (60 °C sheath rating is stated; the core rating is
+not) is likewise not sourced — so 3183P cores are **not** a substitute for the tri-rated
+internal wiring this document asks for at 105 °C.
+
+#### UK cable codes — the reliable discriminator *(verified, recorded 2026-09-06)*
+
+| Code | Harmonised | Insulation / sheath | Volts | Standard |
+|---|---|---|---|---|
+| **`3183Y`** | **H05VV-F** | PVC insulation + **PVC** sheath | 300/500 | **BS EN 50525-2-11** |
+| **`3183P`** | *(none that fits — see below)* | **Polychloroprene (rubber)** sheath | 300/500 | **BS EN 50525-2-21** |
+
+- **The trailing letter denotes the sheath material** — `Y` = PVC, `P` = polychloroprene rubber.
+  The leading `318` and the `3` are core count / construction, unchanged between them.
+- **The two standard numbers are the clean discriminator:** **`-2-11` is PVC, `-2-21` is
+  rubber.** They are unambiguous where the marketing copy is not.
+- **Evidence class: manufacturer datasheet, verified** — Farnell publish a datasheet titled
+  *"3183Y (Har. code HO5VV-F3) Three-Core Round 300/500 V"*, and 3183P products consistently
+  cite **BS EN 50525-2-21**.
+
+> ⚠️ **TRAP — retailer listings are internally inconsistent on 3183P.** MP Moran's 3183P listing
+> claims **"H07RN-F"** *and* **"300V/500V"** in the same description. **Those cannot both be
+> true.** On a 3183P listing, treat the **sheath material as reliable** and the **harmonised
+> designation as noise**. This is the same evidence-class failure that has already cost this
+> project money once: a seller's title is not a spec.
+>
+> The **BS EN number**, not the har-code, is what to check if a listing has to be trusted at all.
+
+⚠️ **And there was never a thinner rubber option.** The earlier finding stands —
+**H07RN-F is not made in 3-core 0.75 mm²** (smallest is 1.0 mm², Lapp catalogue) — but
+independently of that, **Screwfix's own 3183P range starts at 1.5 mm²**: filtering their 3183P
+listings to 0.75 mm² returns **zero products**. So 1.5 mm² was not an upsell, it was the floor.
 
 ### Tri-rated BS6231 — `PREFERRED`
 
@@ -169,6 +241,26 @@ Mains Lead, 0.75 mm, 2 m, Black"*, £2.65 on CPC order 20171387 (2026-07-19). Id
 3183Y / H05VV-F ⚠ — CPC's listing states only the CSA, length and colour, so the grade is inferred
 from the form factor, not from a datasheet.
 
+> ⚠️ **DOWNGRADED 2026-09-06 — the part identity is now in doubt.** Dan reports (hedged, *"I
+> think"*) that **the plug on the lead actually in hand is screwed on / rewireable, not moulded**.
+> **A moulded plug and a rewireable plug are not the same part**, so the physical object disagrees
+> with the order confirmation it was identified from. Consequences, stated plainly:
+>
+> - **`PELB2340` is no longer a confirmed identification.** An order confirmation is the seller's
+>   own title echoed back — **one source** — and it is the source that now conflicts with the
+>   hardware. It cannot confirm itself.
+> - **The 0.75 mm² CSA reverts from "confirmed" to "assumed."** It came from the same title.
+> - **The 3183Y / H05VV-F grade was already ⚠ inferred** and is untouched by this — it was never
+>   better than an inference.
+> - **The transformer / load arithmetic is unaffected as arithmetic**, but one of its stated
+>   inputs (conductor CSA) is no longer evidenced. Nothing downstream changes numerically; the
+>   *confidence* label on the input does.
+> - ✅ **One thing improves:** a rewireable plug **opens**, so the sheath printing and the actual
+>   conductor size can both be read directly — see the free checks below. **Do that before the
+>   lead is cut up for cores.**
+>
+> **Confidence: Dan's observation, hedged, 2026-09-06. Not yet confirmed by opening the plug.**
+
 **Where it sits.** Two enclosures, neither of them IP66:
 
 | Enclosure | Rating | Contains |
@@ -193,21 +285,39 @@ on it. Three free mitigations, all of which the guide already applies elsewhere:
 | 2 | **Enter through a bottom or lower-side face**, never the top | Stage 6, step 2 |
 | 3 | **Keep the run off the ground** — not lying where it can sit in standing water or meet a strimmer | — |
 
-**The fix, when it stops being a prototype:** replace the lead with **H07RN-F `3G1.0`**, or sleeve
+**The fix, when it stops being a prototype:** replace the lead with rubber flex, or sleeve
 the exposed section in conduit. The same reasoning this document already applies to the internal
 wiring — *"re-wire in tri-rated before it goes outside"* — applies to the lead. It simply was
 never followed through to the one conductor that is genuinely outdoors.
 
-⛔ **Two things to get right when buying it — added 2026-09-06:**
+### ✅ BOUGHT 2026-09-06 — and it is 3183P, not H07RN-F
+
+**Screwfix order `A27859275166`**, Click & Collect Horsforth. Three lines, £23.03 inc VAT:
+
+| Code | Item | Qty | £ inc |
+|---|---|---|---|
+| `994JY` | **Time `3183P` black 3-core 1.5 mm² rubber flex, 10 m coil** | 1 | £19.99 |
+| `651VT` | Vimark nylon male comp glands **20 mm (M20)** black, 2 pack | 1 | £1.35 |
+| `68744` | Essentials 13 A fused heavy-duty plug, black | 1 | £1.69 |
+
+*Evidence class: **Screwfix order confirmation email, verified**.*
+
+⛔ **Correction to the two rows this section carried earlier today.** They said to buy
+**H07RN-F `3G1.0`**. **The cable bought is `3183P` — 300/500 V, not 450/750 V — and the docs must
+describe what is in hand.** The two rows are preserved below as dated history because the *gland*
+half of the reasoning was right and is why the M20 got bought at all:
+
+| | *(superseded as a buying instruction, 2026-09-06 — kept as reasoning)* |
+|---|---|
+| ~~**Not 0.75 mm²**~~ | Still **true as a statement about H07RN-F**: not made in 3-core 0.75 mm², smallest 3-core is **1.0 mm² (`3G1.0`)**. **Moot as a buying rule** — Screwfix's 3183P range starts at **1.5 mm²**, so no thin rubber option existed to get wrong. |
+| ✅ **M20 gland, not the owned M16** | **Held, and was bought.** The bought 3183P is **~9.75 mm** ⚠ OD against the WEMNO M16's **3–8 mm**. The cable identity changed; the gland conclusion did not. |
+
+⚠️ **Two things this order did NOT settle — carried forward:**
 
 | | |
 |---|---|
-| **Not 0.75 mm²** | H07RN-F is not made in 3-core 0.75 mm². Smallest 3-core is **1.0 mm² (`3G1.0`)**; 0.75 mm² rubber flex is **H05RN-F**, 300/500 V — a lighter cable and a voltage class down. Ask for `3G1.0`, not "the same as what's on there". |
-| **M20 gland, not the owned M16** | `3G1.0` is **8.3–10.7 mm** OD; the WEMNO M16 in hand seals **3–8 mm**. The whole OD range is outside it. **The gland is part of the lead swap, not a separate maybe.** |
-
-*Evidence class: **manufacturer catalogue (Lapp), verified*** — CSA availability and the OD range
-both come from Lapp's own catalogue, corroborated by Eland Cables and FS Cables. Not a seller
-listing, not a marketplace title.
+| **The M20's own clamping range is unverified** | The M16 failed because a gland was chosen by **thread size** without checking its **seal range**. `651VT`'s clamping range is **not recorded anywhere in this repo**. A nylon M20 comp gland typically covers roughly 6–12 mm and 9.75 mm should sit mid-range — **⚠ inferred, not from a datasheet.** **Check the packet against the calipered cable before drilling the box.** Making the identical mistake one size up is the cheap failure available here. |
+| **Fuse: keep the 5 A** | The `68744` plug **ships with a 13 A fuse**. **5 A remains correct** for a 15 VA transformer plus a 5 V PSU, and it is the fuse the whole cable-vs-fuse argument in this document is built on. ⚠️ **Where the 5 A fuse comes from is not recorded** — the obvious source is the one already in the old lead's plug, which is free if that lead is retired. Confirm you have one before the swap, not during it. |
 
 ---
 
@@ -217,7 +327,7 @@ One feed in, split at the Wago bank, two rails out.
 
 ```mermaid
 flowchart TD
-    MAINS["<b>230 V mains in</b><br/>UK plug · 5 A fuse<br/>CPC PL17788 · 2 m · 0.75 mm² 3-core"]
+    MAINS["<b>230 V mains in</b><br/>UK plug · 5 A fuse<br/>CPC PL17788 ⚠ · 2 m · 0.75 mm² ⚠ 3-core"]
     WAGO["<b>Wago bank — 3 × 221-413</b><br/>L brown · N blue · E green/yellow<br/>450 V · 32 A · 0.14–4 mm²<br/>E bonds to the DIN rail"]
     HDR["<b>HDR-15-5</b><br/>pin 4 = AC/L · 3 = AC/N<br/>pin 1 = +V · 2 = −V<br/>5 V 2.4 A · Class II"]
     TM["<b>ABB TM15/24</b><br/>3 &amp; 4 = 230 V primary<br/>5↔7 = 24 V out · 6 = centre tap<br/>15 VA · isolating · Class II"]
@@ -440,9 +550,11 @@ What's in hand and what still needs sourcing.
 | Ferrules | 0.75 mm² · 6 mm bootlace | 6 | `SOURCE` |
 | Earth bond | DIN earth block, or M4 + ring crimp | 1 | `SOURCE` |
 | Field cable to manifold | ✅ **Rain Bird `RB/IRRICAB5-15M` — 5-core, 15 m** (EGI144337, delivered 2026-08-27). Spec was "zones + 1 cores, <10 m"; **5 cores = 4 zones + common**, matching the 4-way manifold of decision #19, and 15 m gives headroom over the <10 m estimate. | 1 × 15 m | `IN HAND` |
-| External mains lead *(socket → box)* | supplied **H05VV-F** ⚠ is indoor grade — replace with **H07RN-F `3G1.0`** (⛔ **not** 0.75 mm²; that size only exists as **H05RN-F**), or sleeve in conduit, once permanent | 1 | `IN HAND` *(interim)* |
-| Mains cable gland — **as built** | WEMNO **M16** nylon IP68, **3–8 mm** range. Fits the *supplied* H05VV-F lead. | 1 | `IN HAND` *(pack of 10)* |
-| Mains cable gland — **for the H07RN-F swap** | **M20.** `3G1.0` is **8.3–10.7 mm** OD (Lapp catalogue, verified) — the entire range is above the M16's 8 mm ceiling, so this is **not** a "step up if it measures over 8 mm" judgement call. Buy it **with** the cable. | 1 | `SOURCE` *(only when the lead is replaced — see Phase E)* |
+| External mains lead *(socket → box)* — **as built** | supplied lead, ⚠ **assumed** 0.75 mm² **H05VV-F** (indoor PVC). Interim only; ⚠ its plug is reportedly **rewireable, not moulded**, so the `PELB2340` identification is in doubt | 1 | `IN HAND` *(interim, to be replaced)* |
+| External mains lead — **the replacement** | ✅ **Time `3183P` 3-core 1.5 mm², 10 m coil** (Screwfix `994JY`, order `A27859275166`, 2026-09-06). **PCP rubber sheath, 300/500 V, −35 to +60 °C.** ⛔ **Not H07RN-F** — see [3183P rubber flex](#3183p-rubber-flex--outdoor-flex--the-part-actually-bought) | 1 × 10 m | `IN HAND` *(collect at Horsforth)* |
+| **Plug for the replacement lead** | ✅ **Essentials 13 A fused heavy-duty, black** (Screwfix `68744`). ⚠️ **Ships with a 13 A fuse — fit a 5 A.** The bought coil is bare-ended, so unlike the old lead the plug is a separate part | 1 | `IN HAND` |
+| Mains cable gland — **as built** | WEMNO **M16** nylon IP68, **3–8 mm** range. Fits the *supplied* lead. ⛔ **Will not seal the 3183P** at ~9.75 mm — the seal never compresses on the sheath at all | 1 | `IN HAND` *(pack of 10)* |
+| Mains cable gland — **for the lead swap** | ✅ **Vimark nylon male comp gland, 20 mm / M20, black** (Screwfix `651VT`, 2 pack). ⚠️ Its own **clamping range is unverified** — check the packet against the calipered cable. ⛔ **Fitting it means enlarging the box entry ~16.5 → ~20.5 mm** ⚠ *(hole sizes inferred from the thread designation, not a datasheet)* | 1 *(2 owned)* | `IN HAND` |
 | Vented drain / breather | IP-rated M12–M16 breather plug | 1 | `SOURCE` |
 | Valve-box connectors | ✅ **Rain Bird `RB/DBRY.P2` ×2 = 4 DBR/Y gel-filled direct-burial splices** (EGI144337, delivered 2026-08-27). 2 zones + common = 3 joints needed, 4 owned. | 4 | `IN HAND` |
 
@@ -456,10 +568,22 @@ What's in hand and what still needs sourcing.
 
 ## Before you touch the 230 V side
 
-**Verify the lead cores — don't trust colour.** It's a moulded plug, so you can't see inside.
-**Pull the fuse out.** Blue should beep to the left-hand pin, green/yellow to the long top pin,
-and **brown should beep to nothing** — the fuse sits in the Live path. Refit it and brown beeps
-to the right-hand pin. That's proof, not assumption.
+**Verify the lead cores — don't trust colour.** The continuity method assumes you *can't* see
+inside. **Pull the fuse out.** Blue should beep to the left-hand pin, green/yellow to the long top
+pin, and **brown should beep to nothing** — the fuse sits in the Live path. Refit it and brown
+beeps to the right-hand pin. That's proof, not assumption.
+
+> ⚠️ **Amended 2026-09-06 — the plug on the lead in hand is reportedly rewireable, not moulded**
+> (Dan's observation, hedged). If so, **open it instead** — that beats the continuity test and
+> settles three open questions in one go:
+>
+> | Open the plug and read | Settles |
+> |---|---|
+> | **The sheath printing on the old lead** | Whether it was ever `3183Y` / H05VV-F, which this document has only ever *inferred*. **Free, and it must happen before the lead is cut up for cores** — cutting destroys the evidence |
+> | **The actual conductor size at the terminals** | The 0.75 mm² CSA, now demoted to *assumed* |
+> | **Whether 1.5 mm² will seat** in this plug's **cord grip and terminals** | Whether the new 3183P can reuse this plug at all, or whether the `68744` is doing that job. ⚠️ **Unverified either way** |
+>
+> All three are one job with a screwdriver and cost nothing. **None of them is done yet.**
 
 **If you split a sheathed flex for its cores.** Electrically fine — the cores are 300/500 V
 insulated. Two rules: **the sheath must pass through the gland** and stop just inside the box,
@@ -514,12 +638,19 @@ was written away from the source files; these are the numbers that were re-confi
 | Relay screw order `NC · COM · NO`, channels 1→8 in sequence | ELEGOO schematic (`J3` = pins 1–6) + module dimension drawing | ✅ confirmed |
 | Wago 221-413 rated 450 V / 32 A / 0.14–4 mm² | — | ⚠ not re-checked |
 | Songle coil 71.4 mA | — | ⚠ not re-checked |
-| Lead spec CPC PL17788 / order 20171387 | CPC order confirmation, 2026-07-19 | ✅ **Pro Elec PELB2340**, *"UK Mains Plug with 5A Fuse to Bare Ends Mains Lead, 0.75 mm, 2 m, Black"*, £2.65. Confirms CSA, length, 5 A fuse and moulded plug |
+| Lead spec CPC PL17788 / order 20171387 | CPC order confirmation, 2026-07-19 | ⚠ **DOWNGRADED 2026-09-06 — was ✅.** The confirmation says **Pro Elec PELB2340**, *"UK Mains Plug with 5A Fuse to Bare Ends Mains Lead, 0.75 mm, 2 m, Black"*, £2.65 — i.e. a **moulded** plug. **Dan reports the plug on the lead in hand is screwed on / rewireable** (his observation, 2026-09-06, hedged *"I think"*). **A moulded plug and a rewireable plug are not the same part**, so the physical object contradicts the paperwork. An order confirmation is **the seller's own title echoed back — one source**, and it is the one now in dispute, so it cannot re-confirm itself. **`PELB2340` as the part identity is in doubt**, and with it the length and fuse rating it was the sole evidence for |
+| Lead **conductor CSA (0.75 mm²)** | *(was: the same CPC confirmation)* | ⚠ **assumed, not confirmed — demoted 2026-09-06.** It rested entirely on the `PELB2340` title above, which is now in doubt. The transformer/load model's **arithmetic is unaffected**, but one of its **stated inputs is no longer evidenced**. **Settle it by opening the rewireable plug and reading the conductors** — free, and needed before the lead is cut for cores |
 | Lead **cable grade** (3183Y / H05VV-F) | — | ⚠ **inferred, not stated.** CPC's listing gives only CSA, length and colour. The H05VV-F identification is from form factor. Material matters — see [The external lead](#the-external-lead--the-run-nobody-specified) |
 | Plug **IP rating** | CPC listing + price | ✅ **none.** A standard moulded BS 1363 plug carries no IP rating and none was intended — weather protection comes from the enclosure it sits in, not the plug |
 | RESTMO plug enclosure **IP54** | Amazon order 206-6337738-2459509, 2026-09-06 | ⚠ vendor title only. **IP54 = splashing water**, below the **IP66** assumed in build guide 7A. Acceptable wall-mounted with entries down; not acceptable ground-sited |
 | **H07RN-F smallest 3-core CSA** | **Lapp manufacturer catalogue**, corroborated by Eland Cables and FS Cables (2026-09-06) | ⛔ **Correction. 3-core 0.75 mm² H07RN-F does not exist** — the smallest 3-core made is **1.0 mm² (`3G1.0`)**. 0.75 mm² rubber flex is **H05RN-F**, 300/500 V. Every *"H07RN-F 3-core 0.75 mm²"* in this repo was wrong. **Evidence class: manufacturer catalogue, verified** — not a seller listing |
-| **H07RN-F `3G1.0` nominal OD** | **Lapp manufacturer catalogue** (2026-09-06) | ✅ **8.3–10.7 mm.** The owned **WEMNO M16** gland seals **3–8 mm**, so the H07RN-F lead needs an **M20** gland. The *whole* OD range sits above the M16 ceiling — this is settled by the catalogue, not by measuring on the day. **Evidence class: manufacturer catalogue, verified** |
+| **H07RN-F `3G1.0` nominal OD** | **Lapp manufacturer catalogue** (2026-09-06) | ✅ **8.3–10.7 mm.** The owned **WEMNO M16** gland seals **3–8 mm**, so an H07RN-F lead needs an **M20** gland. The *whole* OD range sits above the M16 ceiling — settled by the catalogue, not by measuring on the day. **Evidence class: manufacturer catalogue, verified.** ⚠️ **Reference only from 2026-09-06** — the cable bought is 3183P, not H07RN-F. The M20 conclusion carried over anyway |
+| **The cable actually bought is `3183P`, NOT H07RN-F** | **Screwfix product description + order confirmation `A27859275166`** (2026-09-06) | ⛔ **Correction to the correction, same day.** Screwfix state the conductors are **"rated 300/500 V"**. **H07RN-F is 450/750 V by definition of the `07`** — the two claims are mutually exclusive. The part in hand is **`3183P`: PCP rubber sheath, 300/500 V class, −35 to +60 °C**. **Docs must say "3183P rubber flex (PCP sheath), 300/500 V class" and must not claim H07RN-F for it.** ✅ **Functionally correct regardless** — the requirement was a *rubber sheath*, not a voltage class; on 230 V behind a 5 A fuse, 450/750 V buys nothing |
+| **`3183Y` vs `3183P` — what the trailing letter means** | **Farnell datasheet** *"3183Y (Har. code HO5VV-F3) Three-Core Round 300/500 V"* + 3183P listings citing **BS EN 50525-2-21** (2026-09-06) | ✅ **The trailing letter is the sheath material.** `3183Y` = **H05VV-F**, PVC insulation + PVC sheath, 300/500 V, **BS EN 50525-2-11**. `3183P` = **polychloroprene rubber** sheath, **BS EN 50525-2-21**. **The two standard numbers (`-2-11` PVC vs `-2-21` rubber) are the clean discriminator.** **Evidence class: manufacturer datasheet, verified** |
+| ⚠ **TRAP — retailer listings on 3183P are self-contradictory** | MP Moran 3183P listing (2026-09-06) | ⚠ **Recorded as a trap, not a fact.** That listing claims **"H07RN-F"** *and* **"300V/500V"** simultaneously; **both cannot be true.** On a 3183P listing the **sheath material is the reliable part; the harmonised designation is not.** Check the **BS EN number**, never the har-code, if a listing must be trusted at all |
+| **No thinner rubber option existed** | Screwfix 3183P range filter (2026-09-06) | ✅ **Screwfix's 3183P range starts at 1.5 mm²** — a 0.75 mm² filter returns **zero products**. Independent of the H07RN-F CSA finding, there was no thin rubber flex to buy. ⚠ **Evidence class: retailer catalogue** — adequate for *"what could be bought here"*, not a manufacturing claim |
+| **3183P nominal OD (~9.75 mm)** | — | ⚠ **reported, not sourced.** No 3183P datasheet exists in `datasheets/`. It is above the M16's 8 mm ceiling by a wide enough margin that the gland conclusion is safe, but **it is the number the drilling depends on — caliper the cable and the existing hole before cutting metal** |
+| **Vimark `651VT` M20 clamping range** | — | ⚠ **not recorded anywhere.** The M16 failed by being chosen on **thread size** without checking **seal range**; this repo has not checked the M20's. ~6–12 mm is **inferred** for a nylon M20 comp gland. **Read the packet against the calipered cable before drilling** |
 
 ---
 

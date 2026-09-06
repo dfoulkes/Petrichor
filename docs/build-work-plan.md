@@ -101,6 +101,11 @@ gets established there.
       swapped for **H07RN-F `3G1.0`**: that cable is **8.3–10.7 mm** OD (Lapp
       catalogue, verified) against the M16's **3–8 mm**, so the whole range is
       out. See `wiring-and-cable-grades.md` → *The external lead*.
+      ✅ **Resolved for the mains side later the same day** — the lead bought was
+      **`3183P` 1.5 mm² (~9.75 mm ⚠)**, not H07RN-F, and **an M20 came with it**
+      (`651VT`, 2 in the pack). **The control-cable measurement is still to do**,
+      and there is now a **spare M20** if it needs one — but a second M20 entry
+      would be a **second hole to drill**, so measure before assuming.
 - [ ] **Rebuild the valve assembly on a bench** — dry, unhurried, indoors.
       **Chamfer and silicone-lubricate every pipe end** (Plasson's own
       instruction; missing from the original build).
@@ -124,10 +129,16 @@ gets established there.
       internal against 500 mm needed, 56 mm clear per end; 140 mm stack in a
       300 mm box. The manifold will not lift out through the lid, so servicing
       means lifting the box off. **Dry-fit before digging.**
-- [ ] Screwfix: **MDPE pipe cutter**, black **cable clips**. **M20 gland** —
-      *"if needed"* for the control cable (measure it); **required, not
-      optional**, if the mains lead is replaced with H07RN-F `3G1.0`. That
-      part of it is a **Phase E** buy, not Phase A.
+- [ ] Screwfix: **MDPE pipe cutter**, black **cable clips**. ~~**M20 gland**~~
+      — ✅ **BOUGHT 2026-09-06**, order `A27859275166` (Vimark `651VT`, 2 pack).
+      Still *"if needed"* for the **control** cable (measure it); it was
+      **required** for the mains lead and that is why it was bought.
+      ⚠️ **Its clamping range is unverified** — check the packet against the
+      calipered cable.
+      > ⛔ **Cable clips are NOT bought and are still misspecced.** Screwfix's
+      > suggested *Vimark Black Round Coaxial Clips 5–7 mm* are **too small** for
+      > the 3183P mains lead at **~9.75 mm** ⚠. **Needs 9–11 mm round clips.**
+      > Not priced, not ordered — stays on the outstanding list.
 
 ## Phase B — Set out (outdoors, wet-tolerant, no box needed)
 
@@ -282,11 +293,44 @@ details assume swing joints. Currently backlogged — un-backlog it before diggi
 - [ ] IP66 cable changes to the new outlet.
 - [ ] New IP66 outlet + run back to the house breaker box. **Sparky's job.**
 - [ ] Buy the four remaining `SOURCE` items: 230 V flex, ferrules, earth bond,
-      breather plug.
-- [ ] **External mains lead** — replace the supplied indoor-grade H05VV-F with
-      **H07RN-F `3G1.0`** (⛔ **not** 0.75 mm² — that size is only made as
-      H05RN-F), **plus an M20 gland**, which the owned M16 cannot substitute
-      for. Buy the two together or the lead cannot be terminated.
+      breather plug. *(Still four — see the note under the lead below.)*
+- [x] **External mains lead** — ✅ **BOUGHT 2026-09-06**, Screwfix
+      `A27859275166`, **£23.03 inc**: `994JY` **Time `3183P` 3-core 1.5 mm²,
+      10 m coil** £19.99 · `651VT` **M20 gland** 2-pack £1.35 · `68744`
+      **13 A fused plug** £1.69. Click & Collect **Horsforth**, held 21 days —
+      **wait for the SMS before travelling.**
+      > ⛔ **It is `3183P`, NOT H07RN-F.** Screwfix state **"rated 300/500 V"**,
+      > which is the H05RN-F class; the `07` in H07RN-F *means* 450/750 V.
+      > **Correct description: "3183P rubber flex (PCP sheath), 300/500 V
+      > class."** ✅ **Functionally right regardless** — the requirement was a
+      > **rubber sheath**, not a voltage class, and on 230 V behind a 5 A fuse
+      > 450/750 V buys nothing. PCP sheath, **−35 to +60 °C**, sold by Screwfix
+      > for *"pond pumps and other outdoor cabling applications"*.
+      > *(Superseded, kept as history: this line previously said to buy
+      > **H07RN-F `3G1.0`**, ⛔ not 0.75 mm² — that size is only made as
+      > H05RN-F. True about H07RN-F, and moot: Screwfix's 3183P range starts at
+      > 1.5 mm², so no thin rubber option existed.)*
+- [ ] ⛔ **Drill the enclosure entry out from M16 to M20 — NEW WORK, added
+      2026-09-06.** The fitted **WEMNO M16 seals 3–8 mm** and the bought lead is
+      **~9.75 mm** ⚠, so the gland's seal **never compresses on the sheath at
+      all** — this is not a tight fit, it is no seal. Opening the entry from
+      **~16.5 mm to ~20.5 mm** ⚠ *(hole sizes **inferred from the metric thread
+      designation, not a datasheet** — **caliper the existing hole first**)* is a
+      **step-drill / cone-cutter job on an already-built and wired box**.
+      ⛔ **Remove or shroud the board and both PSUs first, and clear every chip
+      before re-sealing** — swarf near electronics is the risk, not the hole.
+      Full procedure: `specs/build-guide.md` **Stage 6 step 3**.
+      > 📌 **Dan chose this route knowingly, 2026-09-06.** Build guide 7A step 3
+      > offers *"or sleeve in conduit"*, which needs no drilling; it was put to
+      > him and he took the cable-and-gland swap. **Recorded, not re-argued.**
+- [ ] ⚠️ **Fit a 5 A fuse to the new plug.** `68744` ships with **13 A**. 5 A
+      remains correct for a 15 VA transformer plus the 5 V PSU. ⚠️ Where the 5 A
+      comes from is unrecorded — the obvious source is the old lead's plug.
+- [ ] ⚠️ **Free checks on the old lead, before it is cut up for cores** — its
+      plug is reportedly **rewireable, not moulded**, so **open it**: read the
+      **sheath printing** (settles whether it was ever H05VV-F — the cut destroys
+      the evidence) and check **whether 1.5 mm² seats in its cord grip and
+      terminals**. Neither is done.
 - [ ] Pull the control cable, terminate both ends, commission.
 
 ---
