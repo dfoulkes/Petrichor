@@ -46,7 +46,7 @@ the mains side.
 
 ## The one-glance answer
 
-If you read nothing else on this page, read these four lines.
+If you read nothing else on this page, read these five lines.
 
 | | | |
 |---|---|---|
@@ -54,6 +54,7 @@ If you read nothing else on this page, read these four lines.
 | ✓ | **22 AWG is correct for everything else** | 5 V DC, 24 V AC and signals. That's what the kit was bought for. |
 | ≡ | **Mains side is 0.75 mm², five wires to make** | Flex cores off the lead tail for the bench; tri-rated before the box goes outdoors. |
 | E | **Earth terminates in its own Wago** | Both supplies are Class II — neither has an earth terminal. Never cut it off, never leave it floating. |
+| ☂ | **The supplied lead is indoor flex** | H05VV-F is PVC-sheathed general-purpose cable. It is the one conductor that actually lives in the rain, and it is the least suited to it — see [The external lead](#the-external-lead--the-run-nobody-specified). |
 
 ---
 
@@ -61,7 +62,7 @@ If you read nothing else on this page, read these four lines.
 
 Cable is chosen by insulation rating and fault protection — **not** by whether it fits the terminal.
 
-### 3183Y / H05VV-F flex — `MAINS OK`
+### 3183Y / H05VV-F flex — `MAINS OK · INDOORS`
 
 3-core sheathed, stranded — the supplied lead.
 
@@ -71,6 +72,22 @@ Cable is chosen by insulation rating and fault protection — **not** by whether
 
 Cores usable as singles inside the box for the bench build. **18 AWG equivalent** — the
 smallest size the HDR manual permits.
+
+⚠️ **PVC insulation, PVC sheath, general-purpose — not an outdoor cable.** Fine as a source of
+cores for internal wiring, and fine as a lead in the short term, but it is not the grade to leave
+permanently in the weather. See [The external lead](#the-external-lead--the-run-nobody-specified).
+
+### H07RN-F rubber flex — `OUTDOOR FLEX`
+
+Rubber-insulated, rubber-sheathed, fine-stranded. The standard outdoor / site flex.
+
+| CSA | Volts | Temp | Amps |
+|---|---|---|---|
+| 0.75 mm² | 450/750 | 60 °C ⚠ | ~7 ⚠ |
+
+The correct replacement for the supplied lead once the box is a permanent outdoor fixture: the
+rubber sheath resists **UV, oil and abrasion** where PVC chalks and cracks, and it stays flexible
+in frost where PVC goes brittle. Higher voltage class than H05VV-F for the same CSA.
 
 ### Tri-rated BS6231 — `PREFERRED`
 
@@ -119,6 +136,45 @@ self-heating is negligible, so it's a non-issue **on the bench**.
 
 It matters **outdoors**: a sealed IP65 box in sun reaches 50–60 °C internally plus the PSU's
 own 3 W. Re-wire in tri-rated before it goes outside.
+
+### The external lead — the run nobody specified
+
+Everything above is about conductors **inside** the box. The one cable that actually lives in the
+weather is the supplied lead itself, and until now this document never examined it.
+
+**What it is:** `CPC PL17788` = **Pro Elec PELB2340** — *"UK Mains Plug with 5A Fuse to Bare Ends
+Mains Lead, 0.75 mm, 2 m, Black"*, £2.65 on CPC order 20171387 (2026-07-19). Identified here as
+3183Y / H05VV-F ⚠ — CPC's listing states only the CSA, length and colour, so the grade is inferred
+from the form factor, not from a datasheet.
+
+**Where it sits.** Two enclosures, neither of them IP66:
+
+| Enclosure | Rating | Contains |
+|---|---|---|
+| RESTMO weatherproof box | **IP54** ⚠ — splashing water only | the plug and its socket |
+| CE-TEK GR17016 | **IP65** | ESP32, relay, HDR-15-5, TM15/24 |
+
+Between them: **~2 m of PVC-sheathed indoor flex, fully exposed.**
+
+**The risk is degradation, not shock.** The sheath is intact, PVC is waterproof, each core is
+separately insulated inside it, and the socket is RCD-protected — rain landing on a sheathed
+3-core flex does nothing. What rain and sun do over *seasons* is chalk and harden the PVC until
+the sheath cracks, and a cracked sheath is what finally lets water at the cores. PVC also stiffens
+below roughly −5 °C, so **don't flex or reroute the lead in a hard frost.**
+
+⚠️ **The failure mode to design against is water tracking *along* the sheath**, not water landing
+on it. Three free mitigations, all of which the guide already applies elsewhere:
+
+| | Do this | Already specified at |
+|---|---|---|
+| 1 | **Drip loop at both ends** — a U hanging below each entry so water runs to the bottom and drips off instead of following the sheath in | 7B, for the field cable |
+| 2 | **Enter through a bottom or lower-side face**, never the top | Stage 6, step 2 |
+| 3 | **Keep the run off the ground** — not lying where it can sit in standing water or meet a strimmer | — |
+
+**The fix, when it stops being a prototype:** replace the lead with **H07RN-F**, or sleeve the
+exposed section in conduit. The same reasoning this document already applies to the internal
+wiring — *"re-wire in tri-rated before it goes outside"* — applies to the lead. It simply was
+never followed through to the one conductor that is genuinely outdoors.
 
 ---
 
@@ -351,6 +407,7 @@ What's in hand and what still needs sourcing.
 | Ferrules | 0.75 mm² · 6 mm bootlace | 6 | `SOURCE` |
 | Earth bond | DIN earth block, or M4 + ring crimp | 1 | `SOURCE` |
 | Field cable to manifold | ✅ **Rain Bird `RB/IRRICAB5-15M` — 5-core, 15 m** (EGI144337, delivered 2026-08-27). Spec was "zones + 1 cores, <10 m"; **5 cores = 4 zones + common**, matching the 4-way manifold of decision #19, and 15 m gives headroom over the <10 m estimate. | 1 × 15 m | `IN HAND` |
+| External mains lead *(socket → box)* | supplied **H05VV-F** ⚠ is indoor grade — replace with **H07RN-F** 3-core 0.75 mm², or sleeve in conduit, once permanent | 1 | `IN HAND` *(interim)* |
 | Mains cable gland | WEMNO **M16** nylon IP68, 3–8 mm range (step to M20 if lead >8 mm) | 1 | `IN HAND` *(pack of 10)* |
 | Vented drain / breather | IP-rated M12–M16 breather plug | 1 | `SOURCE` |
 | Valve-box connectors | ✅ **Rain Bird `RB/DBRY.P2` ×2 = 4 DBR/Y gel-filled direct-burial splices** (EGI144337, delivered 2026-08-27). 2 zones + common = 3 joints needed, 4 owned. | 4 | `IN HAND` |
@@ -423,7 +480,10 @@ was written away from the source files; these are the numbers that were re-confi
 | Relay screw order `NC · COM · NO`, channels 1→8 in sequence | ELEGOO schematic (`J3` = pins 1–6) + module dimension drawing | ✅ confirmed |
 | Wago 221-413 rated 450 V / 32 A / 0.14–4 mm² | — | ⚠ not re-checked |
 | Songle coil 71.4 mA | — | ⚠ not re-checked |
-| Lead spec CPC PL17788 / order 20171387 | — | ⚠ not re-checked (order record, not a datasheet) |
+| Lead spec CPC PL17788 / order 20171387 | CPC order confirmation, 2026-07-19 | ✅ **Pro Elec PELB2340**, *"UK Mains Plug with 5A Fuse to Bare Ends Mains Lead, 0.75 mm, 2 m, Black"*, £2.65. Confirms CSA, length, 5 A fuse and moulded plug |
+| Lead **cable grade** (3183Y / H05VV-F) | — | ⚠ **inferred, not stated.** CPC's listing gives only CSA, length and colour. The H05VV-F identification is from form factor. Material matters — see [The external lead](#the-external-lead--the-run-nobody-specified) |
+| Plug **IP rating** | CPC listing + price | ✅ **none.** A standard moulded BS 1363 plug carries no IP rating and none was intended — weather protection comes from the enclosure it sits in, not the plug |
+| RESTMO plug enclosure **IP54** | Amazon order 206-6337738-2459509, 2026-09-06 | ⚠ vendor title only. **IP54 = splashing water**, below the **IP66** assumed in build guide 7A. Acceptable wall-mounted with entries down; not acceptable ground-sited |
 
 ---
 

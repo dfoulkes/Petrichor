@@ -394,32 +394,45 @@ which makes the electrical side easy — the work is all about **weather**, not 
 ### 7A — A weatherproof outdoor supply
 
 1. [ ] Feed the box from an **RCD-protected outdoor socket**. MVP: plug the existing UK
-   plug→bare-end lead into an **IP66 weatherproof socket enclosure** on an existing RCD circuit —
+   plug→bare-end lead into a **weatherproof socket enclosure** on an existing RCD circuit —
    the lead enters the box through its Stage 6 gland.
    > ⚠️ A *permanent* outdoor spur is **BS 7671 work for a competent person**. The plug-in
    > weatherproof-socket route keeps the prototype on the right side of that line. UK supply
    > assumed throughout — see [Regional assumptions](../docs/wiring-and-cable-grades.md#regional-assumptions).
+   > **The plug itself carries no IP rating and is not meant to** — a moulded BS 1363 plug never
+   > does. The sealing is the enclosure's job.
+2. [ ] ⚠️ **The enclosure actually bought is IP54, not IP66.** A **RESTMO weatherproof box**
+   (Amazon 206-6337738-2459509, 2026-09-06) — **IP54 is splashing water only**, a weaker claim than
+   the IP66 this step originally assumed. That makes mounting load-bearing rather than incidental:
+   - **Wall-mount it vertically. Not on the ground** — ground-sited it meets bouncing rain, puddles
+     and leaf litter, which is where IP54 runs out.
+   - **Cable entries pointing down**, with a **drip loop** in the lead before each entry.
+   - **Out of direct run-off** — not under a gutter join or a dripping sill.
+3. [ ] ⚠️ **The lead between socket and box is indoor-grade flex.** Supplied H05VV-F ⚠ is PVC —
+   fine short-term and not a shock risk, but it chalks and cracks under UV over seasons. Replace
+   with **H07RN-F** or sleeve in conduit once this stops being a prototype. Full reasoning:
+   [The external lead](../docs/wiring-and-cable-grades.md#the-external-lead--the-run-nobody-specified).
 
 ### 7B — The field cable (box → manifold)
 
-2. [ ] Run **one outdoor/UV-rated multicore** from the box out to the manifold. **Cores = zones + 1**
+4. [ ] Run **one outdoor/UV-rated multicore** from the box out to the manifold. **Cores = zones + 1**
    (one per valve + one shared common) — *not* zones × 2. At <10 m and ~0.3 A per valve,
    **0.5–0.75 mm² is ample**; volt-drop is negligible, especially at the ~29 V this transformer
    delivers. This is the cable the old Stage 5 note left "not specified" — it is now specified.
-3. [ ] If buried, use **direct-burial-rated cable or run it in a duct**, and leave a **drip loop**
+5. [ ] If buried, use **direct-burial-rated cable or run it in a duct**, and leave a **drip loop**
    at both ends. The 24 V loop is **SELV — safe to handle** — so the rating here is about water, UV
    and abrasion, not shock.
 
 ### 7C — The valve box (in-ground manifold chamber)
 
-4. [ ] Set an **in-ground valve box** on a **gravel base** (drainage), sized for the manifold plus
+6. [ ] Set an **in-ground valve box** on a **gravel base** (drainage), sized for the manifold plus
    **hand access and cable slack**. It houses: the **double-check valve** (backflow prevention to
    the tap — a must-have *and* a UK water-regs requirement), the manifold, and the 24 V solenoid(s).
-5. [ ] ⚠️ **Waterproof every connection — this is the bit that bites.** Valve boxes flood. The
+7. [ ] ⚠️ **Waterproof every connection — this is the bit that bites.** Valve boxes flood. The
    solenoid coils don't care; **bare joints do.** Use **gel-filled / IP68 connectors** (gel
    Scotchloks, resin, or waterproof crimp + adhesive heatshrink) at every solenoid. **Never a dry
    Wago in the ground.** This is the single most failure-prone spot in the whole build.
-6. [ ] Wire the return as **one common daisy-chained across the solenoids** at the manifold
+8. [ ] Wire the return as **one common daisy-chained across the solenoids** at the manifold
    (terminal 7 out, hopping valve to valve), with **one individual conductor per valve** back to its
    `NO`. That's the "zones + 1" core count in the flesh.
 
@@ -429,23 +442,23 @@ which makes the electrical side easy — the work is all about **weather**, not 
 
 ### 7D — Pipe size & the thread standard (BSP — check yours)
 
-7. [ ] **Feed pipe: 3/4" / 20 mm.** At the measured **19 L/min** that's ~**1.5 m/s** — under Rain
+9. [ ] **Feed pipe: 3/4" / 20 mm.** At the measured **19 L/min** that's ~**1.5 m/s** — under Rain
    Bird's **2.3 m/s** water-hammer cap. 1/2" runs ~2.2 m/s (too fast); 1" is needless — the **tap
    and supply are the throttle, not the pipe**. The 1" valve is oversized for ~5 gpm (loss ~0.17 bar),
    which is fine — oversized means low loss and less hammer.
-8. [ ] ⚠️ **Check which thread standard your valve is — the 100-DVF ships in both.** The datasheet
-   makes it a specify-on-order option ("*Available with BSP threads*"; "*necessary to specify NPT or
-   BSP thread type*"). **This build's valve is BSP** — the Amazon order confirmation of 2026-07-19
-   reads verbatim *"Rain Bird 100-DVF, **1 inch BSPF** 24vac Solenoid Valve"* — so its ports are
-   **1" BSP female** and mate straight into UK pipe.
-   **Do not infer the standard from where it was assembled.** An earlier revision of this guide
-   concluded "NPT" from an "Assembled in Mexico" moulding and specified £7.49 hydraulic transition
-   adapters. That was **wrong** — Rain Bird build both variants there. Country of origin carries no
-   thread information. **Trust the order confirmation or a test fit; nothing else.**
-9. [ ] **Fit a plain reducing bush per port:** **1" BSP male × 3/4" BSP female** into **each** valve
-   port (inlet + outlet), PTFE tape. ~£2 each (Screwfix Flomasta 28333, Toolstation, HydroSure).
-   Everything downstream is then plain 3/4" BSP.
-10. [ ] **Verify on assembly.** A BSP bush should thread **smoothly and keep going**. If it **binds
+10. [ ] ⚠️ **Check which thread standard your valve is — the 100-DVF ships in both.** The datasheet
+    makes it a specify-on-order option ("*Available with BSP threads*"; "*necessary to specify NPT or
+    BSP thread type*"). **This build's valve is BSP** — the Amazon order confirmation of 2026-07-19
+    reads verbatim *"Rain Bird 100-DVF, **1 inch BSPF** 24vac Solenoid Valve"* — so its ports are
+    **1" BSP female** and mate straight into UK pipe.
+    **Do not infer the standard from where it was assembled.** An earlier revision of this guide
+    concluded "NPT" from an "Assembled in Mexico" moulding and specified £7.49 hydraulic transition
+    adapters. That was **wrong** — Rain Bird build both variants there. Country of origin carries no
+    thread information. **Trust the order confirmation or a test fit; nothing else.**
+11. [ ] **Fit a plain reducing bush per port:** **1" BSP male × 3/4" BSP female** into **each** valve
+    port (inlet + outlet), PTFE tape. ~£2 each (Screwfix Flomasta 28333, Toolstation, HydroSure).
+    Everything downstream is then plain 3/4" BSP.
+12. [ ] **Verify on assembly.** A BSP bush should thread **smoothly and keep going**. If it **binds
     hard after ~2 turns**, you have the NPT variant after all — fall back to a **1" NPTF male × 3/4"
     BSP female bush** (e.g. Hydraulic Megastore 16360, £7.49).
 
@@ -625,21 +638,21 @@ Once zone 1 waters correctly, build it for real — valve in the buried box, fie
 
 Neither is MVP. Both are cheap to add once zone 1 runs, and the parts for the lawn are already bought.
 
-15. [ ] **Zone 2 — hanging baskets.** Drip, off the **same filter and reducer** as zone 1, split to
+1. [ ] **Zone 2 — hanging baskets.** Drip, off the **same filter and reducer** as zone 1, split to
     its own valve. Baskets need short, frequent cycles; beds need long, infrequent ones. That
     difference is the reason they are separate zones rather than one.
-16. [ ] **Zone 3 — the lawn ring.** The beds shrink the lawn to ~**8 × 12.5 m**, so corner-to-centre
-    is **~7.4 m** — comfortably inside the MP3000's 6.7–9.0 m. You already own **one** PRS40 body and
-    **one** MP3000 nozzle (£26.15 of the 8C BOM); a 4-corner ring needs three more of each.
+2. [ ] **Zone 3 — the lawn ring.** The beds shrink the lawn to ~**8 × 12.5 m**, so corner-to-centre
+   is **~7.4 m** — comfortably inside the MP3000's 6.7–9.0 m. You already own **one** PRS40 body and
+   **one** MP3000 nozzle (£26.15 of the 8C BOM); a 4-corner ring needs three more of each.
     - **4 corners ≈ 12 L/min** fits the ~15 L/min working budget in one zone.
     - **6 heads (corners + mid-sides on the long edges) ≈ 18 L/min** does **not** — that splits into
       two zones. This is where 8C's `#1 − #2` loss figure finally earns its keep.
     - ⚠️ **Arc the heads inward, away from the beds.** The beds are already drip-irrigated; rotary
       overspray onto them is both overwatering and exactly the foliage-wetting that drip avoids.
-17. [ ] **Consider splitting the beds by aspect.** On a SW-facing plot the **west bed takes the hot
-    afternoon sun**, north gets the most overall, east only morning. Three separately scheduled bed
-    zones is the first concrete use anyone has found for the 8-channel relay's spare channels —
-    it stops being abstract "headroom" and starts being differential scheduling.
+3. [ ] **Consider splitting the beds by aspect.** On a SW-facing plot the **west bed takes the hot
+   afternoon sun**, north gets the most overall, east only morning. Three separately scheduled bed
+   zones is the first concrete use anyone has found for the 8-channel relay's spare channels —
+   it stops being abstract "headroom" and starts being differential scheduling.
 
 ---
 
