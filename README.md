@@ -50,6 +50,14 @@ It automates the watering of a back garden.
 > The grouped-zone plan is contingent on a **dynamic-pressure (sag-under-flow)** check still
 > outstanding — if it sags, the HP ring splits into two smaller zones (interlock makes that free).
 
+> ## ⛔ SUPERSEDED 2026-09-07 — historical record only. Do not design or buy from this block.
+> **Skip to the V1 / V2 block below it for the live scope.** This block made bed *dripline* the MVP
+> and deferred the rotaries. **Decision #25 reversed that.** ⚠️ Its zone numbering (*zone 1 = beds on
+> drip · zone 2 = baskets · zone 3 = lawn ring*) is **dead** — V1's zones 1 and 2 are the **two
+> rotary lines pointing at the beds**. ⛔ **There is no lawn zone in V1, and the V1 rotaries do not
+> water the lawn — they point at the beds and borders.** Kept because its *reasoning* about what
+> beds want from drip still governs V2.
+>
 > **Revised 2026-08-31 — the watering target changed.** Everything above sized the hydraulics around
 > **watering the lawn**. That was wrong: the **three flower beds are the priority, and always were.**
 > The beds appeared in the design only as the place the sprinklers were *mounted* — as specified,
