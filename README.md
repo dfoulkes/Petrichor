@@ -162,8 +162,10 @@ Regulations 18th Edition, the UK implementation of **IEC 60364 / HD 60364**).
 The low-voltage side is universal. The mains side is **not**, and two assumptions will mislead
 you elsewhere:
 
-- **The plug carries a 5 A BS 1362 fuse.** Most countries don't fuse at the plug. The conductor
-  sizing here is justified by that fuse; with only a 15–20 A branch breaker upstream, it isn't.
+- **The plug carries a 3 A BS 1362 fuse** *(fitted 2026-09-07; this line said 5 A until then)*.
+  Most countries don't fuse at the plug. The conductor sizing here is justified by that fuse;
+  with only a 15–20 A branch breaker upstream, it isn't. The argument holds *a fortiori* at
+  3 A — a smaller fuse protects the flex more tightly, not less.
 - **Brown = Line, Blue = Neutral** (IEC 60445 harmonised). North America uses black/white/green.
   **Verify with a meter, never by colour.**
 
