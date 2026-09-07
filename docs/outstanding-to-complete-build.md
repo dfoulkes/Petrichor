@@ -1,10 +1,11 @@
 # Outstanding to complete the build
 
-> **Consolidated register as of 2026-09-06.** Everything still needed to get
+> **Consolidated register as of 2026-09-07.** Everything still needed to get
 > Petrichor from "proven on the bench" to "installed and running". Compiled from
-> a completeness sweep of the repo plus the 2026-08-25 sourcing work, and
-> **restated 2026-09-06** after the Stage 8 re-scope moved the MVP from the lawn
-> to the flower beds.
+> a completeness sweep of the repo plus the 2026-08-25 sourcing work, restated
+> **2026-09-06** for the bed-drip re-scope, and **restated again 2026-09-07** for
+> Dan's **V1 / V2** ruling — which **reverses** the drip re-scope: **V1 is the
+> rotary sprinklers on two zones; the drip feed is V2, Spring/Summer 2027.**
 >
 > Water-side reasoning and part evidence lives in
 > [`plumbing-rebuild.md`](plumbing-rebuild.md). This file is the *what's left*
@@ -16,101 +17,178 @@
 > the superseded reasoning is what explains the inventory that was actually
 > bought, and deleting it would make the spend unreadable.
 
-## ⛔ RESTATED 2026-09-06 — the MVP is the beds, on drip
+## ⛔ RESTATED 2026-09-07 — V1 is the ROTARIES on two zones; drip is V2 (2027)
 
-**Read this before anything below it.** Until 2026-08-31 this register framed the
-outstanding work around **MP3500 rotaries watering the lawn**. That target was
-wrong. The **three flower beds — north, east and west — are the priority and
-always were**; as designed they had **no zone at all** and appeared only as the
-place the sprinklers were mounted. Recorded as a dated decision in the README
-(*revised 2026-08-31*) and rebuilt in `specs/build-guide.md` Stages 8A–8E and 9.
+**Read this before anything below it.** Dan re-scoped the project on **2026-09-07**
+— vault decision **#25** — and this supersedes the 2026-08-31 drip re-scope that
+the rest of this file was rebuilt around on 2026-09-06.
 
-⚠️ **The lawn cannot be watered as a byproduct of the beds — drip has no throw.**
-It is its own zone or it is nothing. That is *why* it is deferred rather than
-folded in. Do not re-raise it as a saving.
+> **"V1 = sprinklers installed, working, trenched and piped. (beds) both zone 1
+> and zone 2."**
+> **"V2 = drip feed (Spring / Summer 2027)."**
 
-### What the MVP now is
+📌 **The reading, recorded AS a reading** — Dan gave scope, not a design. V1 is
+the **pop-up rotary system**, actually working, covering the **beds / borders**,
+split across **two zones** mapped onto the two existing trench routes.
+
+### What V1 is
 
 | | |
 |---|---|
-| **Zone 1 — the entire MVP** | The three beds on **16 mm pressure-compensating inline dripline**. ~**36–39 m** of bed, ~**80 m** of dripline at two laterals per bed, ~**9 L/min** ⚠ against the ~15 L/min working budget |
-| **Valves needed for MVP** | **One — already owned.** Zone 1 runs on the valve in hand. Valves 2 and 3 belong to the deferred zones |
-| **Zone 2 — baskets** | Deferred to Stage 9 |
-| **Zone 3 — the lawn ring** | Deferred to Stage 9 |
+| **Zone 1** | Rotaries on **Line 1** — valve box → **S11** → along the bottom edge → **S12** |
+| **Zone 2** | Rotaries on **Line 2** — valve box → up the left edge → **S21** → across the top → **S22** |
+| **Heads** | **4 × `PROS-04-PRS40-CV` flush pop-up bodies**, nozzles TBC — ✅ **all owned** |
+| **Valves needed** | **Two, both already owned.** Three are in hand; the third goes to V2 |
+| **V2 — Spring/Summer 2027** | The **bed drip feed** (dripline, filter, reducer, 16 mm fittings, pegs) **and the hanging baskets**, on the third valve |
 
-### ⛔ Still to buy — the drip parts. This is the new critical path.
+### ⛔ V1's critical path is NOT a shopping list
 
-**None of this is ordered.** It is the only group standing between the beds and a
-working zone 1, and it is *not* in any of the purchase groups below.
+**"The drip parts are unordered" is no longer the blocker** — it went to V2 with
+the drip, and **not one drip part was ever ordered, so nothing is stranded.**
 
-| Part | Spec | Why | Sourced? |
-|---|---|---|---|
-| **16 mm PC inline dripline** | ~**80 m**, pressure-compensating, ~2.3 L/hr emitters @ ~30–33 cm ⚠ | Two laterals per bed. **PC specifically** — it holds output constant across the run *and* absorbs the garden's ~0.1 bar/m decline | ❌ not priced, no vendor |
-| **Pressure reducer** | ~**1.5 bar**, **3/4" BSP** | Supply is **3.8 bar static**. Unreduced it blows emitters off the line | ❌ not priced |
-| **Filter** | ~**120 mesh / 130 micron**, **3/4" BSP** | ⛔ **MANDATORY, not optional** — see the backlog correction below. Emitter clogging is the primary failure mode of every drip system | ❌ not priced |
-| **16 mm fittings** | start connector (3/4" BSP × 16 mm), tees, elbows, end caps or flush valves | Joins laterals to the 20 mm MDPE mainline | ❌ not priced |
-| **Dripline pegs** | ~1 per 1–1.5 m. ✅ **Priced 2026-09-06: Access Irrigation `ESS16-H`, 100-pack, £34.00 ex / £40.80 inc.** Fits **16 mm *and* 20 mm** pipe | Stops the line lifting and wandering as it warms | ✅ **priced, ❌ NOT bought** |
+✅ **Every rotary part is already in hand:** 4 × `PROS-04-PRS40-CV` bodies,
+4 × `HI/MP3500-90` + 1 × `HI/MP3000-90`, the `HI/MPTOOL`, tees `PL/14840C1C` ×2,
+elbows `PL/14850C10` ×3, the 4-way manifold, the valve box, 50 m MDPE, the 15 m
+field cable and 4 × DBR/Y splices.
 
-⚠️ **Evidence class: repo-internal only.** Every figure in that table is carried
-from `specs/build-guide.md` 8D and is marked ⚠ *there* as well. **There is no
-dripline datasheet in `datasheets/`** — unlike the electrical side, the drip
-figures have no manufacturer provenance in this repo. **Confirm emitter flow,
-emitter spacing and the PC pressure range against the product actually ordered
-before the shopping basket is checked out**, and do not treat the ~9 L/min zone figure as
-verified until then.
+**V1 is gated on three FREE physical checks, and then a dig:**
 
-⚠️ **Vendor not chosen.** EGI has **seven** orders of history (EGI143157,
-EGI143158, EGI144055, EGI144331, EGI144332, EGI144337, EGI144461) and is the
-obvious first look, but nothing here has been priced anywhere. **Assume a further delivery
-charge** — that is information, not a reason to hold.
-
-> ⚠️ **Amended 2026-09-06 — EGI cannot be the single vendor for this group.**
-> ⛔ **EGI do not stock any 16 mm hold-down at all** — checked. The pegs were
-> priced instead at **Access Irrigation: `ESS16-H`, 100-pack, £34.00 ex /
-> £40.80 inc** *(vendor page, verified)*. **The 100-pack is the right buy on
-> arithmetic, not on optimism:** the 25-pack `ESS16-Q` is **£9.80 ex**, so
-> 4 × 25 = **£39.20 ex** — *more* than the 100 for the same count.
->
-> 📌 **Access Irrigation give free delivery only over £150 ex VAT**, so
-> **the pegs should travel with the Stage 8D drip order, not ship alone.** That
-> is a sequencing note, not a blocker — and it is a reason to price the whole
-> drip group at Access before defaulting to EGI, since the pegs are already
-> anchored there.
-
-### What moved OUT of "outstanding" and into DEFERRED
-
-Nothing bought is wasted; the rotary hardware carries forward.
-
-| Item | Was | Now |
+| ⏳ | Check | Why it gates V1 |
 |---|---|---|
-| **MP3500 nozzles ×4, PRS40 bodies ×3** | the heart of the MVP | ✅ **Deferred to Stage 9** (lawn ring). Not wasted — the beds shrink the lawn to ~**8 × 12.5 m**, so corner-to-centre falls **8.9 m → ~7.4 m**, mid-range for an MP3000 instead of at its 9.0 m ceiling |
-| **Throw test vs 8.9 m** | a *free physical check before burying anything* | ✅ **Off the MVP critical path.** It only ever tested lawn coverage. It still gates Stage 9 — **not deleted, re-filed.** See the physical-checks table |
-| **Sag-under-flow / dynamic-pressure gate** | blocked the zone design | ✅ **Obsolete for the MVP** — zone 1 runs ~9 L/min behind a ~1.5 bar reducer on flat PC emitters. **Still gates Stage 9.** Worth taking during the 8C rig anyway, while it is on the surface |
-| **Circular self-back-feeding loop** | a design constraint | ✅ **Obsolete for the MVP** — PC dripline equalises itself. Still applies if the lawn ring is built |
-| **Head positions / four-corners-inward spacing** | an open design question | ✅ **Deferred with the lawn.** Gates nothing in the MVP |
+| **1** | **Thread dry-fit** — owned PRS40 body vs owned `20 mm × 1/2" BSPM` connector, dry | Binds at ~2 turns = NPT variant, and £12.80 of tees/elbows go back. **Do this first — it can cancel everything.** |
+| **2** | **Throw test** | ⛔ **BACK ON THE CRITICAL PATH.** Filed *"never as a blocker"* on 2026-09-06 because it tested *lawn* coverage. **V1 is the rotaries.** |
+| **3** | **Walk both trench routes with a tape** | Trench length is unmeasured; sets the dig, the MDPE budget (**marginal**) and whether a second coil is needed *before* the trench is open |
 
-✅ **Amended 2026-09-06 — `build-work-plan.md` HAS now been restated.** This
-paragraph previously said the plan *"has not been restated against the drip MVP"*
-and pointed at Phase B's four pegged head positions and Phase C's four-head
-laterals. **Dan ruled on 2026-09-06 and the plan was rewritten to match:**
+### ⚠️ NEW PURCHASE GAP — SWING JOINTS. The only outstanding V1 water-side buy.
 
-- ✅ **The two trench ROUTES survive unchanged** — *"we're going into the garden
-  so to spray the borders, thus the trench."* The mainline still runs out along
-  both borders to reach the beds, so **the MVP is not trench-free.**
-- ⚠️ **Only the terminations changed** — dripline feeds onto beds, not pop-up
-  rotary bodies. The **pegged head positions and the swing-joint gate** follow
-  the rotaries into Stage 9, exactly as this paragraph expected.
-- ⛔ **Two things are still genuinely open and were NOT guessed at: trench
-  DEPTH** (the 200 mm came from a deferred pop-up body) **and trench LENGTH**
-  (unmeasured; ~33 m is scaled off a drawing). See *Unresolved* rows 5 and 6.
+⛔ **Not bought, not priced, not sourced.** Articulated risers between the lateral
+and the pop-up body: height adjustment to level the head to grade, and they save
+the fitting or the body when a boot or a mower hits the head. **Hunter's own CAD
+installation details assume one** (*"with Hunter Swing Joint"*, *"with Flex Swing
+Arm"*).
+
+- ⛔ **In scope BECAUSE of the re-scope.** They were deferred to Stage 9 on
+  2026-09-06 with the explicit instruction ***"Do not buy them for the MVP"***.
+  **That instruction is now wrong** — V1 puts four pop-up bodies in the ground.
+- **The only lead in either system:** EGI list *Rain Bird Swing Pipe, 1 m*.
+  ⚠️ **Unpriced in the repo and the vault, and no quantity worked out.**
+- ⏳ **Size after the heads are pegged out** (Phase B) — four heads, but the riser
+  length depends on where the lateral actually lands.
+
+### ⚠️ The filter and the ~1.5 bar reducer are NOT V1 parts
+
+**Stated on manufacturer evidence rather than carried forward unexamined.**
+
+| | |
+|---|---|
+| ⛔ **Do NOT fit a 1.5 bar reducer for V1** | The `PROS-04-PRS40` bodies are themselves **pressure-regulated to 2.8 bar** — *"To optimise MP Rotator Nozzle performance, the Pro-Spray PRS40 is pressure-regulated to 2.8 bar; 280 kPa"* *(`datasheets/PROS-04-PRS40-CV_Hunter_spray-body-metric.pdf`, **manufacturer datasheet, verified**)*. **Reducing the supply to 1.5 bar starves the very heads V1 is built on.** The reducer is a **drip-leg** part — in V2 it belongs downstream of the split |
+| ⚠️ **No filter is ESTABLISHED as required for V1** | Hunter's design guide conditions primary filtration on **dirty water**: *"You should use primary filtration when operating with dirty water"*, and *"a general rule is to use primary filtration that is five times the mesh rating of the nozzle filter"* *(`datasheets/LIT-461_Hunter_MP-rotator-design-guide-metric.pdf`, verified)*. Every MP Rotator carries a **removable inlet filter screen** *(MP3500 datasheet, verified)*, and the `100-DV` has a built-in **90-mesh (200 micron)** solenoid filter. On a clean mains supply that restores this repo's own 2026-08-25 ruling — Dan: *"seems overkill for v1."* |
+| ⚠️ **Evidence class** | **A manufacturer-backed inference, not a Dan ruling.** It is stated as such. The *"mandatory"* promotion of 2026-08-31 was reasoning about **emitter clogging** and travels with the dripline to V2 |
+
+### What moved between V1, V2 and deferred on 2026-09-07
+
+| Item | Was (2026-09-06) | Now |
+|---|---|---|
+| **MP3500 ×4, MP3000 ×1, PRS40 bodies ×4** | Stage 9 stock, deferred | ✅ **V1 hardware, in hand** |
+| **Tees `PL/14840C1C` ×2, elbows `PL/14850C10` ×3** | *"Stage 9 stock, not waste"* | ✅ **V1 stock** |
+| **Throw test** | *"off the MVP critical path… never as a blocker"* | ⛔ **V1 gate, and free** |
+| **Sag-under-flow / dynamic pressure** | obsolete for the MVP, gates Stage 9 | ⛔ **V1 gate again** — PC dripline self-regulating was a statement about V2 |
+| **Head peg-out — S11/S12/S21/S22** | deferred to Stage 9 | ⏳ **Back in Phase B** |
+| **Swing joints** | Stage 9, *"do not buy for the MVP"* | ⚠️ **V1, and UNBOUGHT** |
+| **Trench depth 200 mm / dig 250** | ⛔ open — its source was a deferred pop-up | ✅ **Source restored** (see below) |
+| **16 mm PC dripline, reducer, filter, 16 mm fittings, `ESS16-H` pegs** | the MVP critical path | ⏸️ **V2, Spring/Summer 2027.** ✅ Never ordered — nothing stranded |
+| **Hanging baskets** | Stage 9, zone 2 | ⏸️ **V2**, with the drip, on the third valve |
+| **Circular self-back-feeding loop** | obsolete for the MVP | ⛔ **Still obsolete** — replaced by two independent branch runs on 2026-08-25. **The one thing the reversal does NOT bring back** |
+| **Acceptance test** | *"wetted cones joined into a wet band"* | ⏸️ **V2** — it is a dripline test. **V1's is below** |
+
+### ✅ Trench depth — the blocker DISSOLVES
+
+The 200 mm derives entirely from the `PROS-04-PRS40`'s retracted height. **That
+body is V1 hardware again**, so the derivation is live: retracted **155 mm** →
+inlet at 155 mm → lateral centreline **~200 mm** → **dig 250 mm** (the extra
+50 mm takes the control cable, laid *under* the pipe).
+
+✅ **And the 155 mm is now CONFIRMED, not asserted** — *"PROS-04-PRS40-CV ·
+Retracted height: 15.5 cm"*, `datasheets/PROS-04-PRS40-CV_Hunter_spray-body-
+metric.pdf` *(manufacturer datasheet, verified)*. **This repo had carried the
+figure for weeks without ever citing its source.**
+
+⚠️ **Restored BY CONSEQUENCE, awaiting Dan's confirmation.** He ruled on scope,
+not on depth — this is an inference from his ruling, not a fresh ruling from him.
+
+### ⛔ V1's acceptance test — the drip one does not transfer
+
+The 2026-08-31 gate was *"the wetted cones have joined up… a wet band, not
+isolated damp spots"*. **That is a dripline test and it moves to V2.**
+
+**V1 is accepted when:**
+
+1. **Each valve actuates wet** — closes decision #11's deferred half. *(Unchanged
+   across every re-scope.)*
+2. **Both zones run end to end on their own valve**, one live at a time on the
+   firmware interlock. ⚠️ **No filter and no reducer in that chain.**
+3. **Every head throws a real pattern onto its intended target** — arcs set, **no
+   dry gap between adjacent heads**, no overspray onto patio, fence or house.
+   Radius trimmed **down** with the `HI/MPTOOL` where it overthrows.
+4. **The trench holds pressure with every joint visible.** ⛔ **Wet-test before
+   backfilling.**
+
+⚠️ **A catch-can / precipitation-rate method is NOT specified anywhere in this
+repo and is not being invented here.** If uniformity has to be proved
+numerically, that method needs choosing first.
+
+### ⏸️ Superseded — the 2026-09-06 lead section, kept as dated history
+
+> **The MVP is the beds, on drip.** *"Until 2026-08-31 this register framed the
+> outstanding work around MP3500 rotaries watering the lawn. That target was
+> wrong. The three flower beds — north, east and west — are the priority and
+> always were."* ✅ **The PRIORITY survives #25 intact — the beds are still the
+> target. Only the METHOD changed: V1 waters them with rotaries, not dripline.**
+>
+> ⚠️ *"The lawn cannot be watered as a byproduct of the beds — drip has no
+> throw."* **True of drip. V1's emitters throw**, so the question changes shape
+> entirely — **do not read that line as governing V1.** It still governs V2.
+>
+> The drip BOM and its evidence gaps are preserved in full and carried into the
+> vault ticket **`plan-v2-bed-drip-zone`**, so none of the work is lost:
+>
+> | Part | Spec | Status |
+> |---|---|---|
+> | **16 mm PC inline dripline** | ~**80 m** ⚠, PC, ~2.3 L/hr emitters @ ~30–33 cm ⚠ | ❌ not priced, no vendor |
+> | **Pressure reducer** | ~**1.5 bar**, 3/4" BSP | ❌ not priced |
+> | **Filter** | ~**120 mesh / 130 micron**, 3/4" BSP | ❌ not priced |
+> | **16 mm fittings** | start connector (3/4" BSP × 16 mm), tees, elbows, end caps / flush valves | ❌ not priced |
+> | **Dripline pegs** | **Access Irrigation `ESS16-H`, 100-pack** — fits 16 **and** 20 mm. ⛔ **EGI stock no 16 mm hold-down at all** — checked. The 100 beats 4 × the 25-pack (`ESS16-Q` £9.80 ex = £39.20) | ✅ **£34.00 ex / £40.80 inc** *(vendor page, verified)* · ❌ **not bought** |
+>
+> ⚠️ **Evidence gap carried forward to V2 unresolved: there is no dripline
+> datasheet in `datasheets/`.** Every drip figure above is **repo-internal and
+> unverified** — confirm emitter flow, spacing and PC pressure range against the
+> product actually ordered. 📌 Access give free delivery only **over £150 ex VAT**,
+> so the pegs must travel with the rest of the drip order.
+>
+> ⏸️ *Also superseded here: the "What moved OUT of outstanding and into DEFERRED"
+> table (MP3500s/PRS40 bodies to Stage 9, throw test off the critical path, sag
+> gate obsolete, head positions deferred). **Every row of it reversed on
+> 2026-09-07** — see the V1/V2 movement table above.*
+
+✅ **`build-work-plan.md` has been restated twice — 2026-09-06 for Dan's trench
+ruling, and 2026-09-07 for V1.** The two trench **ROUTES** have survived both
+re-scopes unchanged — *"we're going into the garden so to spray the borders, thus
+the trench."* **What the routes terminate in has now reverted to flush pop-up
+rotary bodies**, and the pegged head positions and the swing-joint gate come back
+with them. ⚠️ **Trench LENGTH remains the one genuinely open item — unmeasured;
+~33 m is scaled off a drawing.** See *Unresolved* row 6.
 
 ## Plan — settled 2026-08-25
 
-> ⚠️ **Restated 2026-09-06.** The target below reads *"sprinklers in"* because it
-> was written against the lawn-first design. **The 2026 acceptance target is now
-> the bed drip zone**, on the valve already owned. The *sequencing* logic — a
-> hand-operable water system this year, electrics deferred to winter — is
-> untouched and still governs; only the thing being watered changed.
+> ✅ **RESTATED AGAIN 2026-09-07 — the target below is CORRECT AS WRITTEN.**
+> *"Sprinklers in, working and not leaking, before winter 2026"* is exactly Dan's
+> V1: *"sprinklers installed, working, trenched and piped."*
+> *(Superseded 2026-09-06: "the target below reads 'sprinklers in' because it was
+> written against the lawn-first design. The 2026 acceptance target is now the bed
+> drip zone, on the valve already owned." **That is now V2, 2027.**)*
+> The *sequencing* logic — a hand-operable water system this year, electrics
+> deferred to winter — has survived every re-scope untouched.
 
 **Target: sprinklers in, working and not leaking, before winter 2026.**
 Electrical completion is deliberately deferred to winter, when electricians are
@@ -149,26 +227,32 @@ already paid for.
   marker tape, and it is the **electrician's spec, not ours**. Do not pre-empt
   it; just avoid trenching the same route twice if they share it.
 
-### ❄️ Winterisation is now part of THIS year's job
+### ❄️ Winterisation — RULED NOT CRITICAL FOR V1 BY DAN, 2026-09-07
 
-Previously filed as "document before October". The deferred-electrical plan
-promotes it: if groundwork finishes in November and nothing is energised until
-spring, **the system sits full of water, unpowered, all winter** — and the spray
-bodies bought are the `-CV` variant that deliberately holds water in the head.
+> **"it wont sit in water (v1) We'll be fine."**
 
-**Drain-down is the final step of the 2026 groundwork**, not a spring problem:
-isolate at the tap, open every valve bleed lever, drain the low points, leave it
-empty. No procedure for this exists in the repo yet.
+**Settled — his call, recorded as such. Not a gate on V1, and not a gate on the
+dig.** The V1 rotary system will not hold standing water, and the system will not
+be run before next spring.
 
-> ⚠️ **Restated 2026-09-06 — the re-scope does not let this off.** The `-CV`
-> argument above is about spray bodies, which are now **deferred to Stage 9**. It
-> does **not** follow that winterisation relaxes: the MVP is **surface-laid
-> dripline**, which is the *shallowest* thing in the build, plus a **filter and a
-> pressure reducer** — small-bore devices that hold water and are the classic
-> first casualties of a frost. **Drain-down still ends the 2026 groundwork, and
-> the procedure still does not exist.** ⚠️ Whether the dripline itself should be
-> drained, blown or simply left to the emitters is **unverified** — no dripline
-> datasheet in the repo (see the drip parts table).
+✅ **The drain *method* stays a live TODO — for V2.** The **Spring/Summer 2027 bed
+dripline** is the genuinely frost-exposed case, and it is also the one with no
+verified method: ⚠️ **whether dripline is drained, blown through or simply left to
+its emitters is unverified** — no dripline datasheet exists and no product is
+chosen, so it is an **input to the V2 purchase**, not a job afterwards.
+
+📌 **One neutral sequencing fact, for the dig checklist:** *if* automatic drain
+valves are ever wanted, they fit at the lateral **low points, during the dig**
+(EGI stock them, £15.25–£17.95). Stated once, as information.
+
+> ⏸️ **Superseded, kept as dated history — the 2026-08-25 / 2026-09-06 framing:**
+> *"Winterisation is now part of THIS year's job… if groundwork finishes in
+> November and nothing is energised until spring, the system sits full of water,
+> unpowered, all winter… Drain-down is the final step of the 2026 groundwork, not
+> a spring problem."* And the 2026-09-06 amendment: *"the re-scope does not let
+> this off — the MVP is surface-laid dripline plus a filter and a pressure
+> reducer."* ⛔ **Both are superseded for V1 by Dan's ruling above.** The second
+> describes **V2** and is still the reasoning for it.
 
 ## ✅ Field cable — BOUGHT. This section is superseded.
 
@@ -249,6 +333,11 @@ the cheapest items in the build to buy late.
 
 ### ❄️ Winterisation — nothing in this repo mentions it
 
+> ✅ **CLOSED FOR V1 2026-09-07 — Dan's ruling:** *"it wont sit in water (v1)
+> We'll be fine."* **Not a V1 concern and not a gate on the dig.** The section
+> below is kept because its reasoning is the standing case for **V2's dripline**,
+> where the method genuinely does need settling.
+
 Grepped for *winter, frost, freeze, drain-down, blow-out* across all docs:
 **zero hits**.
 
@@ -293,12 +382,13 @@ test day — a two-gauge method with one gauge produces a reading, not a model.
 | **Liner test** — push the white part into a 20 mm offcut | Whether Plasson ship a liner or one must be bought (Screwfix `33270`, £6.38) |
 | **Thread dry-fit** — owned PRS40 vs owned 1/2" BSPM connector | Whether the head fittings are BSP as EGI's spec field claims. Binds at ~2 turns = NPT, £12.80 of tees/elbows go back inside 30 days |
 | **Which end drips** on the splitter joint | Brass end = worn thread (replacement bought). Nut end = missing liner |
-| ~~**Throw test** — MP3500 off the splitter vs 8.9 m~~ | ✅ **NO LONGER ON THE MVP CRITICAL PATH — re-filed 2026-09-06, not deleted.** It tested *lawn* coverage, and the lawn is deferred to Stage 9. It still gates Stage 9, and the 8.9 m figure it was fighting is itself superseded (~7.4 m on the shrunken lawn). **Do it opportunistically while the 8C rig is on the surface — never as a blocker on the beds.** |
+| ⛔ **THROW TEST** — a head off the splitter, measure where it lands | ⛔ **BACK ON THE CRITICAL PATH 2026-09-07 — it gates V1.** *(Superseded 2026-09-06: "no longer on the MVP critical path… do it opportunistically… never as a blocker on the beds." True while the MVP was drip.)* **V1 is the rotaries, so coverage is the whole point, and this check is FREE.** ⚠️ **Do NOT inherit the target figure.** 8.9 m and ~7.4 m are both **corner-to-LAWN-CENTRE**; V1 aims at **the beds and borders**, a different problem with no arithmetic anywhere in either system. The inherited **90° arcs** are unverified for it too. ✅ **New datasheet input:** Hunter allow **"radius reduction up to approximately 25% on all models"**, so an owned MP3500 trims to **≈7.05 m** *(MP3500 datasheet, verified)* — useful, but **not a substitute for the test** |
+| ⛔ **Dynamic pressure at the head, under flow** *(restored 2026-09-07)* | ⛔ **V1 gate again.** *"PC dripline regulates itself"* was a statement about the drip MVP, which is now V2. **Take it while the 8C rig is on the surface** — after backfill the same reading costs a trench |
 | **Read the old lead's sheath printing** *(new, 2026-09-06)* ⛔ | Whether the supplied lead was **ever `3183Y` / H05VV-F** — a grade this repo has only ever **inferred**, never read. ⛔ **Do it BEFORE the lead is cut up for cores — the cut destroys the evidence.** ⚠️ **Still not done.** Newly *possible*: its plug is reportedly **rewireable, not moulded**, so it opens |
 | **Does 1.5 mm² seat in the old plug?** *(new, 2026-09-06)* ⚠ | Whether the new 3183P can reuse the **existing rewireable plug's cord grip and terminals**, or whether the bought `68744` is doing that job. ⚠️ **Unverified.** Free — check it **with the plug open**, which is happening anyway for the sheath printing above |
 | **Caliper the existing M16 box hole** *(new, 2026-09-06)* ⛔ | The actual diameter to drill from. The ~16.5 → ~20.5 mm figures are **inferred from the thread designation, not a datasheet**. ⛔ **Measure before the cutter touches the box** |
 | **Read the `651VT` M20's clamping range off the packet** *(new, 2026-09-06)* ⚠ | Whether the M20 actually seals **~9.75 mm**. Not recorded anywhere in this repo. The M16 failed by being picked on **thread size** without checking **seal range** — do not repeat it one size up |
-| **Dripline dry-run** *(new, 2026-09-06)* ⚠ | The MVP's equivalent free check, and it **cannot be done yet — nothing is bought.** Once the dripline arrives: flush every lateral before capping, then run 30 min and trowel three points per bed looking for wetted cones that have **joined into a band**. Build guide 8D steps 11–12 |
+| ⏸️ ~~**Dripline dry-run**~~ *(new 2026-09-06)* | ⏸️ **MOVED TO V2 2026-09-07.** It is a **dripline** check and the dripline is Spring/Summer 2027 — *"flush every lateral before capping, then run 30 min and trowel three points per bed looking for wetted cones that have joined into a band."* Still the right V2 test; **not V1's.** ✅ Nothing was bought, so nothing is idle |
 | **Walk both trench routes with a tape** *(new, 2026-09-06)* ⛔ | **Trench length — unmeasured, and the only figure anywhere (~33 m) is scaled off a drawing, not walked.** Sets the dig, the MDPE budget (~34 m of coil left after the rig — **marginal**) and whether a second coil must be ordered *before* the dig rather than mid-trench. ⚠️ **Same walk settles the 15 m field cable** against the SW-patio-corner → valve-box run, which has never been measured either. **Free. Not done.** |
 | ~~Tap's double-check valve~~ | **CLOSED — non-issue.** DCVs mandatory on outside taps since the Water Supply (Water Fittings) Regulations 1999. Do not re-raise. |
 
@@ -583,21 +673,27 @@ The CE-TEK GR17016 that holds the electronics remains **IP65** and is unaffected
 
 | Item | Why deferred |
 |---|---|
-| ~~**Basket / drip watering**~~ | ⛔ **SPLIT 2026-08-31 — this row conflated two different things.** *Basket* drip is still deferred (Stage 9, zone 2). ***Bed* drip is now the entire MVP** and is not deferred at all — see the restatement at the top of this file. The original entry read: *"Dan putting the brakes on until next year. ⚠️ Open question: does it belong in this valve box at all? Drip is a different regime — a few L/min, emitters clogging below ~120 micron, lower pressure. Sharing the manifold makes the filter mandatory system-wide. A separate box near the baskets is often the better build. Decide before sizing the box for four."* ✅ **That last sentence is now moot** — the box is bought and the pit is dug. ⚠️ **The separate-box question survives for the *baskets* only** and is a Stage 9 decision. |
-| ~~**Inline filter**~~ | ⛔ **NO LONGER DEFERRED — MANDATORY, 2026-08-31.** The original entry read *"Overkill for v1"*. That was true when v1 was rotaries; **the MVP is now drip, and emitter clogging is the primary failure mode of every drip system.** The build guide upgraded 7D's filter note from *"cheap insurance"* to mandatory for the same reason. **It moves to the drip parts table at the top of this file as a buy-now item.** ⚠️ The 1"-male-port trap recorded in `plumbing-rebuild.md` still applies to a **mainline** 1" filter — but the MVP filter is specified **3/4" BSP on the zone leg after the splitter**, which is a different position and may sidestep it. **Unverified — settle the port geometry against the actual filter before ordering.** |
-| **Swing joints** | ✅ **Deferred *with the lawn* to Stage 9, 2026-09-06.** Backed by Hunter's own CAD details (*"with Hunter Swing Joint"*, *"with Flex Swing Arm"*). They are rotary-head kit, so they follow the heads out of the MVP. **Note:** `build-work-plan.md` Phase C still carries a *"decide before this phase — swing joints"* gate; that gate is now a Stage 9 gate. Size once head positions are pegged out. |
+| ~~**Basket / drip watering**~~ | ✅ **RE-MERGED 2026-09-07 — both halves are now V2 (Spring/Summer 2027), on the third valve.** The 2026-08-31 split below is spent: bed drip stopped being the MVP, so the two halves are once again the same wave of work and should share one filter and one reducer, specified once. → vault ticket `plan-v2-bed-drip-zone`. ⏸️ *Superseded, kept as history:* ⛔ **SPLIT 2026-08-31 — this row conflated two different things.** *Basket* drip is still deferred (Stage 9, zone 2). ***Bed* drip is now the entire MVP** and is not deferred at all — see the restatement at the top of this file. The original entry read: *"Dan putting the brakes on until next year. ⚠️ Open question: does it belong in this valve box at all? Drip is a different regime — a few L/min, emitters clogging below ~120 micron, lower pressure. Sharing the manifold makes the filter mandatory system-wide. A separate box near the baskets is often the better build. Decide before sizing the box for four."* ✅ **That last sentence is now moot** — the box is bought and the pit is dug. ⚠️ **The separate-box question survives for the *baskets* only** and is a Stage 9 decision. |
+| **Inline filter** | ✅ **DEFERRED AGAIN 2026-09-07 — back where it started, and now with evidence.** *(Superseded 2026-08-31: "NO LONGER DEFERRED — MANDATORY… the MVP is now drip, and emitter clogging is the primary failure mode of every drip system." **Correct about drip — and drip is now V2.**)* The original entry read *"Overkill for v1"* (Dan, 2026-08-25) and **v1 is rotaries again.** ✅ **Manufacturer-backed this time, not just a judgement:** Hunter condition primary filtration on **dirty water**; every MP Rotator has a **removable inlet filter screen**; the `100-DV` carries a built-in **90-mesh (200 micron)** element. ⚠️ **"Not established as required" is not the same as "proven unnecessary"** — it is a manufacturer-backed inference, and if the supply is ever suspect it becomes a live question again. ⚠️ The 1"-male-port trap in `plumbing-rebuild.md` still applies to any mainline 1" filter. **It moves to the V2 drip BOM.** |
+| ⚠️ **Swing joints** | ⛔ **UN-DEFERRED 2026-09-07 — V1, and NOT BOUGHT.** *(Superseded 2026-09-06: "deferred with the lawn to Stage 9… they are rotary-head kit, so they follow the heads out of the MVP", and `build-work-plan.md` Phase C's ***"Do not buy them for the MVP."***)* **V1 puts four pop-up bodies in the ground, so they are back in scope** — backed by Hunter's own CAD details (*"with Hunter Swing Joint"*, *"with Flex Swing Arm"*). ⛔ **Not bought, not priced, not sourced.** Only lead: EGI's *Rain Bird Swing Pipe, 1 m*, **unpriced**. ⏳ **Size once the head positions are pegged out.** **This is the single outstanding V1 water-side purchase.** |
 | **3rd valve for low pressure** | **Arithmetic says not needed.** Zones run one at a time, so only 2 heads are ever live: 2 × MP3500 @ 90° = 9.7 L/min against 19 L/min — 51%, roughly 2× headroom. A 3rd valve is for a genuinely new zone, not for splitting these two. ✅ **Reinforced by the re-scope, from the other direction:** the MVP needs **one** valve and it is already owned. Three valves are in hand against three eventual zones, so **no valve purchase is outstanding at any stage.** |
 
-## ⚠️ Unresolved by the re-scope — needs Dan
+## ⚠️ Unresolved — needs Dan
 
-These are contradictions the Stage 8 re-scope opened and did not close. **They are
-listed, not guessed at.**
+**Restated 2026-09-07: only ONE row here is still open — row 6, the trench
+length, and it is a measurement rather than a ruling.** Rows 1–5 are all closed;
+they are struck through in place rather than deleted, because what closed each one
+is part of the record. **Nothing here is guessed at.**
+
+⚠️ **What the V1 re-scope opened in their place is listed at the top of this file,
+not here, because none of it needs Dan:** the **swing-joint purchase gap**, and
+the **nozzle / arc choice**, which is a **throw test**, not a decision.
 
 | # | The contradiction | Why it can't be settled here |
 |---|---|---|
 | ~~1~~ | ~~**`build-work-plan.md` is still a lawn-sprinkler plan.**~~ ✅ **RESTATED 2026-09-06** against Dan's ruling below. Phase B's route-marking is kept and promoted; its head-pegging is struck and deferred to Stage 9. Phase C carries the ruling as a header table, the four-head laterals are struck, the swing-joint gate is moved to Stage 9. ⚠️ **One piece stayed open and was NOT guessed at — trench depth.** See row 5 | — |
 | ~~2~~ | ~~**Does the MVP still need the full trench at all?**~~ ⛔ **RULED BY DAN, 2026-09-06 — YES.** The suggestion that the buried run shrank to *box → bed edge* was **wrong**, and he corrected it against the pipe map, in his words: **"we're going into the garden so to spray the borders, thus the trench."** ✅ **The two trench ROUTES survive unchanged** — Line 1 = box → S11 → bottom edge → S12; Line 2 = box → left edge → S21 → top edge → S22. The mainline still has to travel out along the borders to reach the beds. ⚠️ **What changed is the terminations** — a dripline feed onto a bed, not a pop-up rotary body. **Phase C is still a real dig; the MVP is not trench-free.** → row 6 for the length | — |
 | ~~3~~ | ~~**Basket count: README *Must Haves* says 4, build guide 8B said 5.**~~ ✅ **RESOLVED 2026-09-06 — it is FIVE, and it was never actually open.** The vault settled it on **2026-07-20** with positions and an explicit note that it was *"corrected up from earlier count"*: **HB1–3 on the top border (FB2), HB4–5 on the right border (FB3)** — `Projects/golden-shower/tasks/decide-zone-valve-count.md`. The repo README's *"4 hanging baskets"* predates that and is the stale side. **Obsidian is the source of truth for decisions; the repo README has been corrected to match.** Hydraulically it changes nothing — 5 baskets ≈ 0.17–0.33 L/min, under 2% of the tap | — |
-| **5** | ⛔ **NEW, and it is the piece Dan's ruling did NOT settle: what depth does the mainline trench go to?** The 200 mm figure everywhere in this repo is derived **entirely** from the `PROS-04-PRS40`'s **155 mm retracted height** — a pop-up now deferred to Stage 9. A mainline feeding **surface-laid** dripline has **no hardware driver setting its depth at all**. | The inputs are a judgement, not a spec: frost, fork/spade strikes, border cultivation, and whether the Stage 9 lawn laterals should share this trench now rather than be dug a second time (the ⛔ *"anything going under ground must go in during the groundwork"* rule argues they should). **Dan's call. Recorded as open rather than guessed at.** |
+| ~~**5**~~ | ~~⛔ **what depth does the mainline trench go to?** The 200 mm is derived entirely from the `PROS-04-PRS40`'s 155 mm retracted height — a pop-up now deferred.~~ ✅ **DISSOLVED 2026-09-07 by the V1 re-scope.** The pop-up is **V1 hardware again**, so the derivation is live: **155 mm retracted → inlet at 155 mm → lateral centreline ~200 mm → dig 250 mm.** ✅ **The 155 mm is now CONFIRMED from the Hunter datasheet** (`PROS-04-PRS40-CV_Hunter_spray-body-metric.pdf` — *"Retracted height: 15.5 cm"*); this repo had only ever asserted it. ✅ **The "should the lawn laterals share this trench" sub-question dissolves too** — those laterals *are* V1 and go in on this dig. | ⚠️ **Restored BY CONSEQUENCE, awaiting Dan's confirmation.** He ruled on scope, not on depth. **Not presented as a fresh ruling from him.** |
 | **6** | ⚠️ **NEW — trench length is not recorded anywhere, and the one figure that exists is not a measurement.** `plumbing-rebuild.md` gives **~33 m** for Line 1 + Line 2 and says so itself: *"Scaling the diagram against a ~12.6 m plot (inferred…) — rough… Walk it with a tape."* **Treat ~33 m as ⚠ unverified.** It matters because ~34 m of the 50 m MDPE coil is left after the 8C rig takes ~16 m — **marginal**, and running out mid-trench costs £74.95 plus a delivery and a stalled week. ⚠️ The **15 m field cable** `RB/IRRICAB5-15M` has *also* never been walked against the SW-patio-corner → valve-box run. | **Not a ruling — a measurement.** ⏳ **Walk both routes with a tape**, once, with the cable question in mind at the same time. Added to Phase B and to the physical-checks table. Free, and it gates the dig. |
-| 4 | **The `-CV` spray bodies were bought for a zone that is now deferred.** Three PRS40 `-CV` bodies and four MP3500 nozzles sit in stock for a year. ⚠️ **The 30-day return window on EGI144331 has NOT yet closed** — ordered 2026-08-25, delivered 2026-08-26, so it runs to roughly **2026-09-24/25** ⚠ *(inferred from a 30-day window; EGI's actual returns terms are not recorded in this repo)*. **So this IS still an open decision, and it expires in about a fortnight.** | Keep-or-return is Dan's call and it is **time-boxed**. The repo's own position is *keep* — the hardware carries forward to Stage 9 and the throw maths got *better*, not worse. But it should be a decision, not a lapse. |
+| ~~4~~ | ~~**The `-CV` spray bodies were bought for a zone that is now deferred… the 30-day return window on EGI144331 runs to roughly 2026-09-24/25… it expires in about a fortnight.**~~ ✅ **CLOSED 2026-09-07 — THE DECISION IS KEEP.** The 3 × PRS40 `-CV` bodies and 4 × MP3500 nozzles are **retained, and they are V1 hardware, not Stage 9 stock**. ⛔ **The return-window countdown is retired: it is not a live clock and not an open item. Do not re-raise it.** | ✅ **Doubly settled** — Dan ruled *keep*, and the V1 re-scope means the hardware is needed **this year**, not in a year. Nothing sits in stock. |

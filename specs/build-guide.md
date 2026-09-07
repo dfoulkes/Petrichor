@@ -535,8 +535,16 @@ which makes the electrical side easy — the work is all about **weather**, not 
    `NO`. That's the "zones + 1" core count in the flesh.
 
 > Plumbing order at the manifold: **tap → double-check valve → (low-flow filter) → manifold →
-> solenoids → zones.** ⚠️ The filter is **mandatory** now the beds are drip-irrigated — emitter
-> clogging is the main failure mode of any drip system. See 8D for mesh size and ordering.
+> solenoids → zones.**
+> ⚠️ **RESTATED 2026-09-07 — the filter is NOT a V1 part.** *(Superseded 2026-08-31: "the filter is
+> **mandatory** now the beds are drip-irrigated — emitter clogging is the main failure mode of any
+> drip system." **That is the V2 case.**)* **V1 is rotaries:** Hunter condition primary filtration on
+> **dirty water**, each MP Rotator carries a **removable inlet filter screen**, and the `100-DV` has
+> a built-in **90-mesh (200 micron)** element *(manufacturer datasheets, verified)*. ⚠️ **Not
+> established as required for V1** — a manufacturer-backed inference, not a ruling. **It returns with
+> V2's dripline; see 8D-V2 for mesh size and ordering.** ⛔ **And do not fit the drip zone's ~1.5 bar
+> reducer anywhere upstream of the rotary heads — the PRS40 bodies regulate to 2.8 bar and 1.5 bar
+> starves them.**
 
 ### 7D — Pipe size & the thread standard (BSP — check yours)
 
@@ -574,12 +582,54 @@ which makes the electrical side easy — the work is all about **weather**, not 
 
 ## Stage 8 — Water & commissioning (⚠️ WATER — last of all)
 
+> ## ⛔ RE-SCOPED 2026-09-07 — READ THIS BEFORE ANY OF STAGE 8
+>
+> **Dan ruled** *(vault decision **#25** — the vault is the source of truth for decisions)*:
+>
+> > **"V1 = sprinklers installed, working, trenched and piped. (beds) both zone 1 and zone 2."**
+> > **"V2 = drip feed (Spring / Summer 2027)."**
+>
+> ⛔ **This REVERSES the 2026-08-31 drip re-scope that Stages 8A–8E and 9 were rebuilt around.**
+> **V1 is the pop-up rotary system on the beds/borders, two zones. The bed dripline is V2.**
+>
+> | | V1 — build now | V2 — Spring/Summer 2027 |
+> |---|---|---|
+> | **Zone 1** | Rotaries on **Line 1** (box → S11 → bottom edge → S12) | — |
+> | **Zone 2** | Rotaries on **Line 2** (box → left edge → S21 → top edge → S22) | — |
+> | **Zone 3** | — | **Bed drip feed** + hanging baskets, on the third valve |
+>
+> **Where to read what:** **8B** (zones) and **8C** (prove the supply) are live · **8D** now carries
+> **both** builds — V1's rotary zones first, V2's drip build preserved below it · **8A** is
+> superseded and kept as history · **Stage 9** is now V2 + baskets.
+>
+> 📌 **The Line 1 / Line 2 mapping is a reading of Dan's ruling, recorded as one** — he gave scope,
+> not a design.
+>
+> ⚠️ **Numbering note:** "zone 1 / zone 2" here are **irrigation** zones. `switch.zone_1` /
+> `switch.zone_2` in Home Assistant and "Zone 1–8" in Stages 3–5 are **relay channels**. Different
+> numbering — do not conflate them.
+
 This is where "water last of all" finally lands. **Do one zone end to end before building the rest.**
 
 **The numbers that drive this** (flow/pressure test, 2026-07-20): **~3.8 bar static, ~19 L/min.**
 Pressure is comfortably in band; **flow is the constraint** — a classic single-domestic-tap throttle.
 
-### 8A — Beds first: drip, not rotaries
+### ⏸️ 8A — ~~Beds first: drip, not rotaries~~ — SUPERSEDED 2026-09-07, kept as history
+
+> ⛔ **Do not build from this section.** It argues for **dripline in the beds**, which is now **V2**.
+> ✅ **Its priority claim survives and still governs: the beds are the target.** ⚠️ **Its method claim
+> does not — V1 waters them with rotaries.**
+>
+> ⚠️ **One argument here is worth carrying into V1 as a design constraint rather than a rebuttal:**
+> *"overhead spray wets foliage (fungal risk in a UK summer), gets shadowed by the planting itself,
+> and lands most of its water where the roots are not."* **That is a real property of rotaries over
+> beds.** It is not a veto — Dan has ruled — but it is **why aiming and arcs matter more in V1 than
+> the old lawn design ever needed**, and it is an argument for V2 following on rather than being
+> dropped. **Throw-test with it in mind.**
+>
+> ✅ **And the paragraph below about the MP3000 / 8.9 m reach is LIVE AGAIN for V1** — with the caveat
+> that ~7.4 m is corner-to-**lawn-centre** and V1 aims at the **borders**, which is not the same
+> requirement. See 8D-V1.
 
 **The three flower beds are the priority.** They sit **north, east and west** looking out from the
 house; the lawn is the leftover middle. An earlier revision of this guide had this backwards — it
@@ -606,38 +656,48 @@ zone at all. The beds appeared in the design only as the place the sprinklers we
 > spacing. That question was only ever about lawn coverage. It moves to Stage 9 with the rotary
 > hardware and gates nothing in the MVP.
 
-### 8B — Zones: three targets, one valve in hand
+### 8B — Zones: two rotary zones for V1, two valves in hand — RESTATED 2026-09-07
 
-3. [ ] **Three zones, built in priority order.** The firmware interlock runs one at a time.
+3. [ ] **V1 is two zones.** The firmware interlock runs one at a time.
 
-| Zone | Target | Method | Flow ⚠ | When |
-|---|---|---|---|---|
-| **1** | **The three beds** — N (~11 m) + E (~12.5 m) + W (~12.5 m) ≈ **36–39 m** of bed; ~**80 m** of dripline at two laterals per bed | PC inline dripline | ~**9 L/min** | **MVP** |
-| **2** | **Hanging baskets** | drip | small | after zone 1 |
-| **3** | **The lawn** — ~8 × 12.5 m, 4–6 rotaries | MP3000 on PRS40 | 12–18 L/min | **deferred — Stage 9** |
+| Zone | Target | Route | Heads | Flow ⚠ | When |
+|---|---|---|---|---|---|
+| **1** | Beds / borders on the bottom edge | **Line 1** — box → **S11** → bottom edge → **S12** | 2 × PRS40 + MP nozzle | ~5 L/min ⚠ *(2 × MP3500 @ 90° ≈ 9.7 L/min if both were live; only one zone runs at a time)* | **V1** |
+| **2** | Beds / borders on the left and top edges | **Line 2** — box → left edge → **S21** → top edge → **S22** | 2 × PRS40 + MP nozzle | as above | **V1** |
+| **3** | **Bed drip feed + hanging baskets** | off the manifold's third outlet | PC inline dripline + micro-drip | ~9 L/min ⚠ | **V2 — Spring/Summer 2027** |
 
-4. [ ] **Zones 1 and 2 share one reducer + filter**, splitting to separate valves downstream. Both
-   are low-pressure drip, but baskets dry out far faster than beds and want their own run time.
+4. [ ] ⛔ **V1 fits NO filter and NO pressure reducer.** *(Superseded 2026-08-31: "zones 1 and 2
+   share one reducer + filter, splitting to separate valves downstream.")* Both are **drip** parts:
+   - The `PROS-04-PRS40` bodies are **pressure-regulated to 2.8 bar** themselves *(datasheet,
+     verified: "To optimise MP Rotator Nozzle performance, the Pro-Spray PRS40 is pressure-regulated
+     to 2.8 bar; 280 kPa")*. **A 1.5 bar drip reducer would starve them.**
+   - Hunter condition **primary filtration on dirty water**; each MP Rotator has a **removable inlet
+     filter screen**; the `100-DV` carries a built-in **90-mesh (200 micron)** element. **No filter
+     is established as required for V1** ⚠ *(manufacturer-backed inference, not a Dan ruling)*.
+   - ⚠️ **V2 brings both** — and the reducer must sit **on the drip leg**, downstream of the split,
+     never upstream of the V1 heads.
 
-> **How many valves? Valves = zones — so 3 eventually, 1 needed now.** You already have one, and
-> **zone 1 is the entire MVP.** Buy valve #2 with the basket zone; #3 only if the lawn gets built.
-> The 8-channel relay stays headroom — though see Stage 9 for the first concrete use of it.
+> **How many valves? Valves = zones — so 3 eventually, 2 needed now.** ✅ **Three are already
+> owned, so no valve purchase arises at any stage.** The 8-channel relay stays headroom.
 
-> ⚠️ **Two earlier constraints are now obsolete for the MVP.**
-> - **The circular self-back-feeding loop** (README *Decisions*) exists to equalise pressure across
->   rotary heads. **PC dripline equalises itself**, so the loop buys nothing in a drip zone. It
->   carries forward to Stage 9 if the lawn ring is built.
-> - **The sag-under-flow gate** — *"confirm the zone holds ≥ ~2.75 bar under ~10 L/min"* — was the
->   PRS40's regulation point. Zone 1 runs ~9 L/min through a reducer set to ~1.5 bar from 3.8 bar
->   static; the headroom is large and PC emitters are flat across it. **The MVP is no longer gated on
->   that measurement.** It still gates Stage 9.
+> ⚠️ **One earlier constraint stays obsolete; one comes back.**
+> - ⛔ **Still obsolete: the circular self-back-feeding loop** (README *Decisions*). It was replaced
+>   on 2026-08-25 by **two independent branch runs**, and neither re-scope touched that reasoning.
+> - ⛔ **BACK: the sag-under-flow gate** — *"confirm the zone holds ≥ ~2.75 bar under ~10 L/min"*, the
+>   PRS40's regulation point. *(Superseded 2026-08-31: "zone 1 runs ~9 L/min through a reducer set to
+>   ~1.5 bar… the MVP is no longer gated on that measurement." **That described the drip MVP, now
+>   V2.**)* **V1 runs rotaries at full supply pressure, so it gates V1.** See 8C.
 
 ### 8C — Prove the supply and the valve (the rig you already own)
 
-This rig was bought to prove a **rotary head**. It is **still worth building** — it proves the DCV,
-the solenoid valve, the MDPE run and every compression joint, and it produces the supply-loss model.
-Only the *gate* changed: with the beds as the priority, the head is now a convenient **load** rather
-than the thing under test.
+This rig was bought to prove a **rotary head**, and ✅ **as of 2026-09-07 that is exactly what it is
+for again.** It proves the DCV, the solenoid valve, the MDPE run and every compression joint, it
+produces the supply-loss model — **and under V1 the head is once more the thing under test, not just
+a load.** ⏸️ *(Superseded 2026-08-31: "with the beds as the priority, the head is now a convenient
+load rather than the thing under test.")*
+
+⛔ **Both readings gate V1**, and the rig is only on the surface once. **Take them now** — after
+backfill the same measurement costs a trench.
 
 The wet test needs **no trenching and no second valve** — a temporary surface rig on the valve you
 already have. **Test through the pipe you will actually install**: hose has different bore and
@@ -679,8 +739,9 @@ you almost nothing. Fit **two**:
 
 **#1 − #2 is the number that matters**: total loss across the pipe run, the valve and every fitting.
 That figure **scales** — it is how you predict the system with a longer run and more load pulling at
-once. One gauge gives a reading; two give a model. It no longer gates the MVP (see 8B), but it is
-the input to **Stage 9** and it is far cheaper to measure now, on a surface rig, than after trenching.
+once. One gauge gives a reading; two give a model. ⛔ **It gates V1 (restated 2026-09-07)** —
+*(superseded: "it no longer gates the MVP… it is the input to Stage 9")* — and it is far cheaper to
+measure now, on a surface rig, than after trenching.
 
 5. [ ] Confirm the outside tap's **double-check valve** before any water. Many UK taps have an
    integral DCV; on a new build it may sit **inline behind the wall** and be invisible. If absent,
@@ -691,12 +752,55 @@ the input to **Stage 9** and it is far cheaper to measure now, on a surface rig,
 7. [ ] **Wet-test:** energise the zone — the pilot-operated diaphragm should open and the head should
    spray. The manual **bleed lever** proves the valve body independently of the electrics.
 8. [ ] **Read both gauges under flow** and record `#1 − #2`. This proves the supply chain end to end
-   and banks the loss figure for Stage 9. Do **not** buy valve #2 off the back of it — zone 1 needs
-   only the valve you already have.
+   and gives the sag figure V1's head grouping depends on. ✅ **No valve purchase follows from it —
+   three are already owned.**
+8b. [ ] ⛔ **THROW TEST — do it while the rig is up. It gates V1 and it is free.** PRS40 body straight
+   off the splitter, nozzle fitted, measure where the water lands on a still day. ⚠️ **Do not test
+   against 8.9 m or ~7.4 m** — both are **corner-to-lawn-centre**, and **V1 aims at the beds and
+   borders**, for which no arithmetic exists anywhere. ✅ **Hunter allow "radius reduction up to
+   approximately 25% on all models"**, so an owned MP3500 (9.4–10.7 m) trims to **≈7.05 m**
+   *(MP3500 datasheet, verified)* — likely enough with the `HI/MPTOOL`, and **no nozzle purchase
+   implied.** ⛔ **Likely is not proven. Measure it.**
 
-### 8D — Build the bed drip zone (the MVP)
+### 8D — Build the zones
 
-The three beds, on the valve you already own. This is the zone the whole project exists for.
+> ⛔ **RESTATED 2026-09-07.** This section previously read *"Build the bed drip zone (the MVP)"*.
+> **V1's build is now first; the drip build is preserved below it as V2.**
+
+#### 8D-V1 — the two rotary zones (build now)
+
+**Four flush pop-up bodies on two lines, on two of the three valves you own.** ✅ **Everything here is
+already bought except one item.**
+
+⚠️ **STILL TO BUY — SWING JOINTS.** Articulated risers between lateral and body: height adjustment to
+level the head to grade, and they save the fitting or the body when a boot or a mower hits the head.
+**Hunter's own CAD details assume one.** ⛔ **Not bought, not priced, not sourced** — only lead is
+EGI's *Rain Bird Swing Pipe, 1 m*. ⏳ **Size after the heads are pegged out.**
+
+9. [ ] **Peg out S11, S12, S21, S22** and mark both trench routes. ⏳ **Walk them with a tape** —
+   trench length is unmeasured (~33 m is scaled off a drawing).
+10. [ ] Plumb **tap → DCV → splitter → MDPE → valve → lateral → swing joint → `PROS-04-PRS40-CV`
+    body → nozzle**, two heads per zone. ⛔ **No filter, no reducer** — see 8B step 4.
+11. [ ] **Trench to 200 mm over the pipe, dig 250** — set by the body's **155 mm retracted height**
+    *(Hunter datasheet, verified)*, with the control cable **under** the pipe. **Tees** through
+    S11/S21, **elbows** terminating S12/S22 — `PL/14840C1C` ×2 and `PL/14850C10` ×3, **owned**.
+12. [ ] **Set arcs and trim radius with the `HI/MPTOOL`.** **Over-throw is correctable; under-throw
+    is not** — so start wide and come down. ⚠️ **No overspray onto patio, fence or house.**
+13. [ ] ⛔ **WET-TEST WITH THE TRENCH STILL OPEN**, on the bleed levers. **Do not backfill until it
+    holds.** Then mulch/backfill and water in.
+
+**V1 acceptance:** each valve actuates wet · both zones run end to end on their own valve · every
+head throws a real pattern onto its target with **no dry gap between adjacent heads** · the trench
+holds pressure with every joint visible. ⚠️ **A catch-can / precipitation-rate method is not
+specified in this repo and is not being invented here.**
+
+#### ⏸️ 8D-V2 — the bed drip zone (Spring/Summer 2027). **Preserved, do not build yet.**
+
+> ⛔ **Moved to V2 on 2026-09-07.** ✅ **Nothing below was ever ordered, so nothing is stranded.**
+> The BOM, the peg price and the evidence gap are tracked in the vault ticket
+> `Projects/golden-shower/tasks/plan-v2-bed-drip-zone.md`.
+
+The three beds, on the third valve you own. This is the zone the whole project exists for.
 
 **Still to buy** ⚠ *(indicative — no dripline datasheet is in `datasheets/` yet; confirm emitter
 spacing and flow against the product you actually order):*
@@ -709,54 +813,69 @@ spacing and flow against the product you actually order):*
 | **16 mm fittings** — start connector (3/4" BSP × 16 mm), tees, elbows, end caps or flush valves | Joining laterals to the 20 mm MDPE mainline |
 | **Dripline pegs**, ~1 per 1–1.5 m | Stops the line lifting and wandering as it warms |
 
-9. [ ] Plumb the manifold **tap → DCV → splitter → MDPE → filter → reducer → valve → dripline.**
-   Filter **before** the reducer, so grit never reaches the regulating element.
-10. [ ] Lay **two laterals per bed**, ~40–50 cm apart, snaked through the planting and pegged down.
+V2-1. [ ] Plumb **tap → DCV → splitter → MDPE → filter → reducer → valve → dripline.** Filter
+   **before** the reducer, so grit never reaches the regulating element. ⚠️ **The reducer sits on the
+   drip leg, downstream of the split — never upstream of the V1 rotary heads, which need 2.8 bar.**
+V2-2. [ ] Lay **two laterals per bed**, ~40–50 cm apart, snaked through the planting and pegged down.
     Keep emitters **off the stems** — wetting the crown of a plant is the thing drip is meant to avoid.
-11. [ ] **Flush every lateral before capping it.** Run water through open-ended until it comes out
+V2-3. [ ] **Flush every lateral before capping it.** Run water through open-ended until it comes out
     clean. Swarf from cutting the mainline will otherwise end up in the first emitters.
-12. [ ] **Run it and dig.** Thirty minutes in, put a trowel in at three points down each bed. You are
+V2-4. [ ] **Run it and dig.** Thirty minutes in, put a trowel in at three points down each bed. You are
     looking for wetted cones that have **joined up** — a wet band, not isolated damp spots. Adjust run
-    time, not emitter spacing, until they merge.
+    time, not emitter spacing, until they merge. **This is V2's acceptance test — ⛔ NOT V1's.**
 
 > **Mulch after commissioning, not before.** Dripline is laid *on* the soil and covered with mulch —
 > mulch first and you cannot see what you are doing or find a blocked emitter later.
 
 ### 8E — Commission in situ (the permanent build)
 
-Once zone 1 waters correctly, build it for real — valve in the buried box, field cable run.
+Once the zones water correctly, build them for real — valves in the buried box, field cable run.
+✅ **Applies to V1's two rotary zones now, and to V2's drip zone in 2027.**
 
-13. [ ] Repeat the **wet actuation** check on each installed valve.
-14. [ ] Re-check the **supply-to-coil volt-drop in tenths** (Stage 5C method) with the **field run** in
+14. [ ] Repeat the **wet actuation** check on each installed valve.
+15. [ ] Re-check the **supply-to-coil volt-drop in tenths** (Stage 5C method) with the **field run** in
     circuit — that proves the cable and every gel connector under real load.
 
 ---
 
-## Stage 9 — Deferred: the basket zone and the lawn ring
+## Stage 9 — V2 and beyond: the drip feed, the baskets, and lawn-centre coverage
 
-Neither is MVP. Both are cheap to add once zone 1 runs, and the parts for the lawn are already bought.
+> ⛔ **RESTATED 2026-09-07.** This stage previously read *"Deferred: the basket zone and the lawn
+> ring"*. **The rotary heads have moved OUT of here and into V1 (8D-V1); the bed drip has moved IN.**
 
-1. [ ] **Zone 2 — hanging baskets.** Drip, off the **same filter and reducer** as zone 1, split to
-    its own valve. Baskets need short, frequent cycles; beds need long, infrequent ones. That
-    difference is the reason they are separate zones rather than one.
-2. [ ] **Zone 3 — the lawn ring.** The beds shrink the lawn to ~**8 × 12.5 m**, so corner-to-centre
-   is **~7.4 m** — comfortably inside the MP3000's 6.7–9.0 m.
-   ✅ **CORRECTED 2026-09-06 — the ring is fully stocked; nothing further needs buying.** This line
-   said *"you already own one PRS40 body and one MP3000 nozzle… a 4-corner ring needs three more of
-   each."* True on 2026-08-31; **wrong since 2026-08-25**, when **EGI144331** bought
-   **3 × `HI/PROS-04-PRS40-CV` and 4 × `HI/MP3500-90`**. With the 8C rig's body and MP3000 that is
-   **4 bodies and 5 nozzles in hand.**
-   ⚠️ **Open for Stage 9 — which nozzle actually goes on.** The vault ruled **MP3500 on all four
-   corners** (decision #16) against an **8.9 m** requirement. At **~7.4 m** that is *below the
-   MP3500's 9.4 m minimum radius*, so the owned MP3500s want adjusting **down** with the
-   `HI/MPTOOL` (radius adjusts down by design — over-throw is correctable, under-throw is not), or
-   the MP3000 becomes the pattern and three more are bought at ~£10 each. **Settle it against a
-   real throw test at Stage 9, not on paper.**
-    - **4 corners ≈ 12 L/min** fits the ~15 L/min working budget in one zone.
-    - **6 heads (corners + mid-sides on the long edges) ≈ 18 L/min** does **not** — that splits into
-      two zones. This is where 8C's `#1 − #2` loss figure finally earns its keep.
-    - ⚠️ **Arc the heads inward, away from the beds.** The beds are already drip-irrigated; rotary
-      overspray onto them is both overwatering and exactly the foliage-wetting that drip avoids.
+1. [ ] **V2 — the bed drip feed, Spring/Summer 2027.** Dripline, filter, reducer, 16 mm fittings and
+    `ESS16-H` pegs, on the third valve. **Build steps: 8D-V2.** ⛔ **Nothing ordered — and nothing
+    ever was, so nothing is stranded.** Spec, pricing and the missing-datasheet gap:
+    `Projects/golden-shower/tasks/plan-v2-bed-drip-zone.md`.
+2. [ ] **V2 — hanging baskets.** Drip, off the **same filter and reducer as the bed drip zone**
+    *(⚠️ restated: not "as zone 1" — V1's zone 1 is rotaries and has neither)*, split to its own
+    valve. Baskets need short, frequent cycles; beds need long, infrequent ones. That difference is
+    the reason they are separate zones rather than one. **Five baskets** — HB1–3 on the top border
+    (FB2), HB4–5 on the right border (FB3).
+3. [ ] ⏸️ **Lawn-centre coverage — the only part of the old "lawn ring" still deferred.**
+   ✅ **The four corner heads themselves are V1 now** (8D-V1) — same hardware, same positions, aimed
+   at the beds and borders instead of across the lawn.
+   ⚠️ **What has never been specified is whether the lawn's middle gets watered at all**, and by
+   what. The old arithmetic assumed it: the beds shrink the lawn to ~**8 × 12.5 m**, corner-to-centre
+   **~7.4 m**. ⛔ **That figure describes the LAWN target, not V1's border target — do not carry it
+   across.**
+   ✅ **Hardware is fully stocked either way; nothing further needs buying.** **EGI144331** bought
+   **3 × `HI/PROS-04-PRS40-CV` and 4 × `HI/MP3500-90`**; with the 8C rig's body and MP3000 that is
+   **4 bodies and 5 nozzles in hand.** *(This line once said the ring "needs three more of each" —
+   wrong since 2026-08-25.)*
+   ⛔ **Nozzle choice is now a V1 question, not a Stage 9 one — see 8C step 8b.** ✅ Hunter allow
+   **"radius reduction up to approximately 25% on all models"**, so an owned MP3500 (9.4–10.7 m)
+   trims to **≈7.05 m** *(MP3500 datasheet, verified)* — over-throw is correctable, under-throw is
+   not. **Throw-test it; do not settle it on paper.**
+    - **4 corners ≈ 12 L/min** fits the ~15 L/min working budget in one zone. ⚠️ **V1 splits them
+      across two zones anyway**, so only ~2 heads are ever live — roughly half that.
+    - **6 heads (corners + mid-sides on the long edges) ≈ 18 L/min** does **not** fit one zone. This
+      is where 8C's `#1 − #2` loss figure earns its keep if lawn coverage is ever added.
+    - ⚠️ **Aiming — restated for V1.** *(Superseded: "arc the heads inward, away from the beds. The
+      beds are already drip-irrigated; rotary overspray onto them is both overwatering and exactly
+      the foliage-wetting that drip avoids.")* **Under V1 the beds are the target, so the heads aim
+      AT them, not away.** ⚠️ **When V2's dripline arrives the beds will be watered twice**, so the
+      V1 arcs and run times want revisiting then. **Recorded now so it is not discovered in 2027.**
 3. [ ] **Consider splitting the beds by aspect.** On a SW-facing plot the **west bed takes the hot
    afternoon sun**, north gets the most overall, east only morning. Three separately scheduled bed
    zones is the first concrete use anyone has found for the 8-channel relay's spare channels —
@@ -769,13 +888,15 @@ Neither is MVP. Both are cheap to add once zone 1 runs, and the parts for the la
 - [x] **Flow + pressure test** *(done 2026-07-20)*. Static **~3.8 bar / 55 psi** (dead-end gauge,
   tap fully open); flow **~19 L/min** (14 L in 44.17 s, wide open). Pressure is not the
   constraint — **flow is**. Those numbers still set the **~15 L/min working budget** every zone is
-  sized against, though the design they originally drove (a grouped rotary ring for the lawn) was
-  superseded on 2026-08-31 when the beds became the priority — see 8A.
-  - [ ] **Dynamic pressure (sag under flow)** — *still outstanding, no longer MVP-blocking.* The
-    gauge that arrived is single-ended and reads only with no flow; the **MDPE tee to run it inline
-    is in the 8C BOM** and already in hand. Zone 1 (drip, ~9 L/min behind a reducer) does not depend
-    on this measurement. **Stage 9's lawn ring does** — take the reading during 8C anyway, while the
-    rig is still on the surface.
+  sized against. ⚠️ *(The 2026-08-31 note here said the grouped-rotary design they drove was
+  "superseded when the beds became the priority". **Restated 2026-09-07: the beds are still the
+  priority, and V1 waters them with rotaries** — so the rotary sizing is live again. See 8B/8D-V1.)*
+  - [ ] ⛔ **Dynamic pressure (sag under flow) — still outstanding, and V1-BLOCKING again
+    (2026-09-07).** The gauge that arrived is single-ended and reads only with no flow; the **MDPE
+    tee to run it inline is in the 8C BOM** and already in hand. *(Superseded: "no longer
+    MVP-blocking — zone 1 (drip, ~9 L/min behind a reducer) does not depend on this measurement."
+    **That zone is now V2.**)* **V1's rotaries run at full supply pressure and do depend on it.**
+    Take it during 8C, while the rig is still on the surface.
 
 ---
 

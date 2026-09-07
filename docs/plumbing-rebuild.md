@@ -1,5 +1,28 @@
 # Plumbing rebuild — valve manifold (open task)
 
+> ## ✅ READ FIRST — this document is LIVE AGAIN as of 2026-09-07
+>
+> Most of this file was written on **2026-08-25 / 27** against the **rotary** design. The
+> 2026-08-31 drip re-scope made much of it read as deferred history. **Dan re-scoped again on
+> 2026-09-07** — vault decision **#25**:
+>
+> > **"V1 = sprinklers installed, working, trenched and piped. (beds) both zone 1 and zone 2."**
+> > **"V2 = drip feed (Spring / Summer 2027)."**
+>
+> ✅ **So the head fittings, the nozzle reasoning, the four-corner layout, the spray bodies, the
+> thread checks and the trench-depth derivation below are V1 design, not archive.** ⚠️ **Aimed at
+> the beds and borders, not across the lawn** — so **the 8.9 m / ~7.4 m corner-to-centre figures
+> throughout describe the LAWN target and must not be carried across.** Throw-test it.
+>
+> ⚠️ **Three things in here are NOT restored:**
+> 1. **The inline-filter deferral is restored, not the filter itself** — see *Backlog — inline
+>    filter*. **V1 fits no filter and no 1.5 bar reducer** (the `PROS-04-PRS40` regulates to 2.8 bar
+>    itself — Hunter datasheet, verified).
+> 2. ⛔ **Swing joints are back in scope AND STILL UNBOUGHT** — see *Backlog — swing joints*. **The
+>    single outstanding V1 water-side purchase.**
+> 3. **The "outstanding nozzle buy — time-boxed" section is spent** — the sale ended, and
+>    **EGI144331 bought 4 × MP3500. Nothing further needs buying.**
+
 > **Status as of 2026-08-25 (evening):** parts selected and basket built at Easy
 > Garden Irrigation; **not ordered** — one item blocks checkout (see below).
 > Electrical/firmware side is **done and proven** — this is water-side only.
@@ -186,11 +209,30 @@ stays the cheap sacrificial part, hence the spare.
   open** until both gauges are read under flow on a *sealed* rig (build guide
   Stage 8C step 8).
 
-## Backlog — inline filter (deferred from v1 on 2026-08-25)
+## Backlog — inline filter (deferred from v1 on 2026-08-25 · ✅ **deferral RESTORED 2026-09-07**)
 
 **Decision: not in v1.** Dan — *"seems overkill for v1."* Agreed and closed; do
 not re-raise for the MVP. Revisit when building the permanent manifold, sized
 against a zone count that is actually known by then.
+
+> ✅ **This deferral was overturned on 2026-08-31 (*"mandatory"*, because the MVP had become drip)
+> and is RESTORED on 2026-09-07, because V1 is rotaries again.** ✅ **And it is now
+> manufacturer-backed rather than a judgement call:**
+> - Hunter's MP Rotator design guide conditions primary filtration on **dirty water** — *"You should
+>   use primary filtration when operating with dirty water"* — and gives the sizing rule as *"five
+>   times the mesh rating of the nozzle filter"* *(`LIT-461`, verified)*.
+> - Every MP Rotator carries a **removable inlet filter screen** *(MP3500 datasheet, verified)*.
+> - The `100-DV` already has a built-in **90-mesh (200 micron)** solenoid filter — recorded further
+>   down this section.
+>
+> ⚠️ **"Not established as required" is not "proven unnecessary."** It is an inference from
+> manufacturer guidance about a clean mains supply, and it is stated as one. **The filter returns
+> with V2's dripline (2027)**, where emitter clogging genuinely is the primary failure mode.
+>
+> ⛔ **Also not a V1 part: the ~1.5 bar pressure reducer.** The `PROS-04-PRS40` bodies are
+> **pressure-regulated to 2.8 bar** themselves *(Hunter datasheet, verified)* — **fitting a 1.5 bar
+> reducer upstream would starve the V1 heads.** In V2 it belongs on the **drip leg**, downstream of
+> the split.
 
 Rationale for the deferral, so it does not get re-litigated from scratch:
 
@@ -295,16 +337,23 @@ nozzles**, which cannot be chosen until the throw test decides the series. One
 body will therefore sit unpopulated at first — harmless, because the PRS40's
 **FloGuard** automatically throttles flow when a nozzle is missing.
 
-### Backlog — swing joints / flexible risers (trade practice, not yet bought)
+### ⛔ Swing joints / flexible risers — **V1 ITEM, NOT BOUGHT.** *(promoted out of backlog 2026-09-07)*
 
 Running rigid MDPE straight into a pop-up body is poor practice: no height
 adjustment for levelling the head to the turf, and a boot or a mower cracks the
 fitting or the body. The trade uses a **swing joint** or flexible "funny pipe"
 riser between the lateral and the body. EGI stock *Rain Bird Swing Pipe, 1 m*.
 
-Not needed for the above-ground test rig — this is a **Stage 8D permanent
-install** item. Buy when the heads go in the ground, sized once the head
-positions are pegged out.
+Not needed for the above-ground test rig — this is a **permanent install** item.
+Buy when the heads go in the ground, sized once the head positions are pegged out.
+
+> ⛔ **STATUS 2026-09-07 — this is the single outstanding V1 water-side purchase.** It was deferred
+> to Stage 9 on 2026-09-06 with the explicit instruction ***"Do not buy them for the MVP"***.
+> **V1 puts four pop-up bodies in the ground, so that instruction is wrong** and this item is back.
+> ⛔ **Not bought, not priced, not sourced** — *Rain Bird Swing Pipe, 1 m* is the only lead anywhere
+> in the vault or the repo, and **it is unpriced**; no quantity has been worked out either.
+> ⏳ **Size it after the Phase B head peg-out.** ⚠️ **Price it on the same trip as the tape-walk** —
+> lead time, not money, is what could stall an otherwise fully-stocked dig.
 
 ## Layout — settled 2026-08-25 (supersedes earlier 5-head sketch)
 
@@ -359,12 +408,18 @@ Dan: *"lets lock in on MP3500."* Locked. 4 × `HI/MP3500-90` on the order.
 Rationale is the reach margin above, not flow. The MP3000 already owned becomes
 a bench spare.
 
-### Outstanding nozzle buy — time-boxed
+### ⏸️ ~~Outstanding nozzle buy — time-boxed~~ — **SPENT. Nothing to buy.**
 
-If the throw test confirms MP3500, **3 more are needed** (`HI/MP3500-90`).
+> ✅ **Closed:** **EGI144331 (2026-08-25) bought 4 × `HI/MP3500-90`**, and with the 8C rig's MP3000
+> that is **5 nozzles and 4 bodies in hand — the full V1 head count, owned.** The sale deadline
+> below has long passed and no longer applies. ⛔ **Which nozzle goes on is still open — but it is a
+> throw test, not a purchase**, and Hunter's **25% radius reduction** *(MP3500 datasheet, verified)*
+> means the owned MP3500s probably cover it with the `HI/MPTOOL`.
+
+~~If the throw test confirms MP3500, **3 more are needed** (`HI/MP3500-90`).
 £24.60 net at the sale price vs £30.75 + a second delivery afterwards.
 **The 20% ends 31 August 2026** — so the throw test wants running early in the
-week, not the following weekend.
+week, not the following weekend.~~
 
 The test does **not** need the valve: PRS40 body straight off the splitter, MP3000
 fitted, measure where it lands. The body self-regulates to 2.8 bar.

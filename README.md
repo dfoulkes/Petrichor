@@ -81,6 +81,52 @@ It automates the watering of a back garden.
 >
 > **Supersedes the two-zone split in Must Haves above.** Full detail in the build guide, Stage 8–9.
 
+> ## ⛔ **Revised again 2026-09-07 — V1 / V2. This is the live scope; the 2026-08-31 block above is superseded.**
+>
+> **Dan ruled, verbatim:**
+> > **"V1 = sprinklers installed, working, trenched and piped. (beds) both zone 1 and zone 2."**
+> > **"V2 = drip feed (Spring / Summer 2027)."**
+>
+> **V1 is the pop-up rotary sprinkler system** — trenched, piped and actually working — watering the
+> **beds / borders**, split across **two zones**:
+>
+> | Zone | Route | Heads | Valve |
+> |---|---|---|---|
+> | **1** | **Line 1** — valve box → S11 → along the bottom edge → S12 | 2 | 1 of the 3 owned |
+> | **2** | **Line 2** — valve box → up the left edge → S21 → across the top → S22 | 2 | 1 of the 3 owned |
+>
+> **V2 (Spring/Summer 2027) is the bed drip feed** — dripline, filter, reducer, 16 mm fittings, pegs
+> — together with the hanging baskets, on the third valve.
+>
+> 📌 **The Line 1 / Line 2 mapping is a reading of Dan's ruling, recorded as one.** He gave scope, not
+> a design.
+>
+> **What this reverses from the 2026-08-31 block above:**
+> - *"beds get pressure-compensating inline dripline"* → **beds/borders get rotaries in V1**; the
+>   dripline is **V2**. ✅ **The priority is unchanged — the beds were and are the target.** Only the
+>   **method** changed.
+> - *"3 zones: (1) beds — the entire MVP; (2) baskets; (3) the lawn ring, deferred"* → **2 zones for
+>   V1, both rotary**; drip and baskets are V2.
+> - *"the sag-under-flow gate is obsolete for the MVP"* → ⛔ **it gates V1 again.** So does the
+>   **throw test**, which had been filed *"never as a blocker"*.
+> - *"nothing bought is wasted — the PRS40 body and MP3000 nozzle carry forward"* → ✅ **stronger:
+>   they are V1 hardware, in hand, now.** And **not one drip part was ever ordered**, so moving drip
+>   to V2 strands nothing either.
+> - ⛔ **The one thing NOT reversed: the circular self-back-feeding loop stays obsolete.** It was
+>   replaced on 2026-08-25 by two independent branch runs, for reasons neither re-scope touched.
+>
+> **⚠️ One new purchase gap: swing joints** — articulated risers between lateral and pop-up body.
+> Deferred to Stage 9 on 2026-09-06; V1 puts them back in scope. **Not bought, not priced.**
+>
+> **⚠️ Two drip parts must NOT be fitted to V1**, on manufacturer evidence: a **1.5 bar reducer would
+> starve the heads** (the `PROS-04-PRS40` regulates to **2.8 bar** itself — Hunter datasheet), and
+> **no filter is established as required** (Hunter condition primary filtration on *dirty water*; the
+> nozzles carry their own screens; the `100-DV` has a built-in 90-mesh element).
+>
+> **Project decisions live in the vault, not here** — this block is the repo-side cross-reference.
+> Full ruling: `Projects/golden-shower/README.md` **decision #25**. Build detail: the build guide,
+> Stage 8–9.
+
 
 ## Project Setup 
 
