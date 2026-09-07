@@ -603,17 +603,17 @@ to open it, never ring-cut and drag, or you'll nick a core.
 ## Non-negotiables
 
 - **Plug out of the wall** for all of it. RCD-protected socket for first power-up.
-- ⚠️ **Near-resolved — 5 A fuse "as supplied" on 0.75 mm².** This line originally claimed 5 A
-  was correct for 0.75 mm² (6 A rated). **Dan recalls (2026-09-07) it was actually out of spec
-  at the time.** 📌 **Evidence found supporting Dan, not this document:** `specs/build-guide.md`
-  **Stage 4 step 4** — ticked complete — reads *"Plug into an RCD-protected socket (**3A fuse in
-  the plug**)"*. **The build guide has specified 3 A since before the bench test** *(repo file,
-  verified)*, so the CPC lead's 5 A was out of spec **against this project's own written spec**,
-  and the "5 A is correct for 0.75 mm²" line above was a later rationalisation of a fuse that
-  never matched the guide. ⚠️ **Not formally closed** — Dan has not confirmed that is what he
-  meant. ✅ **Moot for the build either way** — the plug now fitted (`68744`, 2026-09-07) carries
-  **3 A**, which puts the hardware back in line with what Stage 4 always asked for; see the
-  [Verification log](#verification-log).
+- ✅ **CLOSED 2026-09-07 — the fuse is 3 A and always should have been.** This document once
+  claimed the CPC lead's supplied **5 A** was *"correct for 0.75 mm² (6 A rated)"*. ⛔ **That
+  claim was wrong and is withdrawn.** `specs/build-guide.md` **Stage 4 step 4** — ticked
+  complete — has read *"Plug into an RCD-protected socket (**3A fuse in the plug**)"* since
+  before the bench test *(repo file, verified)*. The lead arrived with 5 A, which was therefore
+  **out of spec against this project's own written spec**, and the "correct for 0.75 mm²" line
+  was a later rationalisation of a fuse that never matched the guide. **Dan confirmed this
+  reading on 2026-09-07 — settled, do not re-litigate.** The **3 A BS 1362 fuse now fitted to
+  the `68744` plug** puts the hardware back in line with Stage 4. ⛔ **3 A is the specified
+  fuse for this build.** Sizing rationale — load ~0.32 A vs a 1.5 mm² flex rated 16 A, so 3 A
+  is 9.4× the load and 19% of the cable ceiling — is in the [Verification log](#verification-log).
 - **Neither supply has an earth terminal** — both Class II. Earth goes to its own Wago and
   bonds to the rail.
 - **Don't wire the HDR's centre front screw** — that's the `Vo ADJ` trimmer, turn-only. Set it
