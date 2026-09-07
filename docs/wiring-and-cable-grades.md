@@ -2,7 +2,7 @@
 
 Every conductor in the prototype, both ends, with the grade of cable each one must be.
 
-`230 V · 5 A fuse as supplied` · `0.32 A total draw` · `7 Wagos` · rev **2026-07-30**
+`230 V · 3 A fuse fitted 2026-09-07` · `0.32 A total draw` · `7 Wagos` · rev **2026-07-30**
 
 > **Provenance.** Figures below are taken from the datasheets in `../datasheets/`. Every
 > load-bearing number was re-verified against those PDFs on 2026-07-30 — see
@@ -25,7 +25,7 @@ elsewhere:
 
 | Assumption | Where it breaks |
 |---|---|
-| ⚠️ **The plug contains a 5 A BS 1362 fuse** | Almost no other country fuses at the plug. The "22 AWG can't be protected by a 5 A fuse" argument depends on it. With only a 15–20 A branch breaker upstream (typical North American practice) there is **no** local overcurrent protection, so the wire-as-fuse-element failure mode gets **worse** — and 0.75 mm² stops being adequately protected either. Size your conductors to the *actual* upstream protective device. |
+| ⚠️ **The plug contains a BS 1362 fuse** *(3 A fitted 2026-09-07 — was 5 A as supplied)* | Almost no other country fuses at the plug. The "22 AWG can't be protected by a 5 A fuse" argument (below) referred to the fuse this build carried until 2026-09-07. With only a 15–20 A branch breaker upstream (typical North American practice) there is **no** local overcurrent protection, so the wire-as-fuse-element failure mode gets **worse** — and 0.75 mm² stops being adequately protected either. Size your conductors to the *actual* upstream protective device. |
 | ⚠️ **Brown = Line, Blue = Neutral, Green/Yellow = Earth** | IEC 60445 harmonised colours. North America uses black/white/green. Following the colour references here with non-harmonised cable will have you misidentify the line conductor. **Verify with a meter, never by colour** — the continuity test in [Before you touch the 230 V side](#before-you-touch-the-230-v-side) is the method, but its pin geometry is BS 1363-specific. |
 | **RCD-protected socket** | UK/EU term. The North American equivalent is a **GFCI**; requirements and trip characteristics differ. |
 | **SELV** (Safety Extra-Low Voltage) | An IEC/BS concept. The nearest US equivalent is an **NEC Class 2** circuit — similar intent, different rules. |
@@ -107,9 +107,10 @@ in frost where PVC goes brittle. Higher voltage class than H05VV-F for the same 
 > FS Cables. Not a seller listing.
 >
 > The current rating is left `⚠ not sourced` rather than carried over: the old `~7 A` figure was
-> attached to a CSA that isn't produced. It is in any case not the binding number here — **the 5 A
-> BS 1362 plug fuse is the governing protection**, and 1.0 mm² is a step *up* from the 0.75 mm²
-> it replaces, so the fuse-versus-conductor argument only gets safer.
+> attached to a CSA that isn't produced. It is in any case not the binding number here — **the
+> BS 1362 plug fuse is the governing protection (3 A fitted 2026-09-07, was 5 A — see
+> [Verification log](#verification-log))**, and 1.0 mm² is a step *up* from the 0.75 mm²
+> it replaces, so the fuse-versus-conductor argument only gets safer still at 3 A.
 
 > ⚠️ **The gland already owned will not take it.** Lapp gives `3G1.0` a nominal OD of
 > **8.3–10.7 mm** (manufacturer catalogue, verified). The **WEMNO M16** glands in hand are rated
@@ -145,9 +146,10 @@ applications"*.
 ✅ **It is the right cable for this build anyway, and this is not a climb-down.** The requirement
 was always **a rubber sheath instead of PVC** — the failure mode being designed against is UV
 chalking and frost-embrittlement of PVC over seasons, not insulation breakdown. On **230 V behind
-a 5 A BS 1362 fuse, a 450/750 V rating buys nothing**; a PCP sheath rated to **−35 °C** buys
-everything the section above was actually arguing for. Getting 1.5 mm² instead of 1.0 mm² is a
-step *up* in conductor, so the fuse-versus-conductor argument only gets safer again.
+the 3 A BS 1362 fuse now fitted** (2026-09-07 — was 5 A when this was written), **a 450/750 V
+rating buys even less than it did**; a PCP sheath rated to **−35 °C** buys everything the section
+above was actually arguing for. Getting 1.5 mm² instead of 1.0 mm² is a step *up* in conductor, so
+the fuse-versus-conductor argument only gets safer again.
 
 ⚠️ **Unverified on this cable:** the **~9.75 mm OD is reported, not read off a datasheet** —
 there is no 3183P datasheet in `datasheets/`. **Caliper it before drilling anything.** The
@@ -217,9 +219,15 @@ EDGELEC kit, 24–26 AWG, <1 A. GPIO to relay inputs. Nothing else.
 
 ### ⚠ Why 22 AWG fails on the mains side
 
-The plug fuse is **5 A**, and that fuse protects everything downstream of it. 22 AWG carries
-about **3 A** — so under a fault the **wire becomes the fuse element**, melting its insulation
-and igniting before a 5 A fuse reacts.
+The plug fuse **was 5 A** when this was written; **a 3 A BS 1362 fuse is now fitted
+(2026-09-07 — see [Verification log](#verification-log))**, and that fuse protects everything
+downstream of it. 22 AWG carries about **3 A** — at 5 A the fuse sat clearly above the wire's
+rating, so under a fault the **wire could become the fuse element**, melting its insulation and
+igniting before the fuse reacted. **At 3 A the fuse and the wire's rating now sit close to
+level, which narrows that specific mismatch** — but 22 AWG hook-up wire stays `NEVER ON MAINS`
+in this design regardless: it isn't rated or terminated for fixed 230 V wiring, and this design
+never routes it there (see the [Tally](#tally) — 22 AWG appears only on the 5 V DC and 24 V AC
+SELV rails).
 
 An RCD will not catch it. It isn't an earth fault; it's a wire cooking in a sealed plastic box.
 
@@ -317,7 +325,7 @@ half of the reasoning was right and is why the M20 got bought at all:
 | | |
 |---|---|
 | **The M20's own clamping range is unverified** | The M16 failed because a gland was chosen by **thread size** without checking its **seal range**. `651VT`'s clamping range is **not recorded anywhere in this repo**. A nylon M20 comp gland typically covers roughly 6–12 mm and 9.75 mm should sit mid-range — **⚠ inferred, not from a datasheet.** **Check the packet against the calipered cable before drilling the box.** Making the identical mistake one size up is the cheap failure available here. |
-| **Fuse: keep the 5 A** | The `68744` plug **ships with a 13 A fuse**. **5 A remains correct** for a 15 VA transformer plus a 5 V PSU, and it is the fuse the whole cable-vs-fuse argument in this document is built on. ⚠️ **Where the 5 A fuse comes from is not recorded** — the obvious source is the one already in the old lead's plug, which is free if that lead is retired. Confirm you have one before the swap, not during it. |
+| **Fuse: 3 A fitted, not 5 A** | ✅ **Closed 2026-09-07.** The `68744` plug **shipped with a 13 A fuse**; Dan has fitted a **3 A BS 1362 fuse**, tighter than the 5 A this row previously called for. HDR-15-5 typical AC input current is **0.25 A at 230 VAC** *(datasheet, verified)* — 3 A leaves ~690 W of headroom over the actual load, and every cable-vs-fuse argument in this document built on "5 A" holds at least as well at 3 A (the 22 AWG passage above is the one exception — see its note). ⚠️ **Only open risk: nuisance-blowing on cold start** — see the [Verification log](#verification-log) for the inrush figures and the bench evidence. If it ever blows on power-up, step up to **5 A — never back to the 13 A it shipped with**, now a spare. |
 
 ---
 
@@ -327,7 +335,7 @@ One feed in, split at the Wago bank, two rails out.
 
 ```mermaid
 flowchart TD
-    MAINS["<b>230 V mains in</b><br/>UK plug · 5 A fuse<br/>CPC PL17788 ⚠ · 2 m · 0.75 mm² ⚠ 3-core"]
+    MAINS["<b>230 V mains in</b><br/>UK plug · 3 A fuse (fitted to the replacement `68744` plug, 2026-09-07)<br/>as-built lead: CPC PL17788 ⚠ · 2 m · 0.75 mm² ⚠ 3-core, own fuse unrecorded"]
     WAGO["<b>Wago bank — 3 × 221-413</b><br/>L brown · N blue · E green/yellow<br/>450 V · 32 A · 0.14–4 mm²<br/>E bonds to the DIN rail"]
     HDR["<b>HDR-15-5</b><br/>pin 4 = AC/L · 3 = AC/N<br/>pin 1 = +V · 2 = −V<br/>5 V 2.4 A · Class II"]
     TM["<b>ABB TM15/24</b><br/>3 &amp; 4 = 230 V primary<br/>5↔7 = 24 V out · 6 = centre tap<br/>15 VA · isolating · Class II"]
@@ -359,7 +367,7 @@ is a closed, floating SELV loop — see [Non-negotiables](#non-negotiables).
 
 | Ref | From | To | Colour | Notes |
 |---|---|---|---|---|
-| **A1** | Plug L *(via 5 A fuse)* | Wago-L port 1 | brown · supplied | Part of the lead · strip 11 mm · bare into the lever |
+| **A1** | Plug L *(via fuse — as-built lead's own fuse rating unrecorded; the replacement `68744` plug now has **3 A** fitted, 2026-09-07)* | Wago-L port 1 | brown · supplied | Part of the lead · strip 11 mm · bare into the lever |
 | **A2** | Plug N | Wago-N port 1 | blue · supplied | Part of the lead · strip 11 mm |
 | **A3** | Plug E | Wago-E port 1 | green/yellow · supplied | Part of the lead · strip 11 mm · **never cut off** |
 | **A4** | Wago-L port 2 | HDR pin 4 `AC/L` | brown · to make | Wago bare 11 mm · HDR **ferrule** 6 mm · 4.4 lb-in |
@@ -552,7 +560,7 @@ What's in hand and what still needs sourcing.
 | Field cable to manifold | ✅ **Rain Bird `RB/IRRICAB5-15M` — 5-core, 15 m** (EGI144337, delivered 2026-08-27). Spec was "zones + 1 cores, <10 m"; **5 cores = 4 zones + common**, matching the 4-way manifold of decision #19, and 15 m gives headroom over the <10 m estimate. | 1 × 15 m | `IN HAND` |
 | External mains lead *(socket → box)* — **as built** | supplied lead, ⚠ **assumed** 0.75 mm² **H05VV-F** (indoor PVC). Interim only; ⚠ its plug is reportedly **rewireable, not moulded**, so the `PELB2340` identification is in doubt | 1 | `IN HAND` *(interim, to be replaced)* |
 | External mains lead — **the replacement** | ✅ **Time `3183P` 3-core 1.5 mm², 10 m coil** (Screwfix `994JY`, order `A27859275166`, 2026-09-06). **PCP rubber sheath, 300/500 V, −35 to +60 °C.** ⛔ **Not H07RN-F** — see [3183P rubber flex](#3183p-rubber-flex--outdoor-flex--the-part-actually-bought) | 1 × 10 m | `IN HAND` *(collect at Horsforth)* |
-| **Plug for the replacement lead** | ✅ **Essentials 13 A fused heavy-duty, black** (Screwfix `68744`). ⚠️ **Ships with a 13 A fuse — fit a 5 A.** The bought coil is bare-ended, so unlike the old lead the plug is a separate part | 1 | `IN HAND` |
+| **Plug for the replacement lead** | ✅ **Essentials 13 A fused heavy-duty, black** (Screwfix `68744`). ✅ **Shipped with a 13 A fuse; a 3 A fuse is now fitted (2026-09-07)** — the 13 A original is a spare. The bought coil is bare-ended, so unlike the old lead the plug is a separate part | 1 | `IN HAND` |
 | Mains cable gland — **as built** | WEMNO **M16** nylon IP68, **3–8 mm** range. Fits the *supplied* lead. ⛔ **Will not seal the 3183P** at ~9.75 mm — the seal never compresses on the sheath at all | 1 | `IN HAND` *(pack of 10)* |
 | Mains cable gland — **for the lead swap** | ✅ **Vimark nylon male comp gland, 20 mm / M20, black** (Screwfix `651VT`, 2 pack). ⚠️ Its own **clamping range is unverified** — check the packet against the calipered cable. ⛔ **Fitting it means enlarging the box entry ~16.5 → ~20.5 mm** ⚠ *(hole sizes inferred from the thread designation, not a datasheet)* | 1 *(2 owned)* | `IN HAND` |
 | Vented drain / breather | IP-rated M12–M16 breather plug | 1 | `SOURCE` |
@@ -595,7 +603,13 @@ to open it, never ring-cut and drag, or you'll nick a core.
 ## Non-negotiables
 
 - **Plug out of the wall** for all of it. RCD-protected socket for first power-up.
-- **5 A fuse as supplied** is correct for 0.75 mm² (6 A rated). Leave it.
+- ⚠️ **Disagreement, not resolved — 5 A fuse "as supplied" on 0.75 mm².** This line originally
+  claimed 5 A was correct for 0.75 mm² (6 A rated). **Dan recalls (2026-09-07) it was actually
+  out of spec at the time** — he has not said against what (the cable, the load, or the fact
+  that 3 A/13 A are the standard BS 1362 household values and 5 A isn't). **Neither claim is
+  verified against the other; this is left open, not silently resolved either way.** ✅ **Moot
+  for the current build regardless** — the plug now fitted (`68744`, 2026-09-07) carries a
+  **3 A** fuse, not 5 A; see the [Verification log](#verification-log).
 - **Neither supply has an earth terminal** — both Class II. Earth goes to its own Wago and
   bonds to the rail.
 - **Don't wire the HDR's centre front screw** — that's the `Vo ADJ` trimmer, turn-only. Set it
@@ -645,7 +659,8 @@ was written away from the source files; these are the numbers that were re-confi
 | RESTMO plug enclosure **IP54** | Amazon order 206-6337738-2459509, 2026-09-06 | ⚠ vendor title only. **IP54 = splashing water**, below the **IP66** assumed in build guide 7A. Acceptable wall-mounted with entries down; not acceptable ground-sited |
 | **H07RN-F smallest 3-core CSA** | **Lapp manufacturer catalogue**, corroborated by Eland Cables and FS Cables (2026-09-06) | ⛔ **Correction. 3-core 0.75 mm² H07RN-F does not exist** — the smallest 3-core made is **1.0 mm² (`3G1.0`)**. 0.75 mm² rubber flex is **H05RN-F**, 300/500 V. Every *"H07RN-F 3-core 0.75 mm²"* in this repo was wrong. **Evidence class: manufacturer catalogue, verified** — not a seller listing |
 | **H07RN-F `3G1.0` nominal OD** | **Lapp manufacturer catalogue** (2026-09-06) | ✅ **8.3–10.7 mm.** The owned **WEMNO M16** gland seals **3–8 mm**, so an H07RN-F lead needs an **M20** gland. The *whole* OD range sits above the M16 ceiling — settled by the catalogue, not by measuring on the day. **Evidence class: manufacturer catalogue, verified.** ⚠️ **Reference only from 2026-09-06** — the cable bought is 3183P, not H07RN-F. The M20 conclusion carried over anyway |
-| **The cable actually bought is `3183P`, NOT H07RN-F** | **Screwfix product description + order confirmation `A27859275166`** (2026-09-06) | ⛔ **Correction to the correction, same day.** Screwfix state the conductors are **"rated 300/500 V"**. **H07RN-F is 450/750 V by definition of the `07`** — the two claims are mutually exclusive. The part in hand is **`3183P`: PCP rubber sheath, 300/500 V class, −35 to +60 °C**. **Docs must say "3183P rubber flex (PCP sheath), 300/500 V class" and must not claim H07RN-F for it.** ✅ **Functionally correct regardless** — the requirement was a *rubber sheath*, not a voltage class; on 230 V behind a 5 A fuse, 450/750 V buys nothing |
+| **The cable actually bought is `3183P`, NOT H07RN-F** | **Screwfix product description + order confirmation `A27859275166`** (2026-09-06) | ⛔ **Correction to the correction, same day.** Screwfix state the conductors are **"rated 300/500 V"**. **H07RN-F is 450/750 V by definition of the `07`** — the two claims are mutually exclusive. The part in hand is **`3183P`: PCP rubber sheath, 300/500 V class, −35 to +60 °C**. **Docs must say "3183P rubber flex (PCP sheath), 300/500 V class" and must not claim H07RN-F for it.** ✅ **Functionally correct regardless** — the requirement was a *rubber sheath*, not a voltage class; on 230 V behind the **3 A fuse now fitted** (2026-09-07, see row below), 450/750 V buys even less than it did against the 5 A this line originally cited |
+| **Fuse fitted to the `68744` plug is 3 A, not 5 A** | **Dan's own report of the part he fitted, 2026-09-07 — physical, verified** | ✅ **Closed.** `68744` shipped with 13 A; Dan fitted a **3 A BS 1362 fuse**. HDR-15-5 typical AC input current **0.25 A at 230 VAC** *(datasheet, verified)* — ~690 W of headroom over the actual load. Cable-protection arguments built on "5 A" elsewhere in this document hold at least as well at 3 A. ⚠️ **Nuisance-blow risk on cold start, reduced but not eliminated:** datasheet inrush is **45 A at 230 VAC, cold start** *(datasheet, verified)*; separately, **the rig has already been bench-powered through a 5 A BS 1362 fuse and did not nuisance-blow on cold start** *(Dan's own bench testing, 2026-09-07 — physical, verified)*. That is evidence **for 5 A, not for 3 A** — pre-arcing I²t scales with rating, so a 5 A survival does not prove a 3 A will. **Risk reduced, not closed.** If the 3 A ever blows on power-up, step up to **5 A — never to the 13 A it shipped with**, now a spare |
 | **`3183Y` vs `3183P` — what the trailing letter means** | **Farnell datasheet** *"3183Y (Har. code HO5VV-F3) Three-Core Round 300/500 V"* + 3183P listings citing **BS EN 50525-2-21** (2026-09-06) | ✅ **The trailing letter is the sheath material.** `3183Y` = **H05VV-F**, PVC insulation + PVC sheath, 300/500 V, **BS EN 50525-2-11**. `3183P` = **polychloroprene rubber** sheath, **BS EN 50525-2-21**. **The two standard numbers (`-2-11` PVC vs `-2-21` rubber) are the clean discriminator.** **Evidence class: manufacturer datasheet, verified** |
 | ⚠ **TRAP — retailer listings on 3183P are self-contradictory** | MP Moran 3183P listing (2026-09-06) | ⚠ **Recorded as a trap, not a fact.** That listing claims **"H07RN-F"** *and* **"300V/500V"** simultaneously; **both cannot be true.** On a 3183P listing the **sheath material is the reliable part; the harmonised designation is not.** Check the **BS EN number**, never the har-code, if a listing must be trusted at all |
 | **No thinner rubber option existed** | Screwfix 3183P range filter (2026-09-06) | ✅ **Screwfix's 3183P range starts at 1.5 mm²** — a 0.75 mm² filter returns **zero products**. Independent of the H07RN-F CSA finding, there was no thin rubber flex to buy. ⚠ **Evidence class: retailer catalogue** — adequate for *"what could be bought here"*, not a manufacturing claim |

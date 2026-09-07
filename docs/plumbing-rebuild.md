@@ -584,9 +584,29 @@ Punch the moulded ones out with a screwdriver, or cut fresh where you actually
 need them — the wall is corrugated PP/HDPE ~4–5 mm, a hole saw or jigsaw goes
 through it. Deburr the edge so it cannot chafe the MDPE.
 
+> ⛔ **SUPERSEDED IN PART, 2026-08-29 — the entries must be U-NOTCHES OPEN TO
+> THE BOTTOM RIM, never closed holes or punched knock-outs.** This section was
+> written 2026-08-27, before the access analysis behind vault decision **#18**.
+> **A closed hole traps the box for the life of the install:** the MDPE crosses
+> the wall horizontally, so lifting the box drives the hole's *lower* edge into
+> the pipe and jams after ~15 mm — and the manifold (500 × 260 mm) will not pass
+> up through the ~475 mm lid throat either, so **lifting the box off is the only
+> way the manifold ever comes out.** A bottom-open notch costs nothing: the box
+> is an **open-bottomed tapered tub on gravel**, so a slot up from the bottom
+> edge opens nothing that is not already open to the ground. Size ~**120 mm tall
+> × 30 mm wide** (lateral centreline lands ~100 mm up the wall); deburr — the
+> wall is corrugated PP ~4–5 mm and a jigsaw goes through it.
+> ⛔ **This is a one-way decision taken at cut time. Get it wrong once.**
+> ⚠️ *Evidence class: geometry derived here, not vendor-stated — trivially
+> provable on a scrap of the box. Whether it is standard **trade** practice is
+> unverified; worth a sanity-check against r/Irrigation, who outrank the
+> manufacturer on practice.* Full reasoning: vault decision #18 ·
+> `build-work-plan.md` Phase B.
+
 **Sizing the hole.** With 56 mm of clearance per end, the whole assembly —
 adaptors included — sits **inside** the box and only MDPE crosses the wall. A
-knock-out sized for 20 mm pipe is enough. The trick of cutting the hole oversize
+notch sized for 20 mm pipe is enough *(⚠️ as a **notch**, per the correction
+above — the moulded closed knock-outs must not be used as-is)*. The trick of cutting the hole oversize
 so the adaptor's **42 mm hex (E)** nests in the aperture (the adaptor is 71 mm
 long overall, `140200020007`, Plasson Silver Line 2026 catalogue — verified) is
 now a *fallback*, not the plan. It recovers ~40–50 mm per end if the dry-fit

@@ -12,6 +12,13 @@ It automates the watering of a back garden.
 ## Must Haves
 
 - Two zone system setup, low pressure (for 4 hanging baskets), high pressure (4 outputs) 
+  > ⚠️ **Corrected 2026-09-06 — it is FIVE hanging baskets, not four.** Settled in the vault on
+  > 2026-07-20 with positions and an explicit *"corrected up from earlier count"*: **HB1–3 on the
+  > top border (FB2), HB4–5 on the right border (FB3)** —
+  > `Projects/golden-shower/tasks/decide-zone-valve-count.md`. Hydraulically it changes nothing
+  > (5 baskets ≈ 0.17–0.33 L/min, **under 2%** of the ~19 L/min tap), which is why it survived
+  > unnoticed. ⛔ **The two-zone split in this bullet is itself superseded** — see the 2026-08-31
+  > revision below: **three zones**, beds first.
 - the Manifold (water hub) will have a Double check valve to the tap to avoid backflow. 
 - We'll manage the zones via a 24VAC solenoid valve. 
 - compute will be supplied via a ESP32. 

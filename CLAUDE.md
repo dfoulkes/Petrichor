@@ -5,6 +5,18 @@ proven **on the bench**; **four enclosure-side items** are still unbought, none 
 which blocks groundwork. `specs/build-guide.md` and
 `docs/wiring-and-cable-grades.md`.
 
+> 📌 **Two homes, two jobs — know which one wins before you edit.**
+> **Obsidian** (`Projects/golden-shower/` in the Homelab vault) is the source of
+> truth for **decisions, project state, ticket status and spend** — read its
+> `README.md` **Decisions table** before designing, specifying or buying
+> anything. **This repo** is the source of truth for **build detail** — wiring,
+> stage runbooks, datasheets, part evidence. Where they disagree on a
+> *decision*, **the vault wins**; on a *build spec*, the repo usually does.
+> ⛔ **One edit, one place** — cross-reference, never mirror. The vault's order
+> register and the repo's stage runbooks are each maintained in exactly one
+> place. Last reconciled **2026-09-06** →
+> `Projects/golden-shower/reconciliation-2026-09-06.md`.
+
 ## Active hand-off
 
 **Read `docs/outstanding-to-complete-build.md` first** — the consolidated
@@ -76,8 +88,10 @@ Status as of 2026-09-06:
   450/750 V by definition**. **Always describe it as "3183P rubber flex (PCP
   sheath), 300/500 V class" — never as H07RN-F.** ✅ **It is functionally correct
   regardless:** the requirement was **a rubber sheath**, not a voltage class, and
-  on 230 V behind a 5 A fuse 450/750 V buys nothing. PCP sheath, **−35 to
-  +60 °C**, sold for *"pond pumps and other outdoor cabling applications"*.
+  on 230 V behind the **3 A fuse now fitted** (2026-09-07 — see below), 450/750 V
+  buys even less than it did against the 5 A this line originally cited. PCP
+  sheath, **−35 to +60 °C**, sold for *"pond pumps and other outdoor cabling
+  applications"*.
   **UK code reference (verified):** `3183Y` = **H05VV-F**, PVC/PVC, **BS EN
   50525-2-11**; `3183P` = **rubber sheath**, **BS EN 50525-2-21** — **the
   trailing letter is the sheath material and the BS EN number is the clean
@@ -93,13 +107,28 @@ Status as of 2026-09-06:
   and clear all swarf before re-sealing.** 📌 **Dan chose this route knowingly**
   on 2026-09-06, having been shown build guide 7A's *"or sleeve in conduit"*
   alternative, which needs no drilling. **Recorded, not to be re-argued.**
+- ✅ **Fuse fitted 2026-09-07 — 3 A, not 5 A.** The `68744` plug shipped with a
+  13 A fuse; Dan has fitted a **3 A BS 1362 fuse**, tighter than the 5 A the
+  earlier docs called for. **Why 3 A is correct:** the HDR-15-5's typical AC
+  input current is **0.25 A at 230 VAC** *(HDR-15-5 datasheet,
+  `datasheets/HDR-15-5_MeanWell_5V-PSU.pdf` — verified)* — with the TM15/24
+  transformer alongside, total draw is still a few tens of watts, and 3 A at
+  230 V is ~690 W of headroom. A 3 A fuse protects the 1.5 mm² 3183P flex (and
+  the 0.75 mm² old lead) more tightly than 5 A did — every cable-grade
+  argument in `docs/wiring-and-cable-grades.md` built on "5 A" holds *a
+  fortiori* at 3 A. ⚠️ **The only open risk is nuisance-blowing on cold
+  start:** the datasheet gives **inrush 45 A at 230 VAC, cold start**
+  *(datasheet, verified)*, sub-millisecond and within a BS 1362 fuse's normal
+  pre-arcing I²t — but that specific margin is **inferred, not verified
+  against a fuse datasheet.** If it ever blows on power-up (and only then),
+  step up to **5 A — never to the 13 A it shipped with**, which is now a
+  spare.
 - ⚠️ **Still open on the lead swap:** the **`651VT` M20's own clamping range is
-  unverified**; **fit a 5 A fuse** (the `68744` ships with 13 A); **read the old
-  lead's sheath printing before cutting it** (free, settles whether it was ever
-  H05VV-F, destroyed by the cut); check **whether 1.5 mm² seats in the old
-  rewireable plug's cord grip**; and **9–11 mm round cable clips are not bought
-  and still unspecced** (Screwfix's suggested 5–7 mm coaxial clips are too
-  small).
+  unverified**; **read the old lead's sheath printing before cutting it**
+  (free, settles whether it was ever H05VV-F, destroyed by the cut); check
+  **whether 1.5 mm² seats in the old rewireable plug's cord grip**; and
+  **9–11 mm round cable clips are not bought and still unspecced** (Screwfix's
+  suggested 5–7 mm coaxial clips are too small).
 - ⚠️ **The `PL17788` / PELB2340 lead identity is IN DOUBT — downgraded from ✅ to
   ⚠ on 2026-09-06.** PR #14's verification log had it confirmed as a **moulded**
   plug from the CPC order confirmation; **Dan reports the plug in hand is screwed
@@ -124,7 +153,41 @@ Status as of 2026-09-06:
 - **Winterisation still has no procedure in the repo** — and the re-scope does
   not relax it. Surface-laid dripline plus a filter and reducer are the
   *shallowest*, most frost-exposed parts yet.
-- ⚠️ **`docs/build-work-plan.md` has NOT been restated against the drip MVP.**
-  Its Phase B still pegs out four rotary head positions and Phase C still
-  trenches laterals to four heads at 200 mm. **That is an open contradiction
-  needing Dan's call** — see *Unresolved by the re-scope* in the register.
+- ✅ **`docs/build-work-plan.md` HAS now been restated — Dan ruled on the trench,
+  2026-09-06.** This file previously called it an open contradiction. It is not.
+  A session reading had proposed the re-scope shrank the MVP to a single short
+  mainline run to the valve box; ⛔ **that was wrong**, and Dan corrected it
+  against the pipe map (`Projects/golden-shower/garden-layout-2026-08-25.png`),
+  in his words: **"we're going into the garden so to spray the borders, thus the
+  trench."**
+  - ✅ **The two trench ROUTES survive unchanged.** Line 1 = box → S11 → bottom
+    edge → S12; Line 2 = box → left edge → S21 → top edge → S22. The mainline
+    still travels **out along the borders** to reach the beds, so **the MVP is
+    NOT trench-free and Phase C is still a real dig.**
+  - ⚠️ **Only the TERMINATIONS changed** — a dripline feed onto a bed, not a
+    flush pop-up rotary body. The pegged head positions and the swing-joint gate
+    follow the rotaries into **Stage 9**.
+  - ⛔ **Trench DEPTH is open and was NOT guessed at.** The 200 mm everywhere in
+    this repo derives entirely from the `PROS-04-PRS40`'s 155 mm retracted
+    height — a pop-up that is now deferred. **Dan's call.**
+  - ⚠️ **Trench LENGTH is not recorded anywhere and must not be invented.** The
+    only figure is **~33 m**, and `plumbing-rebuild.md` says itself that it is
+    *scaled off the diagram*, not walked. ⏳ **Walk both routes with a tape** —
+    added to Phase B and the physical-checks table. It also settles the **15 m
+    field cable**, which has never been walked either. Both on one walk.
+- ⛔ **Valve-box pipe entries must be U-NOTCHES OPEN TO THE BOTTOM RIM, never
+  closed holes.** A one-way decision taken at cut time (vault decision #18): a
+  closed hole traps the box for the life of the install, because lifting drives
+  its lower edge into the horizontal MDPE and the manifold cannot leave through
+  the lid either. Now stated in `build-work-plan.md` Phase B,
+  `specs/build-guide.md` **7C** and `plumbing-rebuild.md` *Pipe entry* — the
+  last of which described a **closed knock-out** and has been corrected.
+- ✅ **Lawn-ring hardware is fully stocked — "needs three more of each" is
+  stale.** EGI144331 bought **3 × PRS40 bodies and 4 × MP3500 nozzles**; with the
+  8C rig's body and MP3000 that is **4 bodies, 5 nozzles in hand.** ⚠️ Open for
+  Stage 9 only: **which** nozzle goes on — ~7.4 m is *below* the MP3500's 9.4 m
+  minimum radius, so the owned MP3500s want adjusting down with the `HI/MPTOOL`,
+  or the MP3000 becomes the pattern. **Not a paper decision — throw-test it.**
+- ✅ **Basket count is FIVE, not four.** The repo README's *Must Haves* said 4;
+  the vault settled 5 with positions on 2026-07-20 (*"corrected up from earlier
+  count"*). **Obsidian wins on decisions**; the README is corrected.

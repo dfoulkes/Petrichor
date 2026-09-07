@@ -142,9 +142,32 @@ gets established there.
 
 ## Phase B — Set out (outdoors, wet-tolerant, no box needed)
 
-- [ ] **Peg out the four head positions** — S11, S12 (Line 1) and S21, S22
-      (Line 2), one per corner. Needed before swing joints can be sized.
-- [ ] **Mark both trench routes.**
+- [ ] **Mark both trench routes** — **Line 1** = box → S11 → along the bottom
+      edge → S12; **Line 2** = box → up the left edge → S21 → across the top →
+      S22. ✅ **Both routes survive the drip re-scope unchanged** — the mainline
+      still has to travel out along the borders to reach the beds. Dan,
+      2026-09-06: *"we're going into the garden so to spray the borders, thus
+      the trench."* **This is the live task; the head positions below are not.**
+- [ ] ⏳ **WALK BOTH ROUTES WITH A TAPE — free, never done, and it gates the
+      dig.** ⚠️ **Trench length is not recorded anywhere in this repo or the
+      vault.** The only figure is **~33 m**, and `plumbing-rebuild.md` states
+      plainly that it is *scaled off the diagram*, not walked:
+      *"Line 1 + Line 2 come to roughly 33 m before risers, slack and trench
+      dips… Walk it with a tape."* ⚠ **Treat ~33 m as unverified.**
+      It settles three things at once:
+      - the **dig itself** — hours, and whether a trencher is worth pricing;
+      - the **MDPE budget** — ~34 m of the 50 m coil is left after the 8C rig
+        takes ~16 m. **Marginal.** Running out mid-trench costs £74.95 plus a
+        delivery and a stalled week;
+      - ⚠️ the **15 m field cable** `RB/IRRICAB5-15M`, which has *also* never
+        been walked against the SW-patio-corner → valve-box run. **Same walk,
+        same tape** — a short cable is the one mistake that order cannot absorb.
+- [ ] ⏸️ ~~**Peg out the four head positions** — S11, S12, S21, S22.~~
+      **DEFERRED TO STAGE 9, 2026-09-06.** They are *rotary head* positions and
+      the rotaries are deferred; under the drip MVP each route terminates in a
+      **dripline feed onto a bed**, not a pop-up body. The swing-joint sizing
+      this was needed for goes to Stage 9 with them. **The route corners still
+      get marked — that is the task above.**
 - [x] **Dig the valve box pit** — ✅ **DONE 2026-08-29** by Dan and Alysha:
       **700 × 500 × 410 mm deep**, membrane laid, 1 of 3 gravel bags in.
       *(An initial "roughly 610" on the long axis was Dan's mis-measure,
@@ -214,6 +237,39 @@ gets established there.
 
 ## Phase C — The dig
 
+> ## ⚠️ RESTATED 2026-09-06 — Dan's ruling on what the re-scope did and did not change
+>
+> This phase was written as a **lawn-sprinkler** plan and both `CLAUDE.md` and the outstanding
+> register flagged it as an open contradiction needing Dan's call. **He ruled on 2026-09-06.**
+>
+> A session reading had proposed that the drip re-scope shrank the MVP to a single short mainline
+> run to the valve box. ⛔ **Wrong.** Dan corrected it against the pipe map
+> (`Projects/golden-shower/garden-layout-2026-08-25.png` in the vault), in his words:
+> **"we're going into the garden so to spray the borders, thus the trench."**
+>
+> | | Verdict |
+> |---|---|
+> | **The two trench ROUTES** | ✅ **Survive unchanged.** Line 1 = box → S11 → bottom edge → S12; Line 2 = box → left edge → S21 → top edge → S22. The mainline still has to travel out along the borders to reach the beds |
+> | **The zone-split dig strategy** | ✅ **Survives** — two independent runs off a shared manifold, so the dig is still two pushes rather than one block |
+> | **What the routes TERMINATE in** | ⚠️ **Changed.** A **dripline feed onto a bed**, not a flush pop-up rotary body |
+> | **Four-head lateral runs, tees/elbows at S11/S21/S12/S22, swing joints** | ⏸️ **Deferred to Stage 9** with the rotaries |
+> | **Trench LENGTH** | ⚠️ **Unmeasured — do not invent one.** ~33 m is scaled off a drawing (`plumbing-rebuild.md`), never walked. See the Phase B tape-walk |
+> | **Trench DEPTH** | ⛔ **OPEN — NOT RULED. Dan's call.** See below |
+>
+> ⛔ **The depth question is genuinely open and is not settled by this ruling.** The 200–250 mm
+> below is derived *entirely* from the `PROS-04-PRS40`'s **155 mm retracted height** — a pop-up
+> that is now deferred. A mainline feeding **surface-laid** dripline has no such hardware driver,
+> so the depth is set by whatever else is wanted: frost, spade/fork strikes, and whether the lawn
+> ring's laterals should share this trench next year rather than being dug a second time.
+> ⚠️ **Whichever depth is chosen, the ⛔ *anything going under ground must go in during the
+> groundwork* rule still binds** — the trench cannot be reopened in March without undoing the
+> autumn's work, so the duct goes in on this dig regardless.
+>
+> ⛔ **And `winterise-system` does not relax either.** The old depth argument was *"the laterals sit
+> above frost depth, so drain-down is what makes it safe."* The MVP's emitters are **surface-laid
+> dripline plus a filter and a reducer** — shallower still, and the small-bore devices are the
+> classic first casualties of a frost. **No procedure exists in this repo yet.**
+
 ### ✅ Split it by zone — halves the uninterruptible window
 
 Line 1 (S11, S12) and Line 2 (S21, S22) are independent runs off a shared
@@ -229,11 +285,12 @@ manifold, so the dig does **not** have to be one block:
 overwinter with one working zone rather than nothing. The box being
 lid-accessible is what makes connecting zone 2 later a five-minute job.
 
-### ⚠️ Decide before this phase — swing joints
+### ⏸️ ~~Decide before this phase — swing joints~~ → **STAGE 9, 2026-09-06**
 
-Phase C installs the heads, so the rigid-elbow vs articulated-riser question must
-be **settled and bought** before the weekend, not during it. Hunter's own CAD
-details assume swing joints. Currently backlogged — un-backlog it before digging.
+~~Phase C installs the heads, so the rigid-elbow vs articulated-riser question must be settled and
+bought before the weekend.~~ **Swing joints are rotary-head kit.** The rotaries are deferred, so
+this gate goes with them — it **no longer blocks the dig**. Hunter's own CAD details still assume
+them; size it once the Stage 9 head positions are pegged out. **Do not buy them for the MVP.**
 
 ### The dig itself (box in hand; no longer weather-critical — see revised rule)
 
@@ -261,17 +318,30 @@ details assume swing joints. Currently backlogged — un-backlog it before diggi
       **not yew** (bark is wrong) — yew is toxic and must not be burnt.
       **If Prunus is confirmed, the arisings are prime BBQ smoking wood** —
       cherry and plum both. Don't skip it into the green bin.
-- [ ] **Trench the laterals to 200–250 mm.** Depth is set by the spray body, not
-      by frost: **PROS-04-PRS40 retracted height is 155 mm**, so the inlet sits
-      155 mm below turf and the lateral centreline lands ~200 mm.
+- [ ] ⛔ **Trench depth — DECIDE BEFORE DIGGING. It is open, not specified.**
+      ~~Trench the laterals to 200–250 mm; depth is set by the spray body —
+      PROS-04-PRS40 retracted height is 155 mm, so the inlet sits 155 mm below
+      turf and the lateral centreline lands ~200 mm.~~ ⚠️ **That derivation is
+      void for the MVP:** it hangs entirely on a pop-up body that the re-scope
+      **deferred to Stage 9**. A mainline feeding surface-laid dripline has no
+      hardware driver setting its depth. **Dan's call, and the inputs are:**
+      frost, fork/spade strikes, mower and border cultivation, and whether the
+      Stage 9 lawn laterals should share this trench now rather than be dug a
+      second time. **Recorded as open rather than guessed at.**
 - [ ] **Clear sharp stones** from the trench bottom; bed the pipe on fine soil.
 - [ ] **Cable in the bottom of the trench, pipe on top** — the pipe then shields
       the cable from a fork. Leave deliberate **slack loops** at both ends; soil
       creeps and a taut cable parts at a termination.
 - [ ] **No joints in the buried cable run.** Every splice lives in the box.
 - [ ] Set the box, plumb the manifold, 2 valves, 3 caps on the unused ports.
-- [ ] Laterals to all four heads — **tees** through S11/S21, **elbows**
-      terminating S12/S22.
+- [ ] ⏸️ ~~Laterals to all four heads — **tees** through S11/S21, **elbows**
+      terminating S12/S22.~~ **DEFERRED TO STAGE 9** with the rotaries.
+      **For the MVP each route terminates in a dripline feed onto a bed:**
+      mainline → **filter → reducer** → valve → **16 mm start connector** → two
+      PC laterals per bed, surface-laid and pegged. ⚠️ **None of that hardware
+      is bought** — see the drip parts table in
+      `outstanding-to-complete-build.md`. The tees and elbows already bought
+      (`PL/14840C1C` ×2, `PL/14850C10` ×3) are **Stage 9 stock, not waste.**
 - [ ] **Splices — 3 joints** (zone 1, zone 2, and the 3-wire daisy-chained
       common). Do them **under cover if wet**; the DBR/Y gel is built for water
       but not for grit.
@@ -283,9 +353,16 @@ details assume swing joints. Currently backlogged — un-backlog it before diggi
 
 - [ ] **Drain down.** Isolate at the tap, open every valve bleed lever, drain the
       low points, leave it empty.
-      **This is not housekeeping.** The laterals sit at ~200 mm, above UK frost
-      depth, and the `-CV` spray bodies deliberately hold water in the head.
-      **The shallow burial is only safe because the system is drained.**
+      **This is not housekeeping.** ⚠️ **Restated 2026-09-06:** the `-CV` spray
+      bodies this argument was built on are **deferred to Stage 9** — but the
+      conclusion gets *stronger*, not weaker. The MVP's emitters are
+      **surface-laid dripline** (0 mm, not 200 mm) plus a **filter** and a
+      **pressure reducer** — small-bore devices that hold water and are the
+      classic first casualties of a frost. The system still **cannot self-drain**
+      (DCV upstream, no fall designed in). ⚠️ **Whether dripline is drained,
+      blown or left to its emitters is UNVERIFIED** — no dripline datasheet is
+      in `datasheets/` and the product is not chosen. **Settle it against the
+      dripline actually ordered.**
 - [ ] Record the procedure in the repo — it does not exist yet.
 
 ## Phase E — Winter (electrician)
@@ -303,9 +380,11 @@ details assume swing joints. Currently backlogged — un-backlog it before diggi
       > which is the H05RN-F class; the `07` in H07RN-F *means* 450/750 V.
       > **Correct description: "3183P rubber flex (PCP sheath), 300/500 V
       > class."** ✅ **Functionally right regardless** — the requirement was a
-      > **rubber sheath**, not a voltage class, and on 230 V behind a 5 A fuse
-      > 450/750 V buys nothing. PCP sheath, **−35 to +60 °C**, sold by Screwfix
-      > for *"pond pumps and other outdoor cabling applications"*.
+      > **rubber sheath**, not a voltage class, and on 230 V behind the **3 A
+      > fuse now fitted** (2026-09-07 — see below), 450/750 V buys even less
+      > than it did against the 5 A this line originally cited. PCP sheath,
+      > **−35 to +60 °C**, sold by Screwfix for *"pond pumps and other outdoor
+      > cabling applications"*.
       > *(Superseded, kept as history: this line previously said to buy
       > **H07RN-F `3G1.0`**, ⛔ not 0.75 mm² — that size is only made as
       > H05RN-F. True about H07RN-F, and moot: Screwfix's 3183P range starts at
@@ -323,9 +402,17 @@ details assume swing joints. Currently backlogged — un-backlog it before diggi
       > 📌 **Dan chose this route knowingly, 2026-09-06.** Build guide 7A step 3
       > offers *"or sleeve in conduit"*, which needs no drilling; it was put to
       > him and he took the cable-and-gland swap. **Recorded, not re-argued.**
-- [ ] ⚠️ **Fit a 5 A fuse to the new plug.** `68744` ships with **13 A**. 5 A
-      remains correct for a 15 VA transformer plus the 5 V PSU. ⚠️ Where the 5 A
-      comes from is unrecorded — the obvious source is the old lead's plug.
+- [x] ✅ **Fuse fitted 2026-09-07 — 3 A, not 5 A.** `68744` shipped with
+      **13 A**; Dan has fitted a **3 A BS 1362 fuse**, tighter than the 5 A
+      this line previously called for. HDR-15-5 typical AC input current is
+      **0.25 A at 230 VAC** *(datasheet, verified)* — 3 A leaves ~690 W of
+      headroom over the actual load. Every cable-protection argument built on
+      "5 A" elsewhere in this repo holds *a fortiori* at 3 A. ⚠️ **Only open
+      risk: nuisance-blowing on cold start** — inrush is **45 A at 230 VAC,
+      cold start** *(datasheet, verified)*, sub-ms and within a BS 1362 fuse's
+      normal pre-arcing I²t, but that margin is **inferred, not verified
+      against a fuse datasheet**. If it ever blows on power-up, step up to
+      **5 A — never back to the 13 A it shipped with**, now a spare.
 - [ ] ⚠️ **Free checks on the old lead, before it is cut up for cores** — its
       plug is reportedly **rewireable, not moulded**, so **open it**: read the
       **sheath printing** (settles whether it was ever H05VV-F — the cut destroys

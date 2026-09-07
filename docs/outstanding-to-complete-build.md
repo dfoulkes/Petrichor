@@ -89,11 +89,20 @@ Nothing bought is wasted; the rotary hardware carries forward.
 | **Circular self-back-feeding loop** | a design constraint | ✅ **Obsolete for the MVP** — PC dripline equalises itself. Still applies if the lawn ring is built |
 | **Head positions / four-corners-inward spacing** | an open design question | ✅ **Deferred with the lawn.** Gates nothing in the MVP |
 
-⚠️ **The one thing the re-scope did *not* settle:** the **swing joints** backlog
-and the pegged head positions are both rotary-only, so they follow the lawn into
-Stage 9 — but `build-work-plan.md` **Phase B still asks you to peg out four head
-positions and Phase C still trenches laterals to four heads**. That plan has not
-been restated against the drip MVP. See *Unresolved* at the foot.
+✅ **Amended 2026-09-06 — `build-work-plan.md` HAS now been restated.** This
+paragraph previously said the plan *"has not been restated against the drip MVP"*
+and pointed at Phase B's four pegged head positions and Phase C's four-head
+laterals. **Dan ruled on 2026-09-06 and the plan was rewritten to match:**
+
+- ✅ **The two trench ROUTES survive unchanged** — *"we're going into the garden
+  so to spray the borders, thus the trench."* The mainline still runs out along
+  both borders to reach the beds, so **the MVP is not trench-free.**
+- ⚠️ **Only the terminations changed** — dripline feeds onto beds, not pop-up
+  rotary bodies. The **pegged head positions and the swing-joint gate** follow
+  the rotaries into Stage 9, exactly as this paragraph expected.
+- ⛔ **Two things are still genuinely open and were NOT guessed at: trench
+  DEPTH** (the 200 mm came from a deferred pop-up body) **and trench LENGTH**
+  (unmeasured; ~33 m is scaled off a drawing). See *Unresolved* rows 5 and 6.
 
 ## Plan — settled 2026-08-25
 
@@ -290,6 +299,7 @@ test day — a two-gauge method with one gauge produces a reading, not a model.
 | **Caliper the existing M16 box hole** *(new, 2026-09-06)* ⛔ | The actual diameter to drill from. The ~16.5 → ~20.5 mm figures are **inferred from the thread designation, not a datasheet**. ⛔ **Measure before the cutter touches the box** |
 | **Read the `651VT` M20's clamping range off the packet** *(new, 2026-09-06)* ⚠ | Whether the M20 actually seals **~9.75 mm**. Not recorded anywhere in this repo. The M16 failed by being picked on **thread size** without checking **seal range** — do not repeat it one size up |
 | **Dripline dry-run** *(new, 2026-09-06)* ⚠ | The MVP's equivalent free check, and it **cannot be done yet — nothing is bought.** Once the dripline arrives: flush every lateral before capping, then run 30 min and trowel three points per bed looking for wetted cones that have **joined into a band**. Build guide 8D steps 11–12 |
+| **Walk both trench routes with a tape** *(new, 2026-09-06)* ⛔ | **Trench length — unmeasured, and the only figure anywhere (~33 m) is scaled off a drawing, not walked.** Sets the dig, the MDPE budget (~34 m of coil left after the rig — **marginal**) and whether a second coil must be ordered *before* the dig rather than mid-trench. ⚠️ **Same walk settles the 15 m field cable** against the SW-patio-corner → valve-box run, which has never been measured either. **Free. Not done.** |
 | ~~Tap's double-check valve~~ | **CLOSED — non-issue.** DCVs mandatory on outside taps since the Water Supply (Water Fittings) Regulations 1999. Do not re-raise. |
 
 ## Purchase groups
@@ -374,21 +384,22 @@ lead, the M20 gland and (a requirement the coil itself created) the plug. See th
 >
 > ✅ **And it is the correct cable for this build.** The requirement was always
 > **a rubber sheath instead of PVC** — the failure mode is UV chalking and frost
-> embrittlement over seasons, not insulation breakdown. **On 230 V behind a 5 A
-> fuse, 450/750 V buys nothing.** What was bought is polychloroprene-sheathed,
+> embrittlement over seasons, not insulation breakdown. **On 230 V behind the
+> 3 A fuse now fitted (2026-09-07, was 5 A), 450/750 V buys even less than it
+> did.** What was bought is polychloroprene-sheathed,
 > **−35 °C to +60 °C**, sold by Screwfix for *"pond pumps and other outdoor
 > cabling applications"*, and described verbatim as: *"The durable rubber sheath
 > resists weather, UV exposure and moisture degradation."* Full detail and the
 > cable-code reference table: `wiring-and-cable-grades.md` →
 > *3183P rubber flex*.
 
-⚠️ **What this order did NOT settle — all four still open:**
+⚠️ **What this order did NOT settle — three of four still open, one now closed:**
 
 | | |
 |---|---|
 | **⛔ The box entry must be drilled out, M16 → M20** | New physical work — see the section below. The M20 does not fit the existing hole |
 | **⚠️ The M20's own clamping range is unverified** | `651VT`'s seal range is recorded nowhere in this repo. The M16 failed by being chosen on **thread size** without checking **seal range** — do not repeat it one size up. **Read the packet against the calipered cable** |
-| **⚠️ Fit a 5 A fuse** | `68744` ships with **13 A**. **5 A stays correct** for a 15 VA transformer + 5 V PSU. ⚠️ Where the 5 A fuse comes from is unrecorded — probably the old lead's plug |
+| **✅ Fuse — CLOSED 2026-09-07, 3 A fitted, not 5 A** | `68744` shipped with **13 A**; Dan has fitted a **3 A BS 1362 fuse**, tighter than the 5 A this row previously called for. HDR-15-5 typical AC input current is **0.25 A at 230 VAC** *(datasheet, verified)* — ample headroom over the actual load. ⚠️ **Only open risk: nuisance-blow on cold start** — datasheet inrush is 45 A cold-start, and the rig has bench-tested clean through a 5 A fuse before *(bench evidence, verified)*, which reduces but does not close the risk at 3 A. If it ever blows on power-up, step to **5 A — never back to the 13 A it shipped with**, now a spare |
 | **⛔ Cable clips are still not bought and still misspecced** | Screwfix's suggested *Vimark Black Round Coaxial Clips 5–7 mm* are **too small** for a ~9.75 mm cable. **Needs 9–11 mm round clips.** Not priced, not ordered |
 
 ### ⛔ NEW WORK, 2026-09-06 — enlarge the enclosure entry M16 → M20
@@ -584,7 +595,9 @@ listed, not guessed at.**
 
 | # | The contradiction | Why it can't be settled here |
 |---|---|---|
-| 1 | **`build-work-plan.md` is still a lawn-sprinkler plan.** Phase B pegs out *"the four head positions — S11, S12, S21, S22"*; Phase C trenches *"laterals to all four heads"* with tees and elbows, and sets trench depth from the **PROS-04-PRS40's 155 mm retracted height**. **None of that describes a bed drip zone**, whose laterals are surface-laid on the beds and pegged, not buried to 200 mm. | The plan hasn't been restated, and how much of the trenching the MVP still needs is a **design call**, not a documentation one. The **valve-box pit and the mainline trench are still needed either way** — only the four head runs are in question. |
-| 2 | **Does the MVP still need the full trench at all?** If zone 1 is dripline on the beds, the buried run is box → bed edge, not box → four corners. **That could shrink Phase C substantially** — or not, if the lawn ring is wanted next year and the ducting should go in now while the ground is open (the register's own ⛔ *"anything going under ground must go in during the groundwork"* rule argues it should). | A genuine trade-off between scope and re-digging. Dan's call. |
-| 3 | **Basket count: README *Must Haves* says 4, build guide 8B said 5.** Carried over unresolved from the re-scope; 8B now says only *"hanging baskets"*. | Zone 2 is deferred, so it blocks nothing — but it should be pinned before zone 2 is sized. |
+| ~~1~~ | ~~**`build-work-plan.md` is still a lawn-sprinkler plan.**~~ ✅ **RESTATED 2026-09-06** against Dan's ruling below. Phase B's route-marking is kept and promoted; its head-pegging is struck and deferred to Stage 9. Phase C carries the ruling as a header table, the four-head laterals are struck, the swing-joint gate is moved to Stage 9. ⚠️ **One piece stayed open and was NOT guessed at — trench depth.** See row 5 | — |
+| ~~2~~ | ~~**Does the MVP still need the full trench at all?**~~ ⛔ **RULED BY DAN, 2026-09-06 — YES.** The suggestion that the buried run shrank to *box → bed edge* was **wrong**, and he corrected it against the pipe map, in his words: **"we're going into the garden so to spray the borders, thus the trench."** ✅ **The two trench ROUTES survive unchanged** — Line 1 = box → S11 → bottom edge → S12; Line 2 = box → left edge → S21 → top edge → S22. The mainline still has to travel out along the borders to reach the beds. ⚠️ **What changed is the terminations** — a dripline feed onto a bed, not a pop-up rotary body. **Phase C is still a real dig; the MVP is not trench-free.** → row 6 for the length | — |
+| ~~3~~ | ~~**Basket count: README *Must Haves* says 4, build guide 8B said 5.**~~ ✅ **RESOLVED 2026-09-06 — it is FIVE, and it was never actually open.** The vault settled it on **2026-07-20** with positions and an explicit note that it was *"corrected up from earlier count"*: **HB1–3 on the top border (FB2), HB4–5 on the right border (FB3)** — `Projects/golden-shower/tasks/decide-zone-valve-count.md`. The repo README's *"4 hanging baskets"* predates that and is the stale side. **Obsidian is the source of truth for decisions; the repo README has been corrected to match.** Hydraulically it changes nothing — 5 baskets ≈ 0.17–0.33 L/min, under 2% of the tap | — |
+| **5** | ⛔ **NEW, and it is the piece Dan's ruling did NOT settle: what depth does the mainline trench go to?** The 200 mm figure everywhere in this repo is derived **entirely** from the `PROS-04-PRS40`'s **155 mm retracted height** — a pop-up now deferred to Stage 9. A mainline feeding **surface-laid** dripline has **no hardware driver setting its depth at all**. | The inputs are a judgement, not a spec: frost, fork/spade strikes, border cultivation, and whether the Stage 9 lawn laterals should share this trench now rather than be dug a second time (the ⛔ *"anything going under ground must go in during the groundwork"* rule argues they should). **Dan's call. Recorded as open rather than guessed at.** |
+| **6** | ⚠️ **NEW — trench length is not recorded anywhere, and the one figure that exists is not a measurement.** `plumbing-rebuild.md` gives **~33 m** for Line 1 + Line 2 and says so itself: *"Scaling the diagram against a ~12.6 m plot (inferred…) — rough… Walk it with a tape."* **Treat ~33 m as ⚠ unverified.** It matters because ~34 m of the 50 m MDPE coil is left after the 8C rig takes ~16 m — **marginal**, and running out mid-trench costs £74.95 plus a delivery and a stalled week. ⚠️ The **15 m field cable** `RB/IRRICAB5-15M` has *also* never been walked against the SW-patio-corner → valve-box run. | **Not a ruling — a measurement.** ⏳ **Walk both routes with a tape**, once, with the cable question in mind at the same time. Added to Phase B and to the physical-checks table. Free, and it gates the dig. |
 | 4 | **The `-CV` spray bodies were bought for a zone that is now deferred.** Three PRS40 `-CV` bodies and four MP3500 nozzles sit in stock for a year. ⚠️ **The 30-day return window on EGI144331 has NOT yet closed** — ordered 2026-08-25, delivered 2026-08-26, so it runs to roughly **2026-09-24/25** ⚠ *(inferred from a 30-day window; EGI's actual returns terms are not recorded in this repo)*. **So this IS still an open decision, and it expires in about a fortnight.** | Keep-or-return is Dan's call and it is **time-boxed**. The repo's own position is *keep* — the hardware carries forward to Stage 9 and the throw maths got *better*, not worse. But it should be a decision, not a lapse. |

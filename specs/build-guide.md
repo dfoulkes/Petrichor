@@ -475,15 +475,22 @@ which makes the electrical side easy — the work is all about **weather**, not 
    > ✅ **It is the right cable anyway:** the requirement here was always **a rubber sheath instead
    > of PVC**, not a voltage class. Screwfix's own words — *"the durable rubber sheath resists
    > weather, UV exposure and moisture degradation"*, sold for *"pond pumps and other outdoor
-   > cabling applications"*, **−35 °C to +60 °C**. On 230 V behind a 5 A fuse, 450/750 V buys
-   > nothing.
+   > cabling applications"*, **−35 °C to +60 °C**. On 230 V behind the **3 A fuse now fitted**
+   > (2026-09-07 — see below), 450/750 V buys even less than it did against the 5 A this line
+   > originally cited.
    >
    > **Three things this changes about the job:**
    > 1. ⛔ **The box entry must be drilled out M16 → M20** — the bought lead is ~9.75 mm ⚠ and the
    >    fitted M16 seals 3–8 mm, so it does not seal *at all*. **Stage 6 step 3.**
-   > 2. ⚠️ **The coil is bare-ended, so the plug is a separate part** — that is what `68744` is
-   >    for. **It ships with a 13 A fuse: fit a 5 A.** 5 A is correct for a 15 VA transformer plus
-   >    the 5 V PSU, and it is the fuse the whole cable-protection argument rests on.
+   > 2. ✅ **The coil is bare-ended, so the plug is a separate part** — that is what `68744` is
+   >    for. **It shipped with a 13 A fuse; a 3 A fuse is now fitted (2026-09-07)**, tighter than
+   >    the 5 A this step previously called for. HDR-15-5 typical AC input current is 0.25 A at
+   >    230 VAC *(datasheet, verified)* — ample headroom over the actual load, and every
+   >    cable-protection argument this guide rests on gets stronger, not weaker, at 3 A. ⚠️ **Only
+   >    open risk: nuisance-blowing on cold start** — datasheet inrush is 45 A cold-start, and the
+   >    rig has already bench-tested clean through a 5 A fuse *(bench evidence, verified)*, which
+   >    reduces but does not close the risk at 3 A. If it ever blows on power-up, step to **5 A —
+   >    never back to the 13 A it shipped with**, now a spare.
    > 3. ⚠️ **10 m bought against ~2 m needed.** The surplus is not spare tri-rated wire — 3183P
    >    core temperature class is **not sourced**, so it does **not** substitute for the internal
    >    wiring this guide asks to be re-done in tri-rated.
@@ -507,6 +514,18 @@ which makes the electrical side easy — the work is all about **weather**, not 
 6. [ ] Set an **in-ground valve box** on a **gravel base** (drainage), sized for the manifold plus
    **hand access and cable slack**. It houses: the **double-check valve** (backflow prevention to
    the tap — a must-have *and* a UK water-regs requirement), the manifold, and the 24 V solenoid(s).
+
+> ⛔ **CUT THE PIPE ENTRIES AS U-NOTCHES OPEN TO THE BOTTOM RIM — NOT CLOSED HOLES.**
+> **A one-way decision, taken at cut time.** The pipe crosses the wall horizontally. With a
+> **closed hole**, lifting the box drives the hole's lower edge into the pipe and it jams after
+> ~15 mm — **the box is trapped for the life of the install**, and since the manifold will not
+> pass up through the lid throat either, the manifold then only comes out by cutting pipe. With a
+> **U-notch open to the bottom rim**, the box lifts vertically clean off over the pipework.
+> **The notch costs nothing: a valve box has no floor** — it is an open-bottomed tapered tub on
+> gravel, so a slot up from the bottom edge opens nothing that is not already open to the ground.
+> ~**120 mm tall × 30 mm wide**, cut **oversize** so the adaptor hex nests in the aperture; deburr
+> so it cannot chafe the pipe. Detail: `../docs/build-work-plan.md` Phase B ·
+> `../docs/plumbing-rebuild.md` *Pipe entry* · vault decision #18.
 7. [ ] ⚠️ **Waterproof every connection — this is the bit that bites.** Valve boxes flood. The
    solenoid coils don't care; **bare joints do.** Use **gel-filled / IP68 connectors** (gel
    Scotchloks, resin, or waterproof crimp + adhesive heatshrink) at every solenoid. **Never a dry
@@ -721,8 +740,18 @@ Neither is MVP. Both are cheap to add once zone 1 runs, and the parts for the la
     its own valve. Baskets need short, frequent cycles; beds need long, infrequent ones. That
     difference is the reason they are separate zones rather than one.
 2. [ ] **Zone 3 — the lawn ring.** The beds shrink the lawn to ~**8 × 12.5 m**, so corner-to-centre
-   is **~7.4 m** — comfortably inside the MP3000's 6.7–9.0 m. You already own **one** PRS40 body and
-   **one** MP3000 nozzle (£26.15 of the 8C BOM); a 4-corner ring needs three more of each.
+   is **~7.4 m** — comfortably inside the MP3000's 6.7–9.0 m.
+   ✅ **CORRECTED 2026-09-06 — the ring is fully stocked; nothing further needs buying.** This line
+   said *"you already own one PRS40 body and one MP3000 nozzle… a 4-corner ring needs three more of
+   each."* True on 2026-08-31; **wrong since 2026-08-25**, when **EGI144331** bought
+   **3 × `HI/PROS-04-PRS40-CV` and 4 × `HI/MP3500-90`**. With the 8C rig's body and MP3000 that is
+   **4 bodies and 5 nozzles in hand.**
+   ⚠️ **Open for Stage 9 — which nozzle actually goes on.** The vault ruled **MP3500 on all four
+   corners** (decision #16) against an **8.9 m** requirement. At **~7.4 m** that is *below the
+   MP3500's 9.4 m minimum radius*, so the owned MP3500s want adjusting **down** with the
+   `HI/MPTOOL` (radius adjusts down by design — over-throw is correctable, under-throw is not), or
+   the MP3000 becomes the pattern and three more are bought at ~£10 each. **Settle it against a
+   real throw test at Stage 9, not on paper.**
     - **4 corners ≈ 12 L/min** fits the ~15 L/min working budget in one zone.
     - **6 heads (corners + mid-sides on the long edges) ≈ 18 L/min** does **not** — that splits into
       two zones. This is where 8C's `#1 − #2` loss figure finally earns its keep.
